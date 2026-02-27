@@ -1,0 +1,366 @@
+<!-- Embeddable: Copy everything inside <body> (including the <style> block) for ClickFunnels Custom HTML block -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pre-Call Questionnaire | Scale Enterprises</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --azure: #060CB6;
+      --azure-bright: #1A22E6;
+      --prussian: #02032E;
+      --black: #000000;
+      --white: #FFFFFF;
+      --gray-300: #CCCCDD;
+      --gray-400: #9999AA;
+      --gray-500: #888899;
+      --gray-600: #666677;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--white);
+      background: var(--black);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    .sq-container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    .sq-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .sq-badge {
+      display: inline-block;
+      padding: 10px 28px;
+      background: var(--azure);
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+
+    .sq-header h1 {
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .sq-header p {
+      color: var(--gray-300);
+      font-size: 0.95rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .sq-header p strong {
+      color: var(--white);
+    }
+
+    .sq-question {
+      margin-bottom: 36px;
+    }
+
+    .sq-question-number {
+      display: inline-block;
+      color: var(--azure-bright);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 8px;
+    }
+
+    .sq-label {
+      display: block;
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .sq-helper {
+      display: block;
+      color: var(--gray-400);
+      font-size: 0.85rem;
+      font-style: italic;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .sq-input {
+      width: 100%;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: vertical;
+      min-height: 120px;
+      line-height: 1.6;
+      -webkit-appearance: none;
+    }
+
+    .sq-input:focus {
+      border-color: var(--azure);
+    }
+
+    .sq-input::placeholder {
+      color: var(--gray-600);
+    }
+
+    .sq-submit {
+      width: 100%;
+      padding: 18px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      background: var(--azure);
+      color: var(--white);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      box-shadow: 0 4px 30px rgba(6, 12, 182, 0.4);
+      transition: all 0.35s ease;
+      margin-top: 16px;
+    }
+
+    .sq-submit:hover {
+      background: var(--azure-bright);
+      box-shadow: 0 4px 40px rgba(6, 12, 182, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .sq-note {
+      text-align: center;
+      color: var(--gray-600);
+      font-size: 0.78rem;
+      font-style: italic;
+      margin-top: 16px;
+    }
+
+    .sq-thankyou {
+      display: none;
+      text-align: center;
+      padding: 80px 0;
+    }
+
+    .sq-thankyou-icon {
+      width: 64px;
+      height: 64px;
+      background: rgba(34, 197, 94, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+    }
+
+    .sq-thankyou h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .sq-thankyou p {
+      color: var(--gray-300);
+      font-size: 1rem;
+      margin-bottom: 16px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .sq-thankyou p strong {
+      color: var(--white);
+    }
+
+    .sq-divider {
+      width: 60px;
+      height: 3px;
+      background: var(--azure);
+      margin: 32px auto;
+    }
+
+    .sq-footer {
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .sq-footer p {
+      color: var(--gray-600);
+      font-size: 0.8rem;
+    }
+
+    .sq-footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .sq-footer-links a {
+      color: var(--gray-600);
+      font-size: 0.75rem;
+      transition: color 0.2s;
+    }
+
+    .sq-footer-links a:hover {
+      color: var(--gray-400);
+    }
+
+    @media (max-width: 640px) {
+      .sq-container { padding: 40px 20px 60px; }
+      .sq-input { min-height: 100px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div style="text-align: center; padding: 24px 0 0;">
+    <img src="SE ICON DESIGN WHITE.png" alt="Scale Enterprises" style="display: block; margin: 0 auto; height: 60px; width: auto;">
+  </div>
+
+  <div class="sq-container">
+
+    <!-- HEADER -->
+    <div class="sq-header">
+      <div class="sq-badge">Pre-Call Questionnaire</div>
+      <h1>Before Your Call,<br>We Need to Hear From You.</h1>
+      <p>You've booked your Commitment Call. That's a good sign. But we don't get on calls unprepared, and neither should you. Answer these questions honestly. No fluff. No corporate answers. <strong>The more real you are here, the more valuable your call will be.</strong></p>
+    </div>
+
+    <div class="sq-divider"></div>
+
+    <!-- FORM -->
+    <div id="sq-form-container">
+      <form id="sq-form">
+
+        <div class="sq-question">
+          <span class="sq-question-number">Question 1 of 7</span>
+          <label class="sq-label">What does your business look like when it's working without you?</label>
+          <span class="sq-helper">Paint the picture. Revenue, lifestyle, team, freedom. What does the end state actually look like for you? Be specific.</span>
+          <textarea class="sq-input" name="dream_outcome" required placeholder="Describe your vision..."></textarea>
+        </div>
+
+        <div class="sq-question">
+          <span class="sq-question-number">Question 2 of 7</span>
+          <label class="sq-label">What's the single biggest bottleneck in your business right now?</label>
+          <span class="sq-helper">The thing that, if it disappeared tomorrow, would change everything. Be honest.</span>
+          <textarea class="sq-input" name="bottleneck" required placeholder="What's holding you back..."></textarea>
+        </div>
+
+        <div class="sq-question">
+          <span class="sq-question-number">Question 3 of 7</span>
+          <label class="sq-label">Why now? What made this the moment you decided to do something about it?</label>
+          <span class="sq-helper">Something triggered you to book this call instead of kicking the can down the road again. What was it?</span>
+          <textarea class="sq-input" name="why_now" required placeholder="What changed..."></textarea>
+        </div>
+
+        <div class="sq-question">
+          <span class="sq-question-number">Question 4 of 7</span>
+          <label class="sq-label">What happens to your business in 12 months if nothing changes?</label>
+          <span class="sq-helper">Same revenue, same hours, same stress. Where does that road end? Don't sugarcoat it.</span>
+          <textarea class="sq-input" name="cost_of_inaction" required placeholder="Be honest with yourself..."></textarea>
+        </div>
+
+        <div class="sq-question">
+          <span class="sq-question-number">Question 5 of 7</span>
+          <label class="sq-label">Why should we work with you over the dozens of other applicants?</label>
+          <span class="sq-helper">We only take a handful of clients at a time. What makes you different? What makes you coachable and ready to execute?</span>
+          <textarea class="sq-input" name="why_you" required placeholder="Make your case..."></textarea>
+        </div>
+
+        <div class="sq-question">
+          <span class="sq-question-number">Question 6 of 7</span>
+          <label class="sq-label">What have you already tried to scale your business, and why didn't it work?</label>
+          <span class="sq-helper">Courses, coaches, consultants, hiring, partnerships. Whatever it was. What happened and what did you learn?</span>
+          <textarea class="sq-input" name="past_attempts" required placeholder="What you've tried before..."></textarea>
+        </div>
+
+        <div class="sq-question">
+          <span class="sq-question-number">Question 7 of 7</span>
+          <label class="sq-label">If we showed you the exact system to scale past $10M, what would stop you from going all in?</label>
+          <span class="sq-helper">Time, money, mindset, team, spouse. Whatever it is, put it on the table now. We'd rather know before the call than during it.</span>
+          <textarea class="sq-input" name="objections" required placeholder="No wrong answers..."></textarea>
+        </div>
+
+        <button type="submit" class="sq-submit">Submit Questionnaire &rarr;</button>
+        <p class="sq-note">Your answers are confidential and shared only with the team preparing for your call.</p>
+
+      </form>
+    </div>
+
+    <!-- THANK YOU STATE -->
+    <div class="sq-thankyou" id="sq-thankyou">
+      <div class="sq-thankyou-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+      <h2>You're All Set.</h2>
+      <p><strong>We've got your answers.</strong> Your call is going to be significantly more productive because of this. Show up ready to go.</p>
+      <p>If you need to reschedule, check your confirmation email.</p>
+    </div>
+
+  </div>
+
+  <footer class="sq-footer">
+    <img src="SE ICON DESIGN WHITE.png" alt="Scale Enterprises" style="display: block; margin: 0 auto 20px; height: 48px; width: auto;">
+    <p>&copy; 2026 Scale Enterprises. All Rights Reserved.</p>
+    <div class="sq-footer-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-service.html">Terms of Service</a>
+      <a href="disclaimer.html">Disclaimer</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('sq-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // TODO: POST form data to webhook/CRM endpoint
+      // Example:
+      // var formData = new FormData(this);
+      // var data = Object.fromEntries(formData);
+      // fetch('YOUR_WEBHOOK_URL', { method: 'POST', body: JSON.stringify(data), headers: { 'Content-Type': 'application/json' } });
+
+      document.getElementById('sq-form-container').style.display = 'none';
+      document.getElementById('sq-thankyou').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>
