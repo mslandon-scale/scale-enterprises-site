@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Not Qualified | Scale Enterprises</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --azure: #060CB6;
+      --azure-bright: #1A22E6;
+      --prussian: #02032E;
+      --black: #000000;
+      --white: #FFFFFF;
+      --gray-300: #CCCCDD;
+      --gray-400: #9999AA;
+      --gray-500: #888899;
+      --gray-600: #666677;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--white);
+      background: var(--black);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    h1 {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    p {
+      color: var(--gray-300);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .reason-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 32px;
+      margin: 40px 0;
+      text-align: left;
+    }
+
+    .reason-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .reason-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .reason-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .reason-item svg {
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .reason-item p {
+      margin-bottom: 0;
+      font-size: 0.95rem;
+    }
+
+    .closing {
+      margin-top: 40px;
+    }
+
+    .closing p {
+      color: var(--gray-400);
+      font-size: 0.92rem;
+    }
+
+    .closing strong {
+      color: var(--white);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 16px 40px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin-top: 32px;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(6, 12, 182, 0.3);
+    }
+
+    .btn--primary {
+      background: var(--azure);
+      color: var(--white);
+      border: none;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer p {
+      color: var(--gray-600);
+      font-size: 0.8rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .footer-links a {
+      color: var(--gray-600);
+      font-size: 0.75rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--gray-400);
+    }
+
+    @media (max-width: 640px) {
+      .container { padding: 60px 20px; }
+      .reason-card { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div style="text-align: center; padding: 24px 0 0;">
+    <img src="SE ICON DESIGN WHITE.png" alt="Scale Enterprises" style="display: block; margin: 0 auto; height: 60px; width: auto;">
+  </div>
+
+  <div class="container">
+    <h1>Thanks for Applying.<br>You Don't Qualify Right Now.</h1>
+
+    <p>We appreciate you taking the time to submit an application. That alone puts you ahead of most business owners who only think about making a change.</p>
+
+    <p>But based on what you shared, <strong style="color: #fff;">this program isn't the right fit for where you are today.</strong></p>
+
+    <div class="reason-card">
+      <h3>Here's why you may not have qualified:</h3>
+
+      <div class="reason-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#CC3333" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        <p><strong style="color: #fff;">You're not running a service business.</strong> Scale Enterprises is built specifically for service-based businesses. If you're in e-commerce, SaaS, or another model, our system won't apply the way it needs to.</p>
+      </div>
+
+      <div class="reason-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#CC3333" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        <p><strong style="color: #fff;">You're under $500K in annual revenue.</strong> The enterprise infrastructure we install is designed for businesses that have already proven product-market fit and have real revenue. If you're not there yet, this program would be premature. You need to focus on getting to $500K first.</p>
+      </div>
+    </div>
+
+    <div class="closing">
+      <p>This isn't a rejection. It's a redirect. <strong>The worst thing we could do is take your money when the timing isn't right.</strong></p>
+
+      <p>If your business grows into a service model doing above $500K, we'd love to hear from you again. The door is always open.</p>
+
+      <a href="index.html" class="btn btn--primary">&larr; Back to Home</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <img src="SE ICON DESIGN WHITE.png" alt="Scale Enterprises" style="display: block; margin: 0 auto 20px; height: 48px; width: auto;">
+    <p>&copy; 2026 Scale Enterprises. All Rights Reserved.</p>
+    <div class="footer-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-service.html">Terms of Service</a>
+      <a href="disclaimer.html">Disclaimer</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+</body>
+</html>

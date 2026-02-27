@@ -1,0 +1,2102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 10M Service Business Transformation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --azure: #060CB6;
+      --azure-bright: #1A22E6;
+      --royal: #050989;
+      --twilight: #02032E;
+      --prussian: #02032E;
+      --black: #000000;
+      --white: #FFFFFF;
+      --off-white: #F0F0F5;
+      --gray-100: #F5F5F7;
+      --gray-200: #E8E8ED;
+      --gray-300: #CCCCDD;
+      --gray-400: #9999AA;
+      --gray-600: #666677;
+      --gray-800: #333340;
+      --dark-text: #0A0A12;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--white);
+      background: var(--black);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
+    .container--narrow { max-width: 820px; margin: 0 auto; padding: 0 28px; }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1, h2, h3, h4 { font-weight: 800; line-height: 1.12; letter-spacing: -0.02em; }
+    h1 { font-size: clamp(2.6rem, 6vw, 4.8rem); text-transform: uppercase; }
+    h2 { font-size: clamp(1.9rem, 4.2vw, 3.2rem); text-transform: uppercase; }
+    h3 { font-size: clamp(1.3rem, 2.5vw, 1.9rem); }
+    p { font-size: clamp(1rem, 1.1vw, 1.15rem); font-weight: 400; }
+
+    .lead { font-size: clamp(1.1rem, 1.4vw, 1.35rem); font-weight: 400; line-height: 1.8; }
+
+    .subhead {
+      font-size: clamp(0.8rem, 0.95vw, 0.9rem);
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      font-weight: 700;
+    }
+
+    .subhead--blue { color: var(--azure-bright); }
+    .subhead--dark { color: var(--twilight); }
+
+    strong, b { font-weight: 700; }
+    .text-azure { color: #fff; }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-block;
+      padding: 22px 52px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.35s ease;
+    }
+
+    .btn--primary {
+      background: var(--azure);
+      color: var(--white);
+      box-shadow: 0 4px 30px rgba(6, 12, 182, 0.4), 0 0 80px rgba(6, 12, 182, 0.15);
+    }
+    .btn--primary:hover {
+      background: var(--azure-bright);
+      box-shadow: 0 6px 40px rgba(26, 34, 230, 0.55), 0 0 100px rgba(26, 34, 230, 0.2);
+      transform: translateY(-3px);
+    }
+
+    .btn--white {
+      background: var(--white);
+      color: var(--prussian);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    .btn--white:hover {
+      background: var(--off-white);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    }
+
+    .btn--dark {
+      background: var(--prussian);
+      color: var(--white);
+    }
+    .btn--dark:hover {
+      background: var(--twilight);
+      transform: translateY(-3px);
+    }
+
+    /* ===== SECTIONS ===== */
+    .section { padding: 72px 0; position: relative; }
+    .section--lg { padding: 96px 0; }
+
+    /* ===== BACKGROUNDS ===== */
+    .bg-black { background: var(--black); color: var(--white); }
+    .bg-prussian { background: var(--prussian); color: var(--white); }
+    .bg-white { background: var(--white); color: var(--dark-text); }
+    .bg-off-white { background: var(--off-white); color: var(--dark-text); }
+    .bg-azure { background: var(--azure); color: var(--white); }
+    .bg-twilight { background: var(--twilight); color: var(--white); }
+
+    /* ===== DIAGONAL DIVIDERS ===== */
+    .angle-top {
+      position: relative;
+    }
+    .angle-top::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: inherit;
+      clip-path: polygon(0 100%, 100% 0, 100% 100%);
+      z-index: 2;
+    }
+
+    .angle-bottom::after {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: inherit;
+      clip-path: polygon(0 0, 100% 0, 0 100%);
+      z-index: 2;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--black);
+      overflow: hidden;
+    }
+
+    /* Animated grid background */
+    .hero__grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(6, 12, 182, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(6, 12, 182, 0.08) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 70%);
+    }
+
+    /* Glowing orb behind headline */
+    .hero__glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -55%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(6, 12, 182, 0.25) 0%, rgba(5, 9, 137, 0.08) 40%, transparent 70%);
+      pointer-events: none;
+      animation: pulse-glow 6s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.7; transform: translate(-50%, -55%) scale(1); }
+      50% { opacity: 1; transform: translate(-50%, -55%) scale(1.05); }
+    }
+
+    .hero__content { position: relative; z-index: 3; max-width: 960px; padding: 0 24px; }
+
+    .hero__badge {
+      display: inline-block;
+      padding: 10px 28px;
+      background: var(--azure);
+      border: none;
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: #fff;
+      margin-top: 24px;
+      margin-bottom: 36px;
+    }
+
+    .hero h1 { margin-bottom: 32px; font-size: clamp(1.8rem, 4vw, 3.2rem); }
+    .hero h1 .highlight {
+      color: #fff;
+      background: var(--azure);
+      padding: 2px 16px;
+      border-radius: 8px;
+      position: relative;
+    }
+    .hero h1 .highlight::after {
+      display: none;
+    }
+
+    .hero__sub {
+      font-size: clamp(1rem, 1.25vw, 1.2rem);
+      color: var(--gray-300);
+      max-width: 700px;
+      margin: 0 auto 52px;
+      line-height: 1.85;
+      font-style: italic;
+    }
+
+    /* Stats bar — separate section between hero and CTA */
+    .stats-bar {
+      background: var(--prussian);
+      padding: 64px 0;
+      border-top: 1px solid rgba(6, 12, 182, 0.15);
+      border-bottom: 1px solid rgba(6, 12, 182, 0.15);
+    }
+
+    .stats-bar__inner {
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+    }
+
+    .stats-bar__stat { text-align: center; }
+    .stats-bar__number {
+      display: block;
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .stats-bar__label {
+      display: block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--gray-400);
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    /* ===== FULL-WIDTH CTA BANNER (like Acquisition.com purple bar) ===== */
+    .cta-banner {
+      background: var(--azure);
+      padding: 56px 0;
+      text-align: center;
+      position: relative;
+      z-index: 3;
+    }
+
+    .cta-banner h3 {
+      font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      color: var(--white);
+    }
+
+    .cta-banner .btn--white {
+      font-size: 0.85rem;
+    }
+
+    /* ===== INTRO — WHITE SECTION ===== */
+    .intro-white {
+      text-align: left;
+    }
+
+    .intro-white p {
+      color: var(--gray-800);
+      max-width: 720px;
+    }
+
+    .intro-white p + p { margin-top: 24px; }
+
+    .intro-white .highlight-box {
+      display: inline-block;
+      margin-top: 48px;
+      padding: 32px 48px;
+      border-left: 5px solid var(--azure);
+      background: linear-gradient(135deg, rgba(6, 12, 182, 0.06) 0%, rgba(6, 12, 182, 0.02) 100%);
+      font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+      font-weight: 700;
+      color: var(--prussian);
+      text-align: left;
+      border-radius: 0 6px 6px 0;
+    }
+
+    /* ===== BIG QUOTE / PULL QUOTE ===== */
+    .pull-quote {
+      position: relative;
+      text-align: center;
+      padding: 100px 0;
+    }
+
+    .pull-quote__mark {
+      display: block;
+      font-size: 8rem;
+      line-height: 0.5;
+      color: var(--azure);
+      opacity: 0.25;
+      font-family: Georgia, serif;
+      margin-bottom: 24px;
+    }
+
+    .pull-quote p {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.4;
+      color: var(--white);
+    }
+
+    .pull-quote .attribution {
+      font-size: 0.85rem;
+      color: var(--gray-400);
+      margin-top: 24px;
+      font-weight: 500;
+      font-style: italic;
+    }
+
+    /* ===== CONTRAST COMPARISON (stacked, full-width dark) ===== */
+    .contrast-section {
+      text-align: center;
+    }
+
+    .contrast-section h2 {
+      margin-bottom: 12px;
+    }
+
+    .contrast-cards {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 0;
+      align-items: stretch;
+      margin-top: 56px;
+      max-width: 940px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contrast-card {
+      padding: 48px 40px;
+      border-radius: 10px;
+      text-align: left;
+    }
+
+    .contrast-card__svg {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+
+    .contrast-card__svg svg {
+      width: 100%;
+      max-width: 320px;
+      height: auto;
+    }
+
+    .contrast-card--old {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .contrast-card--new {
+      background: linear-gradient(135deg, rgba(6, 12, 182, 0.15) 0%, rgba(3, 6, 91, 0.25) 100%);
+      border: 1px solid rgba(6, 12, 182, 0.3);
+      box-shadow: 0 0 40px rgba(6, 12, 182, 0.08);
+    }
+
+    .contrast-card h3 {
+      text-transform: uppercase;
+      font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+      margin-bottom: 16px;
+    }
+
+    .contrast-card--old h3 { color: var(--gray-400); }
+    .contrast-card--new h3 { color: #fff; }
+
+    .contrast-card p {
+      font-size: 0.98rem;
+      line-height: 1.75;
+      color: var(--gray-300);
+    }
+
+    .contrast-card--new p strong { color: var(--white); }
+
+    .contrast-vs {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 24px;
+    }
+
+    .contrast-vs span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--azure);
+      color: var(--white);
+      font-weight: 900;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      box-shadow: 0 0 30px rgba(6, 12, 182, 0.35);
+    }
+
+    /* ===== PILLARS — VISUAL CARDS ===== */
+    .pillars-intro { text-align: center; margin-bottom: 80px; }
+    .pillars-intro p { color: var(--gray-200); max-width: 700px; margin: 0 auto; }
+
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .pillar-card {
+      position: relative;
+      padding: 52px 44px;
+      border-radius: 10px;
+      border: 1px solid rgba(6, 12, 182, 0.2);
+      background: linear-gradient(160deg, rgba(3, 6, 91, 0.35) 0%, rgba(2, 3, 46, 0.2) 100%);
+      transition: all 0.4s ease;
+      overflow: hidden;
+    }
+
+    .pillar-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--azure), var(--azure-bright));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .pillar-card:hover {
+      border-color: rgba(26, 34, 230, 0.4);
+      box-shadow: 0 8px 50px rgba(6, 12, 182, 0.12);
+      transform: translateY(-4px);
+    }
+
+    .pillar-card:hover::before { opacity: 1; }
+
+    .pillar-card__icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--azure) 0%, var(--royal) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(6, 12, 182, 0.3);
+    }
+
+    .pillar-card__icon svg {
+      width: 30px;
+      height: 30px;
+      fill: none;
+      stroke: var(--white);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .pillar-card__label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      font-weight: 700;
+      color: var(--azure-bright);
+      margin-bottom: 10px;
+    }
+
+    .pillar-card h3 {
+      font-size: clamp(1.3rem, 1.8vw, 1.65rem);
+      margin-bottom: 18px;
+      text-transform: uppercase;
+    }
+
+    .pillar-card p {
+      color: var(--gray-300);
+      margin-bottom: 14px;
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+    .pillar-card p:last-child { margin-bottom: 0; }
+    .pillar-card p strong { color: var(--white); }
+    .pillar-card p em { color: var(--gray-400); }
+
+    /* ===== BRIDGE / STRUCTURE KEYWORD ===== */
+    .bridge {
+      text-align: center;
+      padding: 120px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bridge__bg-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: clamp(8rem, 20vw, 18rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: rgba(6, 12, 182, 0.06);
+      white-space: nowrap;
+      pointer-events: none;
+      letter-spacing: 0.05em;
+    }
+
+    .bridge h2 { margin-bottom: 24px; position: relative; }
+    .bridge p {
+      color: var(--gray-200);
+      max-width: 700px;
+      margin: 0 auto 12px;
+      font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+      position: relative;
+    }
+
+    .bridge__keyword {
+      display: block;
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 900;
+      color: var(--azure-bright);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 40px;
+      position: relative;
+      text-shadow: 0 0 60px rgba(6, 12, 182, 0.4);
+    }
+
+    /* ===== WHAT THIS IS — WHITE SECTION ===== */
+    .what-this-is {
+      text-align: center;
+    }
+
+    .what-this-is h2 { color: var(--dark-text); margin-bottom: 16px; }
+    .what-this-is h2 .text-azure { color: var(--azure); }
+    .what-this-is p { color: var(--gray-800); max-width: 700px; margin: 0 auto 18px; }
+
+    .what-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 56px;
+    }
+
+    .what-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      padding: 40px 32px;
+      text-align: center;
+      transition: all 0.35s ease;
+    }
+
+    .what-card:hover {
+      border-color: var(--azure);
+      box-shadow: 0 8px 30px rgba(6, 12, 182, 0.1);
+      transform: translateY(-4px);
+    }
+
+    .what-card__icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: rgba(6, 12, 182, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .what-card__icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: var(--azure);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .what-card h4 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--dark-text);
+      margin-bottom: 12px;
+    }
+
+    .what-card p {
+      font-size: 0.92rem;
+      color: var(--gray-600);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* ===== PROCESS STEPS (like HomeRunOffer "How It Works") ===== */
+    .process {
+      text-align: center;
+    }
+
+    .process h2 { margin-bottom: 12px; }
+
+    .process__steps {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 0;
+      margin-top: 64px;
+      position: relative;
+    }
+
+    .process__step {
+      flex: 1;
+      max-width: 240px;
+      position: relative;
+      padding: 0 20px;
+    }
+
+    .process__step-num {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--azure);
+      color: var(--white);
+      font-weight: 900;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      box-shadow: 0 4px 24px rgba(6, 12, 182, 0.35);
+      position: relative;
+      z-index: 2;
+    }
+
+    .process__step h4 {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+
+    .process__step p {
+      font-size: 0.88rem;
+      color: var(--gray-300);
+      line-height: 1.6;
+    }
+
+    /* Connecting line between steps */
+    .process__connector {
+      flex: 0 0 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--azure), rgba(6, 12, 182, 0.2));
+      margin-top: 30px;
+      position: relative;
+    }
+
+    .process__connector::after {
+      content: '';
+      position: absolute;
+      right: -4px;
+      top: -4px;
+      width: 10px;
+      height: 10px;
+      border-top: 2px solid var(--azure);
+      border-right: 2px solid var(--azure);
+      transform: rotate(45deg);
+    }
+
+    /* ===== WHO WE WORK WITH ===== */
+    .who-section h2 { color: var(--dark-text); margin-bottom: 8px; }
+
+    .who-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      margin-top: 56px;
+    }
+
+    .who-card {
+      padding: 48px 40px;
+      border-radius: 10px;
+    }
+
+    .who-card--yes {
+      background: var(--prussian);
+      border: 1px solid rgba(6, 12, 182, 0.3);
+      color: var(--white);
+    }
+
+    .who-card--no {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      color: var(--dark-text);
+    }
+
+    .who-card h3 {
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      font-size: 1.2rem;
+      letter-spacing: 0.05em;
+    }
+
+    .who-card--yes h3 { color: var(--azure-bright); }
+    .who-card--no h3 { color: var(--gray-600); }
+
+    .who-card ul { list-style: none; }
+
+    .who-card ul li {
+      position: relative;
+      padding-left: 32px;
+      margin-bottom: 18px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .who-card--yes ul li { color: var(--gray-200); }
+    .who-card--no ul li { color: var(--gray-800); }
+
+    .who-card--yes ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(6, 12, 182, 0.2);
+      border: 2px solid var(--azure-bright);
+    }
+
+    .who-card--yes ul li::after {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 12px;
+      width: 10px;
+      height: 5px;
+      border-left: 2px solid var(--azure-bright);
+      border-bottom: 2px solid var(--azure-bright);
+      transform: rotate(-45deg);
+    }
+
+    .who-card--no ul li::before {
+      content: '\00D7';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #CC3333;
+      font-weight: 700;
+      font-size: 1.3rem;
+      line-height: 1.4;
+    }
+
+    .who-card--no .aside-note {
+      margin-top: 24px;
+      color: var(--gray-600);
+      font-style: italic;
+      font-size: 0.9rem;
+    }
+
+    /* ===== APPLICATION SECTION ===== */
+    .apply-section { text-align: center; position: relative; }
+
+    .apply-section h2 { margin-bottom: 32px; position: relative; }
+    .apply-section > p { color: var(--gray-200); max-width: 700px; margin: 0 auto 20px; position: relative; }
+
+    /* Call details */
+    .call-details { text-align: left; max-width: 760px; margin: 0 auto; }
+    .call-details h3 { text-align: center; margin-bottom: 32px; text-transform: uppercase; }
+    .call-details p { color: var(--gray-200); margin-bottom: 20px; }
+
+    .pitching-us {
+      text-align: center;
+      padding: 48px 0;
+      position: relative;
+    }
+
+    .pitching-us p {
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      font-weight: 900;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      position: relative;
+      display: inline-block;
+    }
+
+    .pitching-us p::before,
+    .pitching-us p::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 60px;
+      height: 2px;
+      background: var(--azure);
+    }
+    .pitching-us p::before { right: calc(100% + 20px); }
+    .pitching-us p::after { left: calc(100% + 20px); }
+
+    .outcomes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 40px 0;
+    }
+
+    .outcome-card {
+      padding: 36px;
+      border-radius: 8px;
+      border: 1px solid rgba(6, 12, 182, 0.25);
+      background: linear-gradient(135deg, rgba(3, 6, 91, 0.25) 0%, rgba(2, 3, 46, 0.15) 100%);
+    }
+    .outcome-card p { color: var(--gray-200); font-size: 0.98rem; margin: 0; }
+    .outcome-card strong { color: var(--white); }
+
+    .outcome-card__icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .outcome-card__icon--yes { background: rgba(34, 197, 94, 0.15); }
+    .outcome-card__icon--no { background: rgba(255, 255, 255, 0.06); }
+
+    .outcome-card__icon svg {
+      width: 22px;
+      height: 22px;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+    .outcome-card__icon--yes svg { stroke: #22C55E; }
+    .outcome-card__icon--no svg { stroke: var(--gray-400); }
+
+    .call-note {
+      text-align: center;
+      font-size: 0.88rem;
+      color: var(--gray-400);
+      font-style: italic;
+      margin-top: 32px;
+      padding: 20px;
+      border: 1px dashed rgba(255,255,255,0.1);
+      border-radius: 8px;
+    }
+
+    /* ===== APPLY STEP CARDS ===== */
+    .apply-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin: 56px auto 0;
+      max-width: 960px;
+    }
+
+    .apply-step {
+      position: relative;
+      background: linear-gradient(160deg, rgba(3, 6, 91, 0.3) 0%, rgba(2, 3, 46, 0.15) 100%);
+      border: 1px solid rgba(6, 12, 182, 0.2);
+      border-radius: 12px;
+      padding: 40px 32px 36px;
+      text-align: center;
+      transition: all 0.35s ease;
+    }
+
+    .apply-step:hover {
+      border-color: rgba(26, 34, 230, 0.45);
+      box-shadow: 0 8px 40px rgba(6, 12, 182, 0.12);
+      transform: translateY(-4px);
+    }
+
+    .apply-step__num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--azure);
+      color: var(--white);
+      font-weight: 900;
+      font-size: 1.15rem;
+      margin: 0 auto 20px;
+      box-shadow: 0 4px 20px rgba(6, 12, 182, 0.35);
+    }
+
+    .apply-step__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      margin: 0 auto 20px;
+      border-radius: 14px;
+      background: rgba(6, 12, 182, 0.1);
+    }
+
+    .apply-step__icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: var(--azure-bright);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .apply-step h4 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .apply-step p {
+      font-size: 0.92rem;
+      color: var(--gray-300);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* Arrow connectors between step cards */
+    .apply-step::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -14px;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-left: 10px solid rgba(6, 12, 182, 0.35);
+      z-index: 2;
+    }
+
+    .apply-step:last-child::after {
+      display: none;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials { text-align: center; }
+    .testimonials h2 { margin-bottom: 12px; }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 56px;
+    }
+
+    .testimonial-card {
+      position: relative;
+      padding: 40px 32px 36px;
+      border-radius: 12px;
+      text-align: left;
+      transition: all 0.35s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+    }
+
+    /* Dark variant (on white/off-white backgrounds) */
+    .testimonial-card--dark {
+      background: var(--prussian);
+      border: 1px solid rgba(6, 12, 182, 0.2);
+      color: var(--white);
+    }
+    .testimonial-card--dark:hover {
+      border-color: rgba(26, 34, 230, 0.4);
+      box-shadow: 0 8px 40px rgba(6, 12, 182, 0.15);
+    }
+
+    /* Light variant (on dark backgrounds) */
+    .testimonial-card--light {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      color: var(--dark-text);
+    }
+    .testimonial-card--light:hover {
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .testimonial-card__quote-mark {
+      font-size: 3.5rem;
+      line-height: 1;
+      font-family: Georgia, serif;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .testimonial-card--dark .testimonial-card__quote-mark { color: #7B8BFF; opacity: 0.6; }
+    .testimonial-card--light .testimonial-card__quote-mark { color: var(--azure); opacity: 0.35; }
+
+    .testimonial-card__text {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .testimonial-card--dark .testimonial-card__text { color: var(--gray-200); }
+    .testimonial-card--light .testimonial-card__text { color: var(--gray-800); }
+
+    .testimonial-card__result {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+    .testimonial-card--dark .testimonial-card__result {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .testimonial-card--light .testimonial-card__result {
+      background: rgba(6, 12, 182, 0.06);
+      color: var(--azure);
+      border: 1px solid rgba(6, 12, 182, 0.15);
+    }
+
+    .testimonial-card__author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .testimonial-card--light .testimonial-card__author {
+      border-top-color: var(--gray-200);
+    }
+
+    .testimonial-card__avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .testimonial-card--dark .testimonial-card__avatar {
+      background: linear-gradient(135deg, var(--azure) 0%, var(--royal) 100%);
+      color: var(--white);
+    }
+    .testimonial-card--light .testimonial-card__avatar {
+      background: rgba(6, 12, 182, 0.1);
+      color: var(--azure);
+    }
+
+    .testimonial-card__name {
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .testimonial-card--dark .testimonial-card__name { color: var(--white); }
+    .testimonial-card--light .testimonial-card__name { color: var(--dark-text); }
+
+    .testimonial-card__role {
+      font-size: 0.78rem;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+    .testimonial-card--dark .testimonial-card__role { color: var(--gray-400); }
+    .testimonial-card--light .testimonial-card__role { color: var(--gray-600); }
+
+    /* Stars */
+    .testimonial-card__stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+    .testimonial-card__stars svg {
+      width: 16px;
+      height: 16px;
+    }
+    .testimonial-card--dark .testimonial-card__stars svg { fill: #F59E0B; }
+    .testimonial-card--light .testimonial-card__stars svg { fill: #F59E0B; }
+
+    /* ===== RESULTS BANNER (big numbers) ===== */
+    .results-banner {
+      padding: 72px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .results-banner__bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+
+    .results-banner__grid {
+      display: flex;
+      justify-content: center;
+      gap: 72px;
+      position: relative;
+    }
+
+    .results-banner__item { text-align: center; }
+
+    .results-banner__number {
+      display: block;
+      font-size: clamp(2.8rem, 5vw, 4rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .results-banner__number .accent { color: var(--azure-bright); }
+
+    .results-banner__label {
+      display: block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--gray-400);
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    /* ===== FEATURED QUOTE — inline testimonial ===== */
+    .inline-testimonial {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .inline-testimonial__text {
+      font-size: clamp(1.15rem, 1.5vw, 1.35rem);
+      font-style: italic;
+      line-height: 1.7;
+      color: var(--gray-200);
+      margin-bottom: 20px;
+    }
+
+    .inline-testimonial__author {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .inline-testimonial__role {
+      font-size: 0.78rem;
+      color: var(--gray-400);
+      font-weight: 500;
+    }
+
+    /* ===== INTRO VISUAL MARKERS ===== */
+    .intro-markers {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 48px auto 0;
+      max-width: 600px;
+    }
+
+    .intro-marker {
+      text-align: center;
+    }
+
+    .intro-marker__icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .intro-marker__icon svg {
+      width: 22px;
+      height: 22px;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    .intro-marker__icon--red {
+      background: rgba(204, 51, 51, 0.1);
+      border: 1px solid rgba(204, 51, 51, 0.2);
+    }
+    .intro-marker__icon--red svg { stroke: #CC3333; }
+
+    .intro-marker__label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 700;
+      color: var(--gray-600);
+    }
+
+    /* ===== FINAL WORD ===== */
+    .final { text-align: left; }
+    .final h2 { margin-bottom: 40px; }
+    .final p { color: var(--gray-200); max-width: 700px; margin: 0 0 20px; font-size: clamp(1.05rem, 1.3vw, 1.2rem); }
+    .final p strong { color: var(--white); }
+    .final .btn { margin-top: 40px; }
+    .final .subhead { text-align: left; }
+    .final .divider { margin-left: 0; }
+
+    /* ===== PS ===== */
+    .ps {
+      text-align: center;
+      padding: 60px 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .ps p { color: var(--gray-400); font-size: 0.9rem; max-width: 680px; margin: 0 auto; font-style: italic; line-height: 1.8; }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: 48px 0;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer p { color: var(--gray-600); font-size: 0.8rem; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 16px; }
+    .footer-links a { color: var(--gray-600); font-size: 0.75rem; text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gray-400); }
+
+    /* ===== DIVIDER ===== */
+    .divider { width: 60px; height: 3px; background: var(--azure); margin: 0 auto 48px; }
+
+    /* ===== SCROLL ANIMATION ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* stagger children */
+    .stagger-children > *:nth-child(1) { transition-delay: 0s; }
+    .stagger-children > *:nth-child(2) { transition-delay: 0.12s; }
+    .stagger-children > *:nth-child(3) { transition-delay: 0.24s; }
+    .stagger-children > *:nth-child(4) { transition-delay: 0.36s; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .pillar-grid { grid-template-columns: 1fr; }
+      .contrast-cards { grid-template-columns: 1fr; gap: 24px; max-width: 540px; }
+      .contrast-vs { padding: 0; }
+      .contrast-vs span { width: 44px; height: 44px; }
+      .what-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+      .apply-steps { grid-template-columns: 1fr; max-width: 420px; }
+      .apply-step::after { display: none; }
+      .testimonial-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+    }
+
+    @media (max-width: 768px) {
+      .section { padding: 56px 0; }
+      .section--lg { padding: 72px 0; }
+      .who-grid { grid-template-columns: 1fr; gap: 24px; }
+      .outcomes-grid { grid-template-columns: 1fr; }
+      .stats-bar__inner { flex-direction: column; gap: 36px; }
+      .results-banner__grid { flex-direction: column; gap: 36px; }
+      .process__steps { flex-direction: column; align-items: center; gap: 32px; }
+      .process__connector { display: none; }
+      .btn { padding: 18px 36px; font-size: 0.82rem; }
+      .hero { min-height: 90vh; }
+      .angle-top::before, .angle-bottom::after { height: 30px; top: -30px; }
+      .angle-top::before { top: -30px; height: 30px; }
+      .angle-bottom::after { bottom: -30px; height: 30px; }
+      .pitching-us p::before, .pitching-us p::after { display: none; }
+      .intro-markers { flex-wrap: wrap; gap: 24px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero__badge { font-size: 0.58rem; padding: 8px 14px; letter-spacing: 0.15em; }
+      .hero h1 { font-size: clamp(1.4rem, 5.5vw, 2rem) !important; }
+      .hero__content { padding: 0 16px; }
+      .pillar-card { padding: 36px 24px; }
+      .who-card { padding: 32px 24px; }
+      .container, .container--narrow { padding-left: 16px; padding-right: 16px; }
+      .contrast-card { padding: 32px 24px; }
+      .call-details { padding: 40px 24px; }
+      h2 { font-size: clamp(1.5rem, 5vw, 2rem) !important; }
+    }
+
+    /* Mobile: stack 2-col grids to single column */
+    @media (max-width: 640px) {
+      .deliverables-grid { grid-template-columns: 1fr !important; }
+      .who-grid { grid-template-columns: 1fr !important; }
+      .outcomes-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================== -->
+  <!-- HERO                                       -->
+  <!-- ========================================== -->
+  <div style="text-align: center; padding: 24px 0 0;">
+    <img src="SE ICON DESIGN WHITE.png" alt="Scale Enterprises" style="display: block; margin: 0 auto; height: 60px; width: auto;">
+  </div>
+
+  <section class="hero">
+    <div class="hero__grid"></div>
+    <div class="hero__glow"></div>
+    <div class="hero__content">
+      <div class="hero__badge">Custom DFY 30 Day Transformation &bull; By Application Only</div>
+      <h1>Learn Exactly How to Get to <span class="highlight">$10M+</span> in 12 Months or Less Without Working More Than 90 Mins/Week</h1>
+      <p class="hero__sub">
+        A private, 30-day intensive that installs the four systems your business is missing so it finally scales without you being the bottleneck. By application only. Not for tire-kickers.
+      </p>
+      <video src="landingpagevideo.mp4" controls playsinline width="100%" style="border-radius: 12px; margin-bottom: 32px;"></video>
+      <a href="#apply" class="btn btn--primary" style="margin-bottom: 48px;">Apply Now &rarr;</a>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- STATS BAR                                  -->
+  <!-- ========================================== -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-bar__inner">
+        <div class="stats-bar__stat">
+          <span class="stats-bar__number">30</span>
+          <span class="stats-bar__label">Day Transformation</span>
+        </div>
+        <div class="stats-bar__stat">
+          <span class="stats-bar__number">$10M+</span>
+          <span class="stats-bar__label">Revenue Target</span>
+        </div>
+        <div class="stats-bar__stat">
+          <span class="stats-bar__number">4</span>
+          <span class="stats-bar__label">Core Pillars</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- CTA BANNER #1 (bright blue bar)            -->
+  <!-- ========================================== -->
+  <div class="cta-banner">
+    <div class="container">
+      <h3>Stop Running a Business. Start Owning an Enterprise.</h3>
+      <a href="#apply" class="btn btn--white">See If You Qualify &rarr;</a>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- INTRO — WHITE SECTION                      -->
+  <!-- ========================================== -->
+  <section class="section section--lg bg-white">
+    <div class="container--narrow intro-white fade-up">
+
+      <h2 style="margin-bottom: 40px; color: var(--dark-text); text-align: center;">You've Been the Operator.<br>It's Time to Become the <span style="color: var(--azure);">Enterprise Entrepreneur.</span></h2>
+
+      <!-- Block 1: What you've built -->
+      <div style="display: flex; gap: 24px; align-items: flex-start; margin-bottom: 40px;">
+        <div style="flex-shrink: 0; width: 48px; height: 48px; background: rgba(6,12,182,0.08); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--azure)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <p class="lead" style="color: var(--gray-800); margin: 0;">If you're running a service business doing above $500K a year, you've already proven what most people only talk about. You can sell. You can deliver. You built something real with real clients and real revenue. <strong>That part is done.</strong></p>
+      </div>
+
+      <hr style="border: none; border-top: 1px solid var(--gray-200); margin: 0 0 40px;">
+
+      <!-- Block 2: The real difference -->
+      <div style="display: flex; gap: 24px; align-items: flex-start; margin-bottom: 40px;">
+        <div style="flex-shrink: 0; width: 48px; height: 48px; background: rgba(6,12,182,0.08); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--azure)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <p class="lead" style="color: var(--gray-800); margin: 0;">But here's the truth nobody tells you: <strong>what got you here is now the thing keeping you stuck.</strong> An Owner Operator depends on showing up every single day. An Enterprise Entrepreneur builds something that runs, grows, and scales whether they're in the room or not. Those are two completely different businesses.</p>
+      </div>
+
+      <hr style="border: none; border-top: 1px solid var(--gray-200); margin: 0 0 40px;">
+
+      <!-- Block 3: The pain point -->
+      <div style="display: flex; gap: 24px; align-items: flex-start; margin-bottom: 8px;">
+        <div style="flex-shrink: 0; width: 48px; height: 48px; background: rgba(6,12,182,0.08); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--azure)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <p class="lead" style="color: var(--gray-800); margin: 0;">Right now you have the revenue and the exhaustion, but not the freedom you built this for. You're trapped in the middle. Too successful to go back, too dependent on yourself to break through. <strong>That's not a growth problem. That's an identity problem.</strong></p>
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- MEET THE GUIDE                             -->
+  <!-- ========================================== -->
+  <section class="section bg-prussian fade-up" style="position: relative; overflow: hidden;">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 400px; background: radial-gradient(ellipse, rgba(6,12,182,0.12) 0%, transparent 70%); pointer-events: none;"></div>
+    <div class="container--narrow" style="position: relative; text-align: center;">
+      <div style="display: inline-block; padding: 10px 28px; background: var(--azure); border-radius: 100px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; color: #fff; margin-bottom: 24px;">Meet Your Guide</div>
+      <h2 style="margin-bottom: 48px;">He Saw What Was Breaking<br><span class="text-azure">From the Inside.</span></h2>
+
+      <!-- Founder portrait -->
+      <div style="margin-bottom: 40px;">
+        <img src="Screenshot_20250917_093731_Chrome.jpeg" alt="Matthew Landon, Founder of Scale Enterprises" style="display: block; margin: 0 auto; width: 160px; height: 160px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(255,255,255,0.15);">
+        <p style="color: #fff; font-weight: 700; font-size: 1.1rem; margin-top: 16px;">Matthew Landon</p>
+        <p style="color: var(--gray-500); font-size: 0.82rem;">Founder, Scale Enterprises</p>
+      </div>
+
+      <div style="text-align: left; max-width: 680px; margin: 0 auto;">
+        <p class="lead" style="color: var(--gray-300); margin-bottom: 28px;">Matthew didn't start Scale Enterprises because he read a book about scaling. He started it because he's seen the full spectrum.</p>
+
+        <p class="lead" style="color: var(--gray-300); margin-bottom: 28px;">He's worked in businesses doing sub-six figures that were just trying to survive. He's worked with seven-figure companies fighting to break through to the next level. And he's operated inside <strong style="color: #fff;">Inc. 5000 companies doing $30M to $40M+</strong>, running growth from the inside, building the systems that generated millions, and installing the structures that let those enterprises scale without depending on any single person.</p>
+
+        <p class="lead" style="color: var(--gray-300); margin-bottom: 28px;">That range gave him something most consultants will never have: <strong style="color: #fff;">he knows exactly what changes at every stage.</strong> He's seen what a business looks like at $200K, at $2M, and at $30M. And the pattern became impossible to ignore.</p>
+
+        <p class="lead" style="color: #fff; font-size: 1.15rem; font-weight: 600; margin-bottom: 28px;">The difference between a business that stalls and an enterprise that scales to $10M, $30M, and beyond was never the owner's talent, work ethic, or market. It was the infrastructure underneath them.</p>
+
+        <p class="lead" style="color: var(--gray-300); margin-bottom: 28px;">Every enterprise that scaled had four things in place. Every business that stalled was missing at least one. It was that predictable. (You'll see all four further down this page.)</p>
+
+        <p class="lead" style="color: var(--gray-300); margin-bottom: 28px;">That realization became an obligation. Because right now, there are thousands of service business owners doing $500K to $5M who have the talent, the drive, and the market to build a $10M, $50M, or $100M enterprise. They just don't have the infrastructure to get there. <strong style="color: #fff;">And nobody is showing them what it actually looks like.</strong></p>
+
+        <p class="lead" style="color: var(--gray-300); margin-bottom: 28px;">That's why Scale Enterprises exists. Not to motivate you. Not to coach you. To <strong style="color: #fff;">install the exact systems</strong> that make $10M your floor, not your ceiling.</p>
+
+        <div style="border-left: 3px solid var(--azure); padding-left: 24px; margin-top: 40px;">
+          <p style="color: var(--gray-300); font-size: 1.05rem; line-height: 1.7;">Matthew's not here to help you hit a number. He's here to help you build an enterprise that's <strong style="color: #fff;">capable of holding $10M and everything beyond it</strong>. In 30 days.</p>
+        </div>
+
+        <div style="text-align: center; margin-top: 48px;">
+          <a href="#apply" class="btn btn--primary">Apply Now &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- CONTRAST — $500K vs $10M (stacked, dark)    -->
+  <!-- ========================================== -->
+  <section class="section bg-black">
+    <div class="container contrast-section fade-up">
+      <div style="display: inline-block; padding: 10px 28px; background: var(--azure); border-radius: 100px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; color: #fff; margin-bottom: 36px;">Which One Are You?</div>
+      <h2>Two Fundamentally Different Entrepreneurs</h2>
+      <div class="divider" style="margin: 32px auto;"></div>
+
+      <div class="contrast-cards">
+        <div class="contrast-card contrast-card--old">
+          <div class="contrast-card__svg">
+            <div style="text-align: center; margin-bottom: 16px;">
+              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#999AAA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+            </div>
+          </div>
+          <h3>The Owner Operator</h3>
+          <p>Grinds harder than anyone. Makes every decision. Holds every relationship. Is the strategy, the salesperson, and the manager all at once. <strong>The very thing that built the business is now the thing strangling it.</strong></p>
+        </div>
+
+        <div class="contrast-vs">
+          <span>VS</span>
+        </div>
+
+        <div class="contrast-card contrast-card--new">
+          <div class="contrast-card__svg">
+            <div style="text-align: center; margin-bottom: 16px;">
+              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+            </div>
+          </div>
+          <h3>The Enterprise Entrepreneur</h3>
+          <p>Builds a team that doesn't need them in the room. The enterprise holds the relationships, the expertise, and the momentum. Growth happens independent of the owner's daily energy. <strong>Same person. Completely different enterprise. Completely different life.</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- THE FOUR PILLARS                           -->
+  <!-- ========================================== -->
+  <section class="section section--lg bg-black" style="padding-top: 140px;">
+    <div class="container">
+
+      <div class="pillars-intro fade-up">
+        <div style="display: inline-block; padding: 10px 28px; background: var(--azure); border-radius: 100px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; color: #fff; margin-bottom: 24px;">The System</div>
+        <h2>The Four Pillars of an<br><span class="text-azure">8-Figure</span> Enterprise</h2>
+        <div class="divider" style="margin: 36px auto;"></div>
+        <p class="lead">This is not an improvement program. You don't need to get better at what you're already doing. You need a <strong>completely new way of owning an enterprise</strong>, built around four pillars that don't exist in your business today. These are the four things every company Matthew saw scale to $10M and beyond had in place. Every business that stalled was missing at least one.</p>
+      </div>
+
+      <div class="pillar-grid stagger-children">
+        <!-- PILLAR 1 -->
+        <div class="pillar-card fade-up">
+          <div class="pillar-card__icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          </div>
+          <div class="pillar-card__label">Pillar One</div>
+          <h3>A New Vision</h3>
+          <p>Your current vision was set when you were just trying to survive. That vision has an expiration date, and you've passed it. We replace it with <strong>an enterprise-grade North Star built for $10M and beyond</strong>. One that makes every decision effortless and gives your entire team something real to run toward without you.</p>
+        </div>
+
+        <!-- PILLAR 2 -->
+        <div class="pillar-card fade-up">
+          <div class="pillar-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <div class="pillar-card__label">Pillar Two</div>
+          <h3>A New Strategy</h3>
+          <p>Right now, you <em>are</em> the strategy. Every dollar of revenue traces back to your effort. That's a job, not an enterprise. <strong>We build a growth engine that runs without you</strong>: new positioning, new acquisition channels, new revenue streams that don't require more of your time.</p>
+        </div>
+
+        <!-- PILLAR 3 -->
+        <div class="pillar-card fade-up">
+          <div class="pillar-card__icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </div>
+          <div class="pillar-card__label">Pillar Three</div>
+          <h3>A New Management System</h3>
+          <p>You're making every call because there's no system to make them for you. That's not leadership. That's a bottleneck. <strong>We install the operating system your enterprise is missing</strong>: visible performance, delegated decisions, built-in accountability. The enterprise runs without you in the middle of every fire.</p>
+        </div>
+
+        <!-- PILLAR 4 -->
+        <div class="pillar-card fade-up">
+          <div class="pillar-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="pillar-card__label">Pillar Four</div>
+          <h3>A New Team</h3>
+          <p>You don't need new people. You need a new <em>model</em>. Right now your team supports you. A $10M+ team <strong>runs the enterprise without you</strong>. We redesign who you need, in what roles, with real ownership of real outcomes. The kind of team that makes you optional.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- WHAT YOU GET — PROGRAM DELIVERABLES        -->
+  <!-- ========================================== -->
+  <section class="bridge bg-twilight fade-up" style="text-align: center;">
+    <div class="container--narrow">
+      <div style="display: inline-block; padding: 10px 28px; background: var(--azure); border-radius: 100px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; color: #fff; margin-bottom: 36px;">Your 12-Month Program</div>
+      <h2>Exactly What You Get</h2>
+      <p style="color: var(--gray-300); max-width: 600px; margin: 16px auto 48px;">Everything installed in 30 days. Supported for 12 months. No fluff. No filler. No theory. <strong style="color: #fff;">Just the exact systems and strategy that separate businesses that stall from enterprises that scale.</strong></p>
+
+      <div class="deliverables-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 720px; margin: 0 auto 48px; text-align: left;">
+
+        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 28px;">
+          <div style="margin-bottom: 14px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--azure-bright)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </div>
+          <p style="color: #fff; font-weight: 700; font-size: 1rem; margin-bottom: 6px;">Full Deep Dive</p>
+          <p style="color: var(--gray-400); font-size: 0.9rem; line-height: 1.6;">We tear your business apart on paper: revenue model, operations, team, bottlenecks, and the invisible ceiling holding everything back. <strong style="color: var(--gray-200);">You can't fix what you haven't diagnosed.</strong></p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 28px;">
+          <div style="margin-bottom: 14px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--azure-bright)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          </div>
+          <p style="color: #fff; font-weight: 700; font-size: 1rem; margin-bottom: 6px;">Custom 12-Month Enterprise Plan</p>
+          <p style="color: var(--gray-400); font-size: 0.9rem; line-height: 1.6;">Not a template. Not a generic roadmap. A <strong style="color: var(--gray-200);">custom-engineered plan</strong> built around your specific business, your market, and the enterprise you're becoming. This is the blueprint for $10M and beyond.</p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 28px;">
+          <div style="margin-bottom: 14px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--azure-bright)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </div>
+          <p style="color: #fff; font-weight: 700; font-size: 1rem; margin-bottom: 6px;">Full Management System Integration</p>
+          <p style="color: var(--gray-400); font-size: 0.9rem; line-height: 1.6;">The reason you're in every meeting and every decision is because there's no system to replace you. <strong style="color: var(--gray-200);">We install one.</strong> Performance visibility, delegated decision-making, meeting cadence, and real accountability.</p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 28px;">
+          <div style="margin-bottom: 14px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--azure-bright)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <p style="color: #fff; font-weight: 700; font-size: 1rem; margin-bottom: 6px;">Tried and True Key Playbooks</p>
+          <p style="color: var(--gray-400); font-size: 0.9rem; line-height: 1.6;">These aren't theory. These are the <strong style="color: var(--gray-200);">exact frameworks used by enterprises doing $30M+</strong> for sales, operations, delivery, hiring, and finance. Battle-tested. Ready to deploy in your business on day one.</p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 28px;">
+          <div style="margin-bottom: 14px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--azure-bright)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <p style="color: #fff; font-weight: 700; font-size: 1rem; margin-bottom: 6px;">Custom Enterprise Growth Strategy</p>
+          <p style="color: var(--gray-400); font-size: 0.9rem; line-height: 1.6;">A growth engine that doesn't need you to run it. Positioning, offer architecture, acquisition channels, and a revenue model designed to <strong style="color: var(--gray-200);">scale without adding a single hour to your week.</strong></p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 28px;">
+          <div style="margin-bottom: 14px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--azure-bright)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <p style="color: #fff; font-weight: 700; font-size: 1rem; margin-bottom: 6px;">Full Accountability</p>
+          <p style="color: var(--gray-400); font-size: 0.9rem; line-height: 1.6;">We don't hand you a plan and disappear. <strong style="color: var(--gray-200);">12 months of ongoing support</strong>, check-ins, and execution tracking. We stay in the trenches with you until the enterprise is running on its own.</p>
+        </div>
+
+      </div>
+
+      <a href="#apply" class="btn btn--primary" style="margin-top: 8px;">Apply Now &rarr;</a>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- TESTIMONIALS #1 — CLIENT RESULTS           -->
+  <!-- ========================================== -->
+  <section class="section section--lg bg-white">
+    <div class="container testimonials fade-up">
+      <p class="subhead" style="margin-bottom: 16px; color: var(--azure);">Real Results</p>
+      <h2 style="color: var(--dark-text);">What Our Clients Are Saying</h2>
+      <div class="divider" style="margin: 32px auto;"></div>
+
+      <div style="max-width: 600px; margin: 0 auto;">
+        <div class="testimonial-card testimonial-card--dark">
+          <div class="testimonial-card__stars">
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.33L10 13.18l-4.77 2.54.91-5.33-3.87-3.77 5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.33L10 13.18l-4.77 2.54.91-5.33-3.87-3.77 5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.33L10 13.18l-4.77 2.54.91-5.33-3.87-3.77 5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.33L10 13.18l-4.77 2.54.91-5.33-3.87-3.77 5.34-.78z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.33L10 13.18l-4.77 2.54.91-5.33-3.87-3.77 5.34-.78z"/></svg>
+          </div>
+          <span class="testimonial-card__result">$2M &rarr; On track to double twice in 2026</span>
+          <span class="testimonial-card__quote-mark">&ldquo;</span>
+          <p class="testimonial-card__text" style="font-size: 1.15rem; font-weight: 600; line-height: 1.6;">I don't know how I was running my business before I went through this program. It's so much easier and we're growing so much faster.</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">M</div>
+            <div>
+              <div class="testimonial-card__name">Molly</div>
+              <div class="testimonial-card__role">Commercial Cleaning Company</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 48px;">
+        <a href="#apply" class="btn btn--primary" style="background: var(--azure); color: #fff;">Be the Next Success Story &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- WHAT THIS IS — WHITE SECTION WITH CARDS    -->
+  <!-- ========================================== -->
+  <section class="section section--lg bg-off-white">
+    <div class="container what-this-is fade-up">
+      <p class="subhead" style="margin-bottom: 16px; color: var(--azure);">What This Is</p>
+      <h2>Not a Course. Not Coaching.<br>A <span class="text-azure">Transformation.</span></h2>
+      <div class="divider" style="margin: 36px auto;"></div>
+      <p class="lead" style="color: var(--gray-800);">This is private, hands-on work done inside <strong>your actual business</strong>. Your real numbers. Your real offer. Your real team. Over 30 days. Nothing hypothetical. Nothing generic.</p>
+
+      <div class="what-grid">
+        <div class="what-card">
+          <div class="what-card__icon">
+            <!-- X icon -->
+            <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </div>
+          <h4>No Modules</h4>
+          <p>No pre-recorded videos. No "watch at your own pace." You didn't build a real business by watching modules. <strong>This isn't passive learning.</strong></p>
+        </div>
+        <div class="what-card">
+          <div class="what-card__icon">
+            <!-- X icon -->
+            <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </div>
+          <h4>No Group Calls</h4>
+          <p>No being one of fifty people on a Zoom nodding along. Your business is unique. <strong>This is private, 1-on-1 work.</strong></p>
+        </div>
+        <div class="what-card">
+          <div class="what-card__icon">
+            <!-- Check icon -->
+            <svg viewBox="0 0 24 24" style="stroke: #22C55E;"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h4>Real Transformation</h4>
+          <p>We come in. We assess. We build. We install. You walk out owning a <strong>fundamentally different enterprise</strong> than the one you walked in with.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- PROCESS — HOW IT WORKS                     -->
+  <!-- ========================================== -->
+  <section class="section bg-black">
+    <div class="container process fade-up">
+      <div style="display: inline-block; padding: 10px 28px; background: var(--azure); border-radius: 100px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; color: #fff; margin-bottom: 24px;">The Process</div>
+      <h2>How the 30 Days Work</h2>
+
+      <div class="process__steps">
+        <div class="process__step">
+          <div class="process__step-num">1</div>
+          <h4>Deep Assessment</h4>
+          <p>We pull your entire business apart: revenue model, team, operations, and the invisible ceiling you've been hitting. <strong>Nothing is off limits.</strong></p>
+        </div>
+
+        <div class="process__connector"></div>
+
+        <div class="process__step">
+          <div class="process__step-num">2</div>
+          <h4>Architect</h4>
+          <p>We architect your new vision, strategy, management system, and team structure. <strong>Not improvements. Replacements.</strong> Built from scratch for the enterprise you're becoming.</p>
+        </div>
+
+        <div class="process__connector"></div>
+
+        <div class="process__step">
+          <div class="process__step-num">3</div>
+          <h4>Build &amp; Install</h4>
+          <p>We build every pillar and install it directly into your business. <strong>Hands-on. Real-time. Inside your operation.</strong> Not a PDF you'll never open.</p>
+        </div>
+
+        <div class="process__connector"></div>
+
+        <div class="process__step">
+          <div class="process__step-num">4</div>
+          <h4>Launch</h4>
+          <p>You walk away owning a fundamentally different enterprise. <strong>Built for $10M and everything beyond it.</strong> And backed by 12 months of support to make sure it holds.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- CTA BANNER #2                              -->
+  <!-- ========================================== -->
+  <div class="cta-banner" style="background: linear-gradient(135deg, var(--azure) 0%, var(--royal) 100%);">
+    <div class="container">
+      <h3>Ready to Build an Enterprise That Doesn't Need You to Run It?</h3>
+      <a href="#apply" class="btn btn--white">Apply Now &rarr;</a>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- WHO WE WORK WITH / DON'T — OFF-WHITE       -->
+  <!-- ========================================== -->
+  <section class="section section--lg bg-off-white">
+    <div class="container who-section fade-up">
+      <div style="text-align: center; margin-bottom: 20px;">
+        <p class="subhead" style="margin-bottom: 16px; color: var(--azure);">Fit</p>
+        <h2>We Are Deliberately Selective</h2>
+        <div class="divider" style="margin: 32px auto;"></div>
+        <p style="color: var(--gray-600); max-width: 600px; margin: 0 auto;">Not as a positioning tactic. As a practical necessity. We install enterprise infrastructure by hand, inside your business. <strong>That doesn't scale if we say yes to everyone.</strong></p>
+      </div>
+
+      <div class="who-grid">
+        <!-- YES -->
+        <div class="who-card who-card--yes">
+          <h3>Who We Work With</h3>
+          <ul>
+            <li>Generating <strong>above $500K in annual revenue</strong> right now</li>
+            <li>Have a proven service that delivers real, measurable results for clients</li>
+            <li>Recognize that <em>they</em> are the primary ceiling on their own growth</li>
+            <li>Ready to step into a completely new model, not defend the old one</li>
+            <li>Have the capital and commitment to see a real transformation through</li>
+            <li>Done with incremental and ready for a genuine leap</li>
+          </ul>
+        </div>
+
+        <!-- NO -->
+        <div class="who-card who-card--no">
+          <h3>Who We Don't Work With</h3>
+          <ul>
+            <li>Want tactics layered onto a model that isn't working</li>
+            <li>Need convincing that change is necessary</li>
+            <li>Are not in a position, financially or mentally, to go all in</li>
+            <li>Are looking for someone to do it <em>for</em> them while they stay the same</li>
+            <li>Will implement halfway and then wonder why it didn't work</li>
+          </ul>
+          <p class="aside-note">We don't do convincing. You either see it or you don't.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================== -->
+  <!-- HOW TO APPLY                               -->
+  <!-- ========================================== -->
+  <section class="section section--lg bg-black">
+    <div class="container">
+
+      <!-- Header -->
+      <div class="apply-section fade-up" style="margin-bottom: 0;">
+        <div style="display: inline-block; padding: 10px 28px; background: var(--azure); border-radius: 100px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; color: #fff; margin-bottom: 24px;">Next Step</div>
+        <h2>How to Apply</h2>
+        <div class="divider" style="margin: 32px auto;"></div>
+        <p class="lead" style="color: var(--gray-200);">There is no "buy now" button on this page. <strong style="color: #fff;">Because this isn't a transaction. It's a transformation.</strong> And transformation starts with commitment.</p>
+      </div>
+
+      <!-- 3 Step Cards -->
+      <div class="apply-steps fade-up">
+        <div class="apply-step">
+          <div class="apply-step__num">1</div>
+          <div class="apply-step__icon">
+            <!-- Clipboard / form icon -->
+            <svg viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
+          </div>
+          <h4>Submit Your Application</h4>
+          <p>Fill out a short application with your business details: revenue, model, team size, and what's holding you back. Takes 20 seconds. <strong>This is how we know if we can actually help you.</strong></p>
+        </div>
+
+        <div class="apply-step">
+          <div class="apply-step__num">2</div>
+          <div class="apply-step__icon">
+            <!-- Review / magnifying glass icon -->
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg>
+          </div>
+          <h4>Instant Qualification</h4>
+          <p>If you're a service business doing above $500K in annual revenue, you'll <strong>immediately</strong> be able to pick a time for your call. No waiting. No "we'll get back to you." If you qualify, you're in.</p>
+        </div>
+
+        <div class="apply-step">
+          <div class="apply-step__num">3</div>
+          <div class="apply-step__icon">
+            <!-- Video call / phone icon -->
+            <svg viewBox="0 0 24 24"><rect x="2" y="5" width="14" height="14" rx="2"/><polygon points="22 7 16 12 22 17 22 7"/></svg>
+          </div>
+          <h4>The Commitment Call</h4>
+          <p>A private, 45-minute session where <em>you</em> make the case for why we should work together. <strong>This isn't a sales call. You're pitching us.</strong> Come ready to show us your business and your commitment to transforming it.</p>
+        </div>
+      </div>
+
+      <!-- Detailed call info -->
+      <div class="call-details fade-up" style="margin-top: 80px;">
+        <h3>What Happens on the Call</h3>
+        <p>This is not a discovery call. It's not a soft sales conversation dressed up with a clever name. <strong style="color: #fff;">It is exactly what it says it is.</strong></p>
+
+        <div class="pitching-us">
+          <p>You are pitching us.</p>
+        </div>
+
+        <p>We don't take clients we're not fully certain we can help build into a scalable enterprise. That standard exists to protect you as much as us. So come ready to show us your business: your revenue, your model, your team, your ceiling, and <strong style="color: #fff;">your commitment to breaking through it.</strong></p>
+        <p>We'll ask hard questions. We'll pressure-test your answers. And at the end of 45 minutes, one of two things will happen:</p>
+
+        <div class="outcomes-grid">
+          <div class="outcome-card">
+            <div class="outcome-card__icon outcome-card__icon--yes">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <p><strong>We're a fit</strong>, and we walk you through exactly what working together looks like and what the investment is.</p>
+          </div>
+          <div class="outcome-card">
+            <div class="outcome-card__icon outcome-card__icon--no">
+              <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+            </div>
+            <p><strong>We're not a fit</strong>, and if we can, we point you toward what the right move actually is for where you are right now.</p>
+          </div>
+        </div>
+
+        <p style="text-align: center; color: var(--white); font-weight: 600;">Either way, you leave with more clarity than you came in with.</p>
+      </div>
+
+      <!-- APPLICATION FORM -->
+      <div id="apply" class="fade-up" style="margin-top: 80px; max-width: 520px; margin-left: auto; margin-right: auto;">
+        <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 40px;">
+          <h3 style="text-align: center; margin-bottom: 8px; color: #fff;">Apply Now</h3>
+          <p style="text-align: center; color: var(--gray-400); font-size: 0.9rem; margin-bottom: 32px;">Fill out the form below. Takes less than 20 seconds.</p>
+
+          <form id="application-form" style="display: flex; flex-direction: column; gap: 20px;">
+            <div>
+              <label style="display: block; color: var(--gray-300); font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">Full Name</label>
+              <input type="text" name="name" required placeholder="Your full name" style="width: 100%; padding: 14px 16px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; color: #fff; font-size: 0.95rem; font-family: inherit; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='var(--azure)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+            </div>
+
+            <div>
+              <label style="display: block; color: var(--gray-300); font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">Email Address</label>
+              <input type="email" name="email" required placeholder="you@company.com" style="width: 100%; padding: 14px 16px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; color: #fff; font-size: 0.95rem; font-family: inherit; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='var(--azure)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+            </div>
+
+            <div>
+              <label style="display: block; color: var(--gray-300); font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">Phone Number</label>
+              <input type="tel" name="phone" required placeholder="(555) 123-4567" style="width: 100%; padding: 14px 16px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; color: #fff; font-size: 0.95rem; font-family: inherit; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='var(--azure)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+            </div>
+
+            <div>
+              <label style="display: block; color: var(--gray-300); font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">Annual Revenue</label>
+              <select name="revenue" required style="width: 100%; padding: 14px 16px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; color: #fff; font-size: 0.95rem; font-family: inherit; outline: none; appearance: none; cursor: pointer; transition: border-color 0.2s;" onfocus="this.style.borderColor='var(--azure)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+                <option value="" disabled selected style="color: #888;">Select your revenue range</option>
+                <option value="under500k" style="color: #000;">Less than $500K</option>
+                <option value="500k-1m" style="color: #000;">$500K - $1M</option>
+                <option value="1m-plus" style="color: #000;">$1M+</option>
+              </select>
+            </div>
+
+            <div>
+              <label style="display: block; color: var(--gray-300); font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">Are you a service business?</label>
+              <div style="display: flex; gap: 12px;">
+                <label id="svc-yes" onclick="selectService('yes')" style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 14px; background: rgba(255,255,255,0.06); border: 2px solid rgba(255,255,255,0.12); border-radius: 8px; color: var(--gray-300); font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s;">
+                  <input type="radio" name="service_business" value="yes" required style="display: none;"> Yes
+                </label>
+                <label id="svc-no" onclick="selectService('no')" style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 14px; background: rgba(255,255,255,0.06); border: 2px solid rgba(255,255,255,0.12); border-radius: 8px; color: var(--gray-300); font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s;">
+                  <input type="radio" name="service_business" value="no" required style="display: none;"> No
+                </label>
+              </div>
+            </div>
+
+            <script>
+              function selectService(val) {
+                var yesLabel = document.getElementById('svc-yes');
+                var noLabel = document.getElementById('svc-no');
+                var yesInput = yesLabel.querySelector('input');
+                var noInput = noLabel.querySelector('input');
+
+                if (val === 'yes') {
+                  yesInput.checked = true;
+                  yesLabel.style.background = 'var(--azure)';
+                  yesLabel.style.borderColor = 'var(--azure)';
+                  yesLabel.style.color = '#fff';
+                  noLabel.style.background = 'rgba(255,255,255,0.06)';
+                  noLabel.style.borderColor = 'rgba(255,255,255,0.12)';
+                  noLabel.style.color = 'var(--gray-300)';
+                } else {
+                  noInput.checked = true;
+                  noLabel.style.background = 'rgba(255,255,255,0.15)';
+                  noLabel.style.borderColor = 'rgba(255,255,255,0.3)';
+                  noLabel.style.color = '#fff';
+                  yesLabel.style.background = 'rgba(255,255,255,0.06)';
+                  yesLabel.style.borderColor = 'rgba(255,255,255,0.12)';
+                  yesLabel.style.color = 'var(--gray-300)';
+                }
+              }
+            </script>
+
+            <label style="display: flex; align-items: flex-start; gap: 10px; margin-top: 12px; cursor: pointer; font-size: 0.8rem; color: var(--gray-400); line-height: 1.4;">
+              <input type="checkbox" name="consent" required style="margin-top: 3px; accent-color: var(--azure);">
+              <span>By checking this box, I agree to receive SMS and email communications from Scale Enterprises. You can opt out at any time. View our <a href="privacy-policy.html" style="color: #fff; text-decoration: underline;">Privacy Policy</a>.</span>
+            </label>
+
+            <button type="submit" class="btn btn--primary" style="width: 100%; padding: 18px; font-size: 1rem; margin-top: 8px; cursor: pointer; border: none;">Submit Application &rarr;</button>
+          </form>
+        </div>
+      </div>
+
+      <script>
+        document.getElementById('application-form').addEventListener('submit', function(e) {
+          e.preventDefault();
+
+          var revenue = this.revenue.value;
+          var serviceBiz = this.querySelector('input[name="service_business"]:checked');
+
+          if (!serviceBiz) return;
+
+          var isService = serviceBiz.value === 'yes';
+          var isAbove500k = revenue === '500k-1m' || revenue === '1m-plus';
+
+          if (isService && isAbove500k) {
+            // Qualified — send to booking page
+            window.location.href = 'booking.html';
+          } else {
+            // Not qualified — send to not-a-fit page
+            window.location.href = 'not-a-fit.html';
+          }
+        });
+      </script>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- FINAL WORD                                 -->
+  <!-- ========================================== -->
+  <section class="section section--lg bg-twilight" style="position: relative; overflow: hidden;">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(6,12,182,0.2) 0%, transparent 60%); pointer-events: none;"></div>
+    <div class="container--narrow final fade-up" style="position: relative;">
+
+      <h2 style="text-align: center;">You've Been the Operator.<br>Now Become the Enterprise Entrepreneur.</h2>
+      <div class="divider" style="margin: 32px auto;"></div>
+
+      <p>You've spent years building something real. Every dollar of revenue, every client, every late night. You earned all of it. Most people would look at what you've built and call it a success.</p>
+      <p><strong>But you didn't build this to be "most people."</strong></p>
+      <p>You built this for freedom. For scale. For something that outlasts your daily effort. And deep down you know that the business you have today, even at its best, is not the enterprise that gets you there.</p>
+      <p>The gap between where you are and where you're going is not a gap of effort. You've already proven you can outwork anyone.</p>
+      <p>It's a gap of <strong style="color: var(--azure-bright);">structure.</strong> And structure can be built. Quickly. By someone who's seen it done at $10M, $30M, and $40M+ and knows exactly what it looks like.</p>
+      <p style="color: var(--white); font-weight: 700; font-size: 1.2rem; margin-top: 40px;">The only question is whether you're ready to stop being the operator and start becoming the Enterprise Entrepreneur.</p>
+      <p style="color: var(--white); font-weight: 700; font-size: 1.15rem;">If you are, we're ready to hear from you.</p>
+
+      <a href="#apply" class="btn btn--primary" style="margin-top: 48px;">Apply Now &rarr;</a>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- P.S.                                       -->
+  <!-- ========================================== -->
+  <section class="ps bg-black">
+    <div class="container--narrow">
+      <p><strong style="color: var(--gray-200);">P.S.</strong> The businesses that break through to $10M, $30M, and beyond don't do it by getting better at what already exists. They do it by becoming something entirely new. A new vision. A new strategy. A new operating system. A new team model. That's what Scale Enterprises builds. In 30 days. <strong style="color: var(--gray-200);">Apply now and show us you're ready.</strong></p>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- FOOTER                                     -->
+  <!-- ========================================== -->
+  <footer class="footer bg-black">
+    <div class="container">
+      <img src="SE ICON DESIGN WHITE.png" alt="Scale Enterprises" style="display: block; margin: 0 auto 20px; height: 48px; width: auto;">
+      <p>&copy; 2026 Scale Enterprises. All Rights Reserved.</p>
+      <div class="footer-links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-service.html">Terms of Service</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- SCROLL ANIMATION                           -->
+  <!-- ========================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+      document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+      // Animate stats on scroll
+      const stats = document.querySelectorAll('.stats-bar__number');
+      const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateStats();
+            statsObserver.disconnect();
+          }
+        });
+      }, { threshold: 0.5 });
+
+      const statsBar = document.querySelector('.stats-bar');
+      if (statsBar) statsObserver.observe(statsBar);
+
+      function animateStats() {
+        stats.forEach(stat => {
+          const text = stat.textContent;
+          if (text.startsWith('$')) {
+            // Don't animate dollar amounts, just reveal
+            return;
+          }
+          const target = parseInt(text);
+          if (isNaN(target)) return;
+          let current = 0;
+          const increment = Math.ceil(target / 40);
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              current = target;
+              clearInterval(timer);
+            }
+            stat.textContent = current;
+          }, 30);
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
