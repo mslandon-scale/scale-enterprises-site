@@ -69,6 +69,7 @@ module.exports = {
   fireGoogleLeadEvent: (params) => uploadClickConversion({ ...params, conversionAction: 'LEAD' }),
   fireGoogleBookEvent: (params) => uploadClickConversion({ ...params, conversionAction: 'BOOKCALL' }),
   fireGoogleShowEvent: (params) => uploadClickConversion({ ...params, conversionAction: 'SHOWEDUP' }),
+  fireGoogleProcurementEvent: (params) => uploadClickConversion({ ...params, conversionAction: 'PROCUREMENT' }),
   fireGooglePurchaseEvent: (params) => uploadClickConversion({ ...params, conversionAction: 'PURCHASE' }),
   uploadClickConversion
 };

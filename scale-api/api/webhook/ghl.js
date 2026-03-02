@@ -3,10 +3,12 @@ const { fireMetaEvent } = require('../../lib/meta-capi');
 const { uploadClickConversion } = require('../../lib/google-ads');
 
 // Map GHL pipeline stages to conversion events
+// Map GHL stage IDs to conversion events
 const STAGE_EVENT_MAP = {
-  'booked':  { meta: 'Schedule', google: 'BOOKCALL' },
-  'showed':  { meta: 'Contact',  google: 'SHOWEDUP' },
-  'closed':  { meta: 'Purchase', google: 'PURCHASE' }
+  '3d8cf309-9ceb-432d-8aa7-ccd9ec252211': { name: 'Booked',      meta: 'Schedule',         google: 'BOOKCALL' },
+  '68fdea3b-b7db-4575-ad1e-135483357e79': { name: 'Showed',       meta: 'Contact',          google: 'SHOWEDUP' },
+  '341b395a-ef10-44da-9706-34e40fa38db3': { name: 'Procurment',   meta: 'InitiateCheckout', google: 'PROCUREMENT' },
+  'ad4b4640-8875-486e-9929-4d7802c64b8e': { name: 'Closed',       meta: 'Purchase',         google: 'PURCHASE' }
 };
 
 module.exports = async function handler(req, res) {
@@ -23,15 +25,17 @@ module.exports = async function handler(req, res) {
   try {
     const payload = req.body;
     const ghlContactId = payload.contact_id || payload.contactId;
-    const pipelineStage = payload.pipeline_stage || payload.pipelineStage || payload.stage;
+    const stageId = payload.pipeline_stage_id || payload.pipelineStageId || payload.stageId;
+    const stageName = payload.pipeline_stage || payload.pipelineStage || payload.stage;
 
-    if (!ghlContactId || !pipelineStage) {
-      return res.status(200).json({ message: 'Missing contact or stage data' });
+    if (!ghlContactId) {
+      return res.status(200).json({ message: 'Missing contact data' });
     }
 
-    const eventMapping = STAGE_EVENT_MAP[pipelineStage];
+    // Look up by stage ID first, fall back to stage name
+    const eventMapping = STAGE_EVENT_MAP[stageId] || Object.values(STAGE_EVENT_MAP).find(s => s.name.toLowerCase() === (stageName || '').toLowerCase());
     if (!eventMapping) {
-      return res.status(200).json({ message: `Stage "${pipelineStage}" not tracked` });
+      return res.status(200).json({ message: `Stage "${stageId || stageName}" not tracked` });
     }
 
     // Look up contact with attribution data
@@ -91,7 +95,7 @@ module.exports = async function handler(req, res) {
         const googleResult = await uploadClickConversion({
           gclid: contact.gclid,
           conversionAction: eventMapping.google,
-          conversionValue: pipelineStage === 'closed' ? (parseFloat(process.env.DEAL_VALUE) || 0) : 0,
+          conversionValue: eventMapping.name === 'Closed' ? (parseFloat(process.env.DEAL_VALUE) || 0) : 0,
           contactId: contact.id
         });
         if (googleResult) {
