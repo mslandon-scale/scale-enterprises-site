@@ -4,6 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The 10M Service Business Transformation</title>
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Google Analytics (GA4) + Google Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+    gtag('config', 'AW-XXXXXXXXXX');
+  </script>
+  <!-- End Google Analytics + Google Ads -->
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '4492756547619515');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=4492756547619515&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
@@ -1343,6 +1379,10 @@
   </style>
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <!-- ========================================== -->
   <!-- HERO                                       -->
@@ -1963,34 +2003,82 @@
               }
             </script>
 
-            <label style="display: flex; align-items: flex-start; gap: 10px; margin-top: 12px; cursor: pointer; font-size: 0.8rem; color: var(--gray-400); line-height: 1.4;">
-              <input type="checkbox" name="consent" required style="margin-top: 3px; accent-color: var(--azure);">
-              <span>By checking this box, I agree to receive SMS and email communications from Scale Enterprises. You can opt out at any time. View our <a href="privacy-policy.html" style="color: #fff; text-decoration: underline;">Privacy Policy</a>.</span>
+            <label style="display: flex; align-items: flex-start; gap: 10px; margin-top: 16px; cursor: pointer; font-size: 0.78rem; color: var(--gray-400); line-height: 1.5;">
+              <input type="checkbox" name="sms_transactional" checked style="margin-top: 3px; accent-color: var(--azure); flex-shrink: 0;">
+              <span>I consent to receive transactional messages from Scale Enterprises, LLC at the phone number provided. Message frequency may vary. Message &amp; data rates may apply. Reply HELP for help or STOP to opt out.</span>
             </label>
 
-            <button type="submit" class="btn btn--primary" style="width: 100%; padding: 18px; font-size: 1rem; margin-top: 8px; cursor: pointer; border: none;">Submit Application &rarr;</button>
+            <label style="display: flex; align-items: flex-start; gap: 10px; margin-top: 12px; cursor: pointer; font-size: 0.78rem; color: var(--gray-400); line-height: 1.5;">
+              <input type="checkbox" name="sms_marketing" style="margin-top: 3px; accent-color: var(--azure); flex-shrink: 0;">
+              <span>I consent to receive marketing and promotional messages from Scale Enterprises, LLC at the phone number provided. Message frequency may vary. Message &amp; data rates may apply. Reply HELP for help or STOP to opt out.</span>
+            </label>
+
+            <button type="submit" class="btn btn--primary" style="width: 100%; padding: 18px; font-size: 1rem; margin-top: 16px; cursor: pointer; border: none;">Submit Application &rarr;</button>
+            <p style="text-align: center; font-size: 0.75rem; color: var(--gray-400); margin-top: 12px; line-height: 1.5;">By submitting, you agree to our <a href="privacy-policy.html" target="_blank" rel="noopener noreferrer" style="color: #fff; text-decoration: underline;">Privacy Policy</a> and <a href="terms-of-service.html" target="_blank" rel="noopener noreferrer" style="color: #fff; text-decoration: underline;">Terms of Service</a>.</p>
           </form>
         </div>
       </div>
 
       <script>
-        document.getElementById('application-form').addEventListener('submit', function(e) {
+        var API_BASE = 'https://scale-api.vercel.app';
+
+        document.getElementById('application-form').addEventListener('submit', async function(e) {
           e.preventDefault();
 
-          var revenue = this.revenue.value;
+          var submitBtn = this.querySelector('button[type="submit"]');
+          var originalText = submitBtn.innerHTML;
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = 'Submitting...';
+
           var serviceBiz = this.querySelector('input[name="service_business"]:checked');
+          if (!serviceBiz) { submitBtn.disabled = false; submitBtn.innerHTML = originalText; return; }
 
-          if (!serviceBiz) return;
+          var formData = {
+            name: this.name.value,
+            email: this.email.value,
+            phone: this.phone.value,
+            revenue: this.revenue.value,
+            service_business: serviceBiz.value,
+            sms_transactional: this.sms_transactional.checked,
+            sms_marketing: this.sms_marketing.checked
+          };
 
-          var isService = serviceBiz.value === 'yes';
-          var isAbove500k = revenue === '500k-1m' || revenue === '1m-plus';
+          var attribution = typeof SE_getAttribution === 'function' ? SE_getAttribution() : {};
 
-          if (isService && isAbove500k) {
-            // Qualified — send to booking page
-            window.location.href = 'booking.html';
-          } else {
-            // Not qualified — send to not-a-fit page
-            window.location.href = 'not-a-fit.html';
+          try {
+            var response = await fetch(API_BASE + '/api/track', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ form: formData, attribution: attribution })
+            });
+
+            var result = await response.json();
+
+            // Fire client-side Meta pixel Lead event for deduplication
+            if (typeof fbq === 'function' && result.event_id) {
+              fbq('track', 'Lead', {}, { eventID: result.event_id });
+            }
+
+            if (result.redirect) {
+              window.location.href = result.redirect;
+            } else if (result.qualified) {
+              window.location.href = 'booking.html';
+            } else {
+              window.location.href = 'not-a-fit.html';
+            }
+          } catch (error) {
+            console.error('Submission error:', error);
+            // Fallback: client-side qualification if API is down
+            var isService = formData.service_business === 'yes';
+            var isAbove500k = formData.revenue === '500k-1m' || formData.revenue === '1m-plus';
+            if (isService && isAbove500k) {
+              window.location.href = 'booking.html';
+            } else {
+              window.location.href = 'not-a-fit.html';
+            }
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
           }
         });
       </script>
@@ -2097,5 +2185,6 @@
     });
   </script>
 
+  <script src="/js/attribution.js"></script>
 </body>
 </html>
