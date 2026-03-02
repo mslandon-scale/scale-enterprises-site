@@ -2004,13 +2004,8 @@
             </script>
 
             <label style="display: flex; align-items: flex-start; gap: 10px; margin-top: 16px; cursor: pointer; font-size: 0.78rem; color: var(--gray-400); line-height: 1.5;">
-              <input type="checkbox" name="sms_transactional" checked style="margin-top: 3px; accent-color: var(--azure); flex-shrink: 0;">
-              <span>I consent to receive transactional messages from Scale Enterprises, LLC at the phone number provided. Message frequency may vary. Message &amp; data rates may apply. Reply HELP for help or STOP to opt out.</span>
-            </label>
-
-            <label style="display: flex; align-items: flex-start; gap: 10px; margin-top: 12px; cursor: pointer; font-size: 0.78rem; color: var(--gray-400); line-height: 1.5;">
-              <input type="checkbox" name="sms_marketing" style="margin-top: 3px; accent-color: var(--azure); flex-shrink: 0;">
-              <span>I consent to receive marketing and promotional messages from Scale Enterprises, LLC at the phone number provided. Message frequency may vary. Message &amp; data rates may apply. Reply HELP for help or STOP to opt out.</span>
+              <input type="checkbox" name="sms_consent" style="margin-top: 3px; accent-color: var(--azure); flex-shrink: 0;">
+              <span>I consent to receive SMS messages from Scale Enterprises, LLC at the phone number provided, including appointment reminders, business consulting updates, and promotional messages. Message frequency varies. Message &amp; data rates may apply. Reply HELP for help or STOP to opt out. View our <a href="privacy-policy.html" target="_blank" rel="noopener noreferrer" style="color: #fff; text-decoration: underline;">Privacy Policy</a> and <a href="terms-of-service.html" target="_blank" rel="noopener noreferrer" style="color: #fff; text-decoration: underline;">Terms of Service</a>.</span>
             </label>
 
             <button type="submit" class="btn btn--primary" style="width: 100%; padding: 18px; font-size: 1rem; margin-top: 16px; cursor: pointer; border: none;">Submit Application &rarr;</button>
@@ -2039,8 +2034,7 @@
             phone: this.phone.value,
             revenue: this.revenue.value,
             service_business: serviceBiz.value,
-            sms_transactional: this.sms_transactional.checked,
-            sms_marketing: this.sms_marketing.checked
+            sms_consent: this.sms_consent.checked
           };
 
           var attribution = typeof SE_getAttribution === 'function' ? SE_getAttribution() : {};
