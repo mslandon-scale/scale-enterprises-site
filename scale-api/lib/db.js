@@ -1,4 +1,10 @@
-const { sql } = require('@vercel/postgres');
+const { createPool } = require('@vercel/postgres');
+
+const pool = createPool({
+  connectionString: process.env.POSTGRES_URL || process.env.POSTGRES_PRISMA_URL || process.env.POSTGRES_URL_NON_POOLING
+});
+
+const sql = pool.sql.bind(pool);
 
 async function logConversion({ contactId, eventName, source, status, requestPayload, responsePayload }) {
   try {

@@ -1,4 +1,4 @@
-const { sql } = require('@vercel/postgres');
+const { sql } = require('../lib/db');
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
