@@ -1,5 +1,39 @@
 const GHL_API_BASE = 'https://services.leadconnectorhq.com';
 
+// Map our field names to GHL custom field IDs
+const CUSTOM_FIELD_MAP = {
+  revenue: 'TmUBqPRq0wSUZligBqR1',
+  service_business: '3U7kfvPQ96jyEpoIUVkF',
+  visitor_id: 'KPg1Ws6KmdhQc8sTTTa4',
+  utm_source_first: '59IsWTe3ggr7dgQCtwMK',
+  utm_medium_first: 'gmahX6eiNVr2YbOBkS2A',
+  utm_campaign_first: 'tUZ6hZGM3bI5HZlZCjJf',
+  utm_source_last: '5ZXmiTGukb9MuyxztMF5',
+  utm_medium_last: 'TUeVHlBrnadHgXtQfEnI',
+  utm_campaign_last: 'QyEnOJ5Z9TbSSBjWa9bW',
+  fbclid: 'qQHuJMPVcMfRWfvCrUrt',
+  dream_outcome: '95zpN9oLWPe8hqBrUd1N',
+  bottleneck: '9DbOYULgLr634oO6doIn',
+  why_now: 'nJAmn4osieLTfP2CyXWl',
+  cost_of_inaction: 'MJZSBUHmRzvyULUfLslc',
+  why_you: 'pFf3san0U1uxRdmpK86f',
+  past_attempts: 'cNqNPUDYBIIsAi4029zi',
+  objections: 'vcInWmPsH9Vavtk44IKv'
+};
+
+function formatCustomFields(fields) {
+  if (!fields || typeof fields !== 'object') return [];
+  const result = [];
+  for (const [key, value] of Object.entries(fields)) {
+    if (value === null || value === undefined) continue;
+    const fieldId = CUSTOM_FIELD_MAP[key];
+    if (fieldId) {
+      result.push({ id: fieldId, field_value: String(value) });
+    }
+  }
+  return result;
+}
+
 async function ghlFetch(path, method, body) {
   const response = await fetch(`${GHL_API_BASE}${path}`, {
     method,
@@ -48,7 +82,7 @@ async function createOrUpdateContact({ email, name, phone, tags, customFields, p
     lastName,
     phone,
     tags,
-    customField: customFields
+    customFields: formatCustomFields(customFields)
   };
 
   let contactId;
@@ -67,12 +101,16 @@ async function createOrUpdateContact({ email, name, phone, tags, customFields, p
     const stageId = process.env[stageEnvKey];
     if (stageId) {
       try {
-        await ghlFetch(`/contacts/${contactId}/pipeline`, 'PUT', {
+        await ghlFetch(`/opportunities/`, 'POST', {
           pipelineId: process.env.GHL_PIPELINE_ID,
-          stageId: stageId
+          stageId: stageId,
+          locationId: process.env.GHL_LOCATION_ID,
+          contactId: contactId,
+          name: `${firstName} ${lastName} - Application`.trim(),
+          status: 'open'
         });
       } catch (e) {
-        console.error('Failed to set pipeline stage:', e.message);
+        console.error('Failed to create opportunity:', e.message);
       }
     }
   }
@@ -82,7 +120,7 @@ async function createOrUpdateContact({ email, name, phone, tags, customFields, p
 
 async function updateContactFields(contactId, customFields) {
   return ghlFetch(`/contacts/${contactId}`, 'PUT', {
-    customField: customFields
+    customFields: formatCustomFields(customFields)
   });
 }
 
