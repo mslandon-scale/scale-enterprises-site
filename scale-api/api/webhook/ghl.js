@@ -1,8 +1,7 @@
-const { sql, logConversion } = require('../../lib/db');
+const { query, logConversion } = require('../../lib/db');
 const { fireMetaEvent } = require('../../lib/meta-capi');
 const { uploadClickConversion } = require('../../lib/google-ads');
 
-// Map GHL pipeline stages to conversion events
 // Map GHL stage IDs to conversion events
 const STAGE_EVENT_MAP = {
   '3d8cf309-9ceb-432d-8aa7-ccd9ec252211': { name: 'Booked',      meta: 'Schedule',         google: 'BOOKCALL' },
@@ -39,14 +38,15 @@ module.exports = async function handler(req, res) {
     }
 
     // Look up contact with attribution data
-    const result = await sql`
-      SELECT c.*, v.first_touch, v.last_touch
-      FROM contacts c
-      LEFT JOIN visitors v ON c.visitor_id = v.visitor_id
-      WHERE c.ghl_contact_id = ${ghlContactId}
-      ORDER BY c.created_at DESC
-      LIMIT 1
-    `;
+    const result = await query(
+      `SELECT c.*, v.first_touch, v.last_touch
+       FROM contacts c
+       LEFT JOIN visitors v ON c.visitor_id = v.visitor_id
+       WHERE c.ghl_contact_id = $1
+       ORDER BY c.created_at DESC
+       LIMIT 1`,
+      [ghlContactId]
+    );
 
     if (result.rows.length === 0) {
       return res.status(200).json({ message: 'Contact not found in DB' });
@@ -113,7 +113,7 @@ module.exports = async function handler(req, res) {
       }
     }
 
-    return res.status(200).json({ success: true, stage: pipelineStage });
+    return res.status(200).json({ success: true, stage: eventMapping.name });
 
   } catch (error) {
     console.error('GHL webhook error:', error);

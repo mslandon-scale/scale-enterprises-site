@@ -1,4 +1,4 @@
-const { sql } = require('../lib/db');
+const { query } = require('../lib/db');
 const { lookupContactByEmail, updateContactFields } = require('../lib/ghl');
 const { normalizeAttribution } = require('../lib/attribution');
 
@@ -20,59 +20,42 @@ module.exports = async function handler(req, res) {
     }
 
     const attr = normalizeAttribution(attribution);
+    const questionnaireFields = {
+      dream_outcome: answers.dream_outcome,
+      bottleneck: answers.bottleneck,
+      why_now: answers.why_now,
+      cost_of_inaction: answers.cost_of_inaction,
+      why_you: answers.why_you,
+      past_attempts: answers.past_attempts,
+      objections: answers.objections
+    };
 
-    // Store questionnaire answers in DB (linked to contact by email or visitor_id)
+    // Try to link to existing contact by email
     if (contact_email) {
-      // Try to link to existing contact
-      const existing = await sql`
-        SELECT id, ghl_contact_id FROM contacts
-        WHERE email = ${contact_email}
-        ORDER BY created_at DESC
-        LIMIT 1
-      `;
+      const existing = await query(
+        `SELECT id, ghl_contact_id FROM contacts WHERE email = $1 ORDER BY created_at DESC LIMIT 1`,
+        [contact_email]
+      );
 
-      if (existing.rows.length > 0) {
-        const contact = existing.rows[0];
-
-        // Update GHL contact with questionnaire answers
-        if (contact.ghl_contact_id) {
-          try {
-            await updateContactFields(contact.ghl_contact_id, {
-              dream_outcome: answers.dream_outcome,
-              bottleneck: answers.bottleneck,
-              why_now: answers.why_now,
-              cost_of_inaction: answers.cost_of_inaction,
-              why_you: answers.why_you,
-              past_attempts: answers.past_attempts,
-              objections: answers.objections
-            });
-          } catch (ghlError) {
-            console.error('GHL questionnaire update failed:', ghlError.message);
-          }
+      if (existing.rows.length > 0 && existing.rows[0].ghl_contact_id) {
+        try {
+          await updateContactFields(existing.rows[0].ghl_contact_id, questionnaireFields);
+        } catch (ghlError) {
+          console.error('GHL questionnaire update failed:', ghlError.message);
         }
       }
     }
 
-    // Also try to update via visitor_id if available
+    // Fallback: try to update via visitor_id
     if (attr.visitor_id && !contact_email) {
-      const byVisitor = await sql`
-        SELECT id, ghl_contact_id, email FROM contacts
-        WHERE visitor_id = ${attr.visitor_id}
-        ORDER BY created_at DESC
-        LIMIT 1
-      `;
+      const byVisitor = await query(
+        `SELECT id, ghl_contact_id FROM contacts WHERE visitor_id = $1 ORDER BY created_at DESC LIMIT 1`,
+        [attr.visitor_id]
+      );
 
       if (byVisitor.rows.length > 0 && byVisitor.rows[0].ghl_contact_id) {
         try {
-          await updateContactFields(byVisitor.rows[0].ghl_contact_id, {
-            dream_outcome: answers.dream_outcome,
-            bottleneck: answers.bottleneck,
-            why_now: answers.why_now,
-            cost_of_inaction: answers.cost_of_inaction,
-            why_you: answers.why_you,
-            past_attempts: answers.past_attempts,
-            objections: answers.objections
-          });
+          await updateContactFields(byVisitor.rows[0].ghl_contact_id, questionnaireFields);
         } catch (ghlError) {
           console.error('GHL questionnaire update via visitor_id failed:', ghlError.message);
         }

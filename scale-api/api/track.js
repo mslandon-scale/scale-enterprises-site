@@ -1,4 +1,4 @@
-const { sql, logConversion } = require('../lib/db');
+const { query, logConversion } = require('../lib/db');
 const { createOrUpdateContact } = require('../lib/ghl');
 const { fireMetaLeadEvent } = require('../lib/meta-capi');
 const { fireGoogleLeadEvent } = require('../lib/google-ads');
@@ -34,35 +34,22 @@ module.exports = async function handler(req, res) {
 
     // 2. Upsert visitor
     if (attr.visitor_id) {
-      await sql`
-        INSERT INTO visitors (visitor_id, first_touch, last_touch)
-        VALUES (${attr.visitor_id}, ${JSON.stringify(attr.first_touch)}, ${JSON.stringify(attr.last_touch)})
-        ON CONFLICT (visitor_id)
-        DO UPDATE SET
-          last_touch = ${JSON.stringify(attr.last_touch)},
-          updated_at = NOW()
-      `;
+      await query(
+        `INSERT INTO visitors (visitor_id, first_touch, last_touch)
+         VALUES ($1, $2, $3)
+         ON CONFLICT (visitor_id)
+         DO UPDATE SET last_touch = $3, updated_at = NOW()`,
+        [attr.visitor_id, JSON.stringify(attr.first_touch), JSON.stringify(attr.last_touch)]
+      );
     }
 
     // 3. Insert contact
-    const contactResult = await sql`
-      INSERT INTO contacts (visitor_id, email, name, phone, revenue, service_business, qualified, consent, fbclid, gclid, ip_address, user_agent)
-      VALUES (
-        ${attr.visitor_id},
-        ${form.email},
-        ${form.name || null},
-        ${form.phone || null},
-        ${form.revenue || null},
-        ${isService},
-        ${qualified},
-        ${!!form.consent},
-        ${fbclid},
-        ${gclid},
-        ${ip},
-        ${attr.user_agent}
-      )
-      RETURNING id
-    `;
+    const contactResult = await query(
+      `INSERT INTO contacts (visitor_id, email, name, phone, revenue, service_business, qualified, consent, fbclid, gclid, ip_address, user_agent)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
+       RETURNING id`,
+      [attr.visitor_id, form.email, form.name || null, form.phone || null, form.revenue || null, isService, qualified, !!form.sms_consent, fbclid, gclid, ip, attr.user_agent]
+    );
     const contactId = contactResult.rows[0].id;
 
     // 4. Create GHL contact (non-blocking on failure)
@@ -90,7 +77,7 @@ module.exports = async function handler(req, res) {
       });
 
       if (ghlContactId) {
-        await sql`UPDATE contacts SET ghl_contact_id = ${ghlContactId} WHERE id = ${contactId}`;
+        await query(`UPDATE contacts SET ghl_contact_id = $1 WHERE id = $2`, [ghlContactId, contactId]);
       }
     } catch (ghlError) {
       console.error('GHL contact creation failed:', ghlError.message);

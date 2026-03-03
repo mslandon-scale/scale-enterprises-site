@@ -1,4 +1,4 @@
-const { sql } = require('../lib/db');
+const { query } = require('../lib/db');
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -6,8 +6,7 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    // Create visitors table
-    await sql`
+    await query(`
       CREATE TABLE IF NOT EXISTS visitors (
         id              SERIAL PRIMARY KEY,
         visitor_id      VARCHAR(64) NOT NULL UNIQUE,
@@ -16,11 +15,10 @@ module.exports = async function handler(req, res) {
         created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
         updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
       )
-    `;
-    await sql`CREATE INDEX IF NOT EXISTS idx_visitors_visitor_id ON visitors(visitor_id)`;
+    `);
+    await query(`CREATE INDEX IF NOT EXISTS idx_visitors_visitor_id ON visitors(visitor_id)`);
 
-    // Create contacts table
-    await sql`
+    await query(`
       CREATE TABLE IF NOT EXISTS contacts (
         id              SERIAL PRIMARY KEY,
         visitor_id      VARCHAR(64) REFERENCES visitors(visitor_id),
@@ -38,13 +36,12 @@ module.exports = async function handler(req, res) {
         user_agent      TEXT,
         created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
       )
-    `;
-    await sql`CREATE INDEX IF NOT EXISTS idx_contacts_email ON contacts(email)`;
-    await sql`CREATE INDEX IF NOT EXISTS idx_contacts_ghl_contact_id ON contacts(ghl_contact_id)`;
-    await sql`CREATE INDEX IF NOT EXISTS idx_contacts_visitor_id ON contacts(visitor_id)`;
+    `);
+    await query(`CREATE INDEX IF NOT EXISTS idx_contacts_email ON contacts(email)`);
+    await query(`CREATE INDEX IF NOT EXISTS idx_contacts_ghl_contact_id ON contacts(ghl_contact_id)`);
+    await query(`CREATE INDEX IF NOT EXISTS idx_contacts_visitor_id ON contacts(visitor_id)`);
 
-    // Create conversions table
-    await sql`
+    await query(`
       CREATE TABLE IF NOT EXISTS conversions (
         id              SERIAL PRIMARY KEY,
         contact_id      INTEGER REFERENCES contacts(id),
@@ -55,9 +52,9 @@ module.exports = async function handler(req, res) {
         response_payload JSONB,
         created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
       )
-    `;
-    await sql`CREATE INDEX IF NOT EXISTS idx_conversions_contact_id ON conversions(contact_id)`;
-    await sql`CREATE INDEX IF NOT EXISTS idx_conversions_event_name ON conversions(event_name)`;
+    `);
+    await query(`CREATE INDEX IF NOT EXISTS idx_conversions_contact_id ON conversions(contact_id)`);
+    await query(`CREATE INDEX IF NOT EXISTS idx_conversions_event_name ON conversions(event_name)`);
 
     return res.status(200).json({ success: true, message: 'All tables created successfully' });
 
