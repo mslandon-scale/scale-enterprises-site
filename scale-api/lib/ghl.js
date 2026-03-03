@@ -35,10 +35,11 @@ function formatCustomFields(fields) {
 }
 
 async function ghlFetch(path, method, body) {
+  const apiKey = (process.env.GHL_API_KEY || '').trim();
   const response = await fetch(`${GHL_API_BASE}${path}`, {
     method,
     headers: {
-      'Authorization': `Bearer ${process.env.GHL_API_KEY}`,
+      'Authorization': `Bearer ${apiKey}`,
       'Content-Type': 'application/json',
       'Version': '2021-07-28'
     },
@@ -54,7 +55,8 @@ async function ghlFetch(path, method, body) {
 }
 
 async function createOrUpdateContact({ email, name, phone, tags, customFields, pipelineStage }) {
-  if (!process.env.GHL_API_KEY || !process.env.GHL_LOCATION_ID) {
+  const locationId = (process.env.GHL_LOCATION_ID || '').trim();
+  if (!(process.env.GHL_API_KEY || '').trim() || !locationId) {
     console.warn('GHL not configured — skipping contact creation');
     return null;
   }
@@ -63,7 +65,7 @@ async function createOrUpdateContact({ email, name, phone, tags, customFields, p
   let existingContact = null;
   try {
     const lookup = await ghlFetch(
-      `/contacts/lookup?email=${encodeURIComponent(email)}&locationId=${process.env.GHL_LOCATION_ID}`,
+      `/contacts/?locationId=${locationId}&query=${encodeURIComponent(email)}`,
       'GET'
     );
     existingContact = lookup.contacts?.[0];
@@ -76,7 +78,7 @@ async function createOrUpdateContact({ email, name, phone, tags, customFields, p
   const lastName = nameParts.slice(1).join(' ') || '';
 
   const contactData = {
-    locationId: process.env.GHL_LOCATION_ID,
+    locationId,
     email,
     firstName,
     lastName,
@@ -96,15 +98,16 @@ async function createOrUpdateContact({ email, name, phone, tags, customFields, p
   }
 
   // Add to pipeline if specified
-  if (pipelineStage && process.env.GHL_PIPELINE_ID) {
+  const pipelineId = (process.env.GHL_PIPELINE_ID || '').trim();
+  if (pipelineStage && pipelineId) {
     const stageEnvKey = `GHL_STAGE_${pipelineStage.toUpperCase()}`;
-    const stageId = process.env[stageEnvKey];
+    const stageId = (process.env[stageEnvKey] || '').trim();
     if (stageId) {
       try {
         await ghlFetch(`/opportunities/`, 'POST', {
-          pipelineId: process.env.GHL_PIPELINE_ID,
-          stageId: stageId,
-          locationId: process.env.GHL_LOCATION_ID,
+          pipelineId,
+          stageId,
+          locationId,
           contactId: contactId,
           name: `${firstName} ${lastName} - Application`.trim(),
           status: 'open'
@@ -126,8 +129,9 @@ async function updateContactFields(contactId, customFields) {
 
 async function lookupContactByEmail(email) {
   try {
+    const locationId = (process.env.GHL_LOCATION_ID || '').trim();
     const result = await ghlFetch(
-      `/contacts/lookup?email=${encodeURIComponent(email)}&locationId=${process.env.GHL_LOCATION_ID}`,
+      `/contacts/?locationId=${locationId}&query=${encodeURIComponent(email)}`,
       'GET'
     );
     return result.contacts?.[0] || null;
