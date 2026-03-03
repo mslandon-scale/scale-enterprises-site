@@ -547,6 +547,107 @@
 
   .footer-link:hover { text-decoration: underline; }
 
+  /* ── Agreement Section ── */
+  .agreement-section {
+    background: var(--white);
+    border: 2px solid var(--navy);
+    border-radius: 12px;
+    padding: 44px 48px;
+    margin-bottom: 20px;
+  }
+
+  .agreement-body {
+    font-size: 0.9rem;
+    color: var(--gray-md);
+    line-height: 1.85;
+    margin-bottom: 32px;
+  }
+
+  .agreement-body p + p { margin-top: 14px; }
+  .agreement-body strong { color: var(--gray-dk); font-weight: 600; }
+
+  .agreement-terms {
+    font-size: 0.82rem;
+    color: var(--gray-md);
+    line-height: 1.75;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 36px;
+  }
+
+  .agreement-terms li {
+    margin-bottom: 8px;
+    padding-left: 4px;
+  }
+
+  .agreement-terms li:last-child { margin-bottom: 0; }
+  .agreement-terms strong { color: var(--gray-dk); }
+
+  .signature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 36px;
+  }
+
+  .signature-block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .signature-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray-md);
+    margin-bottom: 8px;
+  }
+
+  .signature-line {
+    border: none;
+    border-bottom: 1.5px solid var(--navy);
+    height: 48px;
+    background: transparent;
+  }
+
+  .signature-sub {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 4px;
+  }
+
+  .signature-sub-item {
+    flex: 1;
+  }
+
+  .signature-sub-item .signature-line {
+    height: 36px;
+  }
+
+  .signature-field-label {
+    font-size: 0.68rem;
+    color: var(--gray-md);
+    font-weight: 500;
+    margin-top: 4px;
+  }
+
+  .agreement-next-step {
+    margin-top: 32px;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #F0FAF3 0%, #E6F5EB 100%);
+    border: 1px solid #C3E6CD;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.88rem;
+    color: var(--green);
+    font-weight: 600;
+  }
+
   /* ── Responsive ── */
   @media (max-width: 768px) {
     .cover { padding: 48px 32px; }
@@ -557,6 +658,8 @@
     .pillar-body { padding-left: 0; margin-top: 8px; }
     .pillar-points { padding-left: 0; }
     .pillar-header { flex-direction: column; gap: 10px; }
+    .agreement-section { padding: 28px 24px; }
+    .signature-grid { grid-template-columns: 1fr; gap: 32px; }
   }
 </style>
 </head>
@@ -925,6 +1028,71 @@
         <span>You are <strong>done settling</strong> and ready to build real freedom, real wealth, and a real legacy</span>
       </li>
     </ul>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- AGREEMENT -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div class="agreement-section">
+  <div class="section-eyebrow">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+    </svg>
+    Agreement
+  </div>
+  <div class="section-title">Let's Get Started</div>
+
+  <div class="agreement-body">
+    <p>By signing below, I am confirming my commitment to the Scale Enterprises engagement as outlined in this proposal. I understand the engagement includes:</p>
+  </div>
+
+  <div class="agreement-terms">
+    <ul>
+      <li>Full Enterprise Deep Dive and custom plan buildout within the <strong>first 30 days</strong></li>
+      <li><strong>12 monthly</strong> strategy and accountability calls (one per month for 12 months)</li>
+      <li>Total investment of <strong>$1,000/month for 12 months</strong></li>
+      <li>Start-Up Integration Fee of $3,000 &mdash; <strong>waived in full</strong></li>
+    </ul>
+  </div>
+
+  <div class="agreement-body" style="margin-bottom: 0;">
+    <p>Once signed, we will reach out to schedule your first meeting and kick off your Enterprise Deep Dive.</p>
+  </div>
+
+  <div class="signature-grid">
+    <div class="signature-block">
+      <div class="signature-label">Client</div>
+      <div class="signature-line"></div>
+      <div class="signature-sub">
+        <div class="signature-sub-item">
+          <div class="signature-line"></div>
+          <div class="signature-field-label">Printed Name</div>
+        </div>
+        <div class="signature-sub-item">
+          <div class="signature-line"></div>
+          <div class="signature-field-label">Date</div>
+        </div>
+      </div>
+    </div>
+    <div class="signature-block">
+      <div class="signature-label">Scale Enterprises</div>
+      <div class="signature-line"></div>
+      <div class="signature-sub">
+        <div class="signature-sub-item">
+          <div class="signature-line"></div>
+          <div class="signature-field-label">Printed Name</div>
+        </div>
+        <div class="signature-sub-item">
+          <div class="signature-line"></div>
+          <div class="signature-field-label">Date</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="agreement-next-step">
+    Once signed, we will schedule your first meeting to begin your Enterprise Deep Dive.
   </div>
 </div>
 
