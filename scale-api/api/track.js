@@ -3,9 +3,10 @@ const { createOrUpdateContact } = require('../lib/ghl');
 const { fireMetaLeadEvent } = require('../lib/meta-capi');
 const { fireGoogleLeadEvent } = require('../lib/google-ads');
 const { normalizeAttribution, getClickId } = require('../lib/attribution');
+const { setCors } = require('../lib/cors');
 
 module.exports = async function handler(req, res) {
-  // CORS preflight
+  setCors(req, res);
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }

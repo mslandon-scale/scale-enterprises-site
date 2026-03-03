@@ -4,7 +4,7 @@ const PIXEL_ID = process.env.META_PIXEL_ID;
 const ACCESS_TOKEN = process.env.META_ACCESS_TOKEN;
 const API_VERSION = 'v19.0';
 
-async function fireMetaEvent({ eventName, email, phone, fbclid, ip, userAgent, sourceUrl, eventId, contactId }) {
+async function fireMetaEvent({ eventName, email, phone, fbclid, ip, userAgent, sourceUrl, eventId, contactId, value, currency }) {
   if (!ACCESS_TOKEN || !PIXEL_ID) {
     console.warn('Meta CAPI not configured — skipping', eventName);
     return null;
@@ -18,16 +18,23 @@ async function fireMetaEvent({ eventName, email, phone, fbclid, ip, userAgent, s
   if (fbclid) userData.fbc = 'fb.1.' + Date.now() + '.' + fbclid;
   if (contactId) userData.external_id = [hashSha256(contactId.toString())];
 
-  const eventData = {
-    data: [{
-      event_name: eventName,
-      event_time: Math.floor(Date.now() / 1000),
-      event_id: eventId || undefined,
-      action_source: 'website',
-      event_source_url: sourceUrl || 'https://scaleenterprises.com',
-      user_data: userData
-    }]
+  const eventEntry = {
+    event_name: eventName,
+    event_time: Math.floor(Date.now() / 1000),
+    event_id: eventId || undefined,
+    action_source: 'website',
+    event_source_url: sourceUrl || 'https://scaleenterprises.com',
+    user_data: userData
   };
+
+  if (value !== undefined && value !== null) {
+    eventEntry.custom_data = {
+      value: parseFloat(value),
+      currency: currency || 'USD'
+    };
+  }
+
+  const eventData = { data: [eventEntry] };
 
   const response = await fetch(
     `https://graph.facebook.com/${API_VERSION}/${PIXEL_ID}/events?access_token=${ACCESS_TOKEN}`,

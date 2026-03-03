@@ -140,4 +140,46 @@ async function lookupContactByEmail(email) {
   }
 }
 
-module.exports = { createOrUpdateContact, updateContactFields, lookupContactByEmail, ghlFetch };
+async function findOpportunityByContact(ghlContactId) {
+  const locationId = (process.env.GHL_LOCATION_ID || '').trim();
+  const pipelineId = (process.env.GHL_PIPELINE_ID || '').trim();
+  if (!locationId || !pipelineId) return null;
+
+  try {
+    const result = await ghlFetch(
+      `/opportunities/search?location_id=${locationId}&pipeline_id=${pipelineId}&contact_id=${ghlContactId}`,
+      'GET'
+    );
+    return result.opportunities?.[0] || null;
+  } catch (e) {
+    console.error('Failed to find opportunity:', e.message);
+    return null;
+  }
+}
+
+async function updateOpportunityStage(opportunityId, stageId, monetaryValue) {
+  const body = { pipelineStageId: stageId };
+  if (monetaryValue !== undefined) body.monetaryValue = monetaryValue;
+  return ghlFetch(`/opportunities/${opportunityId}`, 'PUT', body);
+}
+
+async function createOpportunity({ contactId, name, stageId, monetaryValue }) {
+  const locationId = (process.env.GHL_LOCATION_ID || '').trim();
+  const pipelineId = (process.env.GHL_PIPELINE_ID || '').trim();
+
+  return ghlFetch(`/opportunities/`, 'POST', {
+    pipelineId,
+    pipelineStageId: stageId,
+    locationId,
+    contactId,
+    name,
+    monetaryValue: monetaryValue || 0,
+    status: 'open'
+  });
+}
+
+module.exports = {
+  createOrUpdateContact, updateContactFields, lookupContactByEmail,
+  findOpportunityByContact, updateOpportunityStage, createOpportunity,
+  ghlFetch
+};
