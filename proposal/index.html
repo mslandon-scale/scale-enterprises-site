@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enterprise Proposal 2.0 — Scale Enterprises</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:    #002366;
+    --navy-l:  #003399;
+    --navy-d:  #001A4D;
+    --accent:  #0052CC;
+    --gray-dk: #1A1A1A;
+    --gray-md: #4A4A4A;
+    --gray-lt: #F2F2F2;
+    --bg:      #F7F8FA;
+    --white:   #FFFFFF;
+    --green:   #007A33;
+    --border:  #E0E4EA;
+  }
+
+  html { font-size: 15px; }
+
+  body {
+    font-family: 'Montserrat', 'Segoe UI', sans-serif;
+    color: var(--gray-dk);
+    background: var(--bg);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .cover { break-after: page; }
+    .proposal-section { break-inside: avoid; }
+  }
+
+  /* ── Document Container ── */
+  .document {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── Cover Page ── */
+  .cover {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-d) 60%, #000D26 100%);
+    padding: 52px 56px;
+    border-radius: 16px;
+    margin: 32px auto;
+    max-width: 860px;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.03);
+  }
+
+  .cover-logo {
+    height: 48px;
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-sub {
+    font-size: 1.05rem;
+    font-weight: 300;
+    opacity: 0.7;
+    margin-bottom: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Proposal Sections ── */
+  .proposal-section {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 44px 48px;
+    margin-bottom: 20px;
+  }
+
+  .proposal-section:first-of-type { margin-top: 0; }
+
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .section-eyebrow svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.25;
+    margin-bottom: 20px;
+  }
+
+  .section-body {
+    font-size: 0.95rem;
+    color: var(--gray-md);
+    line-height: 1.85;
+  }
+
+  .section-body p + p { margin-top: 16px; }
+
+  .section-body strong { color: var(--gray-dk); font-weight: 600; }
+
+  /* ── Divider ── */
+  .section-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 28px 0;
+  }
+
+  /* ── Three Questions Grid ── */
+  .questions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .question-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 20px;
+    text-align: center;
+    border-top: 3px solid var(--navy);
+  }
+
+  .question-num {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .question-text {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* ── Pillar Cards ── */
+  .pillar {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 36px;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--navy);
+  }
+
+  .pillar-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .pillar-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .pillar-icon svg { width: 20px; height: 20px; }
+
+  .pillar-label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2px;
+  }
+
+  .pillar-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.3;
+  }
+
+  .pillar-body {
+    font-size: 0.9rem;
+    color: var(--gray-md);
+    line-height: 1.85;
+    padding-left: 56px;
+  }
+
+  .pillar-points {
+    list-style: none;
+    display: grid;
+    gap: 12px;
+    padding-left: 56px;
+  }
+
+  .pillar-points li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: var(--gray-md);
+    line-height: 1.55;
+  }
+
+  .pillar-points li svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    color: var(--accent);
+  }
+
+  .pillar-points li strong { color: var(--gray-dk); }
+
+  /* ── Offer Items ── */
+  .offer-list { margin-top: 24px; }
+
+  .offer-item {
+    display: flex;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .offer-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .offer-item:first-child { padding-top: 0; }
+
+  .offer-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: #EBF0FA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .offer-icon svg { width: 18px; height: 18px; }
+
+  .offer-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .offer-desc {
+    font-size: 0.85rem;
+    color: var(--gray-md);
+    line-height: 1.7;
+  }
+
+  /* ── Investment Cards ── */
+  .investment-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .investment-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 32px;
+    text-align: center;
+    border-top: 3px solid var(--navy);
+    position: relative;
+  }
+
+  .investment-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray-md);
+    margin-bottom: 10px;
+  }
+
+  .investment-amount {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .investment-detail {
+    font-size: 0.82rem;
+    color: var(--gray-md);
+  }
+
+  /* ── Waived / Gift Styles ── */
+  .investment-card.waived {
+    border-top-color: var(--green);
+    background: linear-gradient(180deg, #F0FAF3 0%, var(--bg) 100%);
+  }
+
+  .investment-card.waived .investment-label {
+    color: var(--green);
+  }
+
+  .waived-amount {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #999;
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+
+  .gift-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--green);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+  }
+
+  .gift-badge svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .gift-note {
+    font-size: 0.82rem;
+    color: var(--green);
+    font-weight: 600;
+    margin-top: 4px;
+  }
+
+  .savings-callout {
+    background: linear-gradient(135deg, #F0FAF3 0%, #E6F5EB 100%);
+    border: 1px solid #C3E6CD;
+    border-radius: 10px;
+    padding: 20px 28px;
+    margin-top: 16px;
+    text-align: center;
+  }
+
+  .savings-callout p {
+    font-size: 0.9rem;
+    color: var(--green);
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .savings-callout .savings-amount {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--green);
+  }
+
+  /* ── Timeline ── */
+  .timeline {
+    margin-top: 24px;
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--navy), var(--border));
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-bottom: 24px;
+    padding-left: 20px;
+  }
+
+  .timeline-item:last-child { padding-bottom: 0; }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -25px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--navy);
+    border: 3px solid var(--bg);
+    box-shadow: 0 0 0 1px var(--navy);
+  }
+
+  .timeline-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .timeline-desc {
+    font-size: 0.85rem;
+    color: var(--gray-md);
+    line-height: 1.7;
+  }
+
+  /* ── Qualifiers ── */
+  .qualifier-box {
+    margin-top: 20px;
+  }
+
+  .qualifier-list {
+    list-style: none;
+  }
+
+  .qualifier-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 0.88rem;
+    color: var(--gray-md);
+    line-height: 1.6;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .qualifier-list li:first-child { padding-top: 0; }
+  .qualifier-list li:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .qualifier-list li svg { flex-shrink: 0; width: 18px; height: 18px; margin-top: 2px; }
+  .qualifier-list li strong { color: var(--navy); font-weight: 700; }
+  .qualifier-list li span { flex: 1; }
+
+  /* ── CTA Block ── */
+  .cta-block {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-d) 60%, #000D26 100%);
+    border-radius: 12px;
+    padding: 48px;
+    text-align: center;
+    color: var(--white);
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-block::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -60px;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.03);
+  }
+
+  .cta-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-sub {
+    font-size: 0.9rem;
+    font-weight: 400;
+    opacity: 0.7;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 32px 24px 48px;
+  }
+
+  .footer-logo {
+    height: 28px;
+    margin-bottom: 8px;
+  }
+
+  .footer-text {
+    font-size: 0.78rem;
+    color: var(--gray-md);
+  }
+
+  .footer-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .footer-link:hover { text-decoration: underline; }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .cover { padding: 48px 32px; }
+    .cover h1 { font-size: 1.7rem; }
+    .proposal-section { padding: 28px 24px; }
+    .questions-grid { grid-template-columns: 1fr; }
+    .investment-row { grid-template-columns: 1fr; }
+    .pillar-body { padding-left: 0; margin-top: 8px; }
+    .pillar-points { padding-left: 0; }
+    .pillar-header { flex-direction: column; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- COVER PAGE -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div class="cover">
+  <img src="../SE ICON DESIGN WHITE.png" alt="Scale Enterprises" class="cover-logo">
+
+  <h1>Enterprise Proposal</h1>
+  <div class="cover-sub">A strategic engagement to build the business you set out to create.</div>
+</div>
+
+<div class="document">
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- THE BOTTOM LINE -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div class="proposal-section">
+  <div class="section-eyebrow">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/>
+    </svg>
+    The Bottom Line
+  </div>
+  <div class="section-title">Let's Be Direct.</div>
+  <div class="section-body">
+    <p>You started this business for freedom. It turned into a job. More hours. More stress. You holding it all together.</p>
+    <p>Tactics won't get you to $10M. Hustle won't either. What gets you there is answering three questions most owners never ask.</p>
+  </div>
+
+  <div class="questions-grid">
+    <div class="question-card">
+      <div class="question-num">Question 01</div>
+      <div class="question-text">What am I actually building?</div>
+    </div>
+    <div class="question-card">
+      <div class="question-num">Question 02</div>
+      <div class="question-text">What's the strategy to get there?</div>
+    </div>
+    <div class="question-card">
+      <div class="question-num">Question 03</div>
+      <div class="question-text">What team do I need to make it run without me?</div>
+    </div>
+  </div>
+
+  <div class="section-body" style="margin-top: 20px;">
+    <p>That's what this engagement is built around.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- WHAT WE WILL BUILD TOGETHER -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div class="proposal-section">
+  <div class="section-eyebrow">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/><path d="M9 20v-6h6v6"/>
+    </svg>
+    What We Will Build Together
+  </div>
+  <div class="section-title">How We Get You There</div>
+  <div class="section-body" style="margin-bottom: 28px;">
+    <p>Now that we are clear on your targets, here is how we help you hit them. We focus on three things: the <strong>strategy</strong> to reach your vision, the <strong>business model</strong> that will scale you there, and the <strong>management system</strong> that lets your team do it for you.</p>
+  </div>
+
+  <!-- Secret 1 -->
+  <div class="pillar">
+    <div class="pillar-header">
+      <div class="pillar-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="11" stroke-dasharray="3 3"/>
+        </svg>
+      </div>
+      <div>
+        <div class="pillar-label">Secret #1</div>
+        <div class="pillar-title">A Vision So Clear, Success Becomes Inevitable</div>
+      </div>
+    </div>
+    <ul class="pillar-points">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l2.5 2.5L16 9"/></svg>
+        <span>Define your <strong>dream business</strong> and put a timeline on it</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Lock in your <strong>dream customer</strong> and what makes you different</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+        <span>Clarify how <strong>you</strong> want to spend your time as the owner</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Set your <strong>brand values</strong> so your team can rally behind them</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Secret 2 -->
+  <div class="pillar">
+    <div class="pillar-header">
+      <div class="pillar-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+          <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+        </svg>
+      </div>
+      <div>
+        <div class="pillar-label">Secret #2</div>
+        <div class="pillar-title">An Enterprise-Level Business Model That Eliminates Guesswork</div>
+      </div>
+    </div>
+    <ul class="pillar-points">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        <span>Build your <strong>Growth System</strong> &mdash; how you get customers</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+        <span>Build your <strong>Fulfillment System</strong> &mdash; how you deliver your service</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <span>Engineer toward <strong>2x ROI in 30 days</strong></span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>Target <strong>$250K+ revenue per employee</strong></span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Secret 3 -->
+  <div class="pillar">
+    <div class="pillar-header">
+      <div class="pillar-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+      </div>
+      <div>
+        <div class="pillar-label">Secret #3</div>
+        <div class="pillar-title">A Management System That Runs and Grows Without You</div>
+      </div>
+    </div>
+    <ul class="pillar-points">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+        <span>Install your <strong>Scoreboard</strong> &mdash; everyone knows the numbers and who owns them</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Build your <strong>Meeting Rhythm</strong> &mdash; culture stays tight, nothing falls through the cracks</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+        <span>Set up <strong>Team Building</strong> &mdash; attract, onboard, and keep the right people</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- THE OFFER -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div class="proposal-section">
+  <div class="section-eyebrow">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+    </svg>
+    The Offer
+  </div>
+  <div class="section-title">Here Is Exactly What Is Included</div>
+
+  <div class="offer-list">
+    <div class="offer-item">
+      <div class="offer-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#002366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          <line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/>
+        </svg>
+      </div>
+      <div>
+        <div class="offer-name">Full Enterprise Deep Dive</div>
+        <div class="offer-desc">We look under the hood at your vision, model, and systems. Then we build the real plan.</div>
+      </div>
+    </div>
+
+    <div class="offer-item">
+      <div class="offer-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#002366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+        </svg>
+      </div>
+      <div>
+        <div class="offer-name">Custom 12-Quarter Enterprise Plan</div>
+        <div class="offer-desc">A 3-year roadmap built for your business. Not a template. Your plan.</div>
+      </div>
+    </div>
+
+    <div class="offer-item">
+      <div class="offer-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#002366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+        </svg>
+      </div>
+      <div>
+        <div class="offer-name">Custom Enterprise Management System</div>
+        <div class="offer-desc">Scoreboard. Meeting rhythm. Team building. Built around your goals.</div>
+      </div>
+    </div>
+
+    <div class="offer-item">
+      <div class="offer-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#002366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/>
+        </svg>
+      </div>
+      <div>
+        <div class="offer-name">Custom Enterprise Growth System</div>
+        <div class="offer-desc">How you get customers and deliver your service &mdash; without it depending on you.</div>
+      </div>
+    </div>
+
+    <div class="offer-item">
+      <div class="offer-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#002366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          <line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/>
+        </svg>
+      </div>
+      <div>
+        <div class="offer-name">Enterprise Playbook Library</div>
+        <div class="offer-desc">Step-by-step docs so your team can run it without you in the room.</div>
+      </div>
+    </div>
+
+    <div class="offer-item">
+      <div class="offer-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#002366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+      </div>
+      <div>
+        <div class="offer-name">12 Monthly Strategy &amp; Accountability Calls</div>
+        <div class="offer-desc">One hour per month. We keep you on track and course-correct together.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- INVESTMENT -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div class="proposal-section">
+  <div class="section-eyebrow">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+    </svg>
+    Investment
+  </div>
+  <div class="section-title">How It Works</div>
+
+  <div class="investment-row">
+    <div class="investment-card waived">
+      <div class="investment-label">Start-Up Integration Fee</div>
+      <div class="waived-amount">$3,000</div>
+      <div class="gift-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+        </svg>
+        Waived &mdash; Our Gift To You
+      </div>
+      <div class="gift-note">$3,000 value &mdash; on us</div>
+    </div>
+    <div class="investment-card">
+      <div class="investment-label">Monthly Investment</div>
+      <div class="investment-amount">$1,000</div>
+      <div class="investment-detail">12 months of strategy &amp; accountability</div>
+    </div>
+  </div>
+
+  <div class="savings-callout">
+    <p>You save <span class="savings-amount">$3,000</span> &mdash; your entire buildout is included at no extra cost.</p>
+  </div>
+
+  <div class="section-body" style="margin-top: 24px;">
+    <p>Normally the <strong>$3,000 integration fee</strong> covers your Enterprise Deep Dive, your custom 12-Quarter Plan, your Growth System, Management System, and Playbook Library &mdash; all built in the first 30 days. <strong>We are waiving that entirely as our gift to you.</strong></p>
+    <p>Your only investment is <strong>$1,000/month</strong> for 12 months. That covers everything &mdash; your full buildout in the first 30 days plus ongoing monthly strategy and accountability calls for a full year.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- FIRST 30 DAYS -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div class="proposal-section">
+  <div class="section-eyebrow">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+    </svg>
+    What To Expect
+  </div>
+  <div class="section-title">The First 30 Days</div>
+  <div class="section-body" style="margin-bottom: 8px;">
+    <p>You will not be handed a document and left alone. Here is what happens when you get started:</p>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-title">3+ Integration Meetings</div>
+      <div class="timeline-desc">Hands-on sessions with you and your team. About 6&ndash;8 hours total. We build your systems together.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-title">Full Enterprise Plan Delivered</div>
+      <div class="timeline-desc">Your dashboard, your playbooks, your growth system, your management system. All done.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-title">Monthly Calls Begin</div>
+      <div class="timeline-desc">One call per month to keep you on track and adjust the plan as you grow.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- WHO THIS IS FOR -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div class="proposal-section">
+  <div class="section-eyebrow">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+    </svg>
+    Qualifications
+  </div>
+  <div class="section-title">Who This Is For</div>
+
+  <div class="section-body" style="margin-bottom: 20px;">
+    <p>This is not for everyone. It is for a specific kind of person.</p>
+  </div>
+
+  <div class="qualifier-box">
+    <ul class="qualifier-list">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#002366" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>You built something real &mdash; but it <strong>can't keep running on your back</strong></span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#002366" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>You are <strong>tired of guessing</strong> and ready to follow a real plan</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#002366" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>You want to be an <strong>owner</strong>, not the highest-paid employee trapped inside your own company</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#002366" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>You will <strong>do the work, follow the process, and be held accountable</strong></span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#002366" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>You are <strong>done settling</strong> and ready to build real freedom, real wealth, and a real legacy</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- CTA -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div class="cta-block">
+  <div class="cta-title">Let's Build Your Dream Business.</div>
+  <div class="cta-sub">Scale Enterprises, LLC</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- LEGAL DISCLAIMER -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div style="border-top: 1px solid var(--border); padding-top: 24px; margin-top: 12px;">
+  <p style="font-size:.75rem;font-weight:600;color:var(--gray-md);margin-bottom:8px;">Disclaimer</p>
+  <p style="font-size:.72rem;color:#888;line-height:1.7;">
+    The strategies, frameworks, and examples referenced in this proposal are based on general principles and experience. No guarantees are made regarding specific results, outcomes, or performance. Individual circumstances and results will vary. This engagement provides strategic planning, systems, and accountability &mdash; execution is the responsibility of the client and their team.
+  </p>
+</div>
+
+</div><!-- .document -->
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- FOOTER -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <img src="../scale_enterprises_logo_optimized.png" alt="Scale Enterprises" class="footer-logo"
+       onerror="this.style.display='none'">
+  <div class="footer-text">
+    Scale Enterprises, LLC
+  </div>
+</footer>
+
+</body>
+</html>
