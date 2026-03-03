@@ -106,7 +106,7 @@ async function createOrUpdateContact({ email, name, phone, tags, customFields, p
       try {
         await ghlFetch(`/opportunities/`, 'POST', {
           pipelineId,
-          stageId,
+          pipelineStageId: stageId,
           locationId,
           contactId: contactId,
           name: `${firstName} ${lastName} - Application`.trim(),
