@@ -1,3 +1,5 @@
+const crypto = require('crypto');
+
 module.exports = async function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -10,7 +12,7 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: 'QBO_CLIENT_ID and QBO_REDIRECT_URI must be configured' });
   }
 
-  const state = crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36);
+  const state = crypto.randomUUID();
 
   const authUrl = new URL('https://appcenter.intuit.com/connect/oauth2');
   authUrl.searchParams.set('client_id', clientId);
