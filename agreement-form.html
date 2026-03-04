@@ -217,30 +217,35 @@
             <input class="af-input" type="text" name="client_name" required placeholder="John Smith">
           </div>
           <div class="af-field">
-            <label class="af-label">Client Phone</label>
-            <input class="af-input" type="tel" name="client_phone" placeholder="+1 555 123 4567">
+            <label class="af-label">Client Email</label>
+            <input class="af-input" type="email" name="client_email" placeholder="client@company.com (auto-fills from GHL if blank)">
           </div>
         </div>
 
         <div class="af-field">
-          <label class="af-label">Client Email *</label>
-          <input class="af-input" type="email" name="client_email" required placeholder="client@company.com">
+          <label class="af-label">Client Phone</label>
+          <input class="af-input" type="tel" name="client_phone" placeholder="Auto-fills from GHL if blank">
+        </div>
+
+        <div class="af-field">
+          <label class="af-label">Service *</label>
+          <select class="af-select" name="service_name" required>
+            <option value="">Select service...</option>
+            <option value="Scale Growth Program">Scale Growth Program</option>
+            <option value="Scale Accelerator">Scale Accelerator</option>
+            <option value="Consulting Engagement">Consulting Engagement</option>
+            <option value="Custom">Custom</option>
+          </select>
         </div>
 
         <div class="af-row">
           <div class="af-field">
-            <label class="af-label">Service *</label>
-            <select class="af-select" name="service_name" required>
-              <option value="">Select service...</option>
-              <option value="Scale Growth Program">Scale Growth Program</option>
-              <option value="Scale Accelerator">Scale Accelerator</option>
-              <option value="Consulting Engagement">Consulting Engagement</option>
-              <option value="Custom">Custom</option>
-            </select>
+            <label class="af-label">Transformation Fee (USD) *</label>
+            <input class="af-input" type="number" name="trans_fee" required min="1" step="0.01" placeholder="25000">
           </div>
           <div class="af-field">
-            <label class="af-label">Deal Amount (USD) *</label>
-            <input class="af-input" type="number" name="amount" required min="1" step="0.01" placeholder="25000">
+            <label class="af-label">Retainer Fee (USD)</label>
+            <input class="af-input" type="number" name="ret_fee" min="0" step="0.01" placeholder="0">
           </div>
         </div>
 
@@ -292,12 +297,13 @@
             secret: FORM_SECRET,
             client: {
               name: formData.get('client_name'),
-              email: formData.get('client_email'),
+              email: formData.get('client_email') || undefined,
               phone: formData.get('client_phone') || undefined
             },
             deal: {
               service_name: formData.get('service_name'),
-              amount: parseFloat(formData.get('amount'))
+              trans_fee: parseFloat(formData.get('trans_fee')),
+              ret_fee: formData.get('ret_fee') ? parseFloat(formData.get('ret_fee')) : 0
             },
             submitted_by: formData.get('submitted_by')
           })

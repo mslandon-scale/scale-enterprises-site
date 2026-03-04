@@ -18,14 +18,17 @@ module.exports = async function handler(req, res) {
     }
 
     // Validate
-    if (!client?.email || !client?.name || !deal?.service_name || !deal?.amount) {
-      return res.status(400).json({ error: 'Missing required fields: client.email, client.name, deal.service_name, deal.amount' });
+    if (!client?.name || !deal?.service_name || !deal?.trans_fee) {
+      return res.status(400).json({ error: 'Missing required fields: client.name, deal.service_name, deal.trans_fee' });
     }
 
-    const amount = parseFloat(deal.amount);
-    if (isNaN(amount) || amount <= 0) {
-      return res.status(400).json({ error: 'Invalid deal amount' });
+    const transFee = parseFloat(deal.trans_fee);
+    const retFee = deal.ret_fee ? parseFloat(deal.ret_fee) : 0;
+    if (isNaN(transFee) || transFee <= 0) {
+      return res.status(400).json({ error: 'Invalid transformation fee' });
     }
+
+    const amount = transFee + retFee;
 
     const templateId = (process.env.PANDADOC_TEMPLATE_ID || '').trim();
     if (!templateId) {
@@ -36,12 +39,33 @@ module.exports = async function handler(req, res) {
     const firstName = nameParts[0] || '';
     const lastName = nameParts.slice(1).join(' ') || '';
 
+    // Look up contact from GHL if email/phone not provided
+    let clientEmail = client.email || null;
+    let clientPhone = client.phone || null;
+    let ghlContactFromLookup = null;
+
+    if (!clientEmail) {
+      // Try to find contact in GHL by name
+      try {
+        const ghlContact = await lookupContactByEmail(client.name);
+        if (ghlContact) {
+          ghlContactFromLookup = ghlContact;
+          clientEmail = ghlContact.email || null;
+          clientPhone = clientPhone || ghlContact.phone || null;
+        }
+      } catch (e) { /* GHL lookup failed */ }
+    }
+
+    if (!clientEmail) {
+      return res.status(400).json({ error: 'Client email is required. Provide it directly or ensure the contact exists in GHL.' });
+    }
+
     // Look up existing contact in our DB
     let dbContact = null;
     try {
       const result = await query(
         `SELECT * FROM contacts WHERE email = $1 ORDER BY created_at DESC LIMIT 1`,
-        [client.email]
+        [clientEmail]
       );
       dbContact = result.rows[0] || null;
     } catch (e) { /* no existing contact */ }
@@ -52,17 +76,12 @@ module.exports = async function handler(req, res) {
       const doc = await createDocumentFromTemplate({
         templateId,
         name: `${client.name} - ${deal.service_name} Agreement`,
-        recipientEmail: client.email,
+        recipientEmail: clientEmail,
         recipientFirstName: firstName,
         recipientLastName: lastName,
         fields: {
-          'client.name': client.name,
-          'client.email': client.email,
-          'client.phone': client.phone || '',
-          'deal.service_name': deal.service_name,
-          'deal.amount': amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' }),
-          'deal.amount_raw': amount.toString(),
-          'date': new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+          'trans.fee': transFee.toLocaleString('en-US', { style: 'currency', currency: 'USD' }),
+          'ret.fee': retFee > 0 ? retFee.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) : '$0.00'
         }
       });
 
@@ -70,7 +89,7 @@ module.exports = async function handler(req, res) {
 
       // Wait for document to be processed, then send
       await waitForDocumentAndSend(pandadocId,
-        `Hi ${firstName},\n\nPlease review and sign the attached agreement for ${deal.service_name}.\n\nIf you have any questions, reply to this email.\n\n— Matthew Landon\nFounder, Scale Enterprises`
+        `Hi ${firstName},\n\nPlease review and sign the attached agreement for the ${deal.service_name}.\n\nIf you have any questions, reply to this email.\n\n— Matthew Landon\nFounder, Scale Enterprises`
       );
     } catch (pdError) {
       console.error('PandaDoc document creation failed:', pdError.message);
@@ -78,12 +97,12 @@ module.exports = async function handler(req, res) {
     }
 
     // Update GHL opportunity to Procurement stage
-    let ghlContactId = dbContact?.ghl_contact_id || null;
+    let ghlContactId = dbContact?.ghl_contact_id || ghlContactFromLookup?.id || null;
     let ghlOpportunityId = null;
 
     try {
       if (!ghlContactId) {
-        const ghlContact = await lookupContactByEmail(client.email);
+        const ghlContact = await lookupContactByEmail(clientEmail);
         if (ghlContact) ghlContactId = ghlContact.id;
       }
 
@@ -110,7 +129,7 @@ module.exports = async function handler(req, res) {
          RETURNING id`,
         [
           dbContact?.id || null, ghlContactId, ghlOpportunityId,
-          client.name, client.email, client.phone || null,
+          client.name, clientEmail, clientPhone || null,
           deal.service_name, amount,
           pandadocId, 'sent',
           submitted_by || null
@@ -125,7 +144,7 @@ module.exports = async function handler(req, res) {
       success: true,
       agreement_id: agreementId,
       pandadoc_id: pandadocId,
-      message: `Agreement sent to ${client.email} for signature`
+      message: `Agreement sent to ${clientEmail} for signature`
     });
 
   } catch (error) {
