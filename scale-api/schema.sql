@@ -93,3 +93,27 @@ CREATE INDEX idx_invoices_qbo_invoice_id ON invoices(qbo_invoice_id);
 CREATE INDEX idx_invoices_cf_order_id ON invoices(cf_order_id);
 CREATE INDEX idx_invoices_status ON invoices(status);
 CREATE INDEX idx_invoices_client_email ON invoices(client_email);
+
+-- Agreements: tracks PandaDoc documents through lifecycle
+CREATE TABLE agreements (
+    id                  SERIAL PRIMARY KEY,
+    contact_id          INTEGER REFERENCES contacts(id),
+    ghl_contact_id      VARCHAR(64),
+    ghl_opportunity_id  VARCHAR(64),
+    client_name         VARCHAR(255) NOT NULL,
+    client_email        VARCHAR(255) NOT NULL,
+    client_phone        VARCHAR(32),
+    service_name        VARCHAR(255) NOT NULL,
+    amount              DECIMAL(10,2) NOT NULL,
+    pandadoc_id         VARCHAR(64),
+    invoice_id          INTEGER REFERENCES invoices(id),
+    status              VARCHAR(32) NOT NULL DEFAULT 'draft',
+    signed_at           TIMESTAMPTZ,
+    submitted_by        VARCHAR(255),
+    created_at          TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at          TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX idx_agreements_pandadoc_id ON agreements(pandadoc_id);
+CREATE INDEX idx_agreements_client_email ON agreements(client_email);
+CREATE INDEX idx_agreements_status ON agreements(status);
