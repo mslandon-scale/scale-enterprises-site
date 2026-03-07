@@ -42,6 +42,9 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  // Log full payload before auth check to discover all available fields
+  console.log('CF webhook full payload:', JSON.stringify(req.body, null, 2));
+
   const secret = (process.env.CF_WEBHOOK_SECRET || '').trim();
   if (!secret || req.query.secret !== secret) {
     return res.status(401).json({ error: 'Unauthorized' });
@@ -56,9 +59,6 @@ module.exports = async function handler(req, res) {
       console.log('CF webhook: ignoring event_type', event_type);
       return res.status(200).json({ message: 'Event type not tracked' });
     }
-
-    // Log full payload to discover all available fields (especially meeting link)
-    console.log('CF webhook full payload:', JSON.stringify(req.body, null, 2));
 
     const email = data?.primary_contact?.email_address;
     const startOn = data?.start_on;
