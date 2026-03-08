@@ -1,4 +1,5 @@
 const { lookupContactByEmail, updateContactFields, findOpportunityByContact, updateOpportunityStage } = require('../../lib/ghl');
+const { getTeamsJoinLink } = require('../../lib/microsoft');
 
 const BOOKED_STAGE_ID = '3d8cf309-9ceb-432d-8aa7-ccd9ec252211';
 
@@ -25,7 +26,6 @@ function formatAppointment(isoString, tzid) {
   const minute = timeParts.find(p => p.type === 'minute').value;
   const dayPeriod = timeParts.find(p => p.type === 'dayPeriod').value.toUpperCase();
 
-  // Get short timezone abbreviation (e.g. "EST", "EDT", "CT", "PT")
   const tzAbbr = new Intl.DateTimeFormat('en-US', {
     timeZoneName: 'short',
     timeZone: tz
@@ -41,9 +41,6 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
-
-  // Log full payload before auth check to discover all available fields
-  console.log('CF webhook full payload:', JSON.stringify(req.body, null, 2));
 
   const secret = (process.env.CF_WEBHOOK_SECRET || '').trim();
   if (!secret || req.query.secret !== secret) {
@@ -78,8 +75,25 @@ module.exports = async function handler(req, res) {
       return res.status(200).json({ message: 'Contact not found in GHL' });
     }
 
-    // Update custom fields with appointment info
-    await updateContactFields(contact.id, { appointment_date, appointment_time });
+    // Fetch Teams meeting link from Microsoft calendar
+    let teamsLink = null;
+    try {
+      teamsLink = await getTeamsJoinLink(startOn);
+      if (teamsLink) {
+        console.log(`CF webhook: found Teams link for ${email}`);
+      } else {
+        console.warn(`CF webhook: no Teams link found for ${email}`);
+      }
+    } catch (msErr) {
+      console.error('CF webhook: Microsoft Graph error:', msErr.message);
+    }
+
+    // Update custom fields with appointment info + Teams link
+    const fields = { appointment_date, appointment_time };
+    if (teamsLink) {
+      fields.meeting_link = teamsLink;
+    }
+    await updateContactFields(contact.id, fields);
     console.log(`CF webhook: updated fields for contact ${contact.id}`);
 
     // Move opportunity to Booked stage
@@ -91,7 +105,7 @@ module.exports = async function handler(req, res) {
       console.warn(`CF webhook: no opportunity found for contact ${contact.id}`);
     }
 
-    return res.status(200).json({ success: true, contactId: contact.id });
+    return res.status(200).json({ success: true, contactId: contact.id, teamsLink: !!teamsLink });
   } catch (err) {
     console.error('CF webhook error:', err);
     return res.status(500).json({ error: 'Internal server error' });
