@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funnel Analytics | Scale Enterprises</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="SE ICON DESIGN WHITE.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --azure: #060CB6;
+      --azure-bright: #1A22E6;
+      --black: #000000;
+      --bg: #0A0A12;
+      --card: #111120;
+      --border: #1E1E35;
+      --white: #FFFFFF;
+      --gray-200: #E8E8ED;
+      --gray-300: #CCCCDD;
+      --gray-400: #9999AA;
+      --gray-600: #666677;
+      --green: #22C55E;
+      --green-dim: rgba(34,197,94,0.15);
+      --red: #EF4444;
+      --red-dim: rgba(239,68,68,0.15);
+      --yellow: #EAB308;
+      --yellow-dim: rgba(234,179,8,0.15);
+    }
+    html { font-size: 15px; }
+    body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--white); line-height: 1.6; }
+    .container { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+    h1 { font-size: 1.6rem; font-weight: 800; margin-bottom: 8px; }
+    .subtitle { color: var(--gray-400); font-size: 0.85rem; margin-bottom: 40px; }
+
+    /* Login */
+    .login-box { max-width: 400px; margin: 120px auto; text-align: center; }
+    .login-box h1 { margin-bottom: 24px; }
+    .login-input {
+      width: 100%; padding: 14px 16px; background: var(--card); border: 1px solid var(--border);
+      border-radius: 8px; color: var(--white); font-family: inherit; font-size: 0.9rem; margin-bottom: 16px;
+    }
+    .login-input:focus { outline: none; border-color: var(--azure); }
+
+    /* Buttons */
+    .btn {
+      display: inline-block; padding: 12px 24px; background: var(--azure); color: var(--white);
+      border: none; border-radius: 8px; font-family: inherit; font-size: 0.85rem; font-weight: 700;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .btn:hover { background: var(--azure-bright); }
+    .btn--sm { padding: 8px 16px; font-size: 0.75rem; }
+    .btn--outline {
+      background: transparent; border: 1px solid var(--border); color: var(--gray-300);
+    }
+    .btn--outline:hover { border-color: var(--gray-400); background: rgba(255,255,255,0.03); }
+    .btn--red { background: var(--red); }
+    .btn--red:hover { background: #DC2626; }
+    .btn--green { background: var(--green); }
+    .btn--green:hover { background: #16A34A; }
+
+    /* Cards */
+    .test-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 28px; margin-bottom: 24px;
+    }
+    .test-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
+    .test-name { font-size: 1.1rem; font-weight: 700; }
+    .test-meta { color: var(--gray-400); font-size: 0.75rem; margin-top: 4px; }
+    .status-badge {
+      display: inline-block; padding: 4px 12px; border-radius: 100px; font-size: 0.7rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+    }
+    .status-active { background: var(--green-dim); color: var(--green); }
+    .status-paused { background: var(--yellow-dim); color: var(--yellow); }
+    .status-completed { background: rgba(255,255,255,0.06); color: var(--gray-400); }
+
+    /* Results Table */
+    .results-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+    .results-table th {
+      text-align: left; padding: 10px 16px; font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-400);
+      border-bottom: 1px solid var(--border);
+    }
+    .results-table td {
+      padding: 14px 16px; font-size: 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .results-table tr:last-child td { border-bottom: none; }
+    .rate { font-weight: 700; font-size: 1rem; }
+    .improvement { font-weight: 700; font-size: 0.85rem; }
+    .improvement--positive { color: var(--green); }
+    .improvement--negative { color: var(--red); }
+
+    /* Significance */
+    .significance {
+      padding: 12px 16px; border-radius: 8px; font-size: 0.82rem; margin-bottom: 16px;
+    }
+    .sig-high { background: var(--green-dim); color: var(--green); }
+    .sig-medium { background: var(--yellow-dim); color: var(--yellow); }
+    .sig-low { background: rgba(255,255,255,0.04); color: var(--gray-400); }
+
+    /* Controls */
+    .controls { display: flex; gap: 8px; flex-wrap: wrap; }
+    .weight-control { display: flex; align-items: center; gap: 8px; margin-top: 12px; }
+    .weight-input {
+      width: 60px; padding: 6px 8px; background: var(--bg); border: 1px solid var(--border);
+      border-radius: 6px; color: var(--white); font-family: inherit; font-size: 0.85rem; text-align: center;
+    }
+    .weight-input:focus { outline: none; border-color: var(--azure); }
+    .weight-label { color: var(--gray-400); font-size: 0.8rem; min-width: 100px; }
+
+    /* Create form */
+    .create-form { display: none; }
+    .create-form.open { display: block; }
+    .form-group { margin-bottom: 16px; }
+    .form-label { display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-400); margin-bottom: 6px; }
+    .form-input {
+      width: 100%; padding: 12px 14px; background: var(--bg); border: 1px solid var(--border);
+      border-radius: 8px; color: var(--white); font-family: inherit; font-size: 0.85rem;
+    }
+    .form-input:focus { outline: none; border-color: var(--azure); }
+    .form-row { display: flex; gap: 12px; }
+    .form-row .form-group { flex: 1; }
+
+    .empty-state { text-align: center; padding: 60px 24px; color: var(--gray-400); }
+    .empty-state p { margin-bottom: 24px; }
+
+    /* Snippet */
+    .snippet-box {
+      background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+      padding: 14px; font-family: monospace; font-size: 0.75rem; color: var(--gray-300);
+      overflow-x: auto; white-space: pre; margin-top: 12px; margin-bottom: 8px;
+    }
+    .copy-btn { font-size: 0.7rem; color: var(--azure-bright); cursor: pointer; background: none; border: none; font-family: inherit; font-weight: 600; }
+
+    @media (max-width: 640px) {
+      .form-row { flex-direction: column; }
+      .test-header { flex-direction: column; align-items: flex-start; }
+      .results-table th, .results-table td { padding: 10px 8px; font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login Screen -->
+  <div id="login-screen" class="login-box">
+    <h1>Funnel Analytics</h1>
+    <p style="color: var(--gray-400); font-size: 0.85rem; margin-bottom: 24px;">Enter your admin key to continue</p>
+    <input type="password" id="admin-key-input" class="login-input" placeholder="Admin Key" autofocus>
+    <button class="btn" onclick="login()" style="width: 100%;">Sign In</button>
+    <p id="login-error" style="color: var(--red); font-size: 0.8rem; margin-top: 12px; display: none;">Invalid key</p>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dashboard" class="container" style="display: none;">
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 32px;">
+      <div>
+        <h1>Funnel Analytics</h1>
+        <p class="subtitle" style="margin-bottom: 0;">Split tests &amp; conversion tracking</p>
+      </div>
+      <div class="controls">
+        <button class="btn btn--sm" onclick="loadTests()">Refresh</button>
+        <button class="btn btn--sm btn--outline" onclick="toggleCreateForm()">+ New Test</button>
+      </div>
+    </div>
+
+    <!-- Create Test Form -->
+    <div id="create-form" class="test-card create-form">
+      <h3 style="font-size: 0.95rem; margin-bottom: 20px;">Create New Split Test</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Test Name</label>
+          <input type="text" id="new-test-name" class="form-input" placeholder="e.g. Homepage Headline Test">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Test ID (slug)</label>
+          <input type="text" id="new-test-id" class="form-input" placeholder="e.g. homepage-headline-v2">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Original Page Path</label>
+        <input type="text" id="new-original-path" class="form-input" placeholder="/index.html">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Control Path</label>
+          <input type="text" id="new-control-path" class="form-input" placeholder="/index.html" value="/index.html">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Variant B Path</label>
+          <input type="text" id="new-variant-path" class="form-input" placeholder="/index-b.html">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Control Weight</label>
+          <input type="number" id="new-control-weight" class="form-input" value="50" min="0" max="100">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Variant B Weight</label>
+          <input type="number" id="new-variant-weight" class="form-input" value="50" min="0" max="100">
+        </div>
+      </div>
+      <div style="display: flex; gap: 8px; margin-top: 8px;">
+        <button class="btn btn--sm" onclick="createTest()">Create Test</button>
+        <button class="btn btn--sm btn--outline" onclick="toggleCreateForm()">Cancel</button>
+      </div>
+    </div>
+
+    <!-- Tests List -->
+    <div id="tests-list"></div>
+  </div>
+
+  <script>
+    var API_BASE = 'https://scale-enterprises-site.vercel.app';
+    var adminKey = '';
+
+    // --- Login ---
+    document.getElementById('admin-key-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') login();
+    });
+
+    function login() {
+      adminKey = document.getElementById('admin-key-input').value.trim();
+      if (!adminKey) return;
+      // Test the key by fetching results
+      fetch(API_BASE + '/api/ab/results', {
+        headers: { 'Authorization': 'Bearer ' + adminKey }
+      }).then(function(r) {
+        if (r.ok) {
+          localStorage.setItem('_se_ab_key', adminKey);
+          document.getElementById('login-screen').style.display = 'none';
+          document.getElementById('dashboard').style.display = 'block';
+          return r.json();
+        } else {
+          throw new Error('Invalid');
+        }
+      }).then(function(data) {
+        renderTests(data.tests);
+      }).catch(function() {
+        document.getElementById('login-error').style.display = 'block';
+      });
+    }
+
+    // Auto-login from stored key
+    var storedKey = localStorage.getItem('_se_ab_key');
+    if (storedKey) {
+      document.getElementById('admin-key-input').value = storedKey;
+      login();
+    }
+
+    // --- API helpers ---
+    function apiGet(path) {
+      return fetch(API_BASE + path, {
+        headers: { 'Authorization': 'Bearer ' + adminKey }
+      }).then(function(r) { return r.json(); });
+    }
+
+    function apiPost(path, body) {
+      return fetch(API_BASE + path, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + adminKey },
+        body: JSON.stringify(body)
+      }).then(function(r) { return r.json(); });
+    }
+
+    // --- Load & Render ---
+    function loadTests() {
+      apiGet('/api/ab/results').then(function(data) {
+        renderTests(data.tests);
+      });
+    }
+
+    function renderTests(tests) {
+      var container = document.getElementById('tests-list');
+
+      if (!tests || tests.length === 0) {
+        container.innerHTML = '<div class="empty-state"><p>No split tests yet. Create your first test to get started.</p></div>';
+        return;
+      }
+
+      var html = '';
+      for (var i = 0; i < tests.length; i++) {
+        var t = tests[i];
+        var statusClass = 'status-' + t.status;
+        var totalViews = 0;
+        var totalConversions = 0;
+
+        for (var v = 0; v < t.variants.length; v++) {
+          totalViews += t.variants[v].views;
+          totalConversions += t.variants[v].conversions;
+        }
+
+        html += '<div class="test-card" id="test-' + t.test_id + '">';
+        html += '<div class="test-header">';
+        html += '<div><div class="test-name">' + escHtml(t.test_name) + '</div>';
+        html += '<div class="test-meta">' + escHtml(t.test_id) + ' &middot; ' + totalViews + ' total views &middot; ' + totalConversions + ' conversions &middot; Started ' + formatDate(t.created_at) + '</div></div>';
+        html += '<span class="status-badge ' + statusClass + '">' + t.status + '</span>';
+        html += '</div>';
+
+        // Results table
+        html += '<table class="results-table"><thead><tr>';
+        html += '<th>Variant</th><th>Weight</th><th>Views</th><th>Conversions</th><th>Rate</th><th>vs Control</th>';
+        html += '</tr></thead><tbody>';
+
+        var controlRate = t.variants.length > 0 ? t.variants[0].rate : 0;
+        for (var v = 0; v < t.variants.length; v++) {
+          var variant = t.variants[v];
+          var improvement = '';
+          if (v > 0 && controlRate > 0) {
+            var pctChange = ((variant.rate - controlRate) / controlRate * 100).toFixed(1);
+            var cls = parseFloat(pctChange) >= 0 ? 'improvement--positive' : 'improvement--negative';
+            var sign = parseFloat(pctChange) >= 0 ? '+' : '';
+            improvement = '<span class="improvement ' + cls + '">' + sign + pctChange + '%</span>';
+          } else if (v === 0) {
+            improvement = '<span style="color: var(--gray-600);">Control</span>';
+          }
+
+          html += '<tr>';
+          html += '<td><strong>' + escHtml(variant.id) + '</strong><br><span style="font-size:0.75rem;color:var(--gray-400)">' + escHtml(variant.path) + '</span></td>';
+          html += '<td>' + variant.weight + '%</td>';
+          html += '<td>' + variant.views.toLocaleString() + '</td>';
+          html += '<td>' + variant.conversions.toLocaleString() + '</td>';
+          html += '<td class="rate">' + variant.rate.toFixed(2) + '%</td>';
+          html += '<td>' + improvement + '</td>';
+          html += '</tr>';
+        }
+        html += '</tbody></table>';
+
+        // Significance
+        if (t.significance) {
+          var sigClass = 'sig-low';
+          var sigText = '';
+          if (t.significance.confidence >= 95) {
+            sigClass = 'sig-high';
+            sigText = 'Winner: <strong>' + escHtml(t.significance.winner) + '</strong> with ' + t.significance.confidence + '% confidence';
+          } else if (t.significance.confidence >= 80) {
+            sigClass = 'sig-medium';
+            sigText = 'Trending: ' + t.significance.confidence + '% confidence &mdash; need more data (target: 95%)';
+          } else {
+            sigText = t.significance.confidence + '% confidence &mdash; not enough data yet';
+          }
+          html += '<div class="significance ' + sigClass + '">' + sigText + '</div>';
+        } else if (totalViews > 0) {
+          html += '<div class="significance sig-low">Not enough data for significance calculation</div>';
+        }
+
+        // Weight controls
+        html += '<div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border);">';
+        html += '<div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-400); margin-bottom: 8px;">Traffic Split</div>';
+        for (var v = 0; v < t.variants.length; v++) {
+          html += '<div class="weight-control">';
+          html += '<span class="weight-label">' + escHtml(t.variants[v].id) + '</span>';
+          html += '<input type="number" class="weight-input" id="weight-' + t.test_id + '-' + t.variants[v].id + '" value="' + t.variants[v].weight + '" min="0" max="100">';
+          html += '<span style="color: var(--gray-600); font-size: 0.8rem;">%</span>';
+          html += '</div>';
+        }
+        html += '<div style="margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap;">';
+        html += '<button class="btn btn--sm" onclick="updateWeights(\'' + t.test_id + '\', ' + JSON.stringify(t.variants.map(function(vv){return vv.id;})).replace(/'/g, "\\'") + ')">Save Weights</button>';
+
+        if (t.status === 'active') {
+          html += '<button class="btn btn--sm btn--outline" onclick="updateStatus(\'' + t.test_id + '\', \'paused\')">Pause</button>';
+        } else if (t.status === 'paused') {
+          html += '<button class="btn btn--sm btn--green" onclick="updateStatus(\'' + t.test_id + '\', \'active\')">Resume</button>';
+          html += '<button class="btn btn--sm btn--outline" onclick="updateStatus(\'' + t.test_id + '\', \'completed\')">Complete</button>';
+        }
+        html += '<button class="btn btn--sm btn--red" onclick="deleteTest(\'' + t.test_id + '\')">Delete</button>';
+        html += '</div></div>';
+
+        // Code snippet
+        html += '<div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border);">';
+        html += '<div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray-400); margin-bottom: 4px;">Page Snippet</div>';
+        html += '<p style="font-size: 0.75rem; color: var(--gray-600); margin-bottom: 4px;">Add this to the &lt;head&gt; of your landing page (replace the empty __AB_TESTS array):</p>';
+        var snippet = '<script>window.__AB_TESTS = [' + JSON.stringify({test_id: t.test_id, original_path: t.original_path, variants: t.variants.map(function(vv){ return {id:vv.id, path:vv.path, weight:vv.weight}; })}) + '];<\/script>';
+        html += '<div class="snippet-box" id="snippet-' + t.test_id + '">' + escHtml(snippet) + '</div>';
+        html += '<button class="copy-btn" onclick="copySnippet(\'' + t.test_id + '\')">Copy to clipboard</button>';
+        html += '</div>';
+
+        html += '</div>';
+      }
+
+      container.innerHTML = html;
+    }
+
+    // --- Actions ---
+    function toggleCreateForm() {
+      document.getElementById('create-form').classList.toggle('open');
+    }
+
+    function createTest() {
+      var testName = document.getElementById('new-test-name').value.trim();
+      var testId = document.getElementById('new-test-id').value.trim();
+      var originalPath = document.getElementById('new-original-path').value.trim();
+      var controlPath = document.getElementById('new-control-path').value.trim();
+      var variantPath = document.getElementById('new-variant-path').value.trim();
+      var controlWeight = parseInt(document.getElementById('new-control-weight').value) || 50;
+      var variantWeight = parseInt(document.getElementById('new-variant-weight').value) || 50;
+
+      if (!testName || !testId || !originalPath || !controlPath || !variantPath) {
+        alert('Please fill in all fields');
+        return;
+      }
+
+      apiPost('/api/ab/admin', {
+        action: 'create',
+        test_id: testId,
+        test_name: testName,
+        original_path: originalPath,
+        variants: [
+          { id: 'control', path: controlPath, weight: controlWeight },
+          { id: 'variant-b', path: variantPath, weight: variantWeight }
+        ]
+      }).then(function(data) {
+        if (data.success) {
+          toggleCreateForm();
+          loadTests();
+          // Clear form
+          document.getElementById('new-test-name').value = '';
+          document.getElementById('new-test-id').value = '';
+          document.getElementById('new-original-path').value = '';
+          document.getElementById('new-variant-path').value = '';
+        } else {
+          alert(data.error || 'Failed to create test');
+        }
+      });
+    }
+
+    function updateStatus(testId, status) {
+      apiPost('/api/ab/admin', { action: 'update_status', test_id: testId, status: status }).then(function() { loadTests(); });
+    }
+
+    function updateWeights(testId, variantIds) {
+      var variants = [];
+      for (var i = 0; i < variantIds.length; i++) {
+        var weight = parseInt(document.getElementById('weight-' + testId + '-' + variantIds[i]).value) || 0;
+        variants.push({ id: variantIds[i], weight: weight });
+      }
+      apiPost('/api/ab/admin', { action: 'update_weights', test_id: testId, variants: variants }).then(function() { loadTests(); });
+    }
+
+    function deleteTest(testId) {
+      if (!confirm('Delete this test and all its data? This cannot be undone.')) return;
+      apiPost('/api/ab/admin', { action: 'delete', test_id: testId }).then(function() { loadTests(); });
+    }
+
+    function copySnippet(testId) {
+      var el = document.getElementById('snippet-' + testId);
+      navigator.clipboard.writeText(el.textContent).then(function() {
+        alert('Copied to clipboard!');
+      });
+    }
+
+    // --- Helpers ---
+    function escHtml(str) {
+      var div = document.createElement('div');
+      div.appendChild(document.createTextNode(str));
+      return div.innerHTML;
+    }
+
+    function formatDate(iso) {
+      var d = new Date(iso);
+      return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
+  </script>
+</body>
+</html>

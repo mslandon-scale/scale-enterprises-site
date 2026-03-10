@@ -74,13 +74,20 @@
   window.SE_getAttribution = function() {
     var firstTouch = JSON.parse(localStorage.getItem('_se_first_touch') || '{}');
     var lastTouch = JSON.parse(localStorage.getItem('_se_last_touch') || '{}');
+    // Include A/B test assignments if available
+    var abAssignments = window.__SE_AB_ASSIGNMENTS || null;
+    if (!abAssignments) {
+      var abMatch = document.cookie.match(/(^|;\s*)_se_ab=([^;]+)/);
+      if (abMatch) { try { abAssignments = JSON.parse(decodeURIComponent(abMatch[2])); } catch(e) {} }
+    }
     return {
       visitor_id: visitorId,
       first_touch: firstTouch,
       last_touch: lastTouch,
       current_page: window.location.href,
       user_agent: navigator.userAgent,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      ab_variants: abAssignments
     };
   };
 })();
