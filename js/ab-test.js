@@ -34,19 +34,23 @@
     return match ? match[2] : null;
   }
 
-  // --- Main logic ---
-  var tests = window.__AB_TESTS || [];
-  if (!tests.length) return;
+  // --- Get URL param ---
+  function getParam(name) {
+    var match = window.location.search.match(new RegExp('[?&]' + name + '=([^&]+)'));
+    return match ? decodeURIComponent(match[1]) : null;
+  }
 
   var currentPath = window.location.pathname;
-  var assignments = getAbCookie();
   var visitorId = getVisitorId();
+  var assignments = getAbCookie();
   var changed = false;
+  var currentVariant = null;
 
+  // --- A/B Test Logic ---
+  var tests = window.__AB_TESTS || [];
   for (var t = 0; t < tests.length; t++) {
     var test = tests[t];
 
-    // Check if current page is part of this test
     var isTestPage = false;
     for (var v = 0; v < test.variants.length; v++) {
       if (currentPath === test.variants[v].path || currentPath === test.variants[v].path.replace(/\.html$/, '') || currentPath + 'index.html' === test.variants[v].path) {
@@ -54,11 +58,9 @@
         break;
       }
     }
-    // Also check if we're on root and test targets /index.html
     if (currentPath === '/' && test.original_path === '/index.html') isTestPage = true;
     if (!isTestPage) continue;
 
-    // Assign variant if not already assigned
     if (!assignments[test.test_id]) {
       var picked = pickVariant(test.variants);
       assignments[test.test_id] = picked.id;
@@ -66,8 +68,8 @@
     }
 
     var assignedVariantId = assignments[test.test_id];
+    currentVariant = assignedVariantId;
 
-    // Find the assigned variant's path
     var assignedPath = null;
     for (var a = 0; a < test.variants.length; a++) {
       if (test.variants[a].id === assignedVariantId) {
@@ -76,7 +78,6 @@
       }
     }
 
-    // Redirect if we're not on the right page
     if (assignedPath) {
       var onCorrectPage = currentPath === assignedPath ||
         (currentPath === '/' && assignedPath === '/index.html') ||
@@ -89,7 +90,7 @@
       }
     }
 
-    // Fire pageview (deduplicated by visitor_id on server)
+    // Fire AB pageview
     if (visitorId) {
       try {
         navigator.sendBeacon(API_BASE + '/api/ab?route=event', JSON.stringify({
@@ -103,7 +104,19 @@
   }
 
   if (changed) setAbCookie(assignments);
-
-  // Expose assignments for attribution
   window.__SE_AB_ASSIGNMENTS = assignments;
+
+  // --- Page View Tracking ---
+  try {
+    navigator.sendBeacon(API_BASE + '/api/pageview', JSON.stringify({
+      visitor_id: visitorId,
+      page_path: currentPath,
+      page_title: document.title,
+      referrer: document.referrer || null,
+      utm_source: getParam('utm_source'),
+      utm_medium: getParam('utm_medium'),
+      utm_campaign: getParam('utm_campaign'),
+      ab_variant: currentVariant
+    }));
+  } catch(e) {}
 })();

@@ -18,7 +18,9 @@ const CUSTOM_FIELD_MAP = {
   cost_of_inaction: 'MJZSBUHmRzvyULUfLslc',
   why_you: 'pFf3san0U1uxRdmpK86f',
   past_attempts: 'cNqNPUDYBIIsAi4029zi',
-  objections: 'vcInWmPsH9Vavtk44IKv'
+  objections: 'vcInWmPsH9Vavtk44IKv',
+  appointment_date: 'C498uJg6ggZS6AW3pgnr',
+  appointment_time: 'xoF9MdFSDcUtUADcrdaJ'
 };
 
 function formatCustomFields(fields) {

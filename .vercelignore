@@ -1,0 +1,6 @@
+node_modules
+landingpagevideo.mp4
+.env*.local
+.git
+.claude
+Examples
