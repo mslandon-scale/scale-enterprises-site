@@ -226,7 +226,7 @@
       adminKey = document.getElementById('admin-key-input').value.trim();
       if (!adminKey) return;
       // Test the key by fetching results
-      fetch(API_BASE + '/api/ab/results', {
+      fetch(API_BASE + '/api/ab?route=results', {
         headers: { 'Authorization': 'Bearer ' + adminKey }
       }).then(function(r) {
         if (r.ok) {
@@ -268,7 +268,7 @@
 
     // --- Load & Render ---
     function loadTests() {
-      apiGet('/api/ab/results').then(function(data) {
+      apiGet('/api/ab?route=results').then(function(data) {
         renderTests(data.tests);
       });
     }
@@ -403,7 +403,7 @@
         return;
       }
 
-      apiPost('/api/ab/admin', {
+      apiPost('/api/ab?route=admin', {
         action: 'create',
         test_id: testId,
         test_name: testName,
@@ -428,7 +428,7 @@
     }
 
     function updateStatus(testId, status) {
-      apiPost('/api/ab/admin', { action: 'update_status', test_id: testId, status: status }).then(function() { loadTests(); });
+      apiPost('/api/ab?route=admin', { action: 'update_status', test_id: testId, status: status }).then(function() { loadTests(); });
     }
 
     function updateWeights(testId, variantIds) {
@@ -437,12 +437,12 @@
         var weight = parseInt(document.getElementById('weight-' + testId + '-' + variantIds[i]).value) || 0;
         variants.push({ id: variantIds[i], weight: weight });
       }
-      apiPost('/api/ab/admin', { action: 'update_weights', test_id: testId, variants: variants }).then(function() { loadTests(); });
+      apiPost('/api/ab?route=admin', { action: 'update_weights', test_id: testId, variants: variants }).then(function() { loadTests(); });
     }
 
     function deleteTest(testId) {
       if (!confirm('Delete this test and all its data? This cannot be undone.')) return;
-      apiPost('/api/ab/admin', { action: 'delete', test_id: testId }).then(function() { loadTests(); });
+      apiPost('/api/ab?route=admin', { action: 'delete', test_id: testId }).then(function() { loadTests(); });
     }
 
     function copySnippet(testId) {

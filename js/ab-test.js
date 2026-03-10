@@ -92,7 +92,7 @@
     // Fire pageview (deduplicated by visitor_id on server)
     if (visitorId) {
       try {
-        navigator.sendBeacon(API_BASE + '/api/ab/event', JSON.stringify({
+        navigator.sendBeacon(API_BASE + '/api/ab?route=event', JSON.stringify({
           test_id: test.test_id,
           variant_id: assignedVariantId,
           visitor_id: visitorId,
