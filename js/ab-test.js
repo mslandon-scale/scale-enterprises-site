@@ -93,12 +93,12 @@
     // Fire AB pageview
     if (visitorId) {
       try {
-        navigator.sendBeacon(API_BASE + '/api/ab?route=event', JSON.stringify({
+        navigator.sendBeacon(API_BASE + '/api/ab?route=event', new Blob([JSON.stringify({
           test_id: test.test_id,
           variant_id: assignedVariantId,
           visitor_id: visitorId,
           event_type: 'pageview'
-        }));
+        })], { type: 'application/json' }));
       } catch(e) {}
     }
   }
@@ -108,7 +108,7 @@
 
   // --- Page View Tracking ---
   try {
-    navigator.sendBeacon(API_BASE + '/api/pageview', JSON.stringify({
+    navigator.sendBeacon(API_BASE + '/api/pageview', new Blob([JSON.stringify({
       visitor_id: visitorId,
       page_path: currentPath,
       page_title: document.title,
@@ -117,6 +117,6 @@
       utm_medium: getParam('utm_medium'),
       utm_campaign: getParam('utm_campaign'),
       ab_variant: currentVariant
-    }));
+    })], { type: 'application/json' }));
   } catch(e) {}
 })();
