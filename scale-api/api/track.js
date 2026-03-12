@@ -87,16 +87,15 @@ module.exports = async function handler(req, res) {
       pipelineStage: qualified ? 'APPLIED_QUALIFIED' : 'APPLIED_NOT_QUALIFIED'
     }));
 
-    // DB writes run in parallel; GHL must succeed
+    // DB writes run in parallel; GHL is non-blocking
     const [, contactResult] = await Promise.all([visitorPromise, contactPromise]);
+    const contactId = contactResult.rows[0].id;
     let ghlContactId;
     try {
       ghlContactId = await ghlPromise;
     } catch (err) {
       console.error('GHL contact creation failed after retry:', err.message);
-      return res.status(500).json({ error: 'Failed to create contact. Please try again.' });
     }
-    const contactId = contactResult.rows[0].id;
 
     // Link GHL contact to DB record
     if (ghlContactId) {
