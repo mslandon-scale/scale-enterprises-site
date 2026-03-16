@@ -133,6 +133,13 @@
       -webkit-appearance: none;
     }
 
+    .sq-input--single {
+      min-height: auto;
+      resize: none;
+      height: auto;
+      padding: 14px 16px;
+    }
+
     .sq-input:focus {
       border-color: var(--azure);
     }
@@ -274,6 +281,14 @@
       <form id="sq-form">
 
         <div class="sq-question">
+          <label class="sq-label">Email address you booked your call with</label>
+          <span class="sq-helper">So we can match your answers to your appointment and have everything ready for your call.</span>
+          <input type="email" class="sq-input sq-input--single" name="contact_email_input" required placeholder="you@example.com">
+        </div>
+
+        <div class="sq-divider" style="margin: 36px 0;"></div>
+
+        <div class="sq-question">
           <span class="sq-question-number">Question 1 of 7</span>
           <label class="sq-label">What does your business look like when it's working without you?</label>
           <span class="sq-helper">Paint the picture. Revenue, lifestyle, team, freedom. What does the end state actually look like for you? Be specific.</span>
@@ -363,13 +378,16 @@
       submitBtn.disabled = true;
       submitBtn.textContent = 'Submitting...';
 
-      // Get contact email from URL param (passed by ClickFunnels embed)
+      // Get contact email from form input, fall back to URL param
       var urlParams = new URLSearchParams(window.location.search);
-      var contactEmail = urlParams.get('email') || urlParams.get('contact_email') || '';
+      var emailInput = this.querySelector('[name="contact_email_input"]');
+      var contactEmail = (emailInput && emailInput.value.trim()) || urlParams.get('email') || urlParams.get('contact_email') || '';
 
       var formData = new FormData(this);
       var answers = {};
-      formData.forEach(function(value, key) { answers[key] = value; });
+      formData.forEach(function(value, key) {
+        if (key !== 'contact_email_input') answers[key] = value;
+      });
 
       var attribution = typeof SE_getAttribution === 'function' ? SE_getAttribution() : {};
 
