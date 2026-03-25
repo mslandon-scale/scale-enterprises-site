@@ -7,6 +7,7 @@ function isAllowedOrigin(origin) {
   if (!origin) return false;
   if (ALLOWED_ORIGINS.includes(origin)) return true;
   if (origin.endsWith('.myclickfunnels.com')) return true;
+  if (origin.endsWith('.scaleenterprises.com')) return true;
   return false;
 }
 
