@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scale Enterprises - Your Free Masterclass Is Ready</title>
+  <meta name="description" content="Your free Enterprise Masterclass is ready. Schedule your free Enterprise Strategy Session to accelerate your transformation.">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #000000;
+      --surface: #0a0a0f;
+      --surface-dark: #050510;
+      --navy: #02032E;
+      --blue: #060CB6;
+      --gold: #F6D43F;
+      --white: #ffffff;
+      --white-soft: rgba(255,255,255,0.85);
+      --muted: #9ca3af;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .nav-brand {
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      color: var(--white); font-size: 1.25rem;
+      letter-spacing: 0.25em; text-transform: uppercase;
+    }
+
+    /* HERO BRIDGE */
+    .hero-bridge {
+      background: var(--black);
+      padding-top: 8rem;
+      padding-bottom: 4rem;
+      text-align: center;
+    }
+    .hero-bridge-inner {
+      max-width: 48rem;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .eyebrow {
+      color: var(--muted);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      font-weight: 500;
+    }
+    .hero-bridge h1 {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--gold);
+      line-height: 1.15;
+      margin-top: 1rem;
+    }
+    .hero-bridge .body-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.125rem;
+      color: var(--white-soft);
+      max-width: 40rem;
+      margin: 1.5rem auto 0;
+      line-height: 1.7;
+    }
+
+    /* STAGGERED HERO ANIMATIONS */
+    .hero-stagger {
+      opacity: 0; transform: translateY(24px);
+      animation: staggerUp 0.7s ease forwards;
+    }
+    .hero-stagger:nth-child(1) { animation-delay: 0.2s; }
+    .hero-stagger:nth-child(2) { animation-delay: 0.4s; }
+    .hero-stagger:nth-child(3) { animation-delay: 0.6s; }
+
+    @keyframes staggerUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* VIDEO PLAYER */
+    .video-section {
+      padding: 0 1.5rem 4rem;
+    }
+    .video-wrap {
+      max-width: 42rem;
+      margin: 0 auto;
+      border-radius: 0.75rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+    }
+    .video-topbar {
+      background: #18181b;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .video-topbar-title {
+      color: var(--white);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 600;
+    }
+    .video-topbar-icon {
+      color: var(--muted);
+    }
+    .video-area {
+      position: relative;
+      aspect-ratio: 16/9;
+      background: #27272a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .play-btn {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s, filter 0.2s;
+    }
+    .play-btn:hover {
+      transform: scale(1.08);
+      filter: brightness(1.1);
+    }
+    .play-btn svg {
+      width: 28px; height: 28px;
+      margin-left: 4px;
+    }
+    .video-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .video-overlay.active {
+      display: flex;
+    }
+    .video-overlay-text {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--white);
+    }
+    .video-overlay-sub {
+      color: var(--muted);
+      font-size: 0.875rem;
+    }
+    .video-stats {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .video-stats-number {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 1.875rem;
+      color: var(--white);
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid var(--gold);
+      display: inline-block;
+    }
+    .video-stats-label {
+      color: var(--muted);
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+    }
+
+    /* PRIMARY CTA */
+    .cta-section {
+      padding: 0 1.5rem 4rem;
+    }
+    .cta-box {
+      max-width: 36rem;
+      margin: 0 auto;
+      border: 2px solid var(--gold);
+      border-radius: 0.75rem;
+      padding: 2rem;
+      text-align: center;
+    }
+    .cta-box h2 {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+    .cta-box .cta-sub {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+    .btn-gold {
+      display: inline-block; position: relative;
+      background: var(--gold); color: var(--black);
+      font-weight: 700; font-size: 1.125rem;
+      padding: 1.25rem 2rem;
+      border: none; border-radius: 2px;
+      cursor: pointer; text-decoration: none;
+      transition: all 0.2s; overflow: hidden;
+      width: 100%;
+      text-align: center;
+    }
+    .btn-gold:hover {
+      filter: brightness(1.1);
+      transform: translateY(-1px);
+    }
+    .btn-gold::after {
+      content: ''; position: absolute; inset: -2px;
+      background: var(--gold); border-radius: 4px;
+      opacity: 0; z-index: -1;
+      animation: btnPulse 3s ease-in-out infinite;
+    }
+    @keyframes btnPulse {
+      0%, 100% { opacity: 0; transform: scale(1); filter: blur(8px); }
+      50% { opacity: 0.3; transform: scale(1.05); filter: blur(12px); }
+    }
+    .skip-link {
+      display: block;
+      text-align: center;
+      margin-top: 1.25rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+    .skip-link:hover { color: var(--white); }
+
+    /* CAL.COM EMBED */
+    .booking-section {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.6s ease, opacity 0.5s ease, margin 0.5s ease;
+      margin: 0 auto;
+      max-width: 42rem;
+      padding: 0 1.5rem;
+    }
+    .booking-section.open {
+      max-height: 800px;
+      opacity: 1;
+      margin-top: 2rem;
+      margin-bottom: 3rem;
+    }
+    .booking-inner {
+      border-radius: 0.75rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      overflow: hidden;
+      background: #18181b;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem;
+    }
+    .booking-placeholder {
+      text-align: center;
+      color: var(--muted);
+    }
+    .booking-placeholder span {
+      display: block;
+      font-family: 'Sora', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials-section {
+      position: relative; background: var(--black);
+      padding: 6rem 0; overflow: hidden;
+    }
+    .container {
+      max-width: 1280px; margin: 0 auto; padding: 0 1.5rem;
+    }
+    .section-heading {
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      font-size: 1.875rem; color: var(--white);
+      text-align: center;
+    }
+    .section-subheading {
+      text-align: center; color: var(--muted);
+      font-size: 1rem; margin-top: 0.5rem;
+    }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .testimonial-card {
+      background: var(--surface); border-radius: 0.75rem;
+      border: 1px solid rgba(255,255,255,0.05);
+      padding: 2rem; display: flex; flex-direction: column;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,0.12);
+    }
+    .testimonial-stat {
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      font-size: 1.25rem; color: var(--gold);
+      margin-bottom: 1rem; line-height: 1.3;
+    }
+    .testimonial-divider {
+      width: 3rem; height: 2px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      margin-bottom: 1rem;
+    }
+    .testimonial-quote {
+      color: var(--white-soft); font-size: 0.95rem;
+      line-height: 1.7; flex: 1; font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+    .testimonial-quote::before { content: "\201C "; }
+    .testimonial-quote::after { content: " \201D"; }
+    .testimonial-author {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .testimonial-avatar {
+      width: 2.5rem; height: 2.5rem; border-radius: 50%;
+      background: var(--surface); border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .testimonial-avatar span {
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      color: var(--white); font-size: 0.875rem;
+    }
+    .testimonial-name {
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      color: var(--white); font-size: 0.875rem;
+    }
+    .testimonial-role {
+      color: var(--muted); font-size: 0.8rem;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: var(--navy);
+      padding: 4rem 1.5rem;
+    }
+    .footer-inner {
+      max-width: 72rem;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1.5fr 0.75fr;
+      gap: 3rem;
+    }
+    .footer-brand-name {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      color: var(--white);
+      font-size: 1rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .footer-tagline {
+      color: var(--muted);
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+    }
+    .footer-what-label {
+      color: var(--muted);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .footer-disclaimer-text {
+      color: var(--muted);
+      font-size: 0.7rem;
+      line-height: 1.6;
+    }
+    .footer-heading {
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+    }
+    .footer-legal-text {
+      color: var(--muted);
+      font-size: 0.7rem;
+      line-height: 1.7;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .footer-links a {
+      color: var(--muted);
+      font-size: 0.875rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      text-align: center;
+    }
+    .footer-copyright {
+      color: var(--muted);
+      font-size: 0.7rem;
+    }
+
+    /* SCROLL ANIMATIONS */
+    .fade-up {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    .fade-up-scale {
+      opacity: 0; transform: translateY(20px) scale(0.97);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up-scale.visible { opacity: 1; transform: translateY(0) scale(1); }
+
+    .stagger-children .fade-up:nth-child(1) { transition-delay: 0s; }
+    .stagger-children .fade-up:nth-child(2) { transition-delay: 0.1s; }
+    .stagger-children .fade-up:nth-child(3) { transition-delay: 0.2s; }
+    .stagger-children .fade-up:nth-child(4) { transition-delay: 0.3s; }
+    .stagger-children .fade-up:nth-child(5) { transition-delay: 0.4s; }
+    .stagger-children .fade-up:nth-child(6) { transition-delay: 0.5s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .hero-bridge { padding-top: 6rem; }
+      .hero-bridge h1 { font-size: 2rem; }
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <span class="nav-brand">Scale Enterprises</span>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- HERO BRIDGE -->
+    <section class="hero-bridge">
+      <div class="hero-bridge-inner">
+        <h1 class="hero-stagger">Your Free Course Is On The Next Page</h1>
+        <p class="body-text hero-stagger">BUT &mdash; if you're serious about actually transforming your business and want us to help you do it QUICKLY and without guessing &mdash; click below and schedule your free Enterprise Strategy Session first.</p>
+      </div>
+    </section>
+
+    <!-- VIDEO PLAYER -->
+    <section class="video-section fade-up">
+      <div class="video-wrap">
+        <div class="video-topbar">
+          <span class="video-topbar-title">The Enterprise Code Preview</span>
+          <span class="video-topbar-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            </svg>
+          </span>
+        </div>
+        <div class="video-area" id="videoArea">
+          <div class="play-btn">
+            <svg viewBox="0 0 24 24" fill="#000000">
+              <polygon points="6,3 20,12 6,21"></polygon>
+            </svg>
+          </div>
+          <div class="video-overlay" id="videoOverlay">
+            <span class="video-overlay-text">Video Coming Soon</span>
+            <span class="video-overlay-sub">Check back shortly for the full preview</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIMARY CTA -->
+    <section class="cta-section fade-up-scale" id="ctaSection">
+      <div style="max-width:36rem; margin:0 auto;">
+        <button class="btn-gold" id="ctaButton">Schedule Your Free Enterprise Consult &rarr;</button>
+      </div>
+      <a href="/masterclass" class="skip-link">No thanks, I'll just watch the free course for now &rarr;</a>
+    </section>
+
+    <!-- CAL.COM EMBED AREA -->
+    <div class="booking-section" id="bookingSection">
+      <div class="booking-inner">
+        <!-- Replace with actual Cal.com embed script -->
+        <div class="booking-placeholder">
+          <span>BOOKING WIDGET</span>
+          Cal.com embed goes here
+        </div>
+      </div>
+    </div>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials-section">
+      <div class="container">
+        <h2 class="section-heading fade-up">Real Entrepreneurs. Real Results.</h2>
+        <p class="section-subheading fade-up">See how this information has transformed their businesses</p>
+        <div class="testimonials-grid stagger-children">
+
+          <div class="testimonial-card fade-up">
+            <div class="testimonial-stat">3x efficiency in 7 days</div>
+            <div class="testimonial-divider"></div>
+            <p class="testimonial-quote">Within the first week, our team was operating at triple the efficiency. The strategy alone changed everything about how we run the business.</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar"><span>J</span></div>
+              <div>
+                <p class="testimonial-name">Jason</p>
+                <p class="testimonial-role">Service Business Owner</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card fade-up">
+            <div class="testimonial-stat">On track to double twice in 2026</div>
+            <div class="testimonial-divider"></div>
+            <p class="testimonial-quote">I don't know how I was running my business before I went through this program. It's so much easier and we're growing so much faster.</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar"><span>M</span></div>
+              <div>
+                <p class="testimonial-name">Molly</p>
+                <p class="testimonial-role">Commercial Cleaning Company</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card fade-up">
+            <div class="testimonial-stat">$0 &#8594; 7 figures in 6 months</div>
+            <div class="testimonial-divider"></div>
+            <p class="testimonial-quote">As we applied these enterprise-level strategies in our business, we hit 7 figures faster than I ever thought was possible.</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar"><span>R</span></div>
+              <div>
+                <p class="testimonial-name">Ryan</p>
+                <p class="testimonial-role">Startup Founder</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+
+      <div>
+        <div class="footer-brand-name">Scale Enterprises</div>
+        <p class="footer-tagline">Join the next generation of enterprise operators.</p>
+        <p class="footer-what-label">What We Are &amp; Are Not:</p>
+        <p class="footer-disclaimer-text">Scale Enterprises is a platform that helps service business owners design and execute business transformation strategies. We provide instructive content, frameworks, software tools, and strategic guidance &mdash; not investment offerings or guaranteed outcomes. We do not promise earnings, assign clients, or guarantee capital. Clients are fully responsible for their own strategy and execution.</p>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Disclaimers</h4>
+        <p class="footer-legal-text">All information shared represents the sole thoughts and opinions of the author. Do not take any information as legal or financial advice. Seek a certified accountant and professional legal team before taking action. *Results may vary depending on a number of factors including but not limited to market conditions, execution quality, and business type. Results are not guaranteed. Not all clients will achieve similar outcomes. **Any reference to client revenue figures is based on self-reported data from clients. These numbers have not been independently audited or verified. This site is not part of or endorsed by Facebook, Google, or any other platform. FACEBOOK is a trademark of META, Inc.</p>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Legal</h4>
+        <ul class="footer-links">
+          <li><a href="/terms">Terms of Service</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">&copy; 2026 Scale Enterprises LLC. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // ============================================================
+    // INTERSECTION OBSERVER — scroll fade-up animations
+    // ============================================================
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    document.querySelectorAll('.fade-up, .fade-up-scale').forEach((el) => {
+      observer.observe(el);
+    });
+
+    // ============================================================
+    // VIDEO PLAY BUTTON — toggle "Coming Soon" overlay
+    // ============================================================
+    const videoArea = document.getElementById('videoArea');
+    const videoOverlay = document.getElementById('videoOverlay');
+
+    videoArea.addEventListener('click', () => {
+      videoOverlay.classList.toggle('active');
+    });
+
+    // ============================================================
+    // CTA BUTTONS — reveal booking section & scroll
+    // ============================================================
+    const bookingSection = document.getElementById('bookingSection');
+
+    function openBooking() {
+      bookingSection.classList.add('open');
+      setTimeout(() => {
+        bookingSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+    }
+
+    document.getElementById('ctaButton').addEventListener('click', openBooking);
+
+    document.querySelectorAll('.cta-trigger').forEach((btn) => {
+      btn.addEventListener('click', openBooking);
+    });
+
+  </script>
+
+</body>
+</html>
