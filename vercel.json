@@ -1,3 +1,7 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "framework": "nextjs",
+  "installCommand": "cd scale-home && npm install",
+  "buildCommand": "cd scale-home && npm run build",
+  "outputDirectory": "scale-home/.next"
 }
