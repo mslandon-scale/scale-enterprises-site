@@ -53,7 +53,7 @@ const sections = [
         <path d="M56 50v-2a6 6 0 0 0-6-6h-2" opacity="0.5" />
       </svg>
     ),
-    color: "navy",
+    color: "accent-gold",
     bgGradient: "from-accent-gold/25 via-accent-gold/[0.08] to-bg-navy",
   },
   {
@@ -63,7 +63,7 @@ const sections = [
     description:
       "Every template, framework, script, and system we've used to build 300+ enterprises — yours to keep forever. From hiring scorecards to financial models to the Enterprise Masterclass video library, this is the complete toolkit.",
     bullets: [
-      "Enterprise Masterclass — 7-module video training library",
+      "Enterprise Masterclass — 7 Masterclass video training library",
       "Plug-and-play templates for every business function",
       "Financial models, forecasting tools, and P&L frameworks",
       "Hiring scorecards, interview scripts, and onboarding checklists",

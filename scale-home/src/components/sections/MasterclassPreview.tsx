@@ -166,11 +166,11 @@ export default function MasterclassPreview() {
           className="flex justify-center mb-8"
         >
           <div className="inline-flex items-center gap-3 bg-accent-gold px-8 py-4 rounded-full shadow-[0_8px_32px_rgba(184,134,11,0.3)]">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-bg-navy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-white">
               <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
               <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
             </svg>
-            <span className="font-body text-[15px] lg:text-[17px] font-bold text-bg-navy uppercase tracking-widest">
+            <span className="font-body text-[15px] lg:text-[17px] font-bold text-white uppercase tracking-widest">
               Audio Version Available
             </span>
           </div>

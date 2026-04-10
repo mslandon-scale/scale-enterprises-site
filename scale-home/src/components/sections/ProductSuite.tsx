@@ -6,7 +6,7 @@ const products = [
   {
     label: "Free",
     title: "Enterprise Masterclass",
-    description: "A free, 7-module video training library that teaches you how to build enterprise systems.",
+    description: "A free, 7 Masterclass video training that teaches you how to build enterprise systems. Audio version included.",
     cta: "Start Free Masterclass",
     href: "https://course.scaleenterprises.com/register",
     primary: false,

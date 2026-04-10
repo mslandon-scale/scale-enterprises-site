@@ -65,12 +65,9 @@ export default function FlagshipCTA() {
           </p>
           <h2 className="font-display text-[36px] lg:text-[56px] leading-[1.05] tracking-[-0.02em] text-white font-extrabold uppercase">
             Build Your Enterprise<span className="text-accent-gold">.</span>
-            <br />
-            Start in 30 Days.
           </h2>
           <p className="font-body text-[19px] text-white/60 leading-[1.7] max-w-lg mx-auto mt-6">
-            Apply now and receive your personalized Enterprise Readiness Assessment —
-            complimentary with your application.
+            Take control of your business and reach your full potential.
           </p>
           <div className="mt-10">
             <a

@@ -151,8 +151,7 @@ export default function Hero() {
               variants={fadeUp(0.1)}
               className="font-body text-[19px] text-text-secondary leading-[1.7] max-w-[480px] mt-6"
             >
-              The 30-Day Enterprise Transformation — go from $500K/yr and overwhelmed
-              to 8-figure systems running in 90 minutes a day.
+              Take control of your business and reach your full potential.
             </motion.p>
 
             {/* Buttons */}
