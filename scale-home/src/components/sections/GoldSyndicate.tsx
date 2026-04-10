@@ -86,7 +86,7 @@ const sections = [
 
 export default function GoldSyndicate() {
   return (
-    <section className="relative bg-bg-navy py-24 lg:py-32 overflow-hidden">
+    <section className="relative bg-bg-navy py-16 lg:py-24 overflow-hidden">
       {/* ═══ PRESTIGE BACKGROUND ELEMENTS ═══ */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Large gold crest ring — top right */}
@@ -147,11 +147,6 @@ export default function GoldSyndicate() {
         <div className="absolute top-0 left-[15%] w-px h-full bg-gradient-to-b from-transparent via-accent-gold/[0.08] to-transparent" />
         <div className="absolute top-0 right-[15%] w-px h-full bg-gradient-to-b from-transparent via-accent-gold/[0.08] to-transparent" />
 
-        {/* Corner laurel-style accents (decorative L-shapes) */}
-        <div className="absolute top-12 left-12 w-20 h-20 border-t-2 border-l-2 border-accent-gold/25 rounded-tl-sm" />
-        <div className="absolute top-12 right-12 w-20 h-20 border-t-2 border-r-2 border-accent-gold/25 rounded-tr-sm" />
-        <div className="absolute bottom-12 left-12 w-20 h-20 border-b-2 border-l-2 border-accent-gold/25 rounded-bl-sm" />
-        <div className="absolute bottom-12 right-12 w-20 h-20 border-b-2 border-r-2 border-accent-gold/25 rounded-br-sm" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
@@ -161,7 +156,7 @@ export default function GoldSyndicate() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, ease: "easeOut" as const }}
-          className="text-center mb-20"
+          className="text-center mb-14"
         >
           <p className="font-body text-[12px] uppercase tracking-eyebrow text-accent-gold font-bold mb-4">
             Our Flagship Program
@@ -254,7 +249,7 @@ export default function GoldSyndicate() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, ease: "easeOut" as const }}
-          className="text-center mt-20 lg:mt-28"
+          className="text-center mt-14 lg:mt-20"
         >
           <div className="flex items-center justify-center gap-4 mb-8">
             <div className="h-px w-20 bg-gradient-to-r from-transparent to-accent-gold/30" />
