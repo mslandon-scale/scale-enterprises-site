@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #FFFFFF;
+  --bg-card: #F7F8FA;
+  --bg-alt: #F1F2F6;
+  --bg-navy: #0A1628;
+  --accent-gold: #B8860B;
+  --accent-blue: #1428A0;
+  --navy: #0F1D32;
+  --navy-light: #1A2D4A;
+  --text-primary: #0F172A;
+  --text-secondary: #334155;
+  --text-muted: #64748B;
+  --border-subtle: rgba(184, 134, 11, 0.25);
+  --border-card: rgba(0, 0, 0, 0.10);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.section-divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.08), transparent);
+}
+
+.radial-glow-blue {
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(15, 29, 50, 0.04) 0%, transparent 70%);
+}
+
+.radial-glow-gold {
+  background: radial-gradient(ellipse 60% 40% at 50% 50%, rgba(184, 134, 11, 0.05) 0%, transparent 70%);
+}
+
+.card-shadow {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.card-shadow-gold {
+  box-shadow: 0 0 0 1px rgba(184, 134, 11, 0.35), 0 8px 40px rgba(184, 134, 11, 0.1);
+}
+
+.gold-glow {
+  box-shadow: 0 0 60px rgba(184, 134, 11, 0.08);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% / 3));
+  }
+}
+
+.animate-scroll {
+  animation: scroll 40s linear infinite;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
