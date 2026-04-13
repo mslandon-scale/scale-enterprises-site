@@ -163,7 +163,7 @@ export default function Hero() {
                 onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 8px 24px rgba(15,29,50,0.3)")}
                 onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "none")}
               >
-                Get Started
+                Transform Your Business
               </a>
               <a
                 href="https://course.scaleenterprises.com/register"

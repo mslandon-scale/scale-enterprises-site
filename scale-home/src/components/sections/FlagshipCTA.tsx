@@ -77,7 +77,7 @@ export default function FlagshipCTA() {
               onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 8px 24px rgba(184,134,11,0.3)")}
               onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "none")}
             >
-              Get Started
+              Transform Your Business
             </a>
           </div>
           <p className="font-body text-[13px] text-white/40 font-semibold mt-4">

@@ -178,7 +178,7 @@ export default function Navbar() {
               onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 8px 24px rgba(15,29,50,0.3)")}
               onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "none")}
             >
-              Get Started
+              Transform Your Business
             </a>
           </div>
 
@@ -298,7 +298,7 @@ export default function Navbar() {
               onClick={() => setMobileOpen(false)}
               className="bg-navy text-white font-bold text-[15px] uppercase tracking-widest px-10 py-4 mt-4 rounded-full"
             >
-              Get Started
+              Transform Your Business
             </a>
           </motion.div>
         )}
