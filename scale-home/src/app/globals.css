@@ -7,7 +7,7 @@
   --bg-card: #F7F8FA;
   --bg-alt: #F1F2F6;
   --bg-navy: #0A1628;
-  --accent-gold: #FFD54F;
+  --accent-gold: #F0C030;
   --accent-blue: #1428A0;
   --navy: #0F1D32;
   --navy-light: #1A2D4A;
@@ -38,7 +38,7 @@ body {
 }
 
 .radial-glow-gold {
-  background: radial-gradient(ellipse 60% 40% at 50% 50%, rgba(184, 134, 11, 0.05) 0%, transparent 70%);
+  background: radial-gradient(ellipse 60% 40% at 50% 50%, rgba(240, 192, 48, 0.05) 0%, transparent 70%);
 }
 
 .card-shadow {
@@ -46,11 +46,11 @@ body {
 }
 
 .card-shadow-gold {
-  box-shadow: 0 0 0 1px rgba(184, 134, 11, 0.35), 0 8px 40px rgba(184, 134, 11, 0.1);
+  box-shadow: 0 0 0 1px rgba(240, 192, 48, 0.35), 0 8px 40px rgba(240, 192, 48, 0.1);
 }
 
 .gold-glow {
-  box-shadow: 0 0 60px rgba(184, 134, 11, 0.08);
+  box-shadow: 0 0 60px rgba(240, 192, 48, 0.08);
 }
 
 @keyframes scroll {

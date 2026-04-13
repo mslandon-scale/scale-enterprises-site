@@ -108,7 +108,7 @@ export default function About() {
         <div className="text-center pt-4 pb-8">
           <a
             href="/#apply"
-            className="inline-block bg-accent-gold text-white font-bold text-[14px] uppercase tracking-widest px-10 py-4 rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200 shadow-[0_8px_32px_rgba(184,134,11,0.25)]"
+            className="inline-block bg-accent-gold text-white font-bold text-[14px] uppercase tracking-widest px-10 py-4 rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200 shadow-[0_8px_32px_rgba(240,192,48,0.25)]"
           >
             Apply for the Enterprise 360
           </a>

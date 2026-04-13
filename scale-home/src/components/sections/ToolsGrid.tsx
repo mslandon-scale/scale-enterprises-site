@@ -90,7 +90,7 @@ export default function ToolsGrid() {
             <motion.div
               key={tool.title}
               variants={item}
-              whileHover={{ scale: 1.02, borderColor: "rgba(184,134,11,0.4)" }}
+              whileHover={{ scale: 1.02, borderColor: "rgba(240,192,48,0.4)" }}
               className="bg-bg-card border border-black/10 p-8 card-shadow transition-all duration-200 rounded-2xl"
             >
               <div className="w-12 h-12 bg-navy/[0.06] border border-navy/10 flex items-center justify-center mb-5 rounded-xl">

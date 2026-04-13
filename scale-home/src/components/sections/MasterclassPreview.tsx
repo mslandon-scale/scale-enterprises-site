@@ -98,7 +98,7 @@ const modules = [
     slug: "ai-enterprises",
     title: "AI for Enterprises",
     desc: "Leverage AI to automate operations, improve decision-making, and accelerate growth.",
-    color: "#F6D43F",
+    color: "#F0C030",
     icon: (
       <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
         <rect x="5" y="6" width="22" height="16" rx="3" />
@@ -165,7 +165,7 @@ export default function MasterclassPreview() {
           transition={{ duration: 0.5, ease: "easeOut" as const }}
           className="flex justify-center mb-8"
         >
-          <div className="inline-flex items-center gap-3 bg-accent-gold px-8 py-4 rounded-full shadow-[0_8px_32px_rgba(184,134,11,0.3)]">
+          <div className="inline-flex items-center gap-3 bg-accent-gold px-8 py-4 rounded-full shadow-[0_8px_32px_rgba(240,192,48,0.3)]">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-white">
               <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
               <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
@@ -208,8 +208,8 @@ export default function MasterclassPreview() {
               <div className="flex items-center gap-1 px-4 h-[44px]">
                 {/* Brand */}
                 <div className="flex items-center gap-2 mr-4">
-                  <div className="w-8 h-8 rounded-full bg-[#F6D43F]/20 flex items-center justify-center">
-                    <div className="w-4 h-4 rounded-full bg-[#F6D43F]/60" />
+                  <div className="w-8 h-8 rounded-full bg-[#F0C030]/20 flex items-center justify-center">
+                    <div className="w-4 h-4 rounded-full bg-[#F0C030]/60" />
                   </div>
                   <span className="hidden sm:block text-[11px] font-bold tracking-[0.15em] uppercase text-white">
                     Scale Enterprises
@@ -218,7 +218,7 @@ export default function MasterclassPreview() {
 
                 {/* Nav links */}
                 <div className="flex items-center gap-0.5">
-                  <span className="px-3 py-1.5 rounded-md text-[12px] font-semibold text-[#F6D43F] bg-[#F6D43F]/[0.08]">
+                  <span className="px-3 py-1.5 rounded-md text-[12px] font-semibold text-[#F0C030] bg-[#F0C030]/[0.08]">
                     Library
                   </span>
                   <span className="px-3 py-1.5 rounded-md text-[12px] font-semibold text-white/40">
@@ -242,7 +242,7 @@ export default function MasterclassPreview() {
                     key={mod.slug}
                     className={`inline-flex items-center px-4 py-2 rounded-full text-[11px] font-semibold whitespace-nowrap border flex-shrink-0 ${
                       i === 0
-                        ? "bg-[#F6D43F] text-black border-[#F6D43F]"
+                        ? "bg-[#F0C030] text-black border-[#F0C030]"
                         : "text-white/40 border-white/[0.12]"
                     }`}
                   >
@@ -266,19 +266,19 @@ export default function MasterclassPreview() {
               <div className="mb-6">
                 <div className="flex justify-between mb-2">
                   <span className="text-[13px] text-white/40">Course Progress</span>
-                  <span className="text-[13px] font-bold text-[#F6D43F]" style={{ fontFamily: "'Sora', sans-serif" }}>
+                  <span className="text-[13px] font-bold text-[#F0C030]" style={{ fontFamily: "'Sora', sans-serif" }}>
                     0 of 7 complete
                   </span>
                 </div>
                 <div className="h-1.5 bg-white/[0.08] rounded-full overflow-hidden">
-                  <div className="h-full w-0 bg-[#F6D43F] rounded-full" />
+                  <div className="h-full w-0 bg-[#F0C030] rounded-full" />
                 </div>
               </div>
 
               {/* Audiobook banner — replica of .audiobook-banner */}
-              <div className="flex items-center gap-4 p-4 rounded-xl border border-[#F6D43F]/20 bg-gradient-to-r from-[#F6D43F]/[0.08] to-[#F6D43F]/[0.02] mb-6">
-                <div className="w-10 h-10 rounded-xl bg-[#F6D43F]/15 flex items-center justify-center flex-shrink-0">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#F6D43F" strokeWidth="1.5" className="w-5 h-5">
+              <div className="flex items-center gap-4 p-4 rounded-xl border border-[#F0C030]/20 bg-gradient-to-r from-[#F0C030]/[0.08] to-[#F0C030]/[0.02] mb-6">
+                <div className="w-10 h-10 rounded-xl bg-[#F0C030]/15 flex items-center justify-center flex-shrink-0">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#F0C030" strokeWidth="1.5" className="w-5 h-5">
                     <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
                     <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
                   </svg>
@@ -289,7 +289,7 @@ export default function MasterclassPreview() {
                   </p>
                   <p className="text-[12px] text-white/40">Listen to the Enterprise Masterclass on the go</p>
                 </div>
-                <span className="ml-auto hidden sm:block bg-[#F6D43F] text-black text-[12px] font-bold px-4 py-2 rounded whitespace-nowrap">
+                <span className="ml-auto hidden sm:block bg-[#F0C030] text-black text-[12px] font-bold px-4 py-2 rounded whitespace-nowrap">
                   Listen Now
                 </span>
               </div>
@@ -306,7 +306,7 @@ export default function MasterclassPreview() {
                     className="relative bg-[#0a0a0f] border border-white/[0.08] rounded-xl p-4 lg:p-5 overflow-hidden group hover:border-white/15 transition-all duration-300 hover:-translate-y-0.5"
                   >
                     {/* Gold shimmer top bar on hover */}
-                    <div className="absolute top-0 left-0 right-0 h-[3px] rounded-t-xl bg-gradient-to-r from-transparent via-[#F6D43F] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute top-0 left-0 right-0 h-[3px] rounded-t-xl bg-gradient-to-r from-transparent via-[#F0C030] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                     {/* Icon */}
                     <div
@@ -319,7 +319,7 @@ export default function MasterclassPreview() {
                     {/* Module number */}
                     <p
                       className="text-[11px] font-bold uppercase tracking-[0.1em] mb-1.5"
-                      style={{ color: "#F6D43F", fontFamily: "'Sora', sans-serif" }}
+                      style={{ color: "#F0C030", fontFamily: "'Sora', sans-serif" }}
                     >
                       Masterclass {mod.num}
                     </p>
@@ -339,7 +339,7 @@ export default function MasterclassPreview() {
 
                     {/* Status badge */}
                     {mod.status === "start" ? (
-                      <span className="inline-flex items-center gap-1.5 text-[12px] font-semibold px-3 py-1.5 rounded-full bg-[#F6D43F]/15 text-[#F6D43F]">
+                      <span className="inline-flex items-center gap-1.5 text-[12px] font-semibold px-3 py-1.5 rounded-full bg-[#F0C030]/15 text-[#F0C030]">
                         Start Masterclass →
                       </span>
                     ) : (
@@ -365,7 +365,7 @@ export default function MasterclassPreview() {
         >
           <a
             href="https://course.scaleenterprises.com/register"
-            className="inline-block bg-accent-gold text-white font-bold text-[14px] uppercase tracking-widest px-12 py-5 rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200 shadow-[0_8px_32px_rgba(184,134,11,0.25)]"
+            className="inline-block bg-accent-gold text-white font-bold text-[14px] uppercase tracking-widest px-12 py-5 rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200 shadow-[0_8px_32px_rgba(240,192,48,0.25)]"
           >
             Start the Free Masterclass
           </a>

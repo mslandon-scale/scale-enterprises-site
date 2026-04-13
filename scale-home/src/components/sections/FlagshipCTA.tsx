@@ -74,7 +74,7 @@ export default function FlagshipCTA() {
               href="#apply"
               className="inline-block bg-accent-gold text-white font-bold text-[15px] uppercase tracking-widest px-10 py-5 min-w-[300px] lg:min-w-[400px] text-center rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200"
               style={{ boxShadow: "none" }}
-              onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 8px 24px rgba(184,134,11,0.3)")}
+              onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 8px 24px rgba(240,192,48,0.3)")}
               onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "none")}
             >
               Transform Your Business
