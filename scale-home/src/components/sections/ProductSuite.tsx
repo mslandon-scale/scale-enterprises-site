@@ -21,7 +21,7 @@ const products = [
   },
   {
     label: "Flagship",
-    title: "Enterprise360",
+    title: "Enterprise 360",
     description: "Full enterprise buildout, mastermind access, and every tool and resource — done for you.",
     cta: "Apply Now",
     href: "#apply",
