@@ -1,0 +1,208 @@
+/* ═══════════════════════════════════════════════════
+   GHL CUSTOM FORM STYLES — Scale Enterprises
+   Paste this into: GHL Form Builder → Styles → Custom CSS
+   ═══════════════════════════════════════════════════ */
+
+/* Base form container */
+.hl_form-container {
+  background: transparent !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* All labels */
+.hl_form-container label,
+.hl_form-container .form-builder--label {
+  color: #e5e7eb !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  margin-bottom: 6px !important;
+}
+
+/* All text inputs, email, phone */
+.hl_form-container input[type="text"],
+.hl_form-container input[type="email"],
+.hl_form-container input[type="tel"],
+.hl_form-container input[type="number"],
+.hl_form-container textarea,
+.hl_form-container select,
+.hl_form-container .hl_form-input {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 8px !important;
+  color: #ffffff !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.95rem !important;
+  padding: 14px 16px !important;
+  transition: border-color 0.2s ease !important;
+  width: 100% !important;
+  -webkit-appearance: none !important;
+}
+
+.hl_form-container input::placeholder,
+.hl_form-container textarea::placeholder {
+  color: rgba(255, 255, 255, 0.25) !important;
+}
+
+.hl_form-container input:focus,
+.hl_form-container select:focus,
+.hl_form-container textarea:focus {
+  border-color: #F0C030 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(240, 192, 48, 0.15) !important;
+}
+
+/* Select dropdown arrow */
+.hl_form-container select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239ca3af' stroke-width='1.5' fill='none'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 16px center !important;
+  padding-right: 40px !important;
+}
+
+.hl_form-container select option {
+  background: #0a0a0f !important;
+  color: #ffffff !important;
+}
+
+/* ═══════════════════════════════════════════════════
+   REVENUE CARDS — transforms radio buttons into cards
+   In GHL: create Revenue as a "Radio" or "Single Choice" field
+   ═══════════════════════════════════════════════════ */
+
+/* Hide default radio bullets */
+.hl_form-container .form-builder--radio .form-check,
+.hl_form-container [data-field-name="revenue"] .form-check,
+.hl_form-container [data-field-name="annual_revenue"] .form-check {
+  padding-left: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.hl_form-container .form-builder--radio .form-check input[type="radio"],
+.hl_form-container [data-field-name="revenue"] input[type="radio"],
+.hl_form-container [data-field-name="annual_revenue"] input[type="radio"] {
+  display: none !important;
+}
+
+/* Card grid layout */
+.hl_form-container .form-builder--radio .row,
+.hl_form-container [data-field-name="revenue"] .row,
+.hl_form-container [data-field-name="annual_revenue"] .row {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 10px !important;
+}
+
+/* Each radio label becomes a card */
+.hl_form-container .form-builder--radio .form-check-label,
+.hl_form-container [data-field-name="revenue"] .form-check-label,
+.hl_form-container [data-field-name="annual_revenue"] .form-check-label {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 10px !important;
+  color: #9ca3af !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  padding: 16px 12px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+.hl_form-container .form-builder--radio .form-check-label:hover,
+.hl_form-container [data-field-name="revenue"] .form-check-label:hover,
+.hl_form-container [data-field-name="annual_revenue"] .form-check-label:hover {
+  border-color: rgba(240, 192, 48, 0.4) !important;
+  color: #ffffff !important;
+  background: rgba(240, 192, 48, 0.05) !important;
+}
+
+/* Selected state */
+.hl_form-container .form-builder--radio input[type="radio"]:checked + .form-check-label,
+.hl_form-container .form-builder--radio input:checked ~ .form-check-label,
+.hl_form-container [data-field-name="revenue"] input:checked + label,
+.hl_form-container [data-field-name="revenue"] input:checked ~ label,
+.hl_form-container [data-field-name="annual_revenue"] input:checked + label,
+.hl_form-container [data-field-name="annual_revenue"] input:checked ~ label {
+  border-color: #F0C030 !important;
+  color: #ffffff !important;
+  background: rgba(240, 192, 48, 0.1) !important;
+  box-shadow: 0 0 0 2px rgba(240, 192, 48, 0.2) !important;
+}
+
+/* Make last row span if odd number */
+.hl_form-container .form-builder--radio .form-check:last-child:nth-child(odd),
+.hl_form-container [data-field-name="revenue"] .form-check:last-child:nth-child(odd) {
+  grid-column: 1 / -1 !important;
+}
+
+/* 2-column on mobile */
+@media (max-width: 480px) {
+  .hl_form-container .form-builder--radio .row,
+  .hl_form-container [data-field-name="revenue"] .row,
+  .hl_form-container [data-field-name="annual_revenue"] .row {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   SUBMIT BUTTON
+   ═══════════════════════════════════════════════════ */
+
+.hl_form-container button[type="submit"],
+.hl_form-container .hl_cta_btn,
+.hl_form-container .submit-button {
+  background: #F0C030 !important;
+  color: #000000 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 1.05rem !important;
+  padding: 16px 24px !important;
+  border: none !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  width: 100% !important;
+  transition: all 0.2s ease !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+}
+
+.hl_form-container button[type="submit"]:hover,
+.hl_form-container .hl_cta_btn:hover {
+  filter: brightness(1.1) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ═══════════════════════════════════════════════════
+   FORM SPACING & LAYOUT
+   ═══════════════════════════════════════════════════ */
+
+.hl_form-container .form-group,
+.hl_form-container .hl_form-group {
+  margin-bottom: 18px !important;
+}
+
+/* Hide GHL branding if present */
+.hl_form-container .powered-by,
+.hl_form-container .hl-powered-by {
+  display: none !important;
+}
+
+/* Error states */
+.hl_form-container .invalid-feedback,
+.hl_form-container .error-message {
+  color: #ff4d4d !important;
+  font-size: 0.8rem !important;
+  margin-top: 4px !important;
+}
+
+.hl_form-container input.is-invalid,
+.hl_form-container select.is-invalid {
+  border-color: #ff4d4d !important;
+}

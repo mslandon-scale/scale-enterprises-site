@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <title>Profile — Scale Enterprises</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/shared.css">
+</head>
+<body>
+
+  <nav class="topnav" id="topnav"></nav>
+
+  <main class="main" id="mainContent">
+    <div class="loading" id="loader"><div class="spinner"><img src="/logo.png" alt="Loading"></div></div>
+  </main>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/topnav.js"></script>
+  <script>
+    function showToast(msg, type) {
+      var t = document.getElementById('toast');
+      t.textContent = msg;
+      t.className = 'toast ' + type + ' show';
+      setTimeout(function() { t.classList.remove('show'); }, 3000);
+    }
+
+    document.addEventListener('auth:ready', async function(e) {
+      const user = e.detail;
+      await initTopnav('profile');
+
+      const main = document.getElementById('mainContent');
+      main.innerHTML = `
+        <h1 class="page-title">Your Profile</h1>
+        <p class="page-subtitle">Manage your account settings</p>
+
+        <div style="max-width:32rem;">
+          <!-- Profile Info -->
+          <div class="card" style="margin-bottom:1.5rem;">
+            <h3 style="font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;margin-bottom:1.25rem;">Account Details</h3>
+            <form id="profileForm">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                <div class="form-group">
+                  <label class="form-label" for="firstName">First Name</label>
+                  <input class="form-input" type="text" id="firstName" value="${user.firstName}" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="lastName">Last Name</label>
+                  <input class="form-input" type="text" id="lastName" value="${user.lastName}" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">Email</label>
+                <input class="form-input" type="email" id="email" value="${user.email}" required>
+              </div>
+              <button type="submit" class="btn-gold">Save Changes</button>
+            </form>
+          </div>
+
+          <!-- Business Info -->
+          <div class="card" style="margin-bottom:1.5rem;">
+            <h3 style="font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;margin-bottom:1.25rem;">Business Info</h3>
+            <form id="businessForm">
+              <div class="form-group">
+                <label class="form-label" for="annualRevenue">Annual Revenue</label>
+                <select class="form-input" id="annualRevenue">
+                  <option value="">Select your revenue range</option>
+                  <option value="Pre-revenue">Pre-revenue</option>
+                  <option value="Under $100K">Under $100K</option>
+                  <option value="$100K - $250K">$100K - $250K</option>
+                  <option value="$250K - $500K">$250K - $500K</option>
+                  <option value="$500K - $1M">$500K - $1M</option>
+                  <option value="$1M - $3M">$1M - $3M</option>
+                  <option value="$3M - $5M">$3M - $5M</option>
+                  <option value="$5M - $10M">$5M - $10M</option>
+                  <option value="$10M+">$10M+</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="industry">Industry</label>
+                <select class="form-input" id="industry">
+                  <option value="">Select your industry</option>
+                  <option value="Agency / Marketing">Agency / Marketing</option>
+                  <option value="Coaching / Consulting">Coaching / Consulting</option>
+                  <option value="Construction / Trades">Construction / Trades</option>
+                  <option value="E-Commerce / Retail">E-Commerce / Retail</option>
+                  <option value="Finance / Accounting">Finance / Accounting</option>
+                  <option value="Health / Wellness">Health / Wellness</option>
+                  <option value="IT / Software">IT / Software</option>
+                  <option value="Legal">Legal</option>
+                  <option value="Manufacturing">Manufacturing</option>
+                  <option value="Real Estate">Real Estate</option>
+                  <option value="Restaurant / Hospitality">Restaurant / Hospitality</option>
+                  <option value="SaaS">SaaS</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <button type="submit" class="btn-gold">Save Business Info</button>
+            </form>
+          </div>
+
+          <!-- Change Password -->
+          <div class="card">
+            <h3 style="font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;margin-bottom:1.25rem;">Change Password</h3>
+            <form id="passwordForm">
+              <div class="form-group">
+                <label class="form-label" for="currentPassword">Current Password</label>
+                <input class="form-input" type="password" id="currentPassword" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="newPassword">New Password</label>
+                <input class="form-input" type="password" id="newPassword" placeholder="At least 8 characters" required minlength="8">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="confirmNew">Confirm New Password</label>
+                <input class="form-input" type="password" id="confirmNew" required>
+              </div>
+              <button type="submit" class="btn-gold">Update Password</button>
+            </form>
+          </div>
+        </div>
+      `;
+
+      // Prefill business info
+      if (user.annualRevenue) document.getElementById('annualRevenue').value = user.annualRevenue;
+      if (user.industry) document.getElementById('industry').value = user.industry;
+
+      // Profile form
+      document.getElementById('profileForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        try {
+          var res = await fetch('/api/user/profile', {
+            method: 'PUT',
+            credentials: 'same-origin',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              firstName: document.getElementById('firstName').value,
+              lastName: document.getElementById('lastName').value,
+              email: document.getElementById('email').value,
+              annualRevenue: document.getElementById('annualRevenue').value,
+              industry: document.getElementById('industry').value
+            })
+          });
+          var data = await res.json();
+          if (res.ok) {
+            showToast('Profile updated', 'success');
+          } else {
+            showToast(data.error || 'Update failed', 'error');
+          }
+        } catch {
+          showToast('Something went wrong', 'error');
+        }
+      });
+
+      // Business info form
+      document.getElementById('businessForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        try {
+          var res = await fetch('/api/user/profile', {
+            method: 'PUT',
+            credentials: 'same-origin',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              firstName: document.getElementById('firstName').value,
+              lastName: document.getElementById('lastName').value,
+              email: document.getElementById('email').value,
+              annualRevenue: document.getElementById('annualRevenue').value,
+              industry: document.getElementById('industry').value
+            })
+          });
+          var data = await res.json();
+          if (res.ok) {
+            showToast('Business info saved', 'success');
+          } else {
+            showToast(data.error || 'Update failed', 'error');
+          }
+        } catch {
+          showToast('Something went wrong', 'error');
+        }
+      });
+
+      // Password form
+      document.getElementById('passwordForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        var newPw = document.getElementById('newPassword').value;
+        var confirm = document.getElementById('confirmNew').value;
+
+        if (newPw !== confirm) {
+          showToast('Passwords do not match', 'error');
+          return;
+        }
+
+        try {
+          var res = await fetch('/api/user/password', {
+            method: 'PUT',
+            credentials: 'same-origin',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              currentPassword: document.getElementById('currentPassword').value,
+              newPassword: newPw
+            })
+          });
+          var data = await res.json();
+          if (res.ok) {
+            showToast('Password updated', 'success');
+            document.getElementById('passwordForm').reset();
+          } else {
+            showToast(data.error || 'Update failed', 'error');
+          }
+        } catch {
+          showToast('Something went wrong', 'error');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

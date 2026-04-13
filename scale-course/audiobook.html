@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <title>Audio Version — Scale Enterprises</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/shared.css">
+  <style>
+    .audiobook-hero {
+      background: linear-gradient(135deg, rgba(240,192,48,0.06), rgba(240,192,48,0.01));
+      border: 1px solid rgba(240,192,48,0.15);
+      border-radius: 0.75rem;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      display: flex; align-items: center; gap: 1.5rem;
+    }
+    .audiobook-hero-icon {
+      width: 72px; height: 72px; flex-shrink: 0;
+      background: rgba(240,192,48,0.12); border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .audiobook-hero-icon svg { width: 36px; height: 36px; color: var(--gold); }
+    .audiobook-hero h2 {
+      font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.25rem;
+      color: var(--white); margin-bottom: 0.35rem;
+    }
+    .audiobook-hero p { color: var(--muted); font-size: 0.9rem; max-width: 36rem; }
+
+    .audio-grid {
+      display: grid; grid-template-columns: 1fr; gap: 1rem;
+      max-width: 48rem;
+    }
+
+    .audio-card {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 0.75rem;
+      padding: 1.25rem 1.5rem;
+      display: flex; align-items: center; gap: 1.25rem;
+      transition: border-color 0.3s, transform 0.2s;
+    }
+    .audio-card:hover {
+      border-color: rgba(240,192,48,0.25);
+      transform: translateX(4px);
+    }
+
+    .audio-number {
+      font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.7rem;
+      color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em;
+      width: 24px; flex-shrink: 0;
+    }
+
+    .audio-info { flex: 1; }
+    .audio-title {
+      font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1rem;
+      color: var(--white); margin-bottom: 0.15rem;
+    }
+    .audio-desc { color: var(--muted); font-size: 0.8rem; }
+
+    .audio-player {
+      flex-shrink: 0;
+    }
+    .audio-player audio {
+      height: 32px; max-width: 220px;
+    }
+
+    .audio-coming-soon {
+      display: flex; align-items: center; gap: 0.4rem;
+      color: var(--muted); font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+    .audio-coming-soon svg { width: 16px; height: 16px; opacity: 0.4; }
+
+    @media (max-width: 768px) {
+      .audiobook-hero { flex-direction: column; text-align: center; }
+      .audio-card { flex-wrap: wrap; }
+      .audio-player { width: 100%; }
+      .audio-player audio { max-width: 100%; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="topnav" id="topnav"></nav>
+
+  <main class="main" id="mainContent">
+    <div class="loading" id="loader"><div class="spinner"><img src="/logo.png" alt="Loading"></div></div>
+  </main>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/topnav.js"></script>
+  <script>
+    document.addEventListener('auth:ready', async function(e) {
+      const modules = await initTopnav('audiobook');
+
+      const main = document.getElementById('mainContent');
+      main.innerHTML = `
+        <div style="margin-bottom:1.5rem;">
+          <a href="/dashboard" style="color:var(--muted);text-decoration:none;font-size:0.85rem;">
+            &larr; Back to Dashboard
+          </a>
+        </div>
+
+        <h1 class="page-title">Audio Version</h1>
+        <p class="page-subtitle">Listen to the Enterprise Masterclass on the go</p>
+
+        <div class="audiobook-hero">
+          <div class="audiobook-hero-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+              <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+            </svg>
+          </div>
+          <div>
+            <h2>Enterprise Masterclass — Audio Version</h2>
+            <p>All ${modules.length} masterclasses available in audio format. Perfect for commutes, workouts, or whenever you're on the move.</p>
+          </div>
+        </div>
+
+        <div class="audio-grid">
+          ${modules.map(function(m, i) {
+            return '<div class="audio-card">' +
+              '<div class="audio-number">' + String(i + 1).padStart(2, '0') + '</div>' +
+              '<div class="audio-info">' +
+                '<div class="audio-title">' + m.title + '</div>' +
+                '<div class="audio-desc">' + m.description + '</div>' +
+              '</div>' +
+              (m.hasAudio
+                ? '<div class="audio-player"><audio controls preload="none"><source src="" type="audio/mpeg"></audio></div>'
+                : '<div class="audio-coming-soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Coming Soon</div>'
+              ) +
+            '</div>';
+          }).join('')}
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>

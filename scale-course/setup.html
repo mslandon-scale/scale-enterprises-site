@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <title>Set Up Your Account — Scale Enterprises</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/shared.css">
+  <script src="https://accounts.google.com/gsi/client" async></script>
+</head>
+<body>
+  <div class="auth-page">
+    <div class="auth-card">
+      <div class="auth-brand"><img src="/logo.png" alt="Scale Enterprises"><span>Scale Enterprises</span></div>
+      <h1 class="auth-heading" id="heading">Set Up Your Account</h1>
+      <p class="auth-sub" id="subtext">Create a password to access your Enterprise Masterclass</p>
+
+      <div class="auth-error" id="errorBox"></div>
+
+      <!-- Setup form (new user from GHL) -->
+      <form id="setupForm">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+          <div class="form-group">
+            <label class="form-label" for="firstName">First Name</label>
+            <input class="form-input" type="text" id="firstName" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="lastName">Last Name</label>
+            <input class="form-input" type="text" id="lastName" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Email</label>
+          <input class="form-input" type="email" id="email" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="password">Create Password</label>
+          <input class="form-input" type="password" id="password" placeholder="At least 8 characters" required minlength="8">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="confirmPassword">Confirm Password</label>
+          <input class="form-input" type="password" id="confirmPassword" placeholder="Re-enter your password" required>
+        </div>
+        <button type="submit" class="btn-gold" id="submitBtn">Access My Course</button>
+      </form>
+
+      <div class="auth-divider">or</div>
+
+      <div id="googleButtonWrap" style="display:flex;justify-content:center;"></div>
+
+      <p class="auth-footer" style="margin-top:1.25rem;">
+        Already have an account? <a href="/">Sign in</a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    var GOOGLE_CLIENT_ID = '505442505277-l12i6pa31ai2us5he1kn88c66q5ssitk.apps.googleusercontent.com';
+
+    // Render Google button once the GSI library loads
+    function initGoogleButton() {
+      if (typeof google === 'undefined' || !google.accounts) {
+        setTimeout(initGoogleButton, 200);
+        return;
+      }
+      google.accounts.id.initialize({
+        client_id: GOOGLE_CLIENT_ID,
+        callback: handleGoogleResponse
+      });
+      google.accounts.id.renderButton(
+        document.getElementById('googleButtonWrap'),
+        { theme: 'outline', size: 'large', width: 380, text: 'continue_with' }
+      );
+    }
+    initGoogleButton();
+
+    async function handleGoogleResponse(response) {
+      try {
+        var res = await fetch('/api/auth/google', {
+          method: 'POST', credentials: 'same-origin',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ credential: response.credential })
+        });
+        if (res.ok) { window.location.href = '/dashboard'; }
+        else {
+          var data = await res.json();
+          document.getElementById('errorBox').textContent = data.error || 'Google sign-in failed';
+          document.getElementById('errorBox').classList.add('show');
+        }
+      } catch {
+        document.getElementById('errorBox').textContent = 'Something went wrong';
+        document.getElementById('errorBox').classList.add('show');
+      }
+    }
+
+    // If already logged in, go to dashboard
+    (async function() {
+      try {
+        const res = await fetch('/api/auth/me', { credentials: 'same-origin' });
+        if (res.ok) window.location.href = '/dashboard';
+      } catch {}
+    })();
+
+    // Pre-fill from URL params (passed from GHL form redirect)
+    const params = new URLSearchParams(window.location.search);
+    const prefillEmail = params.get('email') || '';
+    const prefillFirst = params.get('first_name') || params.get('firstName') || params.get('name') || '';
+    const prefillLast = params.get('last_name') || params.get('lastName') || '';
+
+    if (prefillEmail) document.getElementById('email').value = prefillEmail;
+    if (prefillFirst) document.getElementById('firstName').value = prefillFirst;
+    if (prefillLast) document.getElementById('lastName').value = prefillLast;
+
+    // If we have their name, personalize the heading
+    if (prefillFirst) {
+      document.getElementById('heading').textContent = 'Welcome, ' + prefillFirst;
+      document.getElementById('subtext').textContent = 'Set a password to access your Enterprise Masterclass';
+    }
+
+    // If email is pre-filled, make it read-only (they already verified it via the form)
+    if (prefillEmail) {
+      document.getElementById('email').readOnly = true;
+      document.getElementById('email').style.opacity = '0.6';
+    }
+
+    document.getElementById('setupForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var btn = document.getElementById('submitBtn');
+      var errorBox = document.getElementById('errorBox');
+      errorBox.classList.remove('show');
+
+      var password = document.getElementById('password').value;
+      var confirm = document.getElementById('confirmPassword').value;
+
+      if (password !== confirm) {
+        errorBox.textContent = 'Passwords do not match';
+        errorBox.classList.add('show');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Setting up your account...';
+
+      var email = document.getElementById('email').value;
+      var firstName = document.getElementById('firstName').value;
+      var lastName = document.getElementById('lastName').value;
+
+      try {
+        // Try to register first
+        var res = await fetch('/api/auth/register', {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, password: password, firstName: firstName, lastName: lastName })
+        });
+
+        var data = await res.json();
+
+        if (res.ok) {
+          window.location.href = '/dashboard';
+          return;
+        }
+
+        // If account already exists, try logging in with the password
+        if (res.status === 409) {
+          var loginRes = await fetch('/api/auth/login', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, password: password })
+          });
+
+          if (loginRes.ok) {
+            window.location.href = '/dashboard';
+            return;
+          }
+
+          errorBox.textContent = 'An account with this email already exists. Please sign in instead.';
+          errorBox.classList.add('show');
+          btn.disabled = false;
+          btn.textContent = 'Access My Course';
+          return;
+        }
+
+        errorBox.textContent = data.error || 'Something went wrong';
+        errorBox.classList.add('show');
+        btn.disabled = false;
+        btn.textContent = 'Access My Course';
+      } catch {
+        errorBox.textContent = 'Something went wrong. Please try again.';
+        errorBox.classList.add('show');
+        btn.disabled = false;
+        btn.textContent = 'Access My Course';
+      }
+    });
+  </script>
+</body>
+</html>
