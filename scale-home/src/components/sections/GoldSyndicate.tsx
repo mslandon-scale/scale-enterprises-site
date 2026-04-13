@@ -260,7 +260,7 @@ export default function GoldSyndicate() {
             href="#apply"
             className="inline-block bg-accent-gold text-white font-bold text-[15px] uppercase tracking-widest px-12 py-5 rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200 shadow-[0_8px_32px_rgba(240,192,48,0.25)]"
           >
-            Apply for the Enterprise 360
+            Apply For Enterprise 360
           </a>
           <p className="font-body text-[14px] text-white/30 mt-4">
             By application only. Limited to 10 new members per month.
