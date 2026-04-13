@@ -59,7 +59,7 @@ export default function About() {
               operations.
             </p>
             <p>
-              Through the Gold Syndicate and the Enterprise Masterclass, Matthew and his team
+              Through the Enterprise360 and the Enterprise Masterclass, Matthew and his team
               have helped hundreds of service business owners install enterprise-grade systems
               in 30 days — transforming how they operate, hire, deliver, and grow.
             </p>
@@ -110,7 +110,7 @@ export default function About() {
             href="/#apply"
             className="inline-block bg-accent-gold text-white font-bold text-[14px] uppercase tracking-widest px-10 py-4 rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200 shadow-[0_8px_32px_rgba(184,134,11,0.25)]"
           >
-            Apply for the Gold Syndicate
+            Apply for the Enterprise360
           </a>
           <p className="font-body text-[13px] text-white/30 mt-4">
             By application only. Limited to 10 new members per month.

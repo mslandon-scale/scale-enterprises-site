@@ -162,7 +162,7 @@ export default function GoldSyndicate() {
             Our Flagship Program
           </p>
           <h2 className="font-display text-[32px] lg:text-[48px] leading-[1.05] text-white font-extrabold uppercase">
-            The Gold Syndicate
+            The Enterprise360
           </h2>
           <div className="flex items-center justify-center gap-4 mt-6 mb-6">
             <div className="h-px w-16 bg-gradient-to-r from-transparent to-accent-gold/40" />
@@ -260,7 +260,7 @@ export default function GoldSyndicate() {
             href="#apply"
             className="inline-block bg-accent-gold text-white font-bold text-[15px] uppercase tracking-widest px-12 py-5 rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200 shadow-[0_8px_32px_rgba(184,134,11,0.25)]"
           >
-            Apply for the Gold Syndicate
+            Apply for the Enterprise360
           </a>
           <p className="font-body text-[14px] text-white/30 mt-4">
             By application only. Limited to 10 new members per month.
