@@ -162,7 +162,7 @@ export default function GoldSyndicate() {
             Our Flagship Program
           </p>
           <h2 className="font-display text-[32px] lg:text-[48px] leading-[1.05] text-white font-extrabold uppercase">
-            The Enterprise 360
+            Enterprise 360
           </h2>
           <div className="flex items-center justify-center gap-4 mt-6 mb-6">
             <div className="h-px w-16 bg-gradient-to-r from-transparent to-accent-gold/40" />
