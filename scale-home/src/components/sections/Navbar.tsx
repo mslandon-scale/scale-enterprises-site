@@ -173,10 +173,7 @@ export default function Navbar() {
 
             <a
               href="#apply"
-              className="bg-navy text-white font-bold text-[15px] uppercase tracking-widest px-8 py-3 rounded-full hover:bg-navy-light hover:-translate-y-px transition-all duration-200"
-              style={{ boxShadow: "none" }}
-              onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 8px 24px rgba(15,29,50,0.3)")}
-              onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "none")}
+              className="bg-accent-gold text-black font-bold text-[15px] uppercase tracking-widest px-8 py-3 rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200"
             >
               Transform Your Business
             </a>
@@ -296,7 +293,7 @@ export default function Navbar() {
             <a
               href="#apply"
               onClick={() => setMobileOpen(false)}
-              className="bg-navy text-white font-bold text-[15px] uppercase tracking-widest px-10 py-4 mt-4 rounded-full"
+              className="bg-accent-gold text-black font-bold text-[15px] uppercase tracking-widest px-10 py-4 mt-4 rounded-full"
             >
               Transform Your Business
             </a>

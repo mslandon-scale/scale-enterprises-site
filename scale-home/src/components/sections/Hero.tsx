@@ -158,10 +158,7 @@ export default function Hero() {
             <motion.div variants={fadeUp(0.2)} className="flex flex-col sm:flex-row gap-4 mt-10">
               <a
                 href="#apply"
-                className="bg-navy text-white font-bold text-[15px] uppercase tracking-widest px-10 py-5 text-center rounded-full hover:bg-navy-light hover:-translate-y-px transition-all duration-200"
-                style={{ boxShadow: "none" }}
-                onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 8px 24px rgba(15,29,50,0.3)")}
-                onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "none")}
+                className="bg-accent-gold text-black font-bold text-[15px] uppercase tracking-widest px-10 py-5 text-center rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200"
               >
                 Transform Your Business
               </a>
