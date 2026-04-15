@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wc7ebmnu6p");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scale Enterprises — 3-Hour Business Deep Dive | $97</title>
+  <meta name="description" content="Get a complete 3-hour business deep dive with Matthew Landon. Strategy, team, finances, marketing, sales, operations — all reviewed with a custom growth plan. Only $97.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600;700;800;900&family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --dark: #161616;
+      --dark-alt: #1c1c1c;
+      --gold: #DCC285;
+      --gold-light: rgba(220,194,133,0.1);
+      --gold-border: rgba(220,194,133,0.25);
+      --green: #00B13A;
+      --green-dark: #039232;
+      --white: #FFFFFF;
+      --off-white: #F3F3F3;
+      --text-dark: #171717;
+      --text-muted: #888888;
+      --red: #DD4D4D;
+      --font-heading: 'Barlow Semi Condensed', 'Impact', sans-serif;
+      --font-body: 'Work Sans', 'Segoe UI', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--dark);
+      color: var(--white);
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    .container {
+      max-width: 1170px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .container--narrow {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Gold Top Bar ── */
+    .top-bar {
+      background: var(--gold);
+      padding: 12px 20px;
+      text-align: center;
+      border-bottom: 5px solid var(--white);
+    }
+
+    .top-bar p {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--dark);
+      background-image: linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.85));
+      padding: 70px 0 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(220,194,133,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-logo {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+      color: var(--gold);
+    }
+
+    .hero-pre {
+      color: var(--gold);
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .hero-headline {
+      font-family: var(--font-heading);
+      font-size: clamp(2.6rem, 7vw, 5.2rem);
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--white);
+      max-width: 960px;
+      margin: 0 auto 24px;
+      text-shadow: 2px 2px 12px rgba(0,0,0,0.4);
+      animation: heroFadeUp 0.6s ease-out both;
+    }
+
+    .hero-headline em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: #ccc;
+      max-width: 760px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+
+    /* ── CTA Button — Green with thick border ── */
+    .cta-btn {
+      display: inline-block;
+      background: var(--green);
+      color: var(--white);
+      font-family: var(--font-heading);
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      padding: 22px 52px;
+      border: 8px solid var(--green-dark);
+      border-top: 8px solid var(--green-dark);
+      border-bottom: 12px solid var(--green-dark);
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: ctaPulse 2.2s ease-in-out infinite;
+      position: relative;
+    }
+
+    .cta-btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 32px rgba(0,177,58,0.35);
+    }
+
+    @keyframes ctaPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(0,177,58,0.3); }
+      50%      { box-shadow: 0 0 24px 6px rgba(0,177,58,0.2); transform: scale(1.012); }
+    }
+
+    .hero-trust {
+      margin-top: 18px;
+      font-size: 0.85rem;
+      color: #999;
+    }
+
+    .social-proof-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 28px;
+      font-size: 0.95rem;
+      color: #bbb;
+      font-weight: 500;
+    }
+
+    .avatar-stack {
+      display: flex;
+    }
+
+    .avatar-stack span {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+
+    .avatar-stack span:nth-child(1) { background: #3b5998; }
+    .avatar-stack span:nth-child(2) { background: #0e76a8; margin-left: -10px; }
+    .avatar-stack span:nth-child(3) { background: #e1306c; margin-left: -10px; }
+
+    /* ── Gold Divider ── */
+    .gold-divider {
+      height: 4px;
+      background: var(--gold);
+      border: none;
+    }
+
+    .gold-divider--thin {
+      height: 2px;
+      background: var(--gold-border);
+    }
+
+    /* ── Offer Breakdown — White Section ── */
+    .offer-section {
+      background: var(--white);
+      padding: 80px 0 90px;
+      color: var(--text-dark);
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 52px;
+      line-height: 1.1;
+    }
+
+    .section-title--dark { color: var(--text-dark); }
+    .section-title--white { color: var(--white); }
+    .section-title--gold { color: var(--gold); }
+
+    .offer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .offer-card {
+      background: var(--white);
+      border: 2px solid var(--gold-border);
+      border-radius: 12px;
+      padding: 40px 28px 36px;
+      text-align: center;
+      box-shadow: 0 0 44px rgba(0,0,0,0.08);
+      transition: transform 0.25s, box-shadow 0.25s;
+      position: relative;
+    }
+
+    .offer-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.14);
+    }
+
+    .offer-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--gold-light);
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 1.8rem;
+    }
+
+    .offer-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.45rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+      color: var(--text-dark);
+    }
+
+    .offer-card p {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .value-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--text-dark);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      padding: 8px 20px;
+      border-radius: 4px;
+    }
+
+    /* ── Bonus Stack — Dark Section ── */
+    .bonus-section {
+      background: var(--dark);
+      padding: 80px 0;
+    }
+
+    .bonus-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 36px 32px;
+      background: var(--dark-alt);
+      border: 1px solid rgba(220,194,133,0.12);
+      border-radius: 12px;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .bonus-row.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .bonus-check {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--text-dark);
+      font-size: 1.4rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bonus-content { flex: 1; }
+
+    .bonus-content h3 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: var(--white);
+    }
+
+    .bonus-content p {
+      font-size: 0.95rem;
+      color: #aaa;
+      line-height: 1.6;
+    }
+
+    .bonus-value {
+      flex-shrink: 0;
+      align-self: center;
+    }
+
+    .bonus-value .value-badge {
+      white-space: nowrap;
+      font-size: 0.85rem;
+    }
+
+    /* ── Story Section — Off-White ── */
+    .story-section {
+      background: var(--off-white);
+      padding: 90px 0;
+      color: var(--text-dark);
+    }
+
+    .story-block {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .story-block h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900;
+      margin-bottom: 32px;
+      color: var(--text-dark);
+      line-height: 1.05;
+    }
+
+    .story-block p {
+      font-size: 1.1rem;
+      color: #444;
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    .story-block p strong {
+      color: var(--text-dark);
+    }
+
+    .story-highlight {
+      background: var(--white);
+      border-left: 5px solid var(--gold);
+      padding: 24px 28px;
+      border-radius: 0 8px 8px 0;
+      margin: 32px 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .story-highlight p {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 0;
+    }
+
+    /* ── Mid-Page CTA Banner ── */
+    .mid-cta {
+      background: var(--dark);
+      padding: 60px 0;
+      text-align: center;
+      border-top: 4px solid var(--gold);
+      border-bottom: 4px solid var(--gold);
+    }
+
+    .mid-cta h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 28px;
+    }
+
+    .mid-cta h2 span { color: var(--gold); }
+
+    /* ── Qualifier Section — Dark ── */
+    .qualifier-section {
+      background: var(--dark-alt);
+      padding: 80px 0;
+    }
+
+    .qualifier-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .qualifier-col {
+      background: var(--dark);
+      border-radius: 12px;
+      padding: 40px 32px;
+      border: 2px solid rgba(220,194,133,0.15);
+    }
+
+    .qualifier-col--yes { border-top: 5px solid var(--green); }
+    .qualifier-col--no  { border-top: 5px solid var(--red); }
+
+    .qualifier-col h3 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+      color: var(--white);
+    }
+
+    .qualifier-col--yes h3 { color: var(--green); }
+    .qualifier-col--no h3  { color: var(--red); }
+
+    .qualifier-col ul {
+      list-style: none;
+    }
+
+    .qualifier-col ul li {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      padding-left: 32px;
+      position: relative;
+      color: #ccc;
+    }
+
+    .qualifier-col ul li::before {
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .qualifier-col--yes ul li::before { content: "✓"; color: var(--green); }
+    .qualifier-col--no ul li::before  { content: "✕"; color: var(--red); }
+
+    /* ── Order / CTA Block ── */
+    .order-section {
+      background: var(--dark);
+      padding: 80px 0 60px;
+      text-align: center;
+      position: relative;
+    }
+
+    .order-box {
+      max-width: 640px;
+      margin: 0 auto;
+      background: var(--dark-alt);
+      border: 3px solid var(--gold);
+      border-radius: 16px;
+      padding: 48px 40px;
+      box-shadow: 0 8px 60px rgba(0,0,0,0.3);
+      position: relative;
+    }
+
+    .order-box::before {
+      content: 'BEST VALUE';
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--text-dark);
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      padding: 6px 24px;
+      border-radius: 20px;
+    }
+
+    .order-box .section-title {
+      margin-bottom: 28px;
+    }
+
+    .value-stack {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 32px;
+    }
+
+    .value-stack li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.95rem;
+      color: #ccc;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .value-stack li span:last-child {
+      color: var(--gold);
+      font-weight: 700;
+      font-family: var(--font-heading);
+      font-size: 1rem;
+    }
+
+    .value-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.2rem;
+      font-weight: 800;
+      padding: 18px 0 0;
+      border-top: 3px solid var(--gold);
+      margin-top: 8px;
+    }
+
+    .value-total span:first-child {
+      color: var(--white);
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+    }
+
+    .value-total span:last-child {
+      color: var(--gold);
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+    }
+
+    .order-trust {
+      margin-top: 16px;
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    /* ── Order Bump ── */
+    .order-bump {
+      max-width: 640px;
+      margin: 32px auto 0;
+      background: var(--dark-alt);
+      border: 3px solid var(--gold);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .bump-top {
+      background: var(--gold);
+      padding: 10px 20px;
+      text-align: center;
+    }
+
+    .bump-top p {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--text-dark);
+      letter-spacing: 0.04em;
+    }
+
+    .bump-body {
+      padding: 24px 28px;
+    }
+
+    .bump-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .bump-checkbox {
+      width: 26px;
+      height: 26px;
+      border: 3px solid var(--gold);
+      border-radius: 4px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      background: rgba(220,194,133,0.08);
+      transition: background 0.2s;
+    }
+
+    .bump-checkbox:hover { background: rgba(220,194,133,0.15); }
+
+    .bump-header label {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--white);
+      cursor: pointer;
+    }
+
+    .bump-header label span { color: var(--gold); }
+
+    .bump-body > p {
+      font-size: 0.9rem;
+      color: #999;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .bump-fine {
+      font-size: 0.78rem;
+      color: #666;
+    }
+
+    /* ── Testimonials — White Section ── */
+    .testimonials-section {
+      background: var(--white);
+      padding: 80px 0 90px;
+      color: var(--text-dark);
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border: 2px solid var(--gold-border);
+      border-radius: 12px;
+      padding: 36px 28px 32px;
+      box-shadow: 0 0 44px rgba(0,0,0,0.08);
+      transition: transform 0.25s, box-shadow 0.25s;
+      position: relative;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.14);
+    }
+
+    .testimonial-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: 3px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--white);
+      margin: 0 auto 16px;
+      position: relative;
+      top: -54px;
+      margin-bottom: -38px;
+    }
+
+    .testimonial-avatar:nth-of-type(1) { background: #2d5016; }
+
+    .t-avatar-j { background: #1a3a5c; }
+    .t-avatar-r { background: #5c1a3a; }
+    .t-avatar-d { background: #3a1a5c; }
+
+    .testimonial-stars {
+      color: var(--gold);
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+      letter-spacing: 3px;
+      text-align: center;
+    }
+
+    .testimonial-card blockquote {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .testimonial-author {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      text-align: center;
+    }
+
+    .testimonial-role {
+      font-size: 0.82rem;
+      color: #999;
+      text-align: center;
+    }
+
+    /* ── Final CTA Banner ── */
+    .final-cta {
+      background: var(--dark);
+      padding: 70px 0;
+      text-align: center;
+      border-top: 5px solid var(--gold);
+    }
+
+    .final-cta h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .final-cta p {
+      color: #999;
+      font-size: 1.05rem;
+      margin-bottom: 32px;
+    }
+
+    .final-cta p span { color: var(--gold); font-weight: 700; }
+
+    /* ── Footer ── */
+    .site-footer {
+      background: var(--dark);
+      border-top: 2px solid rgba(220,194,133,0.15);
+      padding: 48px 0 32px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      color: var(--gold);
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .footer-links {
+      font-size: 0.8rem;
+      margin-bottom: 24px;
+    }
+
+    .footer-links a {
+      color: #888;
+      text-decoration: none;
+      margin: 0 14px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-disclaimer {
+      font-size: 0.7rem;
+      color: #444;
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .offer-grid,
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .qualifier-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .bonus-row {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .bonus-value {
+        align-self: flex-start;
+      }
+
+      .hero { padding: 48px 0 60px; }
+
+      .cta-btn {
+        font-size: 1.2rem;
+        padding: 20px 28px;
+        width: 100%;
+        max-width: 440px;
+      }
+
+      .value-stack li {
+        font-size: 0.88rem;
+      }
+
+      .order-box {
+        padding: 40px 24px;
+      }
+
+      .top-bar p {
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+      }
+
+      .testimonial-card {
+        margin-top: 36px;
+      }
+
+      .qualifier-col {
+        padding: 32px 24px;
+      }
+
+      .story-block h2 {
+        font-size: 2.2rem;
+      }
+    }
+
+    /* ── Scroll Animations ── */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Gold Top Bar -->
+  <div class="top-bar">
+    <p>LIMITED SPOTS AVAILABLE — ONLY ACCEPTING BUSINESSES AT $500K+ ANNUAL REVENUE</p>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-logo">SCALE ENTERPRISES</div>
+      <p class="hero-pre">Attention: Service Business Owners Doing $500K–$3M Per Year</p>
+      <h1 class="hero-headline">
+        Get A Complete 3-Hour Business Deep Dive<br>
+        —And Leave With A Real Plan To Scale—<br>
+        For A One-Time Investment Of Only <em>$97</em>
+      </h1>
+      <p class="hero-sub">
+        We'll Personally Review Every Function Of Your Business — Strategy, Team, Time, Finances, Marketing, Sales, Operations — And Build Your Custom Growth Plan Live On The Call
+      </p>
+      <a href="#order" class="cta-btn">YES — RESERVE MY DEEP DIVE FOR $97 →</a>
+      <p class="hero-trust">🔒 Secure Checkout · Full Recording Included · Instant Access to Bonuses</p>
+      <div class="social-proof-bar">
+        <div class="avatar-stack">
+          <span>J</span><span>R</span><span>D</span>
+        </div>
+        Join 200+ Entrepreneurs Already Inside
+      </div>
+    </div>
+  </section>
+
+  <hr class="gold-divider">
+
+  <!-- Offer Breakdown — White Section -->
+  <section class="offer-section">
+    <div class="container">
+      <h2 class="section-title section-title--dark">Here's Everything You Get When You<br>Reserve Your Spot Today</h2>
+      <div class="offer-grid">
+        <div class="offer-card fade-in-up">
+          <div class="offer-icon">📅</div>
+          <h3>1-on-1 Three-Hour Business Deep Dive</h3>
+          <p>Matthew will personally review every function of your enterprise — strategy, team, time management, finances, marketing, sales, and operations. You'll walk away with total clarity on what's holding you back and exactly what to do next.</p>
+          <span class="value-badge">Value: $2,500</span>
+        </div>
+        <div class="offer-card fade-in-up">
+          <div class="offer-icon">🎬</div>
+          <h3>Complete Session Recording</h3>
+          <p>Get the full HD recording of your Deep Dive so you can revisit every insight, share it with your team, and implement with confidence.</p>
+          <span class="value-badge">Value: $97</span>
+        </div>
+        <div class="offer-card fade-in-up">
+          <div class="offer-icon">📋</div>
+          <h3>Enterprise Implementation Workbook</h3>
+          <p>A structured, fillable workbook that guides you through implementing every recommendation from your Deep Dive. Don't just take notes — execute.</p>
+          <span class="value-badge">Value: $197</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="gold-divider">
+
+  <!-- Bonus Stack — Dark Section -->
+  <section class="bonus-section">
+    <div class="container">
+      <h2 class="section-title section-title--gold">PLUS — These Exclusive Bonuses Are<br>Included At No Extra Cost</h2>
+
+      <div class="bonus-row">
+        <div class="bonus-check">✓</div>
+        <div class="bonus-content">
+          <h3>Chance To Win 12 Months of Enterprise Coaching</h3>
+          <p>Every Deep Dive participant is entered to win a full year of direct coaching with Matthew Landon — a $49,000 value — awarded to select clients who demonstrate the highest execution potential.</p>
+        </div>
+        <div class="bonus-value"><span class="value-badge">$49,000 VALUE</span></div>
+      </div>
+
+      <div class="bonus-row">
+        <div class="bonus-check">✓</div>
+        <div class="bonus-content">
+          <h3>3-Month Trial of Enterprise — The CEO Dashboard</h3>
+          <p>Get full access to the Enterprise Command Center: your Readiness Score, Bottleneck Identifier, Revenue Gap Calculator, and 90-Minute Weekly Planner — the operating system for a high-performance enterprise.</p>
+        </div>
+        <div class="bonus-value"><span class="value-badge">$291 VALUE</span></div>
+      </div>
+
+      <div class="bonus-row">
+        <div class="bonus-check">✓</div>
+        <div class="bonus-content">
+          <h3>Access to Our Exclusive Newsletter &amp; Community</h3>
+          <p>Join a curated network of serious enterprise operators. Get weekly insights from Matthew, access to member-only resources, and direct community support as you scale.</p>
+        </div>
+        <div class="bonus-value"><span class="value-badge">PRICELESS</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mid-Page CTA -->
+  <div class="mid-cta">
+    <div class="container">
+      <h2>Don't Wait — Spots Are Limited And <span>Filling Fast</span></h2>
+      <a href="#order" class="cta-btn">YES — RESERVE MY DEEP DIVE FOR $97 →</a>
+    </div>
+  </div>
+
+  <!-- Story Section — Off-White -->
+  <section class="story-section">
+    <div class="container">
+      <div class="story-block">
+        <h2>IT'S NO SECRET...</h2>
+        <p>Most service business owners are stuck somewhere between $500K and $3M — not because they lack ambition, and not because the market isn't there.</p>
+        <p>They're stuck because <strong>no one has ever sat down with them and actually looked at their whole business.</strong></p>
+        <p>Not just their marketing. Not just their sales. Their <strong>whole enterprise</strong> — strategy, team, operations, finances, time, all of it — with fresh eyes and a framework designed to find the exact constraint that's keeping them from the next level.</p>
+
+        <div class="story-highlight">
+          <p>That's what the Scale Enterprises Deep Dive is. Three hours. One-on-one. Your entire business — reviewed, diagnosed, and mapped.</p>
+        </div>
+
+        <p>Matthew Landon personally reviews every function of your business, diagnoses what's really going on beneath the surface, and works with you to build a concrete, sequenced plan for what to do next.</p>
+        <p>No generic advice. No frameworks that don't apply to your situation. Just clarity, strategy, and a real plan — built specifically for your enterprise.</p>
+        <p>And because Matthew only accepts businesses already generating $500K or more annually, every conversation is operating at a level most "business coaches" never reach.</p>
+        <p><strong>If you're finally ready to stop guessing and start building a real enterprise — this is your next move.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="gold-divider">
+
+  <!-- Qualifier Section — Dark -->
+  <section class="qualifier-section">
+    <div class="container">
+      <h2 class="section-title section-title--white">This Is For You If...</h2>
+      <div class="qualifier-grid">
+        <div class="qualifier-col qualifier-col--yes">
+          <h3>YES — This Is For You:</h3>
+          <ul>
+            <li>You're generating $500K+ in annual revenue</li>
+            <li>You feel like you're running at 60% of your potential</li>
+            <li>You've built something real, but growth has stalled</li>
+            <li>You want a strategic partner who actually understands operations at scale</li>
+            <li>You're ready to invest in your enterprise — not just try another tactic</li>
+          </ul>
+        </div>
+        <div class="qualifier-col qualifier-col--no">
+          <h3>This Is NOT For You:</h3>
+          <ul>
+            <li>You're still pre-revenue or under $500K/year</li>
+            <li>You want someone to hand you a cookie-cutter template</li>
+            <li>You're not ready to implement what you learn</li>
+            <li>You're looking for hype, not hard strategy</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="gold-divider">
+
+  <!-- Order Block -->
+  <section class="order-section" id="order">
+    <div class="container">
+      <div class="order-box">
+        <h2 class="section-title section-title--white" style="font-size:clamp(1.8rem,4vw,2.6rem)">Reserve Your Deep Dive — <span style="color:var(--gold)">$97</span></h2>
+        <ul class="value-stack">
+          <li><span>1-on-1 Three-Hour Deep Dive</span><span>$2,500</span></li>
+          <li><span>Full Session Recording</span><span>$97</span></li>
+          <li><span>Implementation Workbook</span><span>$197</span></li>
+          <li><span>Bonus: 12-Month Coaching Giveaway Entry</span><span>$49,000</span></li>
+          <li><span>Bonus: 3-Month Enterprise Dashboard Trial</span><span>$291</span></li>
+          <li><span>Bonus: Newsletter &amp; Community Access</span><span>Priceless</span></li>
+        </ul>
+        <div class="value-total">
+          <span>Total Value: $52,085+</span>
+          <span>You Pay: $97</span>
+        </div>
+        <div style="margin-top:32px;">
+          <a href="#order" class="cta-btn">CLAIM MY SPOT NOW — $97 →</a>
+        </div>
+        <p class="order-trust">🔒 Secure · Encrypted · Instant Confirmation</p>
+      </div>
+
+      <!-- Order Bump -->
+      <div class="order-bump">
+        <div class="bump-top">
+          <p>⚡ EXCLUSIVE ADD-ON — ONLY AVAILABLE ON THIS PAGE</p>
+        </div>
+        <div class="bump-body">
+          <div class="bump-header">
+            <div class="bump-checkbox" id="bump-box">
+              <svg width="16" height="16" fill="none" viewBox="0 0 16 16" style="display:none;" id="bump-check-svg">
+                <path d="M2 8l4 4L14 4" stroke="#DCC285" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <label for="bump-box">YES — Add My 45-Minute Follow-Up Strategy Call <span>(+$47)</span></label>
+          </div>
+          <p>After your Deep Dive, lock in a dedicated follow-up call to review your implementation progress, troubleshoot early obstacles, and ensure your plan is on track. Add it now for just $47.</p>
+          <p class="bump-fine">Simply select this option before completing your order.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials — White Section -->
+  <section class="testimonials-section">
+    <div class="container">
+      <h2 class="section-title section-title--dark">What Enterprise Owners Are Saying</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-avatar t-avatar-j">J</div>
+          <div class="testimonial-stars">★★★★★</div>
+          <blockquote>"I've paid 10x this for strategy sessions that gave me half the clarity. Matthew sees things in your business you've stopped seeing yourself."</blockquote>
+          <div class="testimonial-author">James T.</div>
+          <div class="testimonial-role">Manufacturing Services</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-avatar t-avatar-r">R</div>
+          <div class="testimonial-stars">★★★★★</div>
+          <blockquote>"Within 90 days of our Deep Dive, we restructured our team, relaunched our offer, and added $40K in MRR. This was the turning point."</blockquote>
+          <div class="testimonial-author">Renee M.</div>
+          <div class="testimonial-role">B2B Consulting Firm</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-avatar t-avatar-d">D</div>
+          <div class="testimonial-stars">★★★★★</div>
+          <blockquote>"The framework Matthew uses to analyze your enterprise is unlike anything I've seen. We had a real plan on paper by the end of the call."</blockquote>
+          <div class="testimonial-author">David K.</div>
+          <div class="testimonial-role">Commercial Services</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <h2>Your Next Move Starts Here</h2>
+      <p>Get the clarity, strategy, and plan you've been missing — for just <span>$97</span></p>
+      <a href="#order" class="cta-btn">RESERVE MY DEEP DIVE NOW →</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-logo">SCALE ENTERPRISES</div>
+      <p class="footer-copy">&copy; 2025 Scale Enterprises. All Rights Reserved.</p>
+      <div class="footer-links">
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/terms-of-service">Terms</a>
+        <a href="/contact">Contact</a>
+      </div>
+      <p class="footer-disclaimer">Results mentioned are not typical. Individual outcomes depend on effort, experience, and market conditions.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Intersection Observer for scroll animations
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.bonus-row, .fade-in-up').forEach(function(el) {
+      observer.observe(el);
+    });
+
+    // Order bump checkbox toggle
+    var bumpBox = document.getElementById('bump-box');
+    var bumpSvg = document.getElementById('bump-check-svg');
+    if (bumpBox) {
+      bumpBox.addEventListener('click', function() {
+        bumpSvg.style.display = bumpSvg.style.display === 'none' ? 'block' : 'none';
+      });
+    }
+  </script>
+
+</body>
+</html>

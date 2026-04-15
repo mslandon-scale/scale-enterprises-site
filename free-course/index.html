@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wc7ebmnu6p");
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scale Enterprises - Free Enterprise Masterclass</title>
@@ -46,6 +54,9 @@
       max-width: 1280px; margin: 0 auto;
       padding: 1rem 1.5rem;
       display: flex; align-items: center; justify-content: center;
+    }
+    .nav-brand img {
+      height: 44px; width: auto;
     }
     .nav-brand {
       font-family: 'Sora', sans-serif; font-weight: 700;
@@ -408,6 +419,26 @@
     .bottom-cta .btn-gold { font-size: 1.25rem; padding: 1.5rem 3rem; }
 
     /* FOOTER */
+    .footer-inner {
+      max-width: 28rem; margin: 0 auto; text-align: center;
+      padding: 0 1.5rem;
+    }
+    .footer-brand-name {
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      color: var(--white); font-size: 1rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+    }
+    .footer-disclaimer {
+      color: var(--muted); font-size: 0.7rem; line-height: 1.6;
+      margin-top: 1rem;
+    }
+    .footer-links-row {
+      display: flex; justify-content: center; gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .footer-links-row a { color: var(--muted); font-size: 0.8rem; text-decoration: none; transition: color 0.2s; }
+    .footer-links-row a:hover { color: var(--white); }
+    .footer-copyright { color: var(--muted); font-size: 0.7rem; margin-top: 1.5rem; }
     .footer {
       text-align: center; padding: 2rem 1.5rem;
       border-top: 1px solid rgba(255,255,255,0.05);
@@ -464,8 +495,8 @@
       background: var(--surface);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 1rem;
-      width: 100%; max-width: 480px;
-      padding: 2.5rem;
+      width: 100%; max-width: 680px;
+      padding: 1rem 1.5rem;
       transform: translateY(20px) scale(0.97);
       transition: transform 0.3s ease;
       position: relative;
@@ -577,7 +608,7 @@
 
   <nav class="nav">
     <div class="nav-inner">
-      <span class="nav-brand">Scale Enterprises</span>
+      <span class="nav-brand"><img src="/logo.png" alt="Scale Enterprises"></span>
     </div>
   </nav>
 
@@ -698,9 +729,9 @@
               <span class="number">03</span>
             </div>
             <div class="module-card-body">
-              <h3>Marketing</h3>
+              <h3>Marketing &amp; Sales</h3>
               <span class="tag">MODULE 03</span>
-              <p>How to build marketing systems that generate demand predictably &#8212; without relying on referrals or guesswork.</p>
+              <p>How to build marketing and sales systems that drive predictable revenue growth &#8212; from lead generation to closing deals at scale.</p>
             </div>
           </div>
 
@@ -811,9 +842,9 @@
               <span class="number">03</span>
             </div>
             <div class="module-card-body">
-              <h3>Marketing</h3>
+              <h3>Marketing &amp; Sales</h3>
               <span class="tag">MODULE 03</span>
-              <p>How to build marketing systems that generate demand predictably &#8212; without relying on referrals or guesswork.</p>
+              <p>How to build marketing and sales systems that drive predictable revenue growth &#8212; from lead generation to closing deals at scale.</p>
             </div>
           </div>
 
@@ -972,24 +1003,39 @@
   </main>
 
   <footer class="footer">
-    <p class="footer-brand">Scale Enterprises</p>
-    <a href="/terms" class="footer-link">Terms</a>
+    <div class="footer-inner">
+      <div class="footer-brand-name">Scale Enterprises</div>
+      <p class="footer-disclaimer">Results are not guaranteed and may vary. All content is for educational purposes only and should not be taken as legal or financial advice.</p>
+      <div class="footer-links-row">
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/contact">Contact</a>
+      </div>
+      <p class="footer-copyright">&copy; 2026 Scale Enterprises LLC. All rights reserved.</p>
+    </div>
   </footer>
 
   <!-- ACCESS MODAL -->
   <div class="modal-overlay" id="accessModal">
     <div class="modal">
       <button class="modal-close" onclick="closeModal()">&times;</button>
-      <h3>Get Instant Access</h3>
-      <p class="modal-sub">Enter your details below and we'll send you the masterclass for free.</p>
-      <div id="ghlFormEmbed">
-        <!-- ═══════════════════════════════════════════
-             PASTE YOUR GHL FORM EMBED CODE HERE
-             Example: <iframe src="https://link.yourdomain.com/widget/form/XXXX" ...></iframe>
-             Or the GHL inline script embed
-             ═══════════════════════════════════════════ -->
-        <p style="color:#9ca3af;text-align:center;padding:2rem 0;font-size:0.9rem;">GHL form embed goes here</p>
-      </div>
+      <iframe
+        src="https://api.leadconnectorhq.com/widget/form/AISQ66js7RWFz4kKSrdg"
+        style="width:100%;height:70vh;border:none;border-radius:3px"
+        id="inline-AISQ66js7RWFz4kKSrdg"
+        data-layout="{'id':'INLINE'}"
+        data-trigger-type="alwaysShow"
+        data-trigger-value=""
+        data-activation-type="alwaysActivated"
+        data-activation-value=""
+        data-deactivation-type="neverDeactivate"
+        data-deactivation-value=""
+        data-form-name="Free Course"
+        data-height="500"
+        data-layout-iframe-id="inline-AISQ66js7RWFz4kKSrdg"
+        data-form-id="AISQ66js7RWFz4kKSrdg"
+        title="Free Course"
+      ></iframe>
     </div>
   </div>
 
@@ -1024,7 +1070,29 @@
       if (e.key === 'Escape') closeModal();
     });
 
-    // GHL form is embedded - no custom submit needed
+    // Listen for GHL form submission and redirect the parent page
+    window.addEventListener('message', function(event) {
+      // GHL posts a message when the form is submitted
+      if (event.data && event.data.type === 'form:submit') {
+        // Default to unqualified
+        var redirectUrl = '/confirmation.html';
+
+        // Check if revenue field indicates $500K+
+        var formData = event.data.data || {};
+        var revenue = formData.revenue || formData.annual_revenue || '';
+
+        // If they selected anything other than "Under $500K", they qualify
+        if (revenue && revenue.toLowerCase().indexOf('under') === -1 && revenue !== '') {
+          redirectUrl = '/confirmation.html?qualified=1';
+        }
+
+        // Redirect the full page (not just the iframe)
+        setTimeout(function() {
+          window.location.href = redirectUrl;
+        }, 1000);
+      }
+    });
   </script>
+  <script src="https://link.msgsndr.com/js/form_embed.js"></script>
 </body>
 </html>

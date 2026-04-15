@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wc7ebmnu6p");
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scale Enterprises - Your Free Masterclass Is Ready</title>
@@ -445,6 +453,26 @@
       font-size: 0.7rem;
     }
 
+    /* QUALIFICATION ROUTING */
+    .qualified-only { display: none !important; }
+    .unqualified-only { display: block !important; }
+    body.qualified .qualified-only { display: block !important; }
+    body.qualified .unqualified-only { display: none !important; }
+
+    /* Unqualified CTA */
+    .unqualified-cta {
+      padding: 0 1.5rem 4rem;
+      text-align: center;
+    }
+    .unqualified-cta-inner {
+      max-width: 36rem;
+      margin: 0 auto;
+    }
+    .unqualified-cta-inner .btn-gold {
+      text-decoration: none;
+      display: inline-block;
+    }
+
     /* SCROLL ANIMATIONS */
     .fade-up {
       opacity: 0; transform: translateY(20px);
@@ -486,7 +514,7 @@
 
   <nav class="nav">
     <div class="nav-inner">
-      <span class="nav-brand">Scale Enterprises</span>
+      <span class="nav-brand"><img src="/logo.png" alt="Scale Enterprises" style="height:44px;width:auto;"></span>
     </div>
   </nav>
 
@@ -495,8 +523,9 @@
     <!-- HERO BRIDGE -->
     <section class="hero-bridge">
       <div class="hero-bridge-inner">
-        <h1 class="hero-stagger">Your Free Course Is On The Next Page</h1>
-        <p class="body-text hero-stagger">BUT &mdash; if you're serious about actually transforming your business and want us to help you do it QUICKLY and without guessing &mdash; click below and schedule your free Enterprise Strategy Session first.</p>
+        <h1 class="hero-stagger" id="heroHeadline">Your Free Course Is On The Next Page</h1>
+        <p class="body-text hero-stagger qualified-only" id="heroSub">BUT &mdash; if you're serious about actually transforming your business and want us to help you do it QUICKLY and without guessing &mdash; click below and schedule your free Enterprise Strategy Session first.</p>
+        <p class="body-text hero-stagger unqualified-only">Watch the masterclass below and start applying enterprise-level strategies to your business today.</p>
       </div>
     </section>
 
@@ -527,16 +556,16 @@
       </div>
     </section>
 
-    <!-- PRIMARY CTA -->
-    <section class="cta-section fade-up-scale" id="ctaSection">
+    <!-- PRIMARY CTA — qualified only -->
+    <section class="cta-section fade-up-scale qualified-only" id="ctaSection">
       <div style="max-width:36rem; margin:0 auto;">
         <button class="btn-gold" id="ctaButton">Schedule Your Free Enterprise Consult &rarr;</button>
       </div>
-      <a href="/masterclass" class="skip-link">No thanks, I'll just watch the free course for now &rarr;</a>
+      <a href="https://scale-course.vercel.app/setup" class="skip-link">No thanks, I'll just watch the free course for now &rarr;</a>
     </section>
 
-    <!-- CAL.COM EMBED AREA -->
-    <div class="booking-section" id="bookingSection">
+    <!-- CAL.COM EMBED AREA — qualified only -->
+    <div class="booking-section qualified-only" id="bookingSection">
       <div class="booking-inner">
         <!-- Replace with actual Cal.com embed script -->
         <div class="booking-placeholder">
@@ -546,8 +575,15 @@
       </div>
     </div>
 
-    <!-- TESTIMONIALS -->
-    <section class="testimonials-section">
+    <!-- UNQUALIFIED CTA — just the course -->
+    <section class="unqualified-cta fade-up-scale unqualified-only">
+      <div class="unqualified-cta-inner">
+        <a href="https://scale-course.vercel.app/setup" class="btn-gold">Watch Your Free Course Now &rarr;</a>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS — qualified only -->
+    <section class="testimonials-section qualified-only">
       <div class="container">
         <h2 class="section-heading fade-up">Real Entrepreneurs. Real Results.</h2>
         <p class="section-subheading fade-up">See how this information has transformed their businesses</p>
@@ -633,6 +669,16 @@
 
   <script>
     // ============================================================
+    // QUALIFICATION ROUTING — show consult CTA only for $500K+
+    // ============================================================
+    const params = new URLSearchParams(window.location.search);
+    const isQualified = params.get('qualified') === '1';
+
+    if (isQualified) {
+      document.body.classList.add('qualified');
+    }
+
+    // ============================================================
     // INTERSECTION OBSERVER — scroll fade-up animations
     // ============================================================
     const observer = new IntersectionObserver(
@@ -673,7 +719,8 @@
       }, 100);
     }
 
-    document.getElementById('ctaButton').addEventListener('click', openBooking);
+    const ctaButton = document.getElementById('ctaButton');
+    if (ctaButton) ctaButton.addEventListener('click', openBooking);
 
     document.querySelectorAll('.cta-trigger').forEach((btn) => {
       btn.addEventListener('click', openBooking);

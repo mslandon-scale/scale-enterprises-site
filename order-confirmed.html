@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wc7ebmnu6p");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome Aboard | Scale Enterprises</title>
+  <link rel="icon" type="image/png" href="SE ICON DESIGN WHITE.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --azure: #060CB6;
+      --azure-bright: #1A22E6;
+      --prussian: #02032E;
+      --black: #000000;
+      --white: #FFFFFF;
+      --gray-300: #CCCCDD;
+      --gray-400: #9999AA;
+      --gray-600: #666677;
+      --gold: #D4AF37;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--white);
+      background: var(--black);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .header-logo {
+      display: block;
+      margin: 0 auto;
+      height: 60px;
+      width: auto;
+    }
+
+    .page-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 60px 24px;
+      text-align: center;
+    }
+
+    /* ===== HERO CHECK ===== */
+    .check-circle {
+      width: 90px;
+      height: 90px;
+      background: linear-gradient(135deg, var(--azure) 0%, var(--azure-bright) 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+      box-shadow: 0 4px 50px rgba(6, 12, 182, 0.55);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 4px 50px rgba(6, 12, 182, 0.55); }
+      50% { box-shadow: 0 4px 70px rgba(6, 12, 182, 0.75); }
+    }
+
+    .check-circle svg {
+      width: 44px;
+      height: 44px;
+      stroke: white;
+      stroke-width: 3;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    h1 {
+      font-size: clamp(1.7rem, 4.5vw, 2.4rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+      color: var(--gray-300);
+      margin-bottom: 48px;
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    /* ===== REINFORCEMENT BANNER ===== */
+    .reinforce-banner {
+      width: 100%;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(212, 175, 55, 0.03) 100%);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 14px;
+      padding: 28px 28px;
+      margin-bottom: 44px;
+      text-align: center;
+    }
+
+    .reinforce-banner p {
+      font-size: 0.92rem;
+      color: var(--gray-300);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .reinforce-banner strong {
+      color: var(--gold);
+    }
+
+    /* ===== NEXT STEPS ===== */
+    .next-steps {
+      width: 100%;
+      text-align: left;
+      margin-bottom: 44px;
+    }
+
+    .next-steps h2 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 10px;
+      padding: 22px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .step-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .step-content h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .step-content p {
+      font-size: 0.88rem;
+      color: var(--gray-300);
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    .step-content p strong {
+      color: var(--white);
+    }
+
+    /* ===== MEETINGS LIST ===== */
+    .meetings-list {
+      list-style: none;
+      margin: 12px 0 0;
+      padding: 0;
+    }
+
+    .meetings-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.86rem;
+      color: var(--gray-300);
+      line-height: 1.55;
+    }
+
+    .meetings-list li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .meetings-list li svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--azure-bright);
+      stroke-width: 2;
+      fill: none;
+      flex-shrink: 0;
+      margin-top: 2px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .meetings-list li strong {
+      color: var(--white);
+    }
+
+    .meeting-note {
+      font-size: 0.8rem;
+      color: var(--gray-400);
+      font-style: italic;
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    /* ===== HIGHLIGHT STEP ===== */
+    .step.highlight {
+      background: rgba(6, 12, 182, 0.08);
+      border: 1px solid rgba(6, 12, 182, 0.25);
+    }
+
+    .step.highlight .step-num {
+      background: var(--azure);
+      color: var(--white);
+      border: none;
+    }
+
+    /* ===== TIMELINE BAR ===== */
+    .timeline-bar {
+      width: 100%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 44px;
+      text-align: center;
+    }
+
+    .timeline-bar .label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--azure-bright);
+      margin-bottom: 14px;
+    }
+
+    .timeline-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 14px;
+    }
+
+    .timeline-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--azure);
+      flex-shrink: 0;
+    }
+
+    .timeline-dot.gold {
+      background: var(--gold);
+      width: 14px;
+      height: 14px;
+    }
+
+    .timeline-line {
+      height: 2px;
+      width: 100%;
+      max-width: 120px;
+      background: linear-gradient(90deg, var(--azure), var(--gold));
+      opacity: 0.4;
+    }
+
+    .timeline-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--gray-400);
+      font-weight: 600;
+      max-width: 340px;
+      margin: 0 auto;
+    }
+
+    .timeline-labels span:last-child {
+      color: var(--gold);
+    }
+
+    .timeline-bar p {
+      font-size: 0.86rem;
+      color: var(--gray-300);
+      margin-top: 14px;
+      line-height: 1.65;
+    }
+
+    /* ===== SUPPORT NOTE ===== */
+    .support-note {
+      font-size: 0.84rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+
+    .support-note a {
+      color: #b0b0c0;
+      font-weight: 700;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: 48px 0;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      width: 100%;
+    }
+    .footer p { color: var(--gray-600); font-size: 0.8rem; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 16px; }
+    .footer-links a { color: var(--gray-600); font-size: 0.75rem; text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gray-400); }
+
+    /* ===== MOBILE OPTIMIZATIONS ===== */
+    @media (max-width: 600px) {
+      .page-wrapper {
+        padding: 36px 16px;
+      }
+
+      .check-circle {
+        width: 72px;
+        height: 72px;
+        margin-bottom: 22px;
+      }
+
+      .check-circle svg {
+        width: 36px;
+        height: 36px;
+      }
+
+      h1 {
+        font-size: 1.45rem;
+        margin-bottom: 12px;
+      }
+
+      .subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 32px;
+      }
+
+      .reinforce-banner {
+        padding: 20px 18px;
+        margin-bottom: 32px;
+        border-radius: 12px;
+      }
+
+      .reinforce-banner p {
+        font-size: 0.86rem;
+      }
+
+      .next-steps {
+        margin-bottom: 32px;
+      }
+
+      .next-steps h2 {
+        margin-bottom: 20px;
+      }
+
+      .step {
+        flex-direction: column;
+        gap: 12px;
+        padding: 18px 16px;
+        margin-bottom: 8px;
+      }
+
+      .step-num {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+        margin-top: 0;
+      }
+
+      .step-content h3 {
+        font-size: 0.9rem;
+      }
+
+      .step-content p {
+        font-size: 0.84rem;
+      }
+
+      .meetings-list li {
+        font-size: 0.82rem;
+        gap: 8px;
+        padding: 8px 0;
+      }
+
+      .meetings-list li svg {
+        width: 16px;
+        height: 16px;
+        margin-top: 1px;
+      }
+
+      .meeting-note {
+        font-size: 0.76rem;
+      }
+
+      .timeline-bar {
+        padding: 22px 18px;
+        margin-bottom: 32px;
+        border-radius: 12px;
+      }
+
+      .timeline-labels {
+        max-width: 240px;
+        font-size: 0.7rem;
+      }
+
+      .timeline-bar p {
+        font-size: 0.82rem;
+      }
+
+      .support-note {
+        font-size: 0.8rem;
+      }
+
+      .header-logo {
+        height: 48px;
+      }
+
+      .footer {
+        padding: 36px 16px;
+      }
+
+      .footer img {
+        height: 40px !important;
+      }
+
+      .footer-links {
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .page-wrapper {
+        padding: 28px 12px;
+      }
+
+      h1 {
+        font-size: 1.25rem;
+      }
+
+      .step {
+        padding: 16px 14px;
+      }
+
+      .step-content h3 {
+        font-size: 0.86rem;
+      }
+
+      .timeline-bar {
+        padding: 18px 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div style="text-align: center; padding: 16px 0 0;">
+    <img src="SE ICON DESIGN WHITE.png" alt="Scale Enterprises" class="header-logo">
+  </div>
+
+  <div class="page-wrapper">
+
+    <!-- Checkmark -->
+    <div class="check-circle">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    </div>
+
+    <h1>Congratulations &mdash; Let's Build Your Enterprise</h1>
+    <p class="subtitle">You just made one of the most important decisions for the future of your business. Here's exactly what happens next so you can hit the ground running.</p>
+
+    <!-- Reinforcement -->
+    <div class="reinforce-banner">
+      <p>Most business owners only talk about scaling. <strong>You just committed to it.</strong> Your transformation starts now &mdash; and our team is already preparing everything on our end to deliver results.</p>
+    </div>
+
+    <!-- Next Steps -->
+    <div class="next-steps">
+      <h2>Your Next Steps</h2>
+
+      <!-- Step 1 -->
+      <div class="step highlight">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Log Into Your Dashboard & Upload Financials</h3>
+          <p>You'll receive login credentials for your client dashboard. The first thing you need to do is <strong>upload your basic financial statements</strong> &mdash; this gives our team the foundation we need to build your transformation plan.</p>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Schedule Your Four Strategy Meetings</h3>
+          <p>Inside your dashboard, you'll find links to schedule the following meetings:</p>
+          <ul class="meetings-list">
+            <li>
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span><strong>Vision & Financials Meeting</strong> &mdash; Align on your goals, revenue targets, and financial picture</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span><strong>Growth Meeting</strong> &mdash; Map out your marketing, sales, and client acquisition strategy</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span><strong>Fulfillment Meeting</strong> &mdash; Optimize your service delivery and operations</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span><strong>Team Meeting</strong> &mdash; Build the people structure to support your growth</span>
+            </li>
+          </ul>
+          <p class="meeting-note">For the Growth, Fulfillment, and Team meetings &mdash; if you have someone who leads that area of your business (e.g. a head of marketing or sales), they should be the primary attendee on that call. They'll get the most from it.</p>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Deliverables Start Hitting Your Dashboard</h3>
+          <p>Within <strong>14 days</strong> of completing your meetings, you'll begin seeing your custom deliverables appear in your dashboard. Our team works behind the scenes to build everything out based on what we learn in each meeting.</p>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>Final Review & Integration Meeting</h3>
+          <p>Once everything is built, we'll schedule a <strong>final review meeting</strong> where we walk you through the entire transformation plan, review every deliverable, and lay out the exact process for integrating it all into your business.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline-bar">
+      <div class="label">Your Transformation Timeline</div>
+      <div class="timeline-visual">
+        <div class="timeline-dot"></div>
+        <div class="timeline-line"></div>
+        <div class="timeline-dot gold"></div>
+      </div>
+      <div class="timeline-labels">
+        <span>Today</span>
+        <span>Deliverables & Review</span>
+      </div>
+      <p>Upload financials, complete your four meetings, and within 14 days your transformation plan will be ready for review and integration.</p>
+    </div>
+
+    <p class="support-note">Questions? Reach out anytime at <a href="mailto:team@scaleenterprises.com">team@scaleenterprises.com</a></p>
+
+  </div>
+
+  <footer class="footer">
+    <img src="SE ICON DESIGN WHITE.png" alt="Scale Enterprises" style="display: block; margin: 0 auto 20px; height: 48px; width: auto;">
+    <p>&copy; 2026 Scale Enterprises. All Rights Reserved.</p>
+    <div class="footer-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-service.html">Terms of Service</a>
+      <a href="disclaimer.html">Disclaimer</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+</body>
+</html>

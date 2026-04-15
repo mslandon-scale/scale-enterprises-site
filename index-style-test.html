@@ -76,6 +76,10 @@
       --gray-600: #666677;
       --gray-800: #333340;
       --dark-text: #0A0A12;
+      --gold: #C9A84C;
+      --gold-bright: #E2BF5A;
+      --gold-dark: #A8882E;
+      --gold-glow: rgba(201, 168, 76, 0.35);
     }
 
     html { scroll-behavior: smooth; font-size: 16px; }
@@ -115,7 +119,7 @@
     .subhead--dark { color: var(--twilight); }
 
     strong, b { font-weight: 700; }
-    .text-azure { color: #fff; }
+    .text-azure { color: var(--gold); }
 
     /* ===== BUTTONS ===== */
     .btn {
@@ -265,7 +269,7 @@
     .hero h1 { margin-bottom: 20px; font-size: clamp(1.8rem, 4vw, 3.2rem); }
     .hero h1 .highlight {
       color: #fff;
-      background: var(--azure);
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold-bright));
       padding: 2px 16px;
       border-radius: 8px;
       position: relative;
@@ -287,8 +291,8 @@
     .stats-bar {
       background: var(--prussian);
       padding: 64px 0;
-      border-top: 1px solid rgba(6, 12, 182, 0.15);
-      border-bottom: 1px solid rgba(6, 12, 182, 0.15);
+      border-top: 1px solid rgba(201, 168, 76, 0.2);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
     }
 
     .stats-bar__inner {
@@ -302,7 +306,7 @@
       display: block;
       font-size: clamp(2.4rem, 4.5vw, 3.6rem);
       font-weight: 900;
-      color: var(--white);
+      color: var(--gold);
       letter-spacing: -0.02em;
       line-height: 1;
     }
@@ -352,7 +356,7 @@
       display: inline-block;
       margin-top: 48px;
       padding: 32px 48px;
-      border-left: 5px solid var(--azure);
+      border-left: 5px solid var(--gold);
       background: linear-gradient(135deg, rgba(6, 12, 182, 0.06) 0%, rgba(6, 12, 182, 0.02) 100%);
       font-size: clamp(1.1rem, 1.4vw, 1.3rem);
       font-weight: 700;
@@ -475,13 +479,13 @@
       width: 52px;
       height: 52px;
       border-radius: 50%;
-      background: var(--azure);
-      color: var(--white);
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold-bright));
+      color: var(--black);
       font-weight: 900;
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      box-shadow: 0 0 30px rgba(6, 12, 182, 0.35);
+      box-shadow: 0 0 30px var(--gold-glow);
     }
 
     /* ===== PILLARS — VISUAL CARDS ===== */
@@ -511,7 +515,7 @@
       left: 0;
       right: 0;
       height: 4px;
-      background: linear-gradient(90deg, var(--azure), var(--azure-bright));
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold-bright));
       opacity: 0;
       transition: opacity 0.4s ease;
     }
@@ -551,7 +555,7 @@
       text-transform: uppercase;
       letter-spacing: 0.25em;
       font-weight: 700;
-      color: var(--azure-bright);
+      color: var(--gold);
       margin-bottom: 10px;
     }
 
@@ -708,15 +712,15 @@
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      background: var(--azure);
-      color: var(--white);
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold-bright));
+      color: var(--black);
       font-weight: 900;
       font-size: 1.3rem;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 20px;
-      box-shadow: 0 4px 24px rgba(6, 12, 182, 0.35);
+      box-shadow: 0 4px 24px var(--gold-glow);
       position: relative;
       z-index: 2;
     }
@@ -968,12 +972,12 @@
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      background: var(--azure);
-      color: var(--white);
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold-bright));
+      color: var(--black);
       font-weight: 900;
       font-size: 1.15rem;
       margin: 0 auto 20px;
-      box-shadow: 0 4px 20px rgba(6, 12, 182, 0.35);
+      box-shadow: 0 4px 20px var(--gold-glow);
     }
 
     .apply-step__icon {
@@ -1105,9 +1109,9 @@
       margin-bottom: 20px;
     }
     .testimonial-card--dark .testimonial-card__result {
-      background: rgba(255, 255, 255, 0.1);
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(201, 168, 76, 0.15);
+      color: var(--gold-bright);
+      border: 1px solid rgba(201, 168, 76, 0.3);
     }
     .testimonial-card--light .testimonial-card__result {
       background: rgba(6, 12, 182, 0.06);
@@ -1171,8 +1175,8 @@
       width: 16px;
       height: 16px;
     }
-    .testimonial-card--dark .testimonial-card__stars svg { fill: #F59E0B; }
-    .testimonial-card--light .testimonial-card__stars svg { fill: #F59E0B; }
+    .testimonial-card--dark .testimonial-card__stars svg { fill: var(--gold); }
+    .testimonial-card--light .testimonial-card__stars svg { fill: var(--gold); }
 
     /* ===== RESULTS BANNER (big numbers) ===== */
     .results-banner {
@@ -1382,7 +1386,7 @@
     .footer-links a:hover { color: var(--gray-400); }
 
     /* ===== DIVIDER ===== */
-    .divider { width: 60px; height: 3px; background: var(--azure); margin: 0 auto 48px; }
+    .divider { width: 60px; height: 3px; background: linear-gradient(90deg, var(--gold-dark), var(--gold-bright)); margin: 0 auto 48px; }
 
     /* ===== SCROLL ANIMATION ===== */
     .fade-up {
@@ -1519,12 +1523,12 @@
   <section class="section section--lg bg-white">
     <div class="container--narrow intro-white fade-up">
 
-      <h2 style="margin-bottom: 40px; color: var(--dark-text); text-align: center;">Small Business Is Dead.<br><span style="color: var(--azure);">Enterprise Entrepreneurship</span> Is the Future.</h2>
+      <h2 style="margin-bottom: 40px; color: var(--dark-text); text-align: center;">Small Business Is Dead.<br><span style="color: var(--gold);">Enterprise Entrepreneurship</span> Is the Future.</h2>
 
       <!-- Block 1: The shift -->
       <div style="display: flex; gap: 24px; align-items: flex-start; margin-bottom: 40px;">
-        <div style="flex-shrink: 0; width: 48px; height: 48px; background: rgba(6,12,182,0.08); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--azure)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <div style="flex-shrink: 0; width: 48px; height: 48px; background: rgba(201,168,76,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         </div>
         <p class="lead" style="color: var(--gray-800); margin: 0;">The era of grinding harder, wearing every hat, and hoping it all holds together is over. AI is replacing the small business playbook. The owners who survive the next decade won't be the ones who work the most. <strong>They'll be the ones who build enterprises that run without them.</strong></p>
       </div>
@@ -1533,8 +1537,8 @@
 
       <!-- Block 2: The new model -->
       <div style="display: flex; gap: 24px; align-items: flex-start; margin-bottom: 40px;">
-        <div style="flex-shrink: 0; width: 48px; height: 48px; background: rgba(6,12,182,0.08); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--azure)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <div style="flex-shrink: 0; width: 48px; height: 48px; background: rgba(201,168,76,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         </div>
         <p class="lead" style="color: var(--gray-800); margin: 0;">Enterprise Entrepreneurship is a fundamentally different model. Real strategy. A team of people and AI aligned to your vision. A management system that holds everything together without you in the middle. <strong>That's how businesses scale to $10M and beyond.</strong></p>
       </div>
@@ -1543,8 +1547,8 @@
 
       <!-- Block 3: The choice -->
       <div style="display: flex; gap: 24px; align-items: flex-start; margin-bottom: 8px;">
-        <div style="flex-shrink: 0; width: 48px; height: 48px; background: rgba(6,12,182,0.08); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--azure)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div style="flex-shrink: 0; width: 48px; height: 48px; background: rgba(201,168,76,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
         <p class="lead" style="color: var(--gray-800); margin: 0;">You've already proven you can build something real. The question now is whether you keep running a small business that depends on you, or you build an enterprise that doesn't. <strong>The future belongs to Enterprise Entrepreneurs.</strong></p>
       </div>
@@ -1557,9 +1561,9 @@
   <!-- MEET THE GUIDE                             -->
   <!-- ========================================== -->
   <section class="section bg-prussian fade-up" style="position: relative; overflow: hidden;">
-    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 400px; background: radial-gradient(ellipse, rgba(6,12,182,0.12) 0%, transparent 70%); pointer-events: none;"></div>
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 400px; background: radial-gradient(ellipse, rgba(201,168,76,0.12) 0%, transparent 70%); pointer-events: none;"></div>
     <div class="container--narrow" style="position: relative; text-align: center;">
-      <div style="display: inline-block; padding: 10px 28px; background: var(--azure); border-radius: 100px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; color: #fff; margin-bottom: 24px;">Meet Your Guide</div>
+      <div style="display: inline-block; padding: 10px 28px; background: linear-gradient(135deg, var(--gold-dark), var(--gold-bright)); border-radius: 100px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; color: var(--black); margin-bottom: 24px;">Meet Your Guide</div>
       <h2 style="margin-bottom: 48px;">He Saw What Was Breaking<br><span class="text-azure">From the Inside.</span></h2>
 
       <!-- Founder portrait -->
@@ -1572,31 +1576,13 @@
       <div style="text-align: left; max-width: 680px; margin: 0 auto;">
         <p class="lead" style="color: var(--gray-300); margin-bottom: 28px;">Matthew didn't start Scale Enterprises because he read a book about scaling. He started it because he's lived the full spectrum. He's operated inside <strong style="color: #fff;">Inc. 5000 companies doing $30M to $40M+</strong>, built the systems that generated millions, and installed the structures that let those enterprises scale without depending on any single person.</p>
 
-        <p class="lead" style="color: var(--gray-300); margin-bottom: 32px;">That experience revealed a pattern that became impossible to ignore:</p>
-
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 36px;">
-          <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 28px 20px; text-align: center;">
-            <div style="font-size: 2.2rem; font-weight: 900; color: #fff; line-height: 1; margin-bottom: 6px;">3x</div>
-            <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--azure-bright); font-weight: 700; margin-bottom: 12px;">Efficiency</div>
-            <p style="color: var(--gray-400); font-size: 0.85rem; line-height: 1.5; margin: 0;">Tripled an organization's efficiency in <strong style="color: var(--gray-200);">7 days</strong> with the right strategy.</p>
-          </div>
-          <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 28px 20px; text-align: center;">
-            <div style="font-size: 2.2rem; font-weight: 900; color: #fff; line-height: 1; margin-bottom: 6px;">2x2</div>
-            <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--azure-bright); font-weight: 700; margin-bottom: 12px;">Revenue</div>
-            <p style="color: var(--gray-400); font-size: 0.85rem; line-height: 1.5; margin: 0;">Helped a business <strong style="color: var(--gray-200);">double its revenue twice</strong> in a single year.</p>
-          </div>
-          <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 28px 20px; text-align: center;">
-            <div style="font-size: 2.2rem; font-weight: 900; color: #fff; line-height: 1; margin-bottom: 6px;">$0→7 fig</div>
-            <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--azure-bright); font-weight: 700; margin-bottom: 12px;">Growth</div>
-            <p style="color: var(--gray-400); font-size: 0.85rem; line-height: 1.5; margin: 0;">Took a company to <strong style="color: var(--gray-200);">seven figures in months</strong> using the same three pillars.</p>
-          </div>
-        </div>
+        <p class="lead" style="color: var(--gray-300); margin-bottom: 28px;">That experience revealed a pattern that became impossible to ignore. He tripled an organization's efficiency in seven days with the right strategy. He helped a business double its revenue twice in a single year. He took a company from startup to seven figures in just a few months using the same three pillars every time.</p>
 
         <p class="lead" style="color: var(--gray-300); margin-bottom: 28px;">The difference between a business that stalls and an enterprise that scales was never talent, work ethic, or market. It was the infrastructure underneath them. <strong style="color: #fff;">We call it the Enterprise Code.</strong></p>
 
         <p class="lead" style="color: var(--gray-300); margin-bottom: 28px;">That's why Scale Enterprises exists. Not to motivate you. Not to coach you. To <strong style="color: #fff;">install the three pillars</strong> that make $10M your floor, not your ceiling.</p>
 
-        <div style="border-left: 3px solid var(--azure); padding-left: 24px; margin-top: 40px;">
+        <div style="border-left: 3px solid var(--gold); padding-left: 24px; margin-top: 40px;">
           <p style="color: var(--gray-300); font-size: 1.05rem; line-height: 1.7;">Matthew's not here to help you hit a number. He's here to help you build an enterprise that's <strong style="color: #fff;">capable of holding $10M and everything beyond it</strong>. In 30 days.</p>
         </div>
 
@@ -1612,7 +1598,7 @@
   <!-- ========================================== -->
   <section class="section bg-black" style="padding-bottom: 40px;">
     <div class="container contrast-section fade-up">
-      <div style="display: inline-block; padding: 10px 28px; background: var(--azure); border-radius: 100px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; color: #fff; margin-bottom: 36px;">Which One Are You?</div>
+      <div style="display: inline-block; padding: 10px 28px; background: linear-gradient(135deg, var(--gold-dark), var(--gold-bright)); border-radius: 100px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; color: var(--black); margin-bottom: 36px;">Which One Are You?</div>
       <h2>Two Fundamentally Different Entrepreneurs</h2>
       <div class="divider" style="margin: 32px auto;"></div>
 
@@ -1648,7 +1634,7 @@
         </div>
       </div>
 
-      <p style="text-align: center; color: #fff; font-size: 1.3rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 48px;">IT'S TIME TO BECOME THE <span style="background: var(--azure); padding: 2px 12px; border-radius: 6px;">ENTERPRISE ENTREPRENEUR.</span> HERE'S HOW.</p>
+      <p style="text-align: center; color: #fff; font-size: 1.3rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 48px;">IT'S TIME TO BECOME THE <span style="background: linear-gradient(135deg, var(--gold-dark), var(--gold-bright)); color: var(--black); padding: 2px 12px; border-radius: 6px;">ENTERPRISE ENTREPRENEUR.</span> HERE'S HOW.</p>
     </div>
   </section>
 
@@ -1659,7 +1645,7 @@
     <div class="container">
 
       <div class="pillars-intro fade-up">
-        <div style="display: inline-block; padding: 10px 28px; background: var(--azure); border-radius: 100px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; color: #fff; margin-bottom: 24px;">The Enterprise Code</div>
+        <div style="display: inline-block; padding: 10px 28px; background: linear-gradient(135deg, var(--gold-dark), var(--gold-bright)); border-radius: 100px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; color: var(--black); margin-bottom: 24px;">The Enterprise Code</div>
         <h2>The Three Pillars of an<br><span class="text-azure">8-Figure</span> Enterprise</h2>
         <div class="divider" style="margin: 36px auto;"></div>
         <p class="lead">This is not an improvement program. You need a <strong>completely new way of owning an enterprise</strong>, built around three pillars that don't exist in your business today. Every company that scaled to $10M and beyond had all three. Every business that stalled was missing at least one.</p>
@@ -1705,7 +1691,7 @@
   <!-- ========================================== -->
   <section class="bridge bg-twilight fade-up" style="text-align: center; padding-top: 80px;">
     <div class="container--narrow">
-      <div style="display: inline-block; padding: 10px 28px; background: var(--azure); border-radius: 100px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; color: #fff; margin-bottom: 36px;">Your 12-Month Program</div>
+      <div style="display: inline-block; padding: 10px 28px; background: linear-gradient(135deg, var(--gold-dark), var(--gold-bright)); border-radius: 100px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; color: var(--black); margin-bottom: 36px;">Your 12-Month Program</div>
       <h2>Get These Pillars Installed<br>in Your Business in <span class="text-azure">30 Days</span></h2>
       <p style="color: var(--gray-300); max-width: 600px; margin: 16px auto 48px;">Strategy, team, and management system, built and installed directly into your operation. Supported for 12 months. No fluff. No filler. No theory.</p>
       <h3 style="color: #fff; margin-bottom: 36px;">Exactly What You Get</h3>
@@ -1714,7 +1700,7 @@
 
         <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 28px;">
           <div style="margin-bottom: 14px;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--azure-bright)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
           </div>
           <p style="color: #fff; font-weight: 700; font-size: 1rem; margin-bottom: 6px;">Full Deep Dive</p>
           <p style="color: var(--gray-400); font-size: 0.9rem; line-height: 1.6;">We tear your business apart on paper: revenue model, operations, team, bottlenecks, and the invisible ceiling holding everything back. <strong style="color: var(--gray-200);">You can't fix what you haven't diagnosed.</strong></p>
@@ -1722,7 +1708,7 @@
 
         <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 28px;">
           <div style="margin-bottom: 14px;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--azure-bright)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
           </div>
           <p style="color: #fff; font-weight: 700; font-size: 1rem; margin-bottom: 6px;">Custom 12-Month Enterprise Plan</p>
           <p style="color: var(--gray-400); font-size: 0.9rem; line-height: 1.6;">Not a template. Not a generic roadmap. A <strong style="color: var(--gray-200);">custom-engineered plan</strong> built around your specific business, your market, and the enterprise you're becoming. This is the blueprint for $10M and beyond.</p>
@@ -1730,7 +1716,7 @@
 
         <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 28px;">
           <div style="margin-bottom: 14px;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--azure-bright)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
           </div>
           <p style="color: #fff; font-weight: 700; font-size: 1rem; margin-bottom: 6px;">Full Management System Integration</p>
           <p style="color: var(--gray-400); font-size: 0.9rem; line-height: 1.6;">The reason you're in every meeting and every decision is because there's no system to replace you. <strong style="color: var(--gray-200);">We install one.</strong> Performance visibility, delegated decision-making, meeting cadence, and real accountability.</p>
@@ -1738,7 +1724,7 @@
 
         <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 28px;">
           <div style="margin-bottom: 14px;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--azure-bright)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
           </div>
           <p style="color: #fff; font-weight: 700; font-size: 1rem; margin-bottom: 6px;">Tried and True Key Playbooks</p>
           <p style="color: var(--gray-400); font-size: 0.9rem; line-height: 1.6;">These aren't theory. These are the <strong style="color: var(--gray-200);">exact frameworks used by enterprises doing $30M+</strong> for sales, operations, delivery, hiring, and finance. Battle-tested. Ready to deploy in your business on day one.</p>
@@ -1746,7 +1732,7 @@
 
         <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 28px;">
           <div style="margin-bottom: 14px;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--azure-bright)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
           </div>
           <p style="color: #fff; font-weight: 700; font-size: 1rem; margin-bottom: 6px;">Custom Enterprise Growth Strategy</p>
           <p style="color: var(--gray-400); font-size: 0.9rem; line-height: 1.6;">A growth engine that doesn't need you to run it. Positioning, offer architecture, acquisition channels, and a revenue model designed to <strong style="color: var(--gray-200);">scale without adding a single hour to your week.</strong></p>
@@ -1754,7 +1740,7 @@
 
         <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 28px;">
           <div style="margin-bottom: 14px;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--azure-bright)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           </div>
           <p style="color: #fff; font-weight: 700; font-size: 1rem; margin-bottom: 6px;">Full Accountability</p>
           <p style="color: var(--gray-400); font-size: 0.9rem; line-height: 1.6;">We don't hand you a plan and disappear. <strong style="color: var(--gray-200);">12 months of ongoing support</strong>, check-ins, and execution tracking. We stay in the trenches with you until the enterprise is running on its own.</p>
@@ -1778,7 +1764,7 @@
   <!-- ========================================== -->
   <section id="results" class="section section--lg bg-white">
     <div class="container testimonials fade-up">
-      <p class="subhead" style="margin-bottom: 16px; color: var(--azure);">Real Results</p>
+      <p class="subhead" style="margin-bottom: 16px; color: var(--gold);">Real Results</p>
       <h2 style="color: var(--dark-text);">What Our Clients Are Saying</h2>
       <div class="divider" style="margin: 32px auto;"></div>
 
@@ -1834,7 +1820,7 @@
           </div>
           <span class="testimonial-card__result">$0 &rarr; 7 figures in months</span>
           <span class="testimonial-card__quote-mark">&ldquo;</span>
-          <p class="testimonial-card__text" style="font-size: 1.15rem; font-weight: 600; line-height: 1.6;">As we applied these enterprise-level strategies in our business, we hit 7 figures faster than I ever thought was possible.</p>
+          <p class="testimonial-card__text" style="font-size: 1.15rem; font-weight: 600; line-height: 1.6;">The three pillars gave us everything we needed. Strategy, team, management system. We hit seven figures faster than I ever thought possible.</p>
           <div class="testimonial-card__author">
             <div class="testimonial-card__avatar">R</div>
             <div>
@@ -1857,7 +1843,7 @@
   <!-- ========================================== -->
   <section class="section section--lg bg-off-white">
     <div class="container what-this-is fade-up">
-      <p class="subhead" style="margin-bottom: 16px; color: var(--azure);">What This Is</p>
+      <p class="subhead" style="margin-bottom: 16px; color: var(--gold);">What This Is</p>
       <h2>Not a Course. Not Coaching.<br>A <span class="text-azure">Transformation.</span></h2>
       <div class="divider" style="margin: 36px auto;"></div>
       <p class="lead" style="color: var(--gray-800);">This is private, hands-on work done inside <strong>your actual business</strong>. Your real numbers. Your real offer. Your real team. Over 30 days. Nothing hypothetical. Nothing generic.</p>
@@ -1896,7 +1882,7 @@
   <!-- ========================================== -->
   <section class="section bg-black">
     <div class="container process fade-up">
-      <div style="display: inline-block; padding: 10px 28px; background: var(--azure); border-radius: 100px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; color: #fff; margin-bottom: 24px;">The Process</div>
+      <div style="display: inline-block; padding: 10px 28px; background: linear-gradient(135deg, var(--gold-dark), var(--gold-bright)); border-radius: 100px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; color: var(--black); margin-bottom: 24px;">The Process</div>
       <h2>How the 30 Days Work</h2>
 
       <div class="process__steps">
@@ -1949,7 +1935,7 @@
   <section class="section section--lg bg-off-white">
     <div class="container who-section fade-up">
       <div style="text-align: center; margin-bottom: 20px;">
-        <p class="subhead" style="margin-bottom: 16px; color: var(--azure);">Fit</p>
+        <p class="subhead" style="margin-bottom: 16px; color: var(--gold);">Fit</p>
         <h2>We Are Deliberately Selective</h2>
         <div class="divider" style="margin: 32px auto;"></div>
         <p style="color: var(--gray-600); max-width: 600px; margin: 0 auto;">Not as a positioning tactic. As a practical necessity. We install enterprise infrastructure by hand, inside your business. <strong>That doesn't scale if we say yes to everyone.</strong></p>
@@ -2018,7 +2004,7 @@
 
       <!-- Header -->
       <div class="apply-section fade-up" style="margin-bottom: 0;">
-        <div style="display: inline-block; padding: 10px 28px; background: var(--azure); border-radius: 100px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; color: #fff; margin-bottom: 24px;">Next Step</div>
+        <div style="display: inline-block; padding: 10px 28px; background: linear-gradient(135deg, var(--gold-dark), var(--gold-bright)); border-radius: 100px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; color: var(--black); margin-bottom: 24px;">Next Step</div>
         <h2>How to Apply</h2>
         <div class="divider" style="margin: 32px auto;"></div>
         <p class="lead" style="color: var(--gray-200);">There is no "buy now" button on this page. <strong style="color: #fff;">Because this isn't a transaction. It's a transformation.</strong> And transformation starts with commitment.</p>
@@ -2262,7 +2248,7 @@
   <!-- FINAL WORD                                 -->
   <!-- ========================================== -->
   <section class="section section--lg bg-twilight" style="position: relative; overflow: hidden;">
-    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(6,12,182,0.2) 0%, transparent 60%); pointer-events: none;"></div>
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 60%); pointer-events: none;"></div>
     <div class="container--narrow final fade-up" style="position: relative;">
 
       <h2 style="text-align: center;">You've Been the Operator.<br>Now Become the Enterprise Entrepreneur.</h2>
