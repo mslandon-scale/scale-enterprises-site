@@ -1,5 +1,3 @@
-import { ExternalLink } from "lucide-react";
-
 const platformLinks = [
   { label: "How It Works", href: "#how-it-works" },
   { label: "Enterprise Coaching", href: "#platform" },
@@ -70,14 +68,6 @@ export default function Footer() {
                   </a>
                 </li>
               ))}
-              <li>
-                <a
-                  href="#"
-                  className="font-body text-[14px] text-white/60 hover:text-white transition-colors duration-200 inline-flex items-center gap-1.5"
-                >
-                  LinkedIn <ExternalLink size={14} />
-                </a>
-              </li>
             </ul>
           </div>
         </div>
