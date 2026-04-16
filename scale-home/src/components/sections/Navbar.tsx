@@ -4,8 +4,8 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const productItems = [
-  { label: "Enterprise Challenge", desc: "A deep dive to transform your business", href: "#", badge: null },
   { label: "Enterprise 360", desc: "Full enterprise implementation", href: "#", badge: null },
+  { label: "Enterprise Challenge", desc: "A deep dive to transform your business", href: "#", badge: "Coming Soon" },
   { label: "Enterprise Platform", desc: "Platform services for your business", href: "#", badge: "Coming Soon" },
   { label: "Enterprise Command Center", desc: "Your eagle view snapshot of your business", href: "#", badge: "Coming Soon" },
 ];
