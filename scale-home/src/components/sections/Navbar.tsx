@@ -49,7 +49,7 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto w-full px-6 flex items-center justify-between">
-          <a href="#" className="flex items-center gap-3">
+          <a href="/" className="flex items-center gap-3">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/logo.png"
