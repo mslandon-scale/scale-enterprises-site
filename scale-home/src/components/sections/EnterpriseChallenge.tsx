@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const bullets = [
   "Audit every core function in your business and identify what's holding you back",
@@ -11,7 +12,65 @@ const bullets = [
 ];
 
 export default function EnterpriseChallenge() {
+  const [showModal, setShowModal] = useState(false);
+
   return (
+    <>
+    {/* ═══ COMING SOON MODAL ═══ */}
+    <AnimatePresence>
+      {showModal && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          className="fixed inset-0 z-50 flex items-center justify-center px-4"
+          onClick={() => setShowModal(false)}
+        >
+          {/* Backdrop */}
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+
+          {/* Modal */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92, y: 16 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.92, y: 16 }}
+            transition={{ duration: 0.25, ease: "easeOut" as const }}
+            onClick={(e) => e.stopPropagation()}
+            className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 lg:p-10 text-center"
+          >
+            {/* Close button */}
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-black/5 transition-colors"
+            >
+              <svg className="w-5 h-5 text-text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Badge */}
+            <div className="inline-block bg-accent-gold/10 text-accent-gold font-bold text-[11px] uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
+              Coming Soon
+            </div>
+
+            <h3 className="font-display text-navy text-[22px] lg:text-[26px] font-extrabold leading-[1.1] mb-3">
+              The Enterprise Challenge Is On Its Way
+            </h3>
+            <p className="font-body text-text-secondary text-[15px] leading-[1.7] mb-8">
+              We&apos;re putting the finishing touches on something powerful. In the meantime, get a head start with our free Enterprise Masterclass.
+            </p>
+
+            <a
+              href="https://course.scaleenterprises.com/register"
+              className="inline-block bg-accent-gold text-black font-bold text-[14px] uppercase tracking-widest px-10 py-4 rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200 shadow-[0_8px_32px_rgba(240,192,48,0.25)]"
+            >
+              Start the Free Masterclass →
+            </a>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
     <section className="relative bg-white py-24 lg:py-36 overflow-hidden">
       {/* ═══ ANIMATED BACKGROUND ═══ */}
       <div className="absolute inset-0 pointer-events-none">
@@ -199,12 +258,12 @@ export default function EnterpriseChallenge() {
               transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" as const }}
               className="mt-10"
             >
-              <a
-                href="#apply"
-                className="inline-block bg-navy text-white font-bold text-[15px] uppercase tracking-widest px-12 py-5 text-center rounded-full hover:bg-navy-light hover:-translate-y-px transition-all duration-200 shadow-[0_8px_24px_rgba(15,29,50,0.2)]"
+              <button
+                onClick={() => setShowModal(true)}
+                className="inline-block bg-navy text-white font-bold text-[15px] uppercase tracking-widest px-12 py-5 text-center rounded-full hover:bg-navy-light hover:-translate-y-px transition-all duration-200 shadow-[0_8px_24px_rgba(15,29,50,0.2)] cursor-pointer"
               >
                 Join the Challenge
-              </a>
+              </button>
             </motion.div>
           </motion.div>
 
@@ -262,5 +321,6 @@ export default function EnterpriseChallenge() {
         </div>
       </div>
     </section>
+    </>
   );
 }
