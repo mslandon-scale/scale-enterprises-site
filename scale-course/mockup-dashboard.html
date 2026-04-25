@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Mockup — Scale Enterprises</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/shared.css">
+  <style>
+    .coming-soon-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    @media (max-width: 600px) {
+      .coming-soon-grid { grid-template-columns: 1fr; }
+    }
+
+    .module-icon {
+      width: 56px; height: 56px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .module-card:hover .module-icon {
+      transform: scale(1.1) rotate(-3deg);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .module-icon svg { width: 28px; height: 28px; }
+
+    .module-card {
+      opacity: 0; transform: translateY(20px);
+      animation: cardIn 0.5s ease forwards;
+      position: relative; overflow: hidden;
+    }
+    @keyframes cardIn { to { opacity: 1; transform: translateY(0); } }
+    .module-card:nth-child(1) { animation-delay: 0.05s; }
+    .module-card:nth-child(2) { animation-delay: 0.1s; }
+    .module-card:nth-child(3) { animation-delay: 0.15s; }
+    .module-card:nth-child(4) { animation-delay: 0.2s; }
+    .module-card:nth-child(5) { animation-delay: 0.25s; }
+    .module-card:nth-child(6) { animation-delay: 0.3s; }
+    .module-card:nth-child(7) { animation-delay: 0.35s; }
+    .module-card:nth-child(8) { animation-delay: 0.4s; }
+
+    .module-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; border-radius: 0.75rem 0.75rem 0 0;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0; transition: opacity 0.3s ease;
+    }
+    .module-card:hover::before { opacity: 1; }
+
+    /* Audio Coming Soon banner */
+    .audio-coming-soon {
+      background: linear-gradient(135deg, rgba(240,192,48,0.08), rgba(240,192,48,0.02));
+      border: 1px solid rgba(240,192,48,0.2);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      display: flex; align-items: center; gap: 1.25rem;
+      transition: border-color 0.3s;
+    }
+    .audio-coming-soon:hover { border-color: rgba(240,192,48,0.4); }
+    .audio-coming-soon-icon {
+      width: 48px; height: 48px; flex-shrink: 0;
+      background: rgba(240,192,48,0.15); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .audio-coming-soon-icon svg { width: 24px; height: 24px; color: var(--gold); }
+    .audio-coming-soon-text h3 {
+      font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1rem;
+      color: var(--white); margin-bottom: 0.25rem;
+    }
+    .audio-coming-soon-text p { color: var(--muted); font-size: 0.85rem; }
+    .audio-badge {
+      margin-left: auto;
+      background: rgba(240,192,48,0.15); color: var(--gold);
+      font-weight: 700; font-size: 0.75rem;
+      padding: 0.5rem 1rem; border-radius: 9999px;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      white-space: nowrap;
+    }
+
+    /* PDF Download Banner */
+    .pdf-download-banner {
+      background: linear-gradient(135deg, rgba(239,68,68,0.06), rgba(239,68,68,0.02));
+      border: 1px solid rgba(239,68,68,0.2);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+      display: flex; align-items: center; gap: 1.25rem;
+      transition: border-color 0.3s;
+      text-decoration: none; color: inherit;
+    }
+    .pdf-download-banner:hover { border-color: rgba(239,68,68,0.4); }
+    .pdf-download-icon {
+      width: 48px; height: 48px; flex-shrink: 0;
+      background: rgba(239,68,68,0.15); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .pdf-download-icon svg { width: 24px; height: 24px; color: #ef4444; }
+    .pdf-download-text h3 {
+      font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1rem;
+      color: var(--white); margin-bottom: 0.25rem;
+    }
+    .pdf-download-text p { color: var(--muted); font-size: 0.85rem; }
+    .pdf-download-btn {
+      margin-left: auto;
+      background: #ef4444; color: var(--white);
+      font-weight: 700; font-size: 0.8rem;
+      padding: 0.6rem 1.25rem; border-radius: 4px;
+      text-decoration: none; white-space: nowrap;
+      transition: filter 0.2s;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+    }
+    .pdf-download-btn:hover { filter: brightness(1.15); }
+
+    /* Fake topnav for mockup */
+    .mock-topnav {
+      position: fixed; top: 0; left: 0; right: 0;
+      background: rgba(10,10,15,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      z-index: 30;
+    }
+    .mock-topnav-main {
+      display: flex; align-items: center; gap: 0.25rem;
+      padding: 0 1.5rem; height: 48px;
+    }
+    .mock-topnav-brand {
+      display: flex; align-items: center; gap: 0.5rem;
+      margin-right: 1.5rem; text-decoration: none;
+    }
+    .mock-topnav-brand span {
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      font-size: 1.1rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--white);
+    }
+    .mock-nav-link {
+      padding: 0.4rem 1rem; color: var(--muted); text-decoration: none;
+      font-size: 0.8rem; font-weight: 600; border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .mock-nav-link:hover { color: var(--white); background: rgba(255,255,255,0.05); }
+    .mock-nav-link.active { color: var(--gold); background: rgba(240,192,48,0.08); }
+    .mock-topnav-right { margin-left: auto; display: flex; align-items: center; gap: 0.25rem; }
+
+    .mock-mc-bar {
+      display: flex; align-items: center; gap: 0.25rem;
+      padding: 0.5rem 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      overflow-x: auto;
+    }
+    .mock-mc-pill {
+      display: inline-flex; align-items: center;
+      padding: 0.65rem 1.5rem; color: var(--muted); text-decoration: none;
+      font-size: 0.9rem; font-weight: 600; border-radius: 9999px;
+      border: 1px solid rgba(255,255,255,0.7); white-space: nowrap;
+      flex-shrink: 0; transition: all 0.2s;
+    }
+    .mock-mc-pill:hover { color: var(--white); border-color: var(--white); background: rgba(255,255,255,0.08); }
+    .mock-mc-pill.completed { color: var(--success); border-color: var(--success); }
+
+    .main { padding-top: calc(110px + 2rem); }
+
+    /* Checklist CTA on dashboard card */
+    .checklist-cta {
+      margin-top: 0.75rem;
+      padding: 0.75rem;
+      background: rgba(34,197,94,0.06);
+      border: 1px solid rgba(34,197,94,0.15);
+      border-radius: 8px;
+    }
+    .checklist-cta-bar {
+      height: 4px; background: rgba(255,255,255,0.08);
+      border-radius: 2px; overflow: hidden; margin-bottom: 0.5rem;
+    }
+    .checklist-cta-fill {
+      height: 100%; background: #22c55e; border-radius: 2px;
+      transition: width 0.5s ease;
+    }
+    .checklist-cta-text {
+      font-size: 0.75rem; font-weight: 700; color: #22c55e;
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mock Top Nav -->
+  <div class="mock-topnav">
+    <div class="mock-topnav-main">
+      <a class="mock-topnav-brand" href="#">
+        <img src="logo.png" alt="Scale Enterprises" style="height:28px;width:auto;margin-right:0.5rem;vertical-align:middle;">
+        <span>Scale Enterprises</span>
+      </a>
+      <a class="mock-nav-link active" href="#">Library</a>
+      <a class="mock-nav-link" href="#" onclick="event.preventDefault();document.getElementById('comingSoonModal').classList.add('show');">Enterprise 360</a>
+      <a class="mock-nav-link" href="#">Invite</a>
+      <div class="mock-topnav-right">
+        <a class="mock-nav-link" href="#">Profile</a>
+        <a class="mock-nav-link" href="#">Logout</a>
+      </div>
+    </div>
+    <div class="mock-mc-bar">
+      <a class="mock-mc-pill completed" href="mockup-chapter-1.html">How It Started</a>
+      <a class="mock-mc-pill" href="mockup-chapter-2.html">Enterprise Framework</a>
+      <a class="mock-mc-pill" href="mockup-chapter-3.html">Enterprise Checklist</a>
+      <a class="mock-mc-pill" href="mockup-chapter-4.html">The Scaling Sequence</a>
+      <a class="mock-mc-pill" href="mockup-chapter-5.html">Real Results</a>
+      <a class="mock-mc-pill" href="#" onclick="event.preventDefault();document.getElementById('comingSoonModal').classList.add('show');">Enterprise 360</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main">
+    <div style="text-align:center;margin-bottom:2.5rem;padding:2rem 1rem;">
+      <h1 style="font-family:var(--font-heading);font-size:clamp(1.6rem,4vw,2.8rem);font-weight:800;color:var(--white);line-height:1.15;margin:0 0 0.75rem;">Take Control of Your Business<br>So You Can Reach Your Full Potential</h1>
+      <p style="color:var(--muted);font-size:1.05rem;margin:0;">Welcome back, Matthew</p>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-wrap">
+      <div class="progress-header">
+        <span class="progress-label">Course Progress</span>
+        <span class="progress-count">1 of 6 complete</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width:17%"></div>
+      </div>
+    </div>
+
+    <!-- PDF Download Banner -->
+    <a href="#" class="pdf-download-banner">
+      <div class="pdf-download-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+        </svg>
+      </div>
+      <div class="pdf-download-text">
+        <h3>Download the Enterprise Playbook</h3>
+        <p>Get the full playbook as a PDF — read it offline, print it, highlight it.</p>
+      </div>
+      <span class="pdf-download-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download PDF
+      </span>
+    </a>
+
+    <!-- Coming Soon Banners -->
+    <div class="coming-soon-grid">
+      <div class="audio-coming-soon" style="margin-bottom:0;">
+        <div class="audio-coming-soon-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+            <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+          </svg>
+        </div>
+        <div class="audio-coming-soon-text">
+          <h3>Audio Version</h3>
+          <p>Listen to the Enterprise Playbook on the go.</p>
+        </div>
+        <span class="audio-badge">Coming Soon</span>
+      </div>
+      <div class="audio-coming-soon" style="margin-bottom:0;">
+        <div class="audio-coming-soon-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polygon points="5 3 19 12 5 21 5 3"/>
+          </svg>
+        </div>
+        <div class="audio-coming-soon-text">
+          <h3>Video Version</h3>
+          <p>Watch the full Enterprise Playbook as a video series.</p>
+        </div>
+        <span class="audio-badge">Coming Soon</span>
+      </div>
+    </div>
+
+    <!-- Module Grid -->
+    <div class="module-grid">
+
+      <!-- Chapter 1 - How It Started -->
+      <a href="mockup-chapter-1.html" class="module-card card card-hover">
+        <div class="module-icon" style="background:rgba(129,140,248,0.1);">
+          <span style="color:#818cf8;">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="10" r="6"/><path d="M4 28c0-6.627 5.373-12 12-12s12 5.373 12 12"/></svg>
+          </span>
+        </div>
+        <div class="module-number">Module 01</div>
+        <div class="module-title">How It Started</div>
+        <div class="module-desc">Scraped knees, scar tissue, and the notes I wish I'd had. The real story behind the framework — every win and every loss that built it.</div>
+        <span class="module-status completed">&#10003; Completed</span>
+      </a>
+
+      <!-- Chapter 2 - The Enterprise Framework -->
+      <a href="mockup-chapter-2.html" class="module-card card card-hover">
+        <div class="module-icon" style="background:rgba(245,158,11,0.1);">
+          <span style="color:#f59e0b;">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4L4 10l12 6 12-6L16 4z"/><path d="M4 16l12 6 12-6"/><path d="M4 22l12 6 12-6"/></svg>
+          </span>
+        </div>
+        <div class="module-number">Module 02</div>
+        <div class="module-title">The Enterprise Framework</div>
+        <div class="module-desc">The 5-stage system every enterprise moves through: Value Creation, Systems, Enterprise Leadership, Platform, and Private Equity.</div>
+        <span class="module-status start">Start Reading &rarr;</span>
+      </a>
+
+      <!-- Chapter 3 - The Enterprise Checklist (with CTA) -->
+      <a href="mockup-chapter-3.html" class="module-card card card-hover" style="position:relative;">
+        <div class="module-icon" style="background:rgba(34,197,94,0.1);">
+          <span style="color:#22c55e;">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="24" height="24" rx="3"/><polyline points="10 16 14 20 22 12"/></svg>
+          </span>
+        </div>
+        <div class="module-number">Module 03</div>
+        <div class="module-title">The Enterprise Checklist</div>
+        <div class="module-desc">56 elements across 7 categories. The complete enterprise scorecard — score your business and see exactly where the gaps are.</div>
+        <!-- Checklist CTA -->
+        <div class="checklist-cta">
+          <div class="checklist-cta-bar">
+            <div class="checklist-cta-fill" style="width:0%"></div>
+          </div>
+          <span class="checklist-cta-text">Score Your Business &rarr;</span>
+        </div>
+      </a>
+
+      <!-- Chapter 4 - The Scaling Sequence -->
+      <a href="mockup-chapter-4.html" class="module-card card card-hover">
+        <div class="module-icon" style="background:rgba(34,211,238,0.1);">
+          <span style="color:#22d3ee;">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="12"/><polyline points="16 8 16 16 22 19"/></svg>
+          </span>
+        </div>
+        <div class="module-number">Module 04</div>
+        <div class="module-title">The Scaling Sequence</div>
+        <div class="module-desc">Every checklist element mapped to the right stage. Know exactly what to build and when — from startup through enterprise scale.</div>
+        <span class="module-status start">Start Reading &rarr;</span>
+      </a>
+
+      <!-- Chapter 5 - Real Results -->
+      <a href="mockup-chapter-5.html" class="module-card card card-hover">
+        <div class="module-icon" style="background:rgba(236,72,153,0.1);">
+          <span style="color:#ec4899;">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 24 10 14 16 18 22 8 28 12"/><line x1="22" y1="8" x2="28" y2="8"/><line x1="28" y1="8" x2="28" y2="14"/></svg>
+          </span>
+        </div>
+        <div class="module-number">Module 05</div>
+        <div class="module-title">Real Results</div>
+        <div class="module-desc">3x lead flow in 7 days. Zero to 7 figures in 6 months. On pace to 4x a company in 2026. The data behind the framework.</div>
+        <span class="module-status start">Start Reading &rarr;</span>
+      </a>
+
+      <!-- Chapter 6 - Enterprise 360 (Coming Soon) -->
+      <div class="module-card card card-hover" style="border-color:rgba(240,192,48,0.2);cursor:pointer;" onclick="document.getElementById('comingSoonModal').classList.add('show');">
+        <div class="module-icon" style="background:rgba(240,192,48,0.15);">
+          <span style="color:#f0c030;">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5L12 2z" transform="translate(4,2)"/><path d="M28 16l-12 6L4 16"/><path d="M28 22l-12 6L4 22"/><circle cx="16" cy="16" r="3" fill="currentColor" stroke="none"/></svg>
+          </span>
+        </div>
+        <div class="module-number">The Program</div>
+        <div class="module-title">Enterprise 360</div>
+        <div class="module-desc">The 30-day Enterprise Transformation. We install the entire checklist into your business. Two guarantees — or you don't pay.</div>
+        <span class="module-status start" style="background:rgba(240,192,48,0.15);color:var(--gold);">Coming Soon</span>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="comingSoonModal" class="cs-modal" onclick="if(event.target===this)this.classList.remove('show');">
+    <div class="cs-modal-box">
+      <div class="cs-modal-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#f0c030" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <h3 style="font-family:var(--font-heading);color:var(--white);margin:0 0 0.5rem;">Coming Soon</h3>
+      <p style="color:var(--muted);margin:0;font-size:0.95rem;">Enterprise 360 is launching soon. Stay tuned.</p>
+      <button onclick="this.closest('.cs-modal').classList.remove('show');" style="margin-top:1.25rem;padding:0.6rem 2rem;background:var(--gold);color:#000;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:0.9rem;">Got It</button>
+    </div>
+  </div>
+  <style>.cs-modal{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:9999;opacity:0;pointer-events:none;transition:opacity 0.25s;}.cs-modal.show{opacity:1;pointer-events:auto;}.cs-modal-box{background:var(--surface-light);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:2.5rem;text-align:center;max-width:380px;width:90%;transform:scale(0.92);transition:transform 0.25s;}.cs-modal.show .cs-modal-box{transform:scale(1);}.cs-modal-icon{margin-bottom:1rem;}</style>
+
+</body>
+</html>

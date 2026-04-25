@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Enterprise Framework — Scale Enterprises</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/chapter.css">
+  <style>
+    /* Horizontal Stage Diagram */
+    .framework-diagram {
+      margin: 2.5rem 0;
+      padding: 2rem;
+      background: linear-gradient(135deg, var(--surface-light) 0%, var(--surface) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      overflow-x: auto;
+    }
+
+    .diagram-track {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      min-width: 700px;
+      position: relative;
+    }
+
+    .diagram-stage {
+      flex: 1;
+      position: relative;
+      text-align: center;
+      padding: 1.25rem 0.5rem;
+      cursor: default;
+      transition: transform 0.3s;
+    }
+    .diagram-stage:hover { transform: translateY(-3px); }
+
+    .diagram-node {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      margin: 0 auto 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--white);
+      position: relative;
+      z-index: 2;
+    }
+
+    .diagram-stage:nth-child(1) .diagram-node { background: rgba(129,140,248,0.25); border: 2px solid #818cf8; color: #818cf8; }
+    .diagram-stage:nth-child(2) .diagram-node { background: rgba(245,158,11,0.25); border: 2px solid #f59e0b; color: #f59e0b; }
+    .diagram-stage:nth-child(3) .diagram-node { background: rgba(34,197,94,0.25); border: 2px solid #22c55e; color: #22c55e; }
+    .diagram-stage:nth-child(4) .diagram-node { background: rgba(34,211,238,0.25); border: 2px solid #22d3ee; color: #22d3ee; }
+    .diagram-stage:nth-child(5) .diagram-node { background: rgba(167,139,250,0.25); border: 2px solid #a78bfa; color: #a78bfa; }
+
+    .diagram-connector {
+      position: absolute;
+      top: calc(1.25rem + 28px);
+      left: calc(50% + 28px);
+      right: calc(-50% + 28px);
+      height: 2px;
+      z-index: 1;
+    }
+    .diagram-stage:last-child .diagram-connector { display: none; }
+
+    .diagram-stage:nth-child(1) .diagram-connector { background: linear-gradient(90deg, #818cf8, #f59e0b); }
+    .diagram-stage:nth-child(2) .diagram-connector { background: linear-gradient(90deg, #f59e0b, #22c55e); }
+    .diagram-stage:nth-child(3) .diagram-connector { background: linear-gradient(90deg, #22c55e, #22d3ee); }
+    .diagram-stage:nth-child(4) .diagram-connector { background: linear-gradient(90deg, #22d3ee, #a78bfa); }
+
+    .diagram-connector::after {
+      content: '';
+      position: absolute;
+      right: -3px; top: -3px;
+      width: 0; height: 0;
+      border-left: 6px solid currentColor;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+    }
+    .diagram-stage:nth-child(1) .diagram-connector::after { color: #f59e0b; }
+    .diagram-stage:nth-child(2) .diagram-connector::after { color: #22c55e; }
+    .diagram-stage:nth-child(3) .diagram-connector::after { color: #22d3ee; }
+    .diagram-stage:nth-child(4) .diagram-connector::after { color: #a78bfa; }
+
+    .diagram-name {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: var(--white);
+      margin-bottom: 0.2rem;
+      line-height: 1.3;
+    }
+
+    .diagram-revenue {
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .diagram-theme {
+      font-size: 0.65rem;
+      color: var(--gold);
+      margin-top: 0.35rem;
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      .framework-diagram { padding: 1rem; }
+      .diagram-track { min-width: 600px; }
+      .diagram-node { width: 44px; height: 44px; font-size: 0.9rem; }
+      .diagram-connector { top: calc(1.25rem + 22px); left: calc(50% + 22px); right: calc(-50% + 22px); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topnav">
+    <div class="topnav-main">
+      <a class="topnav-brand" href="mockup-dashboard.html"><img src="logo.png" alt="Scale Enterprises" style="height:28px;width:auto;margin-right:0.5rem;vertical-align:middle;"><span>Scale Enterprises</span></a>
+      <a class="topnav-link active" href="mockup-dashboard.html">Library</a>
+      <a class="topnav-link" href="#" onclick="event.preventDefault();document.getElementById('comingSoonModal').classList.add('show');">Enterprise 360</a>
+      <a class="topnav-link" href="#">Invite</a>
+      <div class="topnav-right">
+        <a class="topnav-link" href="#">Profile</a>
+        <a class="topnav-link" href="#">Logout</a>
+      </div>
+    </div>
+    <div class="masterclass-bar">
+      <a class="mc-link" href="mockup-chapter-1.html">How It Started</a>
+      <a class="mc-link active" href="mockup-chapter-2.html">Enterprise Framework</a>
+      <a class="mc-link" href="mockup-chapter-3.html">Enterprise Checklist</a>
+      <a class="mc-link" href="mockup-chapter-4.html">The Scaling Sequence</a>
+      <a class="mc-link" href="mockup-chapter-5.html">Real Results</a>
+      <a class="mc-link" href="#" onclick="event.preventDefault();document.getElementById('comingSoonModal').classList.add('show');">Enterprise 360</a>
+    </div>
+  </div>
+
+  <main class="main">
+    <div class="chapter-layout">
+
+      <div class="chapter-hero">
+        <a href="mockup-dashboard.html" class="back-link">&larr; Back to Dashboard</a>
+        <span class="chapter-number">Module 02</span>
+        <h1 class="chapter-title">The Enterprise<br>Framework</h1>
+        <p class="chapter-subtitle">The 5 Stages Every Enterprise Moves Through</p>
+        <div class="reading-meta">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>8 min read</span>
+        </div>
+      </div>
+
+      <!-- Intro -->
+      <div class="section">
+        <p class="lead">After years of studying operators who actually made it, one pattern refused to break — every enterprise that crossed nine figures moved through the <span class="highlight">same five stages.</span> Not similar. The same.</p>
+        <p>Tony Robbins, Alex Hormozi, Russell Brunson, Grant Cardone, Brandon Dawson, Ryan Pineda, Pace Morby — they each discovered it, survived it, scaled through it. But none of them have ever put it together as one full, repeatable framework.</p>
+      </div>
+
+      <!-- Warning -->
+      <div class="section">
+        <div class="insight-card orange">
+          <div class="insight-label orange">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            Critical Rule
+          </div>
+          <p>Each stage has a revenue range, a core theme, and a specific job to be done. <strong>Skip a stage, or try to play one stage's game with another stage's tools, and the whole thing stalls.</strong></p>
+        </div>
+      </div>
+
+      <!-- Horizontal Stage Diagram -->
+      <div class="section">
+        <div class="framework-diagram">
+          <div class="diagram-track">
+            <div class="diagram-stage">
+              <div class="diagram-node">1</div>
+              <div class="diagram-connector"></div>
+              <div class="diagram-name">Value Creation</div>
+              <div class="diagram-revenue">$0 → 6 Fig</div>
+              <div class="diagram-theme">Prove it works</div>
+            </div>
+            <div class="diagram-stage">
+              <div class="diagram-node">2</div>
+              <div class="diagram-connector"></div>
+              <div class="diagram-name">Systems</div>
+              <div class="diagram-revenue">6 → 7 Fig</div>
+              <div class="diagram-theme">Build the machine</div>
+            </div>
+            <div class="diagram-stage">
+              <div class="diagram-node">3</div>
+              <div class="diagram-connector"></div>
+              <div class="diagram-name">Enterprise Leadership</div>
+              <div class="diagram-revenue">7 → 8 Fig</div>
+              <div class="diagram-theme">Full installation</div>
+            </div>
+            <div class="diagram-stage">
+              <div class="diagram-node">4</div>
+              <div class="diagram-connector"></div>
+              <div class="diagram-name">Platform</div>
+              <div class="diagram-revenue">8 → 9 Fig</div>
+              <div class="diagram-theme">Vertical integration</div>
+            </div>
+            <div class="diagram-stage">
+              <div class="diagram-node">5</div>
+              <div class="diagram-name">Private Equity</div>
+              <div class="diagram-revenue">9 → 10 Fig</div>
+              <div class="diagram-theme">Pure strategy</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 1 -->
+      <div class="section">
+        <div class="stage-card s1">
+          <div class="stage-header">
+            <span class="stage-badge" style="background:rgba(129,140,248,0.15);color:#818cf8;">Stage 1</span>
+            <span class="stage-revenue-badge">$0 → 6 Figures</span>
+          </div>
+          <h3>Value Creation</h3>
+          <p>The only job here is proving the market wants what you're selling. Not systems, not team, not brand — just value. Can you make something real that people will pay for, repeatedly? Everything else is a distraction until this is locked.</p>
+        </div>
+      </div>
+
+      <!-- Stage 2 -->
+      <div class="section">
+        <div class="stage-card s2">
+          <div class="stage-header">
+            <span class="stage-badge" style="background:rgba(245,158,11,0.15);color:#f59e0b;">Stage 2</span>
+            <span class="stage-revenue-badge">6 → 7 Figures</span>
+          </div>
+          <h3>Systems</h3>
+          <p>The thing that works has to stop living inside the founder's head. Documented processes, CRM flows, fulfillment SOPs, financial rigor. It's where the business stops depending on the founder to function.</p>
+        </div>
+      </div>
+
+      <!-- Stage 3 — the big one -->
+      <div class="section">
+        <div class="stage-card s3">
+          <div class="stage-header">
+            <span class="stage-badge" style="background:rgba(34,197,94,0.15);color:#22c55e;">Stage 3</span>
+            <span class="stage-revenue-badge">7 → 8 Figures</span>
+          </div>
+          <h3>Enterprise Leadership</h3>
+          <p>This is the stage the whole playbook was built for. Every element on the checklist is installed, the Rule of Three is in seat, and the cash is flowing. This is where a business becomes a real enterprise and a founder becomes an owner.</p>
+        </div>
+
+        <div class="insight-card green">
+          <div class="insight-label green">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            The Three Litmus Tests
+          </div>
+          <p>These are the numbers that tell me whether a business is <strong>truly operating at Enterprise Leadership</strong> or just pretending to.</p>
+        </div>
+
+        <div class="litmus-grid">
+          <div class="litmus-card">
+            <div class="litmus-value">$250K+</div>
+            <div class="litmus-label">Revenue Per Employee</div>
+          </div>
+          <div class="litmus-card">
+            <div class="litmus-value">20–25%</div>
+            <div class="litmus-label">Net Margins</div>
+          </div>
+          <div class="litmus-card">
+            <div class="litmus-value">Optional</div>
+            <div class="litmus-label">Founder's Presence</div>
+          </div>
+        </div>
+
+        <p>When the checklist is fully installed and the three litmus tests are green, the business becomes <strong>sellable</strong>. A stand-alone sale at 5–8× EBITDA becomes realistic.</p>
+      </div>
+
+      <!-- Stage 4 -->
+      <div class="section">
+        <div class="stage-card s4">
+          <div class="stage-header">
+            <span class="stage-badge" style="background:rgba(34,211,238,0.15);color:#22d3ee;">Stage 4</span>
+            <span class="stage-revenue-badge">8 → 9 Figures</span>
+          </div>
+          <h3>Platform</h3>
+          <p>You keep everything from the checklist, add middle management beneath the leadership team, and bring every major function in-house — marketing, finance, tech, operations, people, sales strategy, and legal. The business becomes vertically integrated and completely self-contained.</p>
+        </div>
+      </div>
+
+      <!-- Stage 5 -->
+      <div class="section">
+        <div class="stage-card s5">
+          <div class="stage-header">
+            <span class="stage-badge" style="background:rgba(167,139,250,0.15);color:#a78bfa;">Stage 5</span>
+            <span class="stage-revenue-badge">9 → 10 Figures</span>
+          </div>
+          <h3>Private Equity</h3>
+          <p>By the time you're here, the operating business runs itself. Your job shifts entirely to strategy — roll-ups, M&A, franchising, vertical integration, and acquiring competitors. It becomes a game of deal flow, capitalization, and integration.</p>
+        </div>
+
+        <div class="pull-quote">
+          <div class="pull-quote-text">"All roads lead to private equity."</div>
+          <div class="pull-quote-author">— Matthew Landon</div>
+        </div>
+      </div>
+
+      <!-- The map isn't enough -->
+      <div class="section">
+        <h2>The Map Isn't Enough</h2>
+        <p>I had a framework proven across every industry I studied — coaching, real estate, e-commerce, services, SaaS, manufacturing. But knowing you need to go from Stage 1 to Stage 2 doesn't tell you <em>how</em> to actually do it.</p>
+        <p>What were the specific things these operators were doing inside each stage? What tactics? What systems? What hires?</p>
+        <p>So I went back to the study. I tore apart the companies. And I kept a running list of every element I saw repeated across the winners. That list became <strong>56 elements</strong> — and it's what you're about to see next.</p>
+
+        <div class="insight-card gold">
+          <div class="insight-label gold">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+            Next Up
+          </div>
+          <p>The 56-element Enterprise Checklist — every element I install into every business I work with. <strong>Interactive.</strong> Check off what you have, see where the gaps are.</p>
+        </div>
+      </div>
+
+      <div class="chapter-actions">
+        <button class="btn-gold chapter-complete-btn" onclick="this.innerHTML='&#10003; Completed';this.style.background='var(--success)';">Mark as Complete</button>
+      </div>
+
+      <a href="mockup-chapter-3.html" class="next-chapter">
+        <div class="next-chapter-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div>
+          <div class="next-chapter-label">Next Module</div>
+          <div class="next-chapter-title">The Enterprise Checklist</div>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <script>
+    var sections = document.querySelectorAll('.section');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    sections.forEach(function(s) { observer.observe(s); });
+  </script>
+
+  <div id="comingSoonModal" class="cs-modal" onclick="if(event.target===this)this.classList.remove('show');">
+    <div class="cs-modal-box">
+      <div class="cs-modal-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#f0c030" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <h3 style="font-family:var(--font-heading);color:var(--white);margin:0 0 0.5rem;">Coming Soon</h3>
+      <p style="color:var(--muted);margin:0;font-size:0.95rem;">Enterprise 360 is launching soon. Stay tuned.</p>
+      <button onclick="this.closest('.cs-modal').classList.remove('show');" style="margin-top:1.25rem;padding:0.6rem 2rem;background:var(--gold);color:#000;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:0.9rem;">Got It</button>
+    </div>
+  </div>
+  <style>.cs-modal{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:9999;opacity:0;pointer-events:none;transition:opacity 0.25s;}.cs-modal.show{opacity:1;pointer-events:auto;}.cs-modal-box{background:var(--surface-light);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:2.5rem;text-align:center;max-width:380px;width:90%;transform:scale(0.92);transition:transform 0.25s;}.cs-modal.show .cs-modal-box{transform:scale(1);}.cs-modal-icon{margin-bottom:1rem;}</style>
+
+</body>
+</html>

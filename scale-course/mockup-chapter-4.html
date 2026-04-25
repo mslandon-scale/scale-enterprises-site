@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Scaling Sequence — Scale Enterprises</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/chapter.css">
+  <style>
+    .kanban-board {
+      display: flex;
+      gap: 0;
+      margin: 2rem 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .kanban-tab {
+      flex: 1;
+      padding: 1rem 0.5rem;
+      text-align: center;
+      cursor: pointer;
+      background: var(--surface);
+      border-right: 1px solid rgba(255,255,255,0.06);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .kanban-tab:last-child { border-right: none; }
+    .kanban-tab:hover { background: var(--surface-light); }
+    .kanban-tab.active { background: var(--surface-light); }
+    .kanban-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .kanban-tab[data-stage="1"].active::after { background: #818cf8; }
+    .kanban-tab[data-stage="2"].active::after { background: #f59e0b; }
+    .kanban-tab[data-stage="3"].active::after { background: #22c55e; }
+    .kanban-tab[data-stage="4"].active::after { background: #22d3ee; }
+    .kanban-tab[data-stage="5"].active::after { background: #a78bfa; }
+
+    .kanban-stage-num {
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.25rem;
+      opacity: 0.5;
+    }
+    .kanban-tab.active .kanban-stage-num { opacity: 1; }
+    .kanban-tab[data-stage="1"] .kanban-stage-num { color: #818cf8; }
+    .kanban-tab[data-stage="2"] .kanban-stage-num { color: #f59e0b; }
+    .kanban-tab[data-stage="3"] .kanban-stage-num { color: #22c55e; }
+    .kanban-tab[data-stage="4"] .kanban-stage-num { color: #22d3ee; }
+    .kanban-tab[data-stage="5"] .kanban-stage-num { color: #a78bfa; }
+
+    .kanban-stage-title {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      color: var(--muted);
+      transition: color 0.3s;
+      line-height: 1.3;
+    }
+    .kanban-tab.active .kanban-stage-title { color: var(--white); }
+
+    .kanban-revenue {
+      font-size: 0.6rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+      opacity: 0.6;
+    }
+    .kanban-tab.active .kanban-revenue { opacity: 1; }
+
+    .stage-content {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+    .stage-content.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    .stage-content-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .stage-content-badge {
+      display: inline-flex;
+      align-items: center;
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 0.4rem 0.85rem;
+      border-radius: 9999px;
+    }
+    .stage-content-title {
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--white);
+    }
+    .stage-content-range {
+      font-size: 0.85rem;
+      color: var(--gold);
+      font-weight: 600;
+      font-style: italic;
+    }
+
+    .stage-content p {
+      color: var(--white-soft);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+      max-width: 700px;
+    }
+
+    .stage-content h3 {
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--white);
+      margin: 1.5rem 0 0.75rem;
+    }
+
+    .stage-content strong { color: var(--white); }
+
+    .stage-nav {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .stage-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.25rem;
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .stage-nav-btn:hover { color: var(--white); border-color: rgba(255,255,255,0.15); background: var(--surface-light); }
+    .stage-nav-btn svg { width: 14px; height: 14px; }
+
+    @media (max-width: 768px) {
+      .kanban-board { flex-direction: column; }
+      .kanban-tab { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+      .kanban-tab:last-child { border-bottom: none; }
+      .kanban-tab.active::after { bottom: auto; top: 0; left: 0; right: auto; width: 3px; height: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topnav">
+    <div class="topnav-main">
+      <a class="topnav-brand" href="mockup-dashboard.html"><img src="logo.png" alt="Scale Enterprises" style="height:28px;width:auto;margin-right:0.5rem;vertical-align:middle;"><span>Scale Enterprises</span></a>
+      <a class="topnav-link active" href="mockup-dashboard.html">Library</a>
+      <a class="topnav-link" href="#" onclick="event.preventDefault();document.getElementById('comingSoonModal').classList.add('show');">Enterprise 360</a>
+      <a class="topnav-link" href="#">Invite</a>
+      <div class="topnav-right">
+        <a class="topnav-link" href="#">Profile</a>
+        <a class="topnav-link" href="#">Logout</a>
+      </div>
+    </div>
+    <div class="masterclass-bar">
+      <a class="mc-link" href="mockup-chapter-1.html">How It Started</a>
+      <a class="mc-link" href="mockup-chapter-2.html">Enterprise Framework</a>
+      <a class="mc-link" href="mockup-chapter-3.html">Enterprise Checklist</a>
+      <a class="mc-link active" href="mockup-chapter-4.html">The Scaling Sequence</a>
+      <a class="mc-link" href="mockup-chapter-5.html">Real Results</a>
+      <a class="mc-link" href="#" onclick="event.preventDefault();document.getElementById('comingSoonModal').classList.add('show');">Enterprise 360</a>
+    </div>
+  </div>
+
+  <main class="main">
+    <div class="chapter-layout">
+
+      <div class="chapter-hero">
+        <a href="mockup-dashboard.html" class="back-link">&larr; Back to Dashboard</a>
+        <span class="chapter-number">Module 04</span>
+        <h1 class="chapter-title">The Scaling<br>Sequence</h1>
+        <p class="chapter-subtitle">The 56 Checklist Elements, Mapped Across the 5 Stages of the Enterprise Framework</p>
+        <div class="reading-meta">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>12 min read</span>
+        </div>
+      </div>
+
+      <div class="section visible">
+        <p class="lead">Now one of the things I noticed in my own failures is that many times I would try and do things in the wrong order. I would spend too much time on things that apply at Stage 3 when I was in Stage 1 &mdash; or vice versa.</p>
+
+        <p>I worked at a company that was on the Inc 5000 and doing upwards of $70 Million. Growth was amazing and strong, but within 6 months they ended up shutting down. I always wondered why, and it was simply because they started doing things in Stage 1 when they needed to go into Stage 5.</p>
+
+        <p>I knew I needed to sequence this checklist across the stages so that I would focus on what's most important at the right time. You'll notice that as the stages go on, a few new elements show up that didn't even make it onto the original checklist &mdash; and they'll provide a lot of great context for the earlier stages.</p>
+
+        <div class="insight-card blue">
+          <div class="insight-label blue">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Timing Is Everything
+          </div>
+          <p>Installing the wrong elements at the wrong stage doesn't just waste time &mdash; <strong>it actively stalls the business.</strong> Click each stage below to see exactly what to focus on and when.</p>
+        </div>
+
+        <!-- Kanban Board -->
+        <div class="kanban-board">
+          <div class="kanban-tab active" data-stage="1" onclick="showStage(1)">
+            <div class="kanban-stage-num">Stage 1</div>
+            <div class="kanban-stage-title">Value Creation</div>
+            <div class="kanban-revenue">$0 &rarr; 6 Fig</div>
+          </div>
+          <div class="kanban-tab" data-stage="2" onclick="showStage(2)">
+            <div class="kanban-stage-num">Stage 2</div>
+            <div class="kanban-stage-title">Systems</div>
+            <div class="kanban-revenue">6 &rarr; 7 Fig</div>
+          </div>
+          <div class="kanban-tab" data-stage="3" onclick="showStage(3)">
+            <div class="kanban-stage-num">Stage 3</div>
+            <div class="kanban-stage-title">Enterprise Leadership</div>
+            <div class="kanban-revenue">7 &rarr; 8 Fig</div>
+          </div>
+          <div class="kanban-tab" data-stage="4" onclick="showStage(4)">
+            <div class="kanban-stage-num">Stage 4</div>
+            <div class="kanban-stage-title">Platform</div>
+            <div class="kanban-revenue">8 &rarr; 9 Fig</div>
+          </div>
+          <div class="kanban-tab" data-stage="5" onclick="showStage(5)">
+            <div class="kanban-stage-num">Stage 5</div>
+            <div class="kanban-stage-title">Private Equity</div>
+            <div class="kanban-revenue">9 &rarr; 10 Fig</div>
+          </div>
+        </div>
+
+        <!-- ═══════════════ STAGE 1 ═══════════════ -->
+        <div class="stage-content active" id="stage-1">
+          <div class="stage-content-header">
+            <span class="stage-content-badge" style="background:rgba(129,140,248,0.15);color:#818cf8;">Stage 1</span>
+            <div>
+              <div class="stage-content-title">Value Creation</div>
+              <div class="stage-content-range">$0 &rarr; 6 Figures &mdash; Prove the market wants what you're selling.</div>
+            </div>
+          </div>
+
+          <p>The only job in Stage 1 is proving value in the marketplace. Not systems. Not team. Not brand. Can you make something people will actually pay for, repeatedly? Everything else is a distraction until this is locked.</p>
+
+          <h3>Priorities for This Stage</h3>
+
+          <div class="sequence-category">
+            <div class="sequence-category-label">Vision & Foundation</div>
+            <div class="sequence-item">Scaling Strategy & Psychology</div>
+            <div class="sequence-item">Ideal Customer Profile (ICP)</div>
+            <div class="sequence-item">Category of One</div>
+            <div class="sequence-item">Proof & Testimonials</div>
+          </div>
+
+          <div class="sequence-category">
+            <div class="sequence-category-label">Offer & Delivery</div>
+            <div class="sequence-item">Irresistible Offer</div>
+            <div class="sequence-item">Value Ladder/Business Model &mdash; a simple core offer with one upsell/downsell</div>
+            <div class="sequence-item">Means to Deliver &mdash; equipment, skills, people, or AI needed to fulfill the offer</div>
+            <div class="sequence-item">Payment Processor</div>
+          </div>
+
+          <div class="sequence-category">
+            <div class="sequence-category-label">Customer Acquisition &mdash; Pick One Channel</div>
+            <div class="sequence-item">Choose one: Digital Funnels, Prospecting, Referrals, or Partners & Affiliates</div>
+            <div class="sequence-item">Go deep on that one channel until it consistently produces customers</div>
+            <div class="sequence-item">Note: Find the channel where your customers are already hanging out</div>
+          </div>
+
+          <div class="sequence-category">
+            <div class="sequence-category-label">Tech Stack (Bare Minimum)</div>
+            <div class="sequence-item">Phone Set-Up</div>
+            <div class="sequence-item">Speed to Lead &mdash; handled personally by the founder</div>
+            <div class="sequence-item">CRM or Database (Excel works &mdash; don't spend money here)</div>
+          </div>
+
+          <div class="sequence-category">
+            <div class="sequence-category-label">Financials (Bare Minimum)</div>
+            <div class="sequence-item">Clean Books & Record Keeping</div>
+          </div>
+
+          <div class="insight-card gold">
+            <div class="insight-label gold">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5L12 2z"/></svg>
+              Hold That Thought
+            </div>
+            <p>If all of this sounds like a lot to install on your own &mdash; by the end of this playbook I'm going to show you the <strong>30-day system</strong> I built for exactly this problem.</p>
+          </div>
+
+          <div class="stage-nav">
+            <div class="stage-nav-btn" onclick="showStage(2)">
+              Next: Stage 2 &mdash; Systems
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══════════════ STAGE 2 ═══════════════ -->
+        <div class="stage-content" id="stage-2">
+          <div class="stage-content-header">
+            <span class="stage-content-badge" style="background:rgba(245,158,11,0.15);color:#f59e0b;">Stage 2</span>
+            <div>
+              <div class="stage-content-title">Systems</div>
+              <div class="stage-content-range">6 &rarr; 7 Figures &mdash; Turn the thing that works into a machine that runs.</div>
+            </div>
+          </div>
+
+          <p>System creation and orchestration. You've proven value &mdash; now the business has to stop living inside your head. Documented processes, CRM flows, fulfillment SOPs, financial rigor. This is where we set the stage for the founder to stop being the bottleneck.</p>
+
+          <h3>Priorities for This Stage</h3>
+
+          <div class="sequence-category">
+            <div class="sequence-category-label">Vision & Foundation (Refined)</div>
+            <div class="sequence-item">Vision + 3-Year Target</div>
+            <div class="sequence-item">Values + Purpose / Mission</div>
+            <div class="sequence-item">Proof & Testimonials (continue to collect and systematize)</div>
+            <div class="sequence-item">Category of One / Convergent Positioning</div>
+          </div>
+
+          <div class="sequence-category">
+            <div class="sequence-category-label">People & Team</div>
+            <div class="sequence-item">First Hires (No more than 3) &mdash; the earliest critical seats based on your skills</div>
+          </div>
+
+          <div class="sequence-category">
+            <div class="sequence-category-label">Customer Acquisition (Refined & Expanded)</div>
+            <div class="sequence-item">Continue to refine, systemize, and expand the channel chosen in Stage 1 (Digital Funnels, Partners & Affiliates, Prospecting, Referrals, etc.)</div>
+            <div class="sequence-item">Lead Magnets</div>
+            <div class="sequence-item">Branding + Story + Archetype</div>
+            <div class="sequence-item">Solid and Simple Website</div>
+          </div>
+
+          <div class="sequence-category">
+            <div class="sequence-category-label">Sales & Delivery (Documented)</div>
+            <div class="sequence-item">Speed to Lead</div>
+            <div class="sequence-item">Retention/Ascension Workflow &mdash; Email/SMS/Phone Calls</div>
+            <div class="sequence-item">Customer Onboarding Plan</div>
+            <div class="sequence-item">Documented Sales Script</div>
+            <div class="sequence-item">Workflow Maps &mdash; customer acquisition + fulfillment</div>
+            <div class="sequence-item">Playbooks &mdash; tied to each workflow</div>
+          </div>
+
+          <div class="sequence-category">
+            <div class="sequence-category-label">Financials (Dialed In)</div>
+            <div class="sequence-item">P&L (Net Profit 20&ndash;25%)</div>
+            <div class="sequence-item">Balance Sheet</div>
+            <div class="sequence-item">Cash Flow</div>
+            <div class="sequence-item">Unit Economics Dialed In &mdash; optimize for profitability</div>
+          </div>
+
+          <div class="insight-card orange">
+            <div class="insight-label orange">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+              A Quick Note Before You Move On
+            </div>
+            <p><strong>Stage 2 is where most operators get stuck</strong> &mdash; and where the jump to Stage 3 separates the businesses that stall at seven figures from the ones that actually reach Enterprise Leadership. Hold that context because I've got something I will talk about later in this playbook that will make it so easy!</p>
+          </div>
+
+          <div class="stage-nav">
+            <div class="stage-nav-btn" onclick="showStage(1)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+              Previous: Stage 1
+            </div>
+            <div class="stage-nav-btn" onclick="showStage(3)">
+              Next: Stage 3 &mdash; Enterprise Leadership
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══════════════ STAGE 3 ═══════════════ -->
+        <div class="stage-content" id="stage-3">
+          <div class="stage-content-header">
+            <span class="stage-content-badge" style="background:rgba(34,197,94,0.15);color:#22c55e;">Stage 3</span>
+            <div>
+              <div class="stage-content-title">Enterprise Leadership</div>
+              <div class="stage-content-range">7 &rarr; 8 Figures &mdash; The stage this whole playbook was built for.</div>
+            </div>
+          </div>
+
+          <p>Every one of the 56 checklist elements is installed and running. The Rule of Three is in seat, the Leadership System is operating, and the cash is flowing enough to fund the next move. This is where a business becomes an enterprise and where a founder becomes an owner and true Enterprise Entrepreneur.</p>
+
+          <h3>What This Stage Looks Like</h3>
+
+          <p>The checklist was built for this stage. This is where a business becomes an enterprise, and where a founder becomes an owner. There are no new elements to add here; there's only the discipline of making sure the full checklist is actually in place, not just listed.</p>
+
+          <p>What I look at, at this stage, are three specific litmus tests. These are the numbers that tell me whether the business is truly operating at Enterprise Leadership or just pretending to.</p>
+
+          <h3>Litmus Test #1 &mdash; Revenue Per Employee (RPE) of $250K+</h3>
+
+          <p>$250K per employee is the baseline marker of a healthy scaling business. Note: with AI now embedded across every function, this number will keep climbing. $300K, $400K, and beyond is quickly becoming the benchmark for a genuinely competitive business. Track where yours sits, and refuse to let it slide.</p>
+
+          <div class="litmus-grid">
+            <div class="litmus-card">
+              <div class="litmus-value">$250K+</div>
+              <div class="litmus-label">Revenue Per Employee</div>
+            </div>
+            <div class="litmus-card">
+              <div class="litmus-value">20&ndash;25%</div>
+              <div class="litmus-label">Net Margins</div>
+            </div>
+            <div class="litmus-card">
+              <div class="litmus-value">Optional</div>
+              <div class="litmus-label">Founder's Presence</div>
+            </div>
+          </div>
+
+          <h3>Litmus Test #2 &mdash; Net Margins of 20&ndash;25%</h3>
+
+          <p>If net margins aren't hitting 20&ndash;25%, I treat that as a signal to go back to the drawing board &mdash; not to hustle harder. I look at the offer. I look at the value we're creating in the marketplace. I look at whether we're targeting the right customers, or whether we've drifted into serving lower-value customers. I look at team efficiency and labor cost per unit. I keep refining until the margins land where they need to for long-term scalability.</p>
+
+          <h3>Litmus Test #3 &mdash; Founder's Time</h3>
+
+          <p>At this stage, my number one goal is to have the ability to not be in the business anymore. Not necessarily to leave, but to have the choice. I need to be able to step away for 30 days, six months, a full year, and watch the business keep running and keep growing without me. I need to be able to sit on the board as Chairman instead of CEO or COO if I want to. I can still choose to be those things; the point is that I have the option. If I don't have the option, the business still owns me, and I haven't actually reached Enterprise Leadership.</p>
+
+          <div class="insight-card green">
+            <div class="insight-label green">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              A Fun Possibility
+            </div>
+            <p>When the checklist is fully installed and the three litmus tests are green, the business becomes truly sellable. A stand-alone sale at 5&ndash;8&times; EBITDA becomes realistic. A few million in EBITDA at a 5&ndash;8&times; multiple is a <strong>real 8-figure exit</strong> this whole playbook makes possible.</p>
+          </div>
+
+          <p>Now &mdash; I know what you're thinking. Installing 56 elements, hitting all three litmus tests, building the leadership system, stepping back from daily operations &mdash; it sounds like a 5-year grind at best. For most operators trying to do it alone, it is. Especially when executing each element takes lots of time and skill in order to do each of them right for them to be checked off.</p>
+
+          <p>That's exactly why I built something specifically to compress this into 30 days. I'll walk you through it at the end of the playbook. For now, let's keep moving through the stages.</p>
+
+          <div class="stage-nav">
+            <div class="stage-nav-btn" onclick="showStage(2)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+              Previous: Stage 2
+            </div>
+            <div class="stage-nav-btn" onclick="showStage(4)">
+              Next: Stage 4 &mdash; Platform
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══════════════ STAGE 4 ═══════════════ -->
+        <div class="stage-content" id="stage-4">
+          <div class="stage-content-header">
+            <span class="stage-content-badge" style="background:rgba(34,211,238,0.15);color:#22d3ee;">Stage 4</span>
+            <div>
+              <div class="stage-content-title">Platform</div>
+              <div class="stage-content-range">8 &rarr; 9 Figures &mdash; Every major function, in-house.</div>
+            </div>
+          </div>
+
+          <p>You keep everything from the checklist, add middle management beneath the leadership team, and dominate all customer acquisition channels in parallel. Every major business function &mdash; marketing, leadership, finance, tech, operations, people, sales strategy, and legal &mdash; gets brought in-house. The business becomes fully vertically integrated, genuinely self-contained, and completely under your control.</p>
+
+          <h3>What This Stage Looks Like</h3>
+
+          <p>Platform is where the business stops being something you run and becomes something that runs itself, with you AND most of your leadership team overseeing strategy. Everything on the checklist stays in place, gets optimized, and it all compounds.</p>
+
+          <p>Up until this point, most operators have been holding on to the marketing, or at the very least the delivery &mdash; making sure there's actually something of value to offer the market. Everything else &mdash; finance, legal, HR, tech, even parts of operations &mdash; often gets outsourced to agencies, CPA firms, outside counsel, and third-party providers. That's the right move early. It's the wrong move at this stage.</p>
+
+          <p>The Platform stage is where you bring all of it under one roof. You stop hiring the marketing agency and build a marketing team. You stop renting the CPA firm and hire a real CFO with a finance department behind them. You stop calling outside legal counsel for every contract and build an in-house legal function. You stop outsourcing HR and build a real people operation. The business becomes vertically integrated, fully compliant, and genuinely self-contained &mdash; every core function owned and controlled internally.</p>
+
+          <div class="sequence-category">
+            <div class="sequence-category-label">The Functions I Bring In-House at This Stage</div>
+            <div class="sequence-item">Marketing</div>
+            <div class="sequence-item">Leadership</div>
+            <div class="sequence-item">Finance</div>
+            <div class="sequence-item">Tech</div>
+            <div class="sequence-item">Operations</div>
+            <div class="sequence-item">People</div>
+            <div class="sequence-item">Sales Strategy</div>
+            <div class="sequence-item">Legal</div>
+          </div>
+
+          <p>Alongside all of this, middle management gets installed beneath the executive leadership team. That layer is what frees the leadership team to focus on strategy rather than execution. Without it, the leadership team ends up doing management work and the business stalls right at the edge of Platform.</p>
+
+          <p>On the acquisition side, Stage 1 was about picking one channel. Stage 2 was about refining it. Stage 3 was about expanding channels. Stage 4 is about dominating all of them &mdash; digital marketing/funnels, prospecting, referrals, partners and affiliates, traditional and guerrilla, all running in parallel, each with its own dedicated team and budget.</p>
+
+          <div class="insight-card gold">
+            <div class="insight-label gold">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5L12 2z"/></svg>
+              The Linchpin
+            </div>
+            <p>Reaching Platform status is the linchpin to billionaire-style success and being an owner of real capital. It's also the stage where the moves I'm about to describe in Stage 5 become available. Which brings us to the endgame.</p>
+          </div>
+
+          <div class="stage-nav">
+            <div class="stage-nav-btn" onclick="showStage(3)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+              Previous: Stage 3
+            </div>
+            <div class="stage-nav-btn" onclick="showStage(5)">
+              Next: Stage 5 &mdash; Private Equity
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══════════════ STAGE 5 ═══════════════ -->
+        <div class="stage-content" id="stage-5">
+          <div class="stage-content-header">
+            <span class="stage-content-badge" style="background:rgba(167,139,250,0.15);color:#a78bfa;">Stage 5</span>
+            <div>
+              <div class="stage-content-title">Private Equity</div>
+              <div class="stage-content-range">9 &rarr; 10 Figures &mdash; Pure strategy, pure leverage.</div>
+            </div>
+          </div>
+
+          <p>By the time you're here, the operating business runs itself. Your job shifts entirely to strategy &mdash; roll-ups, M&A, franchising, vertical integration, and acquiring competitors. It becomes a game of deal flow, capitalization, and integration. This is also where the wealth being generated has to be protected and managed separately from the business itself.</p>
+
+          <h3>What This Stage Looks Like</h3>
+
+          <div class="insight-card blue" style="margin-bottom:1.5rem;">
+            <div class="insight-label blue">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              A Note From Me
+            </div>
+            <p>I definitely haven't personally reached this stage yet. What's on this page is drawn from studying the operators who have &mdash; not from firsthand execution. Right now I'm focused on consolidating activities that lead toward a significant exit of my own. If you want to dig deeper into what this stage actually looks like in practice, one of the best resources I've found is <strong>PitchBook</strong> &mdash; a tool where you can study real valuations, real exits, and what's actually selling in any given category.</p>
+          </div>
+
+          <p>Private Equity is the stage where the operating business runs itself and the operator's job shifts entirely to strategy. At this point the game is no longer about building the business &mdash; it's about using the business you've built as a platform for deploying capital. This is where serial entrepreneurs get to have all of the fun!</p>
+
+          <p>The strategic moves at this stage are roll-ups of smaller operators in your category, strategic M&A that adds capability or customer base, franchising the model out to operators who run it under your brand, vertical integration into suppliers and distributors, and acquiring competitors outright. Done well, any one of these can add more market share in a single deal than a year of organic growth. This is where billionaires are made.</p>
+
+          <div class="sequence-category">
+            <div class="sequence-category-label">The Three Functions That Matter at This Stage</div>
+            <div class="sequence-item">Deal Flow &mdash; a consistent pipeline of acquisition targets</div>
+            <div class="sequence-item">Capitalization &mdash; access to debt, equity, and strategic capital on demand</div>
+            <div class="sequence-item">Integration &mdash; a repeatable playbook for absorbing acquired companies without breaking them</div>
+          </div>
+
+          <h3>Protecting the Wealth That's Being Created</h3>
+
+          <p>The wealth being generated at this stage has to be protected, and it has to be handled separately from the operating business. I'd have my personal wealth, estate, and tax strategy fully built out and running by the time I reached here &mdash; not scrambling to set it up. The structure I'd be looking at to manage all of that outside the operating company is a <strong>Family Office</strong>. That's the move I'd make to ensure the wealth compounds in its own right, independent of whatever happens next with the business.</p>
+
+          <div class="stage-nav">
+            <div class="stage-nav-btn" onclick="showStage(4)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+              Previous: Stage 4
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Closing -->
+      <div class="section">
+        <h2>That's the Full Map</h2>
+        <p>Five stages, 56 elements, and a clear view of what the endgame actually looks like. On the next page, I'm going to show you what's actually possible when you install this &mdash; and a way to get the Enterprise Checklist installed into your business in days and months rather than years.</p>
+
+        <div class="pull-quote">
+          <div class="pull-quote-text">The framework makes the wins repeatable &mdash; and the sequence ensures you're building the right things at the right time.</div>
+        </div>
+
+        <div class="cta-card">
+          <h3>Don't Want to Spend 5 Years Doing This Alone?</h3>
+          <p>Enterprise 360 compresses this entire sequence into 30 days. We install the elements. You get your time back.</p>
+          <a href="#" class="btn-gold" onclick="event.preventDefault();document.getElementById('comingSoonModal').classList.add('show');">Book Your Enterprise Call &rarr;</a>
+        </div>
+      </div>
+
+      <div class="chapter-actions">
+        <button class="btn-gold chapter-complete-btn" onclick="this.innerHTML='&#10003; Completed';this.style.background='var(--success)';">Mark as Complete</button>
+      </div>
+
+      <a href="mockup-chapter-5.html" class="next-chapter">
+        <div class="next-chapter-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div>
+          <div class="next-chapter-label">Next Module</div>
+          <div class="next-chapter-title">Real Results</div>
+        </div>
+      </a>
+    </div>
+  </main>
+
+  <script>
+    function showStage(num) {
+      document.querySelectorAll('.kanban-tab').forEach(function(tab) {
+        tab.classList.toggle('active', tab.dataset.stage == num);
+      });
+      document.querySelectorAll('.stage-content').forEach(function(content) {
+        content.classList.toggle('active', content.id === 'stage-' + num);
+      });
+    }
+
+    var sections = document.querySelectorAll('.section');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    sections.forEach(function(s) { observer.observe(s); });
+  </script>
+
+  <div id="comingSoonModal" class="cs-modal" onclick="if(event.target===this)this.classList.remove('show');">
+    <div class="cs-modal-box">
+      <div class="cs-modal-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#f0c030" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <h3 style="font-family:var(--font-heading);color:var(--white);margin:0 0 0.5rem;">Coming Soon</h3>
+      <p style="color:var(--muted);margin:0;font-size:0.95rem;">Enterprise 360 is launching soon. Stay tuned.</p>
+      <button onclick="this.closest('.cs-modal').classList.remove('show');" style="margin-top:1.25rem;padding:0.6rem 2rem;background:var(--gold);color:#000;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:0.9rem;">Got It</button>
+    </div>
+  </div>
+  <style>.cs-modal{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:9999;opacity:0;pointer-events:none;transition:opacity 0.25s;}.cs-modal.show{opacity:1;pointer-events:auto;}.cs-modal-box{background:var(--surface-light);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:2.5rem;text-align:center;max-width:380px;width:90%;transform:scale(0.92);transition:transform 0.25s;}.cs-modal.show .cs-modal-box{transform:scale(1);}.cs-modal-icon{margin-bottom:1rem;}</style>
+
+</body>
+</html>
