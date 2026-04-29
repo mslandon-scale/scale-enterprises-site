@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wc7ebmnu6p");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <title>The Enterprise Checklist — Scale Enterprises</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/shared.css">
+  <link rel="stylesheet" href="/css/chapter.css">
+  <style>
+    .checklist-layout { display: grid; grid-template-columns: 1fr 280px; gap: 2rem; align-items: start; }
+    .checklist-main { min-width: 0; }
+    .checklist-sidebar { position: sticky; top: calc(110px + 1rem); }
+    .category-progress { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem; }
+    .category-progress-bar { flex: 1; height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; }
+    .category-progress-fill { height: 100%; background: var(--success); border-radius: 2px; transition: width 0.3s ease; }
+    .category-progress-text { font-size: 0.7rem; color: var(--muted); font-weight: 600; min-width: 28px; text-align: right; }
+    .sidebar-category-list { margin-top: 1rem; }
+    .sidebar-cat-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0; font-size: 0.8rem; color: var(--muted); cursor: pointer; transition: color 0.2s; }
+    .sidebar-cat-item:hover { color: var(--white); }
+    .sidebar-cat-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .sidebar-cat-count { margin-left: auto; font-size: 0.7rem; font-weight: 700; }
+    .checklist-qualifier { font-size: 0.75rem; color: var(--gold); font-weight: 500; margin-top: 0.25rem; opacity: 0.85; line-height: 1.4; }
+    .validation-questions { margin-top: 1.25rem; padding: 1.25rem; background: linear-gradient(135deg, rgba(34,197,94,0.08), rgba(34,197,94,0.02)); border: 1px solid rgba(34,197,94,0.2); border-radius: 12px; display: none; }
+    .validation-questions.visible { display: block; }
+    .validation-questions h4 { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.8rem; color: #22c55e; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+    .validation-q { display: flex; align-items: flex-start; gap: 0.6rem; padding: 0.5rem 0; font-size: 0.82rem; color: var(--white-soft); line-height: 1.5; }
+    .validation-q svg { width: 16px; height: 16px; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    @media (max-width: 900px) { .checklist-layout { grid-template-columns: 1fr; } .checklist-sidebar { position: static; } }
+  </style>
+</head>
+<body>
+
+  <nav class="topnav" id="topnav"></nav>
+
+  <main class="main" id="mainContent">
+    <div class="loading" id="loader"><div class="spinner"><img src="/logo.png" alt="Loading"></div></div>
+  </main>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/topnav.js"></script>
+  <script>
+    var SLUG = 'enterprise-checklist';
+
+    var categories = [
+      {
+        name: "Vision & Foundation", color: "#818cf8",
+        items: [
+          { id: 1, title: "Scaling Strategy & Psychology", desc: "The internal recipe built for true scaling and enterprise-level success — paired with the strategy that governs how the founder thinks about growth.", qualifier: "You have a documented scaling strategy your leadership team can articulate without looking at notes." },
+          { id: 2, title: "Vision + 3-Year Target", desc: "A clearly defined future state with a measurable 3-year revenue and impact target the entire company marches toward.", qualifier: "Your 3-year target is written, specific, and your team knows it by heart." },
+          { id: 3, title: "Exit Strategy", desc: "A defined end-state (sale, hold, roll-up) that every operational decision is reverse-engineered from.", qualifier: "You have a defined exit type (sale, hold, roll-up) with a target timeline and valuation." },
+          { id: 4, title: "Values + Purpose / Mission", desc: "The non-negotiable values and the reason the company exists, used to filter every hire, client, and decision.", qualifier: "Your values are written, posted, and actively used to make hiring and firing decisions." },
+          { id: 0, title: "Trust", desc: "The currency the entire enterprise runs on — internal, external, and brand-level.", sub: true },
+          { id: 0, title: "Integrity", desc: "Alignment between what you say, what you do, and what the company delivers — non-negotiable at every level.", sub: true },
+          { id: 5, title: "Ideal Customer Profile (ICP)", desc: "One sharply defined avatar — a single, highly specific customer you are built to serve.", qualifier: "You can describe your ideal customer in one sentence and your team turns away prospects who don’t match." },
+          { id: 6, title: "Category of One", desc: "An extremely focused offering and market position that makes the company the category king.", qualifier: "A prospect could not name a direct competitor offering exactly what you offer in the way you offer it." },
+          { id: 7, title: "Proof / Testimonials", desc: "Documented client outcomes, case studies, and social proof that remove skepticism before a prospect ever talks to sales.", qualifier: "You have at least 10 documented client outcomes with specific numbers or measurable results." },
+          { id: 8, title: "Org Chart", desc: "A visual map of every seat in the company (current and future) showing who owns what and how authority flows.", qualifier: "Every seat in your company — current and future — is mapped and every person knows who they report to." },
+          { id: 9, title: "Rule of Three", desc: "Three leaders covering the three lanes — a Visionary driving direction, an Operator running execution, and a Technician mastering the craft.", qualifier: "You have three distinct leaders covering Vision, Operations, and the core Technical function." }
+        ]
+      },
+      {
+        name: "Customer Acquisition", color: "#f59e0b",
+        items: [
+          { id: 10, title: "Value Ladder", desc: "A tiered progression of offers that ascends clients from low-ticket entry points to premium engagements.", qualifier: "You have at least 3 tiers (entry, core, premium) with clear pricing and a defined progression path." },
+          { id: 11, title: "Irresistible Offer", desc: "A core offer stacked with value, guarantees, and specificity that feels stupid to say no to.", qualifier: "Your close rate is above 30% and prospects regularly describe the offer as a no-brainer." },
+          { id: 12, title: "Lead Magnets", desc: "Free, high-value assets that solve a narrow problem in exchange for a prospect’s contact information.", qualifier: "You have at least one asset generating qualified leads on autopilot every week." },
+          { id: 13, title: "Digital Funnels", desc: "End-to-end conversion paths that move a cold prospect from awareness to booked call without manual intervention.", qualifier: "A cold prospect can go from ad click to booked call without anyone manually intervening." },
+          { id: 0, title: "Ads", desc: "Paid traffic across Meta, Google, and other platforms driving cold prospects into the top of the funnel.", sub: true },
+          { id: 0, title: "Landing Pages", desc: "At least three dedicated, conversion-focused pages tailored to different offers, audiences, or traffic sources.", sub: true },
+          { id: 0, title: "Email Sequences", desc: "Nurture and sales sequences that warm leads, handle objections, and push booked calls or purchases.", sub: true },
+          { id: 0, title: "Text / SMS", desc: "Short, high-response message sequences for reminders, nudges, and time-sensitive offers.", sub: true },
+          { id: 14, title: "Partners & Affiliates", desc: "Formal revenue-share and co-marketing relationships with partners who bring qualified prospects.", qualifier: "You have at least 2 active partners sending you qualified leads with a formal revenue-share agreement." },
+          { id: 15, title: "Prospecting", desc: "Direct, one-to-one outbound to specifically identified prospects via email, LinkedIn, phone, or in-person.", qualifier: "You have a repeatable outbound process generating at least 5 qualified conversations per week." },
+          { id: 16, title: "Referrals", desc: "A systematized process for generating warm introductions from existing clients and network connections.", qualifier: "You have a documented referral system that generates warm introductions monthly without you personally asking." },
+          { id: 17, title: "Traditional / Guerrilla Marketing", desc: "Offline and unconventional channels — direct mail, billboards, fliers, trade shows — that reach prospects outside the digital feed.", qualifier: "You run at least one offline channel that consistently drives measurable awareness or leads." },
+          { id: 18, title: "Branding + Story + Archetype", desc: "A unified visual identity, origin story, and brand archetype that give the company a recognizable voice.", qualifier: "A stranger could describe your brand’s personality and story after 60 seconds on your website." },
+          { id: 19, title: "Website", desc: "A conversion-first home base that explains who you serve, what you do, and how to take the next step.", qualifier: "Your website clearly communicates who you serve, what you do, and how to take the next step — and it converts visitors." },
+          { id: 0, title: "SEO / AEO / GEO", desc: "Optimization for traditional search, AI answer engines, and generative AI platforms so the brand shows up across every layer.", sub: true }
+        ]
+      },
+      {
+        name: "Tech Stack", color: "#22d3ee",
+        items: [
+          { id: 20, title: "CRM + Database", desc: "A single system of record where every lead, client, and interaction is tracked and retrievable.", qualifier: "Every lead and client interaction is tracked in one system your team actually uses daily." },
+          { id: 21, title: "CRM Automations", desc: "Triggered workflows inside the CRM that move leads through stages without requiring human follow-up.", qualifier: "Leads move through your pipeline stages automatically without manual data entry at each step." },
+          { id: 22, title: "AI Automation", desc: "AI and automation layered across sales, ops, and delivery to cut labor cost and compress cycle times.", qualifier: "AI handles at least one core function (follow-up, scheduling, data entry, or content) at production quality." },
+          { id: 23, title: "Domain", desc: "A professional primary domain (and relevant alternates) owned and secured under the business.", qualifier: "You own your primary domain and all relevant variations, registered under the business entity." },
+          { id: 24, title: "Business Email", desc: "Branded business email with proper deliverability setup (SPF, DKIM, DMARC) so outbound lands in inboxes.", qualifier: "Your team sends from branded email with SPF, DKIM, and DMARC properly configured and verified." },
+          { id: 25, title: "Phone Set-Up", desc: "A dedicated business phone system with call tracking, routing, and recording tied to the CRM.", qualifier: "You have a dedicated business line with call routing, tracking, and recording tied to your CRM." },
+          { id: 26, title: "Calendar Booking", desc: "Automated booking links and an appointment-setting process that gets qualified prospects on the calendar fast.", qualifier: "Prospects can self-schedule qualified calls without back-and-forth emails or manual coordination." },
+          { id: 27, title: "Bidding / Contracts System", desc: "A standardized workflow for proposals, e-signatures, and scope documents so nothing gets stuck in email.", qualifier: "Proposals and contracts are templated, e-signed, and delivered within 24 hours of a verbal yes." },
+          { id: 28, title: "Payment Processor", desc: "Integrated payment rails for both consumer and business transactions with clean reconciliation into accounting.", qualifier: "Payments are collected automatically and reconcile cleanly into your accounting system." }
+        ]
+      },
+      {
+        name: "Sales & Delivery", color: "#ec4899",
+        items: [
+          { id: 29, title: "Sales Script", desc: "A proven, repeatable call framework covering discovery, objection handling, and close that any rep can execute.", qualifier: "Any rep on your team can run the same call framework and close at a consistent, measurable rate." },
+          { id: 30, title: "Customer Onboarding Plan", desc: "A defined first-30-days experience that gets new clients to an early win and locks in retention.", qualifier: "Every new client hits a defined milestone or early win within their first 30 days." },
+          { id: 31, title: "Retention Workflow", desc: "Scheduled check-ins, success milestones, and re-engagement triggers that keep clients paying and renewing.", qualifier: "You have automated check-ins, success triggers, and re-engagement sequences actively running." },
+          { id: 32, title: "Speed to Lead = ASAP", desc: "Every inbound lead is contacted within minutes — the single biggest lever on conversion rate.", qualifier: "Every inbound lead is contacted within 5 minutes during business hours, every time." },
+          { id: 33, title: "Workflow Maps", desc: "Step-by-step visual maps of the customer acquisition and fulfillment workflows so every handoff is documented.", qualifier: "Your acquisition and fulfillment processes are visually documented and any team member can follow them." }
+        ]
+      },
+      {
+        name: "People & Team", color: "#a78bfa",
+        items: [
+          { id: 34, title: "Recruiting Funnel", desc: "An always-on pipeline of A-player candidates so you hire from abundance, not desperation.", qualifier: "You have an active pipeline of qualified candidates and never make a hire from desperation." },
+          { id: 35, title: "Hire From the Goal", desc: "Every hire is made against the future org chart the exit demands — not against this month’s pain.", qualifier: "Every hire is made against the org chart your 3-year target demands, not this month’s fire drill." },
+          { id: 36, title: "2-Week Team Onboarding", desc: "A structured two-week ramp that gets new hires productive, aligned, and culturally embedded.", qualifier: "New hires are productive, culturally aligned, and contributing within 14 days of starting." },
+          { id: 37, title: "Ascension Plan for Employees", desc: "Clear career paths and promotion criteria so top performers see a future inside the company.", qualifier: "Every team member can see their next role, what it pays, and exactly what earns the promotion." },
+          { id: 38, title: "RPE of $250K+", desc: "Revenue Per Employee benchmark of $250K or higher as the baseline health metric for team productivity.", qualifier: "Your total revenue divided by total headcount is $250,000 or more." },
+          { id: 39, title: "Comp / Benefits Plan", desc: "A total rewards structure covering base pay, variable comp, bonuses, and benefits — tied to outcomes the business values.", qualifier: "You have a documented total rewards structure with comp, bonuses, and benefits tied to measurable outcomes." },
+          { id: 40, title: "Playbooks for Each Role", desc: "Documented SOPs and playbooks for every seat so the role survives any specific person leaving it.", qualifier: "Every seat has a written playbook complete enough that a new hire could follow it without shadowing." }
+        ]
+      },
+      {
+        name: "Leadership System", color: "#f59e0b",
+        items: [
+          { id: 41, title: "Daily Huddle (10 min)", desc: "A fast 10-minute daily standup where the team surfaces priorities, blockers, and scoreboard movement.", qualifier: "Your team runs a 10-minute standup every single day that surfaces blockers and priorities." },
+          { id: 42, title: "Weekly Huddle / Scoreboard", desc: "A 60–90 minute weekly meeting reviewing KPIs, issues, and commitments against the scoreboard.", qualifier: "You run a weekly meeting with a live scoreboard that tracks KPIs against specific targets." },
+          { id: 43, title: "Decision Matrix", desc: "A pre-agreed framework for how people other than the owner make decisions — always in line with vision and values.", qualifier: "Your team makes decisions without you using a pre-agreed framework aligned to vision and values." },
+          { id: 44, title: "Quarterly Meetings", desc: "90-day planning sessions where the team resets priorities, rocks, and targets for the coming quarter.", qualifier: "You run structured 90-day planning sessions that reset priorities and targets for the coming quarter." },
+          { id: 45, title: "Annual Conferences", desc: "A once-a-year full-team gathering to align on vision, celebrate wins, and reset the 12-month target.", qualifier: "You hold a yearly full-team gathering that aligns vision and resets the 12-month plan." },
+          { id: 46, title: "Digital Ops System", desc: "A unified digital workspace (Slack, Notion, Asana, etc.) where communication, docs, and tasks live in one place.", qualifier: "Your team runs on one unified workspace where communication, docs, and tasks live together." },
+          { id: 47, title: "Command Center (CEO)", desc: "The CEO’s single dashboard showing every critical metric across the four pillars in real time.", qualifier: "You have a single dashboard showing every critical business metric updated in real time." },
+          { id: 48, title: "One-on-Ones", desc: "Recurring manager-to-direct-report meetings focused on development, alignment, and blockers.", qualifier: "Every manager runs recurring 1:1s focused on development, alignment, and removing blockers." }
+        ]
+      },
+      {
+        name: "Financials", color: "#22c55e",
+        items: [
+          { id: 49, title: "Clean Books", desc: "Accurate, up-to-date, GAAP-compliant books that can withstand diligence at any time AND show no piercing of the corporate veil.", qualifier: "Your books are current, GAAP-compliant, could survive a due diligence audit today, and show no piercing of the corporate veil — meaning you are not mixing personal and business finances together." },
+          { id: 50, title: "P&L (EBITDA / Net Profit)", desc: "A monthly profit and loss statement showing revenue, EBITDA, and net profit trends.", qualifier: "You review a monthly P&L showing revenue, EBITDA, and net profit with your leadership team." },
+          { id: 51, title: "Balance Sheet — Current Ratio", desc: "A balance sheet tracked monthly with a current ratio that proves the business can cover short-term obligations.", qualifier: "You track your current ratio monthly and it consistently stays above 1.5." },
+          { id: 52, title: "Cash Flow", desc: "A forward-looking cash flow statement that makes runway, timing gaps, and reinvestment capacity visible.", qualifier: "You have a forward-looking cash flow projection that is updated and reviewed monthly." },
+          { id: 53, title: "Unit Economics Dialed In", desc: "A locked-in per-unit view of how each sale contributes to profit after direct costs and labor.", qualifier: "You know exactly how much profit each unit of sale generates after all direct costs and labor." },
+          { id: 0, title: "Gross Margins", desc: "Revenue minus direct cost of delivery, expressed as a percentage.", sub: true },
+          { id: 0, title: "COGS / COSS", desc: "The direct costs of delivering the product or service per unit.", sub: true },
+          { id: 0, title: "Net Margins 20%+", desc: "Net profit margin of at least 20% as the gate before attempting to scale.", sub: true },
+          { id: 0, title: "Team Cost Per Unit", desc: "Labor cost per unit — who touches the unit, in what role, and at what fully-loaded cost.", sub: true },
+          { id: 0, title: "Team Hours Per Unit", desc: "Total team hours required to produce or deliver one unit.", sub: true },
+          { id: 54, title: "12 Months OPEX in Reserves", desc: "Twelve full months of operating expenses saved in reserves so the business survives any market shock.", qualifier: "You have 12 full months of operating expenses saved in accessible cash reserves right now." },
+          { id: 55, title: "AR / AP", desc: "Tight accounts receivable and payable processes that protect cash flow and vendor relationships.", qualifier: "Your receivables are collected within 30 days and your payables are managed on a consistent schedule." },
+          { id: 56, title: "Profit First", desc: "Build the financials and the business model around profit, not revenue — especially when working toward an exit.", qualifier: "Profit is allocated before expenses every month — not treated as whatever is left over." }
+        ]
+      }
+    ];
+
+    document.addEventListener('auth:ready', async function(e) {
+      var modules = await initTopnav('library', SLUG);
+      if (isModuleLocked(modules, SLUG)) { window.location.href = '/dashboard'; return; }
+      var mod = modules.find(function(m) { return m.slug === SLUG; }) || {};
+
+      var main = document.getElementById('mainContent');
+      main.innerHTML =
+        '<div class="chapter-layout" style="max-width:980px;">' +
+          '<div class="chapter-hero">' +
+            '<a href="/dashboard" class="back-link">&larr; Back to Dashboard</a>' +
+            '<span class="chapter-number">Module 03</span>' +
+            '<h1 class="chapter-title">The Enterprise<br>Checklist</h1>' +
+            '<p class="chapter-subtitle">56 Elements I Install Into Every Enterprise I Work With</p>' +
+            '<div class="reading-meta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><polyline points="9 11 12 14 22 4"/></svg><span>Interactive — check off what you have</span></div>' +
+          '</div>' +
+
+          '<div class="section visible">' +
+            '<p class="lead">Fifty-six elements. Every one earned its spot the same way — either from watching a business that had it <span class="highlight">win</span>, or from watching one that didn’t have it <strong>lose.</strong></p>' +
+            '<div class="insight-card green">' +
+              '<div class="insight-label green"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Score Your Business</div>' +
+              '<p><strong>Check off each element your business already has in place.</strong> Your score updates in real time so you can see exactly where the gaps are. Be honest — each item has a quality bar you should meet before checking it off.</p>' +
+            '</div>' +
+
+            '<div class="checklist-layout">' +
+              '<div class="checklist-main" id="checklistMain"></div>' +
+              '<div class="checklist-sidebar">' +
+                '<div class="score-display" id="scoreDisplay">' +
+                  '<div class="score-circle" id="scoreCircle"><div class="score-number" id="scoreNumber">0</div><div class="score-total">of 56</div></div>' +
+                  '<div class="score-label">Enterprise Score</div>' +
+                  '<div class="score-sublabel" id="scoreLabel">Start checking off elements</div>' +
+                '</div>' +
+                '<div class="validation-questions" id="validationQuestions">' +
+                  '<h4>Reality Check</h4>' +
+                  '<div class="validation-q"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span>Can you manage your business in <strong>90 minutes a week or less</strong>?</span></div>' +
+                  '<div class="validation-q"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span>Could you step away for <strong>30+ days with your phone off</strong> and the business still grows?</span></div>' +
+                  '<div class="validation-q"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span>Is your business generating <strong>$10M+ in annual revenue</strong>?</span></div>' +
+                  '<p style="font-size:0.75rem;color:var(--muted);margin-top:0.75rem;margin-bottom:0;line-height:1.5;">If you answered <strong style="color:#f59e0b;">no</strong> to any of these, your enterprise isn’t truly running at Stage 3 yet. Review the elements you checked off and raise the bar.</p>' +
+                '</div>' +
+                '<div class="sidebar-category-list" id="sidebarCategories"></div>' +
+              '</div>' +
+            '</div>' +
+
+            '<div class="cta-card" style="margin-top:3rem;">' +
+              '<h3>Want All 56 Installed in 30 Days?</h3>' +
+              '<p>Enterprise 360 compresses the entire checklist installation into 30 days. Full system build. Two guarantees.</p>' +
+              '<a href="#" class="btn-gold" id="ctaBtn">Book Your Enterprise Call &rarr;</a>' +
+            '</div>' +
+          '</div>' +
+
+          '<div class="chapter-actions">' +
+            '<button class="btn-gold chapter-complete-btn" id="completeBtn">' + (mod.completed ? '&#10003; Completed' : 'Mark as Complete') + '</button>' +
+          '</div>' +
+
+          '<a href="/scaling-sequence" class="next-chapter">' +
+            '<div class="next-chapter-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>' +
+            '<div><div class="next-chapter-label">Next Module</div><div class="next-chapter-title">The Scaling Sequence</div></div>' +
+          '</a>' +
+        '</div>';
+
+      // CTA -> Coming Soon
+      document.getElementById('ctaBtn').addEventListener('click', function(e) { e.preventDefault(); openComingSoonModal(); });
+
+      // Checklist logic
+      var checked = {};
+      try { var saved = localStorage.getItem("scale-checklist"); if (saved) checked = JSON.parse(saved); } catch(e) {}
+
+      function saveChecklist() { try { localStorage.setItem("scale-checklist", JSON.stringify(checked)); } catch(e) {} }
+
+      function getScoreLabel(score) {
+        if (score === 0) return "Start checking off elements";
+        if (score < 25) return "Early stage — keep building";
+        if (score < 40) return "Foundation taking shape";
+        if (score < 50) return "Solid enterprise emerging";
+        return "Enterprise-ready";
+      }
+      function getCircleColor(score) {
+        if (score < 25) return "#ef4444";
+        if (score < 40) return "#f97316";
+        if (score < 50) return "#eab308";
+        return "#22c55e";
+      }
+
+      function updateScore() {
+        var total = Object.keys(checked).filter(function(k) { return checked[k]; }).length;
+        document.getElementById("scoreNumber").textContent = total;
+        document.getElementById("scoreLabel").textContent = getScoreLabel(total);
+        var cc = getCircleColor(total);
+        document.getElementById("scoreCircle").style.borderColor = cc;
+        document.getElementById("scoreNumber").style.color = cc;
+        var vq = document.getElementById("validationQuestions");
+        if (total >= 50) vq.classList.add("visible"); else vq.classList.remove("visible");
+
+        categories.forEach(function(cat, ci) {
+          var catChecked = 0, catTotal = 0;
+          cat.items.forEach(function(item) { if (item.id > 0) { catTotal++; if (checked["item-" + item.id]) catChecked++; } });
+          var pct = catTotal > 0 ? Math.round((catChecked / catTotal) * 100) : 0;
+          var f = document.getElementById("cat-fill-" + ci); if (f) f.style.width = pct + "%";
+          var c = document.getElementById("cat-count-" + ci); if (c) c.textContent = catChecked + "/" + catTotal;
+          var s = document.getElementById("side-count-" + ci); if (s) s.textContent = catChecked + "/" + catTotal;
+        });
+      }
+
+      window.toggleItem = function(itemId) {
+        var key = "item-" + itemId;
+        checked[key] = !checked[key];
+        var el = document.querySelector('[data-item="' + itemId + '"]');
+        if (el) el.classList.toggle("checked", checked[key]);
+        updateScore(); saveChecklist();
+      };
+
+      // Render checklist
+      var mainEl = document.getElementById("checklistMain");
+      var sideEl = document.getElementById("sidebarCategories");
+      var mainHTML = "", sideHTML = "";
+
+      categories.forEach(function(cat, ci) {
+        var numbered = cat.items.filter(function(i) { return i.id > 0; });
+        mainHTML += '<div class="checklist-category" id="cat-' + ci + '">';
+        mainHTML += '<div class="checklist-category-header"><div class="checklist-category-title" style="color:' + cat.color + ';">' + cat.name + '</div><div class="checklist-category-count" id="cat-count-' + ci + '">0/' + numbered.length + '</div></div>';
+        mainHTML += '<div class="category-progress"><div class="category-progress-bar"><div class="category-progress-fill" id="cat-fill-' + ci + '" style="width:0%;background:' + cat.color + ';"></div></div></div>';
+
+        cat.items.forEach(function(item) {
+          if (item.id > 0) {
+            mainHTML += '<div class="checklist-item" data-item="' + item.id + '" onclick="toggleItem(' + item.id + ')">';
+            mainHTML += '<div class="checklist-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>';
+            mainHTML += '<div class="checklist-item-content"><div class="checklist-item-title">' + String(item.id).padStart(2, "0") + '. ' + item.title + '</div>';
+            mainHTML += '<div class="checklist-item-desc">' + item.desc + '</div>';
+            if (item.qualifier) mainHTML += '<div class="checklist-qualifier">Check this off if: ' + item.qualifier + '</div>';
+            mainHTML += '</div></div>';
+          } else {
+            mainHTML += '<div class="checklist-item" style="opacity:0.6;cursor:default;padding-left:2.5rem;"><div class="checklist-item-content"><div class="checklist-item-title" style="font-size:0.82rem;color:var(--muted);">' + item.title + '</div><div class="checklist-item-desc" style="font-size:0.75rem;">' + item.desc + '</div></div></div>';
+          }
+        });
+        mainHTML += '</div>';
+
+        sideHTML += '<div class="sidebar-cat-item" onclick="document.getElementById(\'cat-' + ci + '\').scrollIntoView({behavior:\'smooth\',block:\'start\'})">';
+        sideHTML += '<div class="sidebar-cat-dot" style="background:' + cat.color + ';"></div><span>' + cat.name + '</span><span class="sidebar-cat-count" id="side-count-' + ci + '">0/' + numbered.length + '</span></div>';
+      });
+
+      mainEl.innerHTML = mainHTML;
+      sideEl.innerHTML = sideHTML;
+
+      // Restore checked state
+      Object.keys(checked).forEach(function(key) {
+        if (checked[key]) {
+          var id = key.replace("item-", "");
+          var el = document.querySelector('[data-item="' + id + '"]');
+          if (el) el.classList.add("checked");
+        }
+      });
+      updateScore();
+
+      // Mark complete
+      var btn = document.getElementById('completeBtn');
+      if (mod.completed) { btn.style.background = 'var(--success)'; btn.style.cursor = 'default'; }
+      else {
+        btn.addEventListener('click', async function() {
+          btn.disabled = true; btn.textContent = 'Saving...';
+          try {
+            var res = await fetch('/api/modules/' + SLUG + '/complete', { method: 'POST', credentials: 'same-origin' });
+            if (res.ok) { btn.innerHTML = '&#10003; Completed'; btn.style.background = 'var(--success)'; btn.style.cursor = 'default'; var mcLink = document.querySelector('.mc-link.active'); if (mcLink) mcLink.classList.add('completed'); }
+          } catch(e) { btn.textContent = 'Mark as Complete'; btn.disabled = false; }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

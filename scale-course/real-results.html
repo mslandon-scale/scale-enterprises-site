@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wc7ebmnu6p");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <title>Real Results — Scale Enterprises</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/shared.css">
+  <link rel="stylesheet" href="/css/chapter.css">
+</head>
+<body>
+
+  <nav class="topnav" id="topnav"></nav>
+
+  <main class="main" id="mainContent">
+    <div class="loading" id="loader"><div class="spinner"><img src="/logo.png" alt="Loading"></div></div>
+  </main>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/topnav.js"></script>
+  <script>
+    var SLUG = 'real-results';
+
+    document.addEventListener('auth:ready', async function(e) {
+      var modules = await initTopnav('library', SLUG);
+      if (isModuleLocked(modules, SLUG)) { window.location.href = '/dashboard'; return; }
+      var mod = modules.find(function(m) { return m.slug === SLUG; }) || {};
+
+      var main = document.getElementById('mainContent');
+      main.innerHTML = '<div class="chapter-layout">' +
+
+        '<div class="chapter-hero">' +
+          '<a href="/dashboard" class="back-link">&larr; Back to Dashboard</a>' +
+          '<span class="chapter-number">Module 05</span>' +
+          '<h1 class="chapter-title">Real Results</h1>' +
+          '<p class="chapter-subtitle">What Happens When You Actually Install the Elements</p>' +
+          '<div class="reading-meta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>3 min read</span></div>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<p class="lead">You\'ve seen the story, the map, the checklist, and the sequence. The reasonable question is: <span class="highlight">does any of this actually work</span> outside of a document?</p>' +
+          '<p>It does.</p>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<h2>The Numbers</h2>' +
+          '<div class="results-grid">' +
+            '<div class="result-card"><div class="result-stat-wrap"><div class="result-stat">3&times;</div><div class="result-label">In 7 Days</div></div><div class="result-body"><h4>Lead Flow Tripled</h4><p>Took an organization\'s weekly qualified lead flow from 40 to 120 in a single week by installing the right customer acquisition elements in the right order.</p></div></div>' +
+            '<div class="result-card"><div class="result-stat-wrap"><div class="result-stat" style="font-size:clamp(1.4rem,3vw,2rem);">$0&rarr;7 Fig</div><div class="result-label">In 6 Months</div></div><div class="result-body"><h4>Zero to Seven Figures</h4><p>Built a marketing agency from zero revenue to seven figures in six months by sequencing the Stage 1 and Stage 2 elements exactly as the framework prescribes.</p></div></div>' +
+            '<div class="result-card"><div class="result-stat-wrap"><div class="result-stat">4&times;</div><div class="result-label">In 2026</div></div><div class="result-body"><h4>On Pace to 4&times; a Company</h4><p>Currently set to double a client company twice within 2026 &mdash; a 4&times; trajectory driven entirely by installing the checklist elements required to move from Stage 2 into Stage 3.</p></div></div>' +
+          '</div>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<div class="insight-card green">' +
+            '<div class="insight-label green"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> The Takeaway</div>' +
+            '<p><strong>None of these outcomes were accidents.</strong> Each one was the direct result of identifying what stage the business was in, then installing the specific checklist elements that unlock the next one.</p>' +
+          '</div>' +
+          '<div class="pull-quote"><div class="pull-quote-text">The difference between the businesses that scale and the ones that stall isn\'t talent, or luck, or market timing. It\'s whether the right elements are installed in the right order at the right stage.</div></div>' +
+          '<p>That\'s it. That\'s the whole game.</p>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<div class="cta-card">' +
+            '<h3>Ready to Install the Framework?</h3>' +
+            '<p>Enterprise 360 is the 30-day program built to compress this entire playbook into your business. Full system installation. Two guarantees &mdash; or you don\'t pay.</p>' +
+            '<a href="#" class="btn-gold" id="ctaBtn">Book Your Enterprise Call &rarr;</a>' +
+          '</div>' +
+        '</div>' +
+
+        '<div class="chapter-actions">' +
+          '<button class="btn-gold chapter-complete-btn" id="completeBtn">' + (mod.completed ? '&#10003; Completed' : 'Mark as Complete') + '</button>' +
+        '</div>' +
+
+        '<a href="#" class="next-chapter" id="nextChapterLink">' +
+          '<div class="next-chapter-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>' +
+          '<div><div class="next-chapter-label">The Program</div><div class="next-chapter-title">Enterprise 360 &mdash; Coming Soon</div></div>' +
+        '</a>' +
+
+      '</div>';
+
+      // CTA + next chapter -> Coming Soon
+      document.getElementById('ctaBtn').addEventListener('click', function(e) { e.preventDefault(); openComingSoonModal(); });
+      document.getElementById('nextChapterLink').addEventListener('click', function(e) { e.preventDefault(); openComingSoonModal(); });
+
+      // Scroll reveal
+      var sections = document.querySelectorAll('.section');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      sections.forEach(function(s) { observer.observe(s); });
+
+      // Mark complete
+      var btn = document.getElementById('completeBtn');
+      if (mod.completed) { btn.style.background = 'var(--success)'; btn.style.cursor = 'default'; }
+      else {
+        btn.addEventListener('click', async function() {
+          btn.disabled = true; btn.textContent = 'Saving...';
+          try {
+            var res = await fetch('/api/modules/' + SLUG + '/complete', { method: 'POST', credentials: 'same-origin' });
+            if (res.ok) { btn.innerHTML = '&#10003; Completed'; btn.style.background = 'var(--success)'; btn.style.cursor = 'default'; var mcLink = document.querySelector('.mc-link.active'); if (mcLink) mcLink.classList.add('completed'); }
+          } catch(e) { btn.textContent = 'Mark as Complete'; btn.disabled = false; }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

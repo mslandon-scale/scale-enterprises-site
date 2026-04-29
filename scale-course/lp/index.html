@@ -1127,5 +1127,13 @@
     });
   </script>
   <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+  <script>
+    // Capture referral code from URL into sessionStorage
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      var ref = params.get('ref');
+      if (ref) sessionStorage.setItem('referralCode', ref);
+    })();
+  </script>
 </body>
 </html>

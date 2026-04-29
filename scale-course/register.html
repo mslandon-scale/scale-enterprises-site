@@ -213,6 +213,14 @@
           <label class="form-label" for="confirmPassword">Confirm Password</label>
           <input class="form-input" type="password" id="confirmPassword" placeholder="Re-enter your password" required>
         </div>
+        <div class="form-group" style="display:flex; align-items:flex-start; gap:0.5rem; margin-top:0.25rem;">
+          <input type="checkbox" id="emailConsent" style="margin-top:3px; accent-color:var(--gold); min-width:16px; min-height:16px; cursor:pointer;" required>
+          <label for="emailConsent" style="font-size:0.75rem; color:var(--muted); line-height:1.5; cursor:pointer;">
+            I consent to receive emails from Scale Enterprises at the email address provided. You can unsubscribe at any time. View our
+            <a href="https://scaleenterprises.com/privacy-policy" target="_blank" style="color:var(--gold);">Privacy Policy</a> and
+            <a href="https://scaleenterprises.com/terms-of-service" target="_blank" style="color:var(--gold);">Terms of Service</a>.
+          </label>
+        </div>
         <button type="submit" class="btn-gold" id="submitBtn">Create Account</button>
       </form>
 
@@ -223,6 +231,23 @@
   </div>
 
   <script>
+    // Capture referral code from URL and track click
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      var ref = params.get('ref');
+      if (ref) {
+        sessionStorage.setItem('referralCode', ref);
+        if (!sessionStorage.getItem('ref_click_tracked')) {
+          fetch('/api/referrals/track-click', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ code: ref })
+          }).catch(function() {});
+          sessionStorage.setItem('ref_click_tracked', 'true');
+        }
+      }
+    })();
+
     var GOOGLE_CLIENT_ID = '505442505277-l12i6pa31ai2us5he1kn88c66q5ssitk.apps.googleusercontent.com';
 
     function initGoogleButton() {
@@ -240,10 +265,14 @@
 
     async function handleGoogleResponse(response) {
       try {
+        var payload = { credential: response.credential };
+        var savedRef = sessionStorage.getItem('referralCode');
+        if (savedRef) payload.referralCode = savedRef;
+
         var res = await fetch('/api/auth/google', {
           method: 'POST', credentials: 'same-origin',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ credential: response.credential })
+          body: JSON.stringify(payload)
         });
         if (res.ok) { window.location.href = '/dashboard'; }
         else {
@@ -284,16 +313,21 @@
       btn.textContent = 'Creating account...';
 
       try {
+        var regPayload = {
+            firstName: document.getElementById('firstName').value,
+            lastName: document.getElementById('lastName').value,
+            email: document.getElementById('email').value,
+            password: password,
+            emailConsent: document.getElementById('emailConsent').checked
+        };
+        var savedRef = sessionStorage.getItem('referralCode');
+        if (savedRef) regPayload.referralCode = savedRef;
+
         const res = await fetch('/api/auth/register', {
           method: 'POST',
           credentials: 'same-origin',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            firstName: document.getElementById('firstName').value,
-            lastName: document.getElementById('lastName').value,
-            email: document.getElementById('email').value,
-            password: password
-          })
+          body: JSON.stringify(regPayload)
         });
 
         const data = await res.json();

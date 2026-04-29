@@ -92,7 +92,8 @@ async function createOrUpdateContact({ email, name, phone, tags, customFields, p
   let contactId;
 
   if (existingContact) {
-    await ghlFetch(`/contacts/${existingContact.id}`, 'PUT', contactData);
+    const { locationId: _, ...updateData } = contactData;
+    await ghlFetch(`/contacts/${existingContact.id}`, 'PUT', updateData);
     contactId = existingContact.id;
   } else {
     const result = await ghlFetch('/contacts/', 'POST', contactData);

@@ -8,7 +8,7 @@ const products = [
     title: "Enterprise Masterclass",
     description: "A free, 7 Masterclass video training that teaches you how to build enterprise systems. Audio version included.",
     cta: "Start Free Masterclass",
-    href: "https://course.scaleenterprises.com/register",
+    href: "#footer",
     primary: false,
   },
   {
@@ -16,7 +16,7 @@ const products = [
     title: "Enterprise Challenge",
     description: "An intensive deep dive to diagnose, architect, and blueprint your enterprise transformation.",
     cta: "Join the Challenge",
-    href: "#apply",
+    href: "#footer",
     primary: false,
   },
   {
@@ -24,7 +24,7 @@ const products = [
     title: "Enterprise 360",
     description: "Full enterprise buildout, mastermind access, and every tool and resource — done for you.",
     cta: "Apply Now",
-    href: "#apply",
+    href: "#footer",
     primary: true,
   },
 ];

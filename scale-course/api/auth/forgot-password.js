@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const { query } = require('../../lib/db');
 const { setCors, handlePreflight } = require('../../lib/cors');
+const { rateLimit } = require('../../lib/rate-limit');
 
 module.exports = async function handler(req, res) {
   if (handlePreflight(req, res)) return;
@@ -8,6 +9,11 @@ module.exports = async function handler(req, res) {
 
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  var rl = await rateLimit(req, 'forgot-password', 3, 15);
+  if (rl.limited) {
+    return res.status(429).json({ error: 'Too many reset requests. Please try again in 15 minutes.' });
   }
 
   const { email } = req.body || {};

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wc7ebmnu6p");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <title>The Enterprise Framework — Scale Enterprises</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/shared.css">
+  <link rel="stylesheet" href="/css/chapter.css">
+  <style>
+    .framework-diagram {
+      margin: 2.5rem 0; padding: 2rem;
+      background: linear-gradient(135deg, var(--surface-light) 0%, var(--surface) 100%);
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow-x: auto;
+    }
+    .diagram-track { display: flex; align-items: stretch; gap: 0; min-width: 700px; position: relative; }
+    .diagram-stage { flex: 1; position: relative; text-align: center; padding: 1.25rem 0.5rem; cursor: default; transition: transform 0.3s; }
+    .diagram-stage:hover { transform: translateY(-3px); }
+    .diagram-node {
+      width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 0.75rem;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--white); position: relative; z-index: 2;
+    }
+    .diagram-stage:nth-child(1) .diagram-node { background: rgba(129,140,248,0.25); border: 2px solid #818cf8; color: #818cf8; }
+    .diagram-stage:nth-child(2) .diagram-node { background: rgba(245,158,11,0.25); border: 2px solid #f59e0b; color: #f59e0b; }
+    .diagram-stage:nth-child(3) .diagram-node { background: rgba(34,197,94,0.25); border: 2px solid #22c55e; color: #22c55e; }
+    .diagram-stage:nth-child(4) .diagram-node { background: rgba(34,211,238,0.25); border: 2px solid #22d3ee; color: #22d3ee; }
+    .diagram-stage:nth-child(5) .diagram-node { background: rgba(167,139,250,0.25); border: 2px solid #a78bfa; color: #a78bfa; }
+    .diagram-connector { position: absolute; top: calc(1.25rem + 28px); left: calc(50% + 28px); right: calc(-50% + 28px); height: 2px; z-index: 1; }
+    .diagram-stage:last-child .diagram-connector { display: none; }
+    .diagram-stage:nth-child(1) .diagram-connector { background: linear-gradient(90deg, #818cf8, #f59e0b); }
+    .diagram-stage:nth-child(2) .diagram-connector { background: linear-gradient(90deg, #f59e0b, #22c55e); }
+    .diagram-stage:nth-child(3) .diagram-connector { background: linear-gradient(90deg, #22c55e, #22d3ee); }
+    .diagram-stage:nth-child(4) .diagram-connector { background: linear-gradient(90deg, #22d3ee, #a78bfa); }
+    .diagram-name { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.8rem; color: var(--white); margin-bottom: 0.2rem; line-height: 1.3; }
+    .diagram-revenue { font-size: 0.65rem; font-weight: 600; color: var(--muted); }
+    .diagram-theme { font-size: 0.65rem; color: var(--gold); margin-top: 0.35rem; font-style: italic; }
+    /* Tighter section spacing for this page */
+    .chapter-layout .section { padding: 1.75rem 0; }
+    .chapter-layout .section p + p { margin-top: 0.5rem; }
+
+    @media (max-width: 768px) {
+      .framework-diagram { padding: 1rem; }
+      .diagram-track { min-width: 600px; }
+      .diagram-node { width: 44px; height: 44px; font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="topnav" id="topnav"></nav>
+
+  <main class="main" id="mainContent">
+    <div class="loading" id="loader"><div class="spinner"><img src="/logo.png" alt="Loading"></div></div>
+  </main>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/topnav.js"></script>
+  <script>
+    var SLUG = 'enterprise-framework';
+
+    document.addEventListener('auth:ready', async function(e) {
+      var modules = await initTopnav('library', SLUG);
+      if (isModuleLocked(modules, SLUG)) { window.location.href = '/dashboard'; return; }
+      var mod = modules.find(function(m) { return m.slug === SLUG; }) || {};
+
+      var main = document.getElementById('mainContent');
+      main.innerHTML = '<div class="chapter-layout">' +
+
+        '<div class="chapter-hero">' +
+          '<a href="/dashboard" class="back-link">&larr; Back to Dashboard</a>' +
+          '<span class="chapter-number">Module 02</span>' +
+          '<h1 class="chapter-title">The Enterprise<br>Framework</h1>' +
+          '<p class="chapter-subtitle">The 5 Stages Every Enterprise Moves Through</p>' +
+          '<div class="reading-meta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>8 min read</span></div>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<p class="lead">After years of studying operators who actually made it, one pattern refused to break &mdash; every enterprise that crossed nine figures moved through the <span class="highlight">same five stages.</span> Not similar. The same.</p>' +
+          '<p>Tony Robbins, Alex Hormozi, Russell Brunson, Grant Cardone, Brandon Dawson, Ryan Pineda, Pace Morby &mdash; they each discovered it, survived it, scaled through it. But none of them have ever put it together as one full, repeatable framework.</p>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<h2 style="margin-bottom:0.75rem;">This Is the Framework That Will Change the Way You Look at Business</h2>' +
+          '<div class="insight-card orange" style="margin-bottom:1.25rem;">' +
+            '<div class="insight-label orange"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Critical Rule</div>' +
+            '<p>Each stage has a revenue range, a core theme, and a specific job to be done. <strong>Skip a stage, or try to play one stage\'s game with another stage\'s tools, and the whole thing stalls.</strong></p>' +
+          '</div>' +
+          '<div class="framework-diagram"><div class="diagram-track">' +
+            '<div class="diagram-stage"><div class="diagram-node">1</div><div class="diagram-connector"></div><div class="diagram-name">Value Creation</div><div class="diagram-revenue">$0 &rarr; 6 Fig</div><div class="diagram-theme">Prove it works</div></div>' +
+            '<div class="diagram-stage"><div class="diagram-node">2</div><div class="diagram-connector"></div><div class="diagram-name">Systems</div><div class="diagram-revenue">6 &rarr; 7 Fig</div><div class="diagram-theme">Build the machine</div></div>' +
+            '<div class="diagram-stage"><div class="diagram-node">3</div><div class="diagram-connector"></div><div class="diagram-name">Enterprise Leadership</div><div class="diagram-revenue">7 &rarr; 8 Fig</div><div class="diagram-theme">Full installation</div></div>' +
+            '<div class="diagram-stage"><div class="diagram-node">4</div><div class="diagram-connector"></div><div class="diagram-name">Platform</div><div class="diagram-revenue">8 &rarr; 9 Fig</div><div class="diagram-theme">Vertical integration</div></div>' +
+            '<div class="diagram-stage"><div class="diagram-node">5</div><div class="diagram-name">Private Equity</div><div class="diagram-revenue">9 &rarr; 10 Fig</div><div class="diagram-theme">Pure strategy</div></div>' +
+          '</div></div>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<div class="stage-card s1"><div class="stage-header"><span class="stage-badge" style="background:rgba(129,140,248,0.15);color:#818cf8;">Stage 1</span><span class="stage-revenue-badge">$0 &rarr; 6 Figures</span></div>' +
+          '<h3>Value Creation</h3><p>The only job here is proving the market wants what you\'re selling. Not systems, not team, not brand &mdash; just value. Can you make something real that people will pay for, repeatedly? Everything else is a distraction until this is locked.</p></div>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<div class="stage-card s2"><div class="stage-header"><span class="stage-badge" style="background:rgba(245,158,11,0.15);color:#f59e0b;">Stage 2</span><span class="stage-revenue-badge">6 &rarr; 7 Figures</span></div>' +
+          '<h3>Systems</h3><p>The thing that works has to stop living inside the founder\'s head. This stage is about system creation and orchestration &mdash; documented processes, CRM flows, fulfillment SOPs, financial rigor. It\'s where the business stops depending on the founder to function.</p></div>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<div class="stage-card s3"><div class="stage-header"><span class="stage-badge" style="background:rgba(34,197,94,0.15);color:#22c55e;">Stage 3</span><span class="stage-revenue-badge">7 &rarr; 8 Figures</span></div>' +
+          '<h3>Enterprise Leadership</h3><p>This is the stage the whole playbook was built for. Every element on the checklist is installed, the Rule of Three is in seat, and the cash is flowing. This is where a business becomes a real enterprise and a founder becomes an owner.</p></div>' +
+          '<div class="insight-card green">' +
+            '<div class="insight-label green"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> The Three Litmus Tests</div>' +
+            '<p>These are the numbers that tell me whether a business is <strong>truly operating at Enterprise Leadership</strong> or just pretending to.</p>' +
+          '</div>' +
+          '<div class="litmus-grid">' +
+            '<div class="litmus-card"><div class="litmus-value">$250K+</div><div class="litmus-label">Revenue Per Employee</div></div>' +
+            '<div class="litmus-card"><div class="litmus-value">20&ndash;25%</div><div class="litmus-label">Net Margins</div></div>' +
+            '<div class="litmus-card"><div class="litmus-value">Optional</div><div class="litmus-label">Founder\'s Presence</div></div>' +
+          '</div>' +
+          '<p>When the checklist is fully installed and the three litmus tests are green, the business becomes <strong>sellable</strong>. A stand-alone sale at 5&ndash;8&times; EBITDA becomes realistic.</p>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<div class="stage-card s4"><div class="stage-header"><span class="stage-badge" style="background:rgba(34,211,238,0.15);color:#22d3ee;">Stage 4</span><span class="stage-revenue-badge">8 &rarr; 9 Figures</span></div>' +
+          '<h3>Platform</h3><p>You keep everything from the checklist, add middle management beneath the leadership team, and bring every major function in-house &mdash; marketing, finance, tech, operations, people, sales strategy, and legal. No more hired agencies, outside CPAs, or outsourced counsel. The business becomes vertically integrated and completely self-contained.</p></div>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<div class="stage-card s5"><div class="stage-header"><span class="stage-badge" style="background:rgba(167,139,250,0.15);color:#a78bfa;">Stage 5</span><span class="stage-revenue-badge">9 &rarr; 10 Figures</span></div>' +
+          '<h3>Private Equity</h3><p>I have not been able to find a single operator who made it to real scale without ending up in some form of PE activity &mdash; roll-ups, acquisitions, recapitalizations, strategic exits. That\'s the language of the endgame.</p>' +
+          '<p>It\'s the quiet truth I keep coming back to: even the ones who took the public route are still running the PE playbook; they just capitalize through different markets. Accept that early, because it changes how you build from day one.</p></div>' +
+          '<div class="pull-quote"><div class="pull-quote-text">&ldquo;All roads lead to private equity.&rdquo;</div><div class="pull-quote-author">&mdash; Matthew Landon</div></div>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<h2>The Map Isn\'t Enough</h2>' +
+          '<p>So now I had the map. A framework proven across every industry I studied &mdash; coaching, real estate, e-commerce, services, SaaS, manufacturing. I\'d watched dozens of operators move through these same five stages, upgrading themselves as entrepreneurs at every transition, stepping into new roles, hiring new team members, becoming someone different on the other side of each stage. The pattern was undeniable.</p>' +
+          '<p>But a map isn\'t enough. Knowing you need to go from Stage 1 to Stage 2 doesn\'t tell you <em>how</em> to actually do it. What were the specific things these operators were doing inside each stage that let them punch through to the next one? What tactics? What systems? What hires? What habits?</p>' +
+          '<p>So I went back to the study. I tore apart the companies. I looked at what they were installing, when, and why. And I kept a running list of every element I saw repeated across the winners. That list became <strong>56 elements</strong>. Every one of them earned its spot the same way &mdash; either from watching a business that had it win, or from watching a business that didn\'t have it lose. Including my own.</p>' +
+          '<div class="insight-card gold">' +
+            '<div class="insight-label gold"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg> Next Up</div>' +
+            '<p>The 56-element Enterprise Checklist &mdash; every element I install into every business I work with. <strong>Interactive.</strong> Check off what you have, see where the gaps are.</p>' +
+          '</div>' +
+        '</div>' +
+
+        '<div class="chapter-actions">' +
+          '<button class="btn-gold chapter-complete-btn" id="completeBtn">' + (mod.completed ? '&#10003; Completed' : 'Mark as Complete') + '</button>' +
+        '</div>' +
+
+        '<a href="/enterprise-checklist" class="next-chapter">' +
+          '<div class="next-chapter-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>' +
+          '<div><div class="next-chapter-label">Next Module</div><div class="next-chapter-title">The Enterprise Checklist</div></div>' +
+        '</a>' +
+
+      '</div>';
+
+      // Scroll reveal
+      var sections = document.querySelectorAll('.section');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      sections.forEach(function(s) { observer.observe(s); });
+
+      // Mark complete
+      var btn = document.getElementById('completeBtn');
+      if (mod.completed) { btn.style.background = 'var(--success)'; btn.style.cursor = 'default'; }
+      else {
+        btn.addEventListener('click', async function() {
+          btn.disabled = true; btn.textContent = 'Saving...';
+          try {
+            var res = await fetch('/api/modules/' + SLUG + '/complete', { method: 'POST', credentials: 'same-origin' });
+            if (res.ok) { btn.innerHTML = '&#10003; Completed'; btn.style.background = 'var(--success)'; btn.style.cursor = 'default'; var mcLink = document.querySelector('.mc-link.active'); if (mcLink) mcLink.classList.add('completed'); }
+          } catch(e) { btn.textContent = 'Mark as Complete'; btn.disabled = false; }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

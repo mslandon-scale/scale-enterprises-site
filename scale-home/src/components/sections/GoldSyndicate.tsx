@@ -257,7 +257,7 @@ export default function GoldSyndicate() {
             <div className="h-px w-20 bg-gradient-to-l from-transparent to-accent-gold/30" />
           </div>
           <a
-            href="#apply"
+            href="#footer"
             className="inline-block bg-accent-gold text-white font-bold text-[15px] uppercase tracking-widest px-12 py-5 rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200 shadow-[0_8px_32px_rgba(240,192,48,0.25)]"
           >
             Apply For Enterprise 360

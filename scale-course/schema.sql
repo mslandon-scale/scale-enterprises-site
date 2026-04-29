@@ -37,6 +37,30 @@ CREATE TABLE IF NOT EXISTS course_progress (
 
 CREATE INDEX IF NOT EXISTS idx_course_progress_user_id ON course_progress(user_id);
 
+-- Profile fields
+ALTER TABLE course_users ADD COLUMN IF NOT EXISTS phone VARCHAR(30);
+ALTER TABLE course_users ADD COLUMN IF NOT EXISTS company_name VARCHAR(255);
+ALTER TABLE course_users ADD COLUMN IF NOT EXISTS employee_count VARCHAR(50);
+ALTER TABLE course_users ADD COLUMN IF NOT EXISTS annual_revenue VARCHAR(50);
+ALTER TABLE course_users ADD COLUMN IF NOT EXISTS industry VARCHAR(100);
+
+-- Referral campaign columns on course_users
+ALTER TABLE course_users ADD COLUMN IF NOT EXISTS email_consent BOOLEAN DEFAULT false;
+ALTER TABLE course_users ADD COLUMN IF NOT EXISTS email_consent_at TIMESTAMPTZ;
+ALTER TABLE course_users ADD COLUMN IF NOT EXISTS referral_code VARCHAR(12) UNIQUE;
+ALTER TABLE course_users ADD COLUMN IF NOT EXISTS link_clicks INTEGER DEFAULT 0;
+
+-- Referral tracking table
+CREATE TABLE IF NOT EXISTS referrals (
+    id              SERIAL PRIMARY KEY,
+    referrer_id     INTEGER NOT NULL REFERENCES course_users(id),
+    referred_id     INTEGER NOT NULL REFERENCES course_users(id),
+    created_at      TIMESTAMPTZ DEFAULT NOW(),
+    UNIQUE(referred_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_referrals_referrer ON referrals(referrer_id);
+
 -- Seed the 7 modules
 INSERT INTO course_modules (slug, title, description, sort_order, is_published) VALUES
 ('vision', 'Vision', 'Nail down your vision — the North Star that drives every decision, hire, and dollar in your company.', 1, true),

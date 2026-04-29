@@ -10,7 +10,7 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { credential } = req.body || {};
+  const { credential, referralCode } = req.body || {};
   if (!credential) {
     return res.status(400).json({ error: 'Missing Google credential' });
   }
@@ -45,6 +45,8 @@ module.exports = async function handler(req, res) {
 
     let user;
 
+    let isNewUser = false;
+
     if (result.rows.length > 0) {
       // Existing user — log them in
       user = result.rows[0];
@@ -56,10 +58,26 @@ module.exports = async function handler(req, res) {
       result = await query(
         `INSERT INTO course_users (email, password_hash, first_name, last_name)
          VALUES ($1, $2, $3, $4)
-         RETURNING id, email, first_name, last_name`,
+         RETURNING id, email, first_name, last_name, referral_code`,
         [email, randomHash, firstName, lastName]
       );
       user = result.rows[0];
+      isNewUser = true;
+    }
+
+    // Process referral for new users
+    if (isNewUser && referralCode) {
+      try {
+        const referrer = await query('SELECT id FROM course_users WHERE referral_code = $1', [referralCode]);
+        if (referrer.rows.length > 0 && referrer.rows[0].id !== user.id) {
+          await query(
+            'INSERT INTO referrals (referrer_id, referred_id) VALUES ($1, $2) ON CONFLICT (referred_id) DO NOTHING',
+            [referrer.rows[0].id, user.id]
+          );
+        }
+      } catch (refErr) {
+        console.error('Referral tracking error:', refErr.message);
+      }
     }
 
     const token = createToken(user);

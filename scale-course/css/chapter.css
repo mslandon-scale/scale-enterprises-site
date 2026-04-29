@@ -24,7 +24,11 @@
 }
 
 .chapter-hero .back-link {
-  position: relative; z-index: 1;
+  position: absolute;
+  top: 1.5rem;
+  right: 2.5rem;
+  z-index: 2;
+  margin-bottom: 0;
 }
 
 .back-link {
@@ -43,16 +47,12 @@
 .chapter-number {
   font-family: 'Sora', sans-serif;
   font-weight: 800;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: var(--gold);
   text-transform: uppercase;
   letter-spacing: 0.25em;
-  display: inline-block;
-  padding: 0.4rem 1rem;
-  background: rgba(240,192,48,0.1);
-  border: 1px solid rgba(240,192,48,0.2);
-  border-radius: 9999px;
-  margin-bottom: 1.25rem;
+  display: block;
+  margin-bottom: 0.75rem;
 }
 
 .chapter-title {
@@ -859,6 +859,11 @@
   .chapter-hero {
     margin: -1rem -1.25rem 0;
     padding: 2.5rem 1.25rem 2rem;
+  }
+  .chapter-hero .back-link {
+    right: 1.25rem;
+    top: 1rem;
+    font-size: 0.7rem;
   }
   .chapter-layout { padding: 0 0.5rem; }
   .pillars-grid { grid-template-columns: 1fr; }

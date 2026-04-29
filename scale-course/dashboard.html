@@ -101,8 +101,19 @@
     }
     .audiobook-banner-btn:hover { filter: brightness(1.1); }
 
-    @media (max-width: 600px) {
-      .main > div[style*="grid-template-columns: 1fr 1fr"] {
+    .module-card.locked {
+      opacity: 0.45;
+      pointer-events: none;
+      filter: grayscale(0.3);
+    }
+    .module-status.locked {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      background: rgba(255,255,255,0.06);
+      color: var(--muted);
+    }
+
+    @media (max-width: 768px) {
+      .main > div[style*="grid-template-columns: 1fr 1fr 1fr"] {
         grid-template-columns: 1fr !important;
       }
     }
@@ -127,7 +138,7 @@
       'enterprise-framework': '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4L4 10l12 6 12-6L16 4z"/><path d="M4 16l12 6 12-6"/><path d="M4 22l12 6 12-6"/></svg>',
       'enterprise-checklist': '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="24" height="24" rx="3"/><polyline points="10 16 14 20 22 12"/></svg>',
       'scaling-sequence': '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="12"/><polyline points="16 8 16 16 22 19"/></svg>',
-      'real-results': '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 24 10 14 16 18 22 8 28 12"/><line x1="22" y1="8" x2="28" y2="8"/><line x1="28" y1="8" x2="28" y2="14"/></svg>'
+      'real-results': '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4h12v10c0 3.3-2.7 6-6 6s-6-2.7-6-6V4z"/><path d="M10 8H6c0 4 2 6 4 7"/><path d="M22 8h4c0 4-2 6-4 7"/><line x1="16" y1="20" x2="16" y2="25"/><path d="M11 25h10v2H11z"/></svg>'
     };
 
     var MODULE_COLORS = {
@@ -163,8 +174,23 @@
           </div>
         </div>
 
-        <!-- Audio + Video Coming Soon -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem;">
+        <!-- PDF Download + Audio + Video Coming Soon -->
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:2rem;">
+          <a href="/enterprise-playbook.pdf" target="_blank" class="audiobook-banner" style="margin-bottom:0;text-decoration:none;color:inherit;">
+            <div class="audiobook-banner-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="12" y1="18" x2="12" y2="12"/>
+                <polyline points="9 15 12 18 15 15"/>
+              </svg>
+            </div>
+            <div class="audiobook-banner-text">
+              <h3>Download PDF</h3>
+              <p>Get the full Enterprise Playbook as a PDF.</p>
+            </div>
+            <span class="audio-banner-btn">Download</span>
+          </a>
           <div class="audiobook-banner" style="margin-bottom:0;">
             <div class="audiobook-banner-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -174,7 +200,7 @@
             </div>
             <div class="audiobook-banner-text">
               <h3>Audio Version</h3>
-              <p>Listen to the Enterprise Playbook on the go.</p>
+              <p>Listen on the go.</p>
             </div>
             <span class="audio-banner-btn" style="cursor:default;opacity:0.8;">Coming Soon</span>
           </div>
@@ -186,7 +212,7 @@
             </div>
             <div class="audiobook-banner-text">
               <h3>Video Version</h3>
-              <p>Watch the full Enterprise Playbook as a video series.</p>
+              <p>Watch the video series.</p>
             </div>
             <span class="audio-banner-btn" style="cursor:default;opacity:0.8;">Coming Soon</span>
           </div>
@@ -196,24 +222,39 @@
           ${modules.map((m, i) => {
             var color = m.iconColor || MODULE_COLORS[m.slug] || '#F0C030';
             var icon = MODULE_ICONS[m.slug] || MODULE_ICONS.vision;
+            var unlocked = i === 0 || modules[i - 1].completed;
+            var status = m.completed
+              ? '<span class="module-status completed">&#10003; Completed</span>'
+              : unlocked
+                ? '<span class="module-status start">Start Now &rarr;</span>'
+                : '<span class="module-status locked"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Finish Previous Module</span>';
             return `
-            <a href="/module?slug=${m.slug}" class="module-card card card-hover">
+            <a href="${unlocked || m.completed ? '/' + m.slug : '#'}" class="module-card card card-hover${!unlocked && !m.completed ? ' locked' : ''}" ${!unlocked && !m.completed ? 'data-locked="true"' : ''}>
               <div class="module-icon" style="background:${color}15;">
                 <span style="color:${color};">${icon}</span>
               </div>
               <div class="module-number">Module ${String(i + 1).padStart(2, '0')}</div>
               <div class="module-title">${m.title}</div>
               <div class="module-desc">${m.description}</div>
-              ${m.completed
-                ? '<span class="module-status completed">&#10003; Completed</span>'
-                : m.hasVideo
-                  ? '<span class="module-status start">Start Reading &rarr;</span>'
-                  : '<span class="module-status coming-soon">Coming Soon</span>'
-              }
+              ${status}
             </a>
           `;}).join('')}
+          <a href="#" class="module-card card card-hover" id="e360Card" style="animation-delay:0.45s;">
+            <div class="module-icon" style="background:rgba(240,192,48,0.15);padding:0;overflow:hidden;">
+              <img src="/logo.png" alt="Scale Enterprises" style="width:44px;height:44px;object-fit:contain;filter:brightness(0) saturate(100%) invert(79%) sepia(55%) saturate(500%) hue-rotate(5deg) brightness(105%) contrast(95%);">
+            </div>
+            <div class="module-number" style="color:var(--gold);">The Program</div>
+            <div class="module-title">Enterprise 360</div>
+            <div class="module-desc">The full 30-day business transformation. Every system installed. $100,000 of value.</div>
+            <span class="module-status start" style="background:rgba(240,192,48,0.12);color:var(--gold);">Learn More &rarr;</span>
+          </a>
         </div>
       `;
+
+      document.getElementById('e360Card').addEventListener('click', function(e) {
+        e.preventDefault();
+        openComingSoonModal();
+      });
     });
   </script>
 </body>

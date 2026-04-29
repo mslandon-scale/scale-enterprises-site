@@ -62,7 +62,7 @@ export default function EnterpriseChallenge() {
             </p>
 
             <a
-              href="https://course.scaleenterprises.com/register"
+              href="#footer"
               className="inline-block bg-accent-gold text-black font-bold text-[14px] uppercase tracking-widest px-10 py-4 rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200 shadow-[0_8px_32px_rgba(240,192,48,0.25)]"
             >
               Start the Free Masterclass →

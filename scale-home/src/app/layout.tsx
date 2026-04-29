@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Sora, DM_Sans } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const sora = Sora({
@@ -33,6 +34,12 @@ export default function RootLayout({
     <html lang="en" className={`${sora.variable} ${dmSans.variable}`}>
       <body className="font-body antialiased bg-white text-text-primary overflow-x-hidden">
         {children}
+        <Script
+          src="https://widgets.leadconnectorhq.com/loader.js"
+          data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+          data-widget-id="69e94ea71024ff8f8312a7f3"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );

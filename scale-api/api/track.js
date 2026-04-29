@@ -94,7 +94,7 @@ module.exports = async function handler(req, res) {
     try {
       ghlContactId = await ghlPromise;
     } catch (err) {
-      console.error('GHL contact creation failed after retry:', err.message);
+      console.error('GHL contact creation failed after retry:', err.message, err.stack);
     }
 
     // Link GHL contact to DB record

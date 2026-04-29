@@ -52,7 +52,7 @@
         <p class="page-subtitle">Manage your account settings</p>
 
         <div style="max-width:32rem;">
-          <!-- Profile Info -->
+          <!-- Account Details -->
           <div class="card" style="margin-bottom:1.5rem;">
             <h3 style="font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;margin-bottom:1.25rem;">Account Details</h3>
             <form id="profileForm">
@@ -70,6 +70,10 @@
                 <label class="form-label" for="email">Email</label>
                 <input class="form-input" type="email" id="email" value="${user.email}" required>
               </div>
+              <div class="form-group">
+                <label class="form-label" for="phone">Phone Number <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);font-size:0.65rem;">(for SMS updates)</span></label>
+                <input class="form-input" type="tel" id="phone" value="${user.phone || ''}" placeholder="(555) 123-4567">
+              </div>
               <button type="submit" class="btn-gold">Save Changes</button>
             </form>
           </div>
@@ -78,6 +82,46 @@
           <div class="card" style="margin-bottom:1.5rem;">
             <h3 style="font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;margin-bottom:1.25rem;">Business Info</h3>
             <form id="businessForm">
+              <div class="form-group">
+                <label class="form-label" for="companyName">Company Name</label>
+                <input class="form-input" type="text" id="companyName" value="${user.companyName || ''}" placeholder="Your business name">
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                <div class="form-group">
+                  <label class="form-label" for="industry">Industry</label>
+                  <select class="form-input" id="industry">
+                    <option value="">Select industry</option>
+                    <option value="Agency / Marketing">Agency / Marketing</option>
+                    <option value="Coaching / Consulting">Coaching / Consulting</option>
+                    <option value="Construction / Trades">Construction / Trades</option>
+                    <option value="E-Commerce / Retail">E-Commerce / Retail</option>
+                    <option value="Finance / Accounting">Finance / Accounting</option>
+                    <option value="Health / Wellness">Health / Wellness</option>
+                    <option value="Insurance">Insurance</option>
+                    <option value="IT / Software">IT / Software</option>
+                    <option value="Legal">Legal</option>
+                    <option value="Manufacturing">Manufacturing</option>
+                    <option value="Real Estate">Real Estate</option>
+                    <option value="Restaurant / Hospitality">Restaurant / Hospitality</option>
+                    <option value="SaaS">SaaS</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="employeeCount">Employees</label>
+                  <select class="form-input" id="employeeCount">
+                    <option value="">Select range</option>
+                    <option value="Just me">Just me</option>
+                    <option value="2-5">2 - 5</option>
+                    <option value="6-10">6 - 10</option>
+                    <option value="11-25">11 - 25</option>
+                    <option value="26-50">26 - 50</option>
+                    <option value="51-100">51 - 100</option>
+                    <option value="101-250">101 - 250</option>
+                    <option value="250+">250+</option>
+                  </select>
+                </div>
+              </div>
               <div class="form-group">
                 <label class="form-label" for="annualRevenue">Annual Revenue</label>
                 <select class="form-input" id="annualRevenue">
@@ -91,25 +135,6 @@
                   <option value="$3M - $5M">$3M - $5M</option>
                   <option value="$5M - $10M">$5M - $10M</option>
                   <option value="$10M+">$10M+</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="industry">Industry</label>
-                <select class="form-input" id="industry">
-                  <option value="">Select your industry</option>
-                  <option value="Agency / Marketing">Agency / Marketing</option>
-                  <option value="Coaching / Consulting">Coaching / Consulting</option>
-                  <option value="Construction / Trades">Construction / Trades</option>
-                  <option value="E-Commerce / Retail">E-Commerce / Retail</option>
-                  <option value="Finance / Accounting">Finance / Accounting</option>
-                  <option value="Health / Wellness">Health / Wellness</option>
-                  <option value="IT / Software">IT / Software</option>
-                  <option value="Legal">Legal</option>
-                  <option value="Manufacturing">Manufacturing</option>
-                  <option value="Real Estate">Real Estate</option>
-                  <option value="Restaurant / Hospitality">Restaurant / Hospitality</option>
-                  <option value="SaaS">SaaS</option>
-                  <option value="Other">Other</option>
                 </select>
               </div>
               <button type="submit" class="btn-gold">Save Business Info</button>
@@ -141,6 +166,20 @@
       // Prefill business info
       if (user.annualRevenue) document.getElementById('annualRevenue').value = user.annualRevenue;
       if (user.industry) document.getElementById('industry').value = user.industry;
+      if (user.employeeCount) document.getElementById('employeeCount').value = user.employeeCount;
+
+      function getAllProfileData() {
+        return {
+          firstName: document.getElementById('firstName').value,
+          lastName: document.getElementById('lastName').value,
+          email: document.getElementById('email').value,
+          phone: document.getElementById('phone').value,
+          companyName: document.getElementById('companyName').value,
+          employeeCount: document.getElementById('employeeCount').value,
+          annualRevenue: document.getElementById('annualRevenue').value,
+          industry: document.getElementById('industry').value
+        };
+      }
 
       // Profile form
       document.getElementById('profileForm').addEventListener('submit', async function(e) {
@@ -150,13 +189,7 @@
             method: 'PUT',
             credentials: 'same-origin',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              firstName: document.getElementById('firstName').value,
-              lastName: document.getElementById('lastName').value,
-              email: document.getElementById('email').value,
-              annualRevenue: document.getElementById('annualRevenue').value,
-              industry: document.getElementById('industry').value
-            })
+            body: JSON.stringify(getAllProfileData())
           });
           var data = await res.json();
           if (res.ok) {
@@ -177,13 +210,7 @@
             method: 'PUT',
             credentials: 'same-origin',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              firstName: document.getElementById('firstName').value,
-              lastName: document.getElementById('lastName').value,
-              email: document.getElementById('email').value,
-              annualRevenue: document.getElementById('annualRevenue').value,
-              industry: document.getElementById('industry').value
-            })
+            body: JSON.stringify(getAllProfileData())
           });
           var data = await res.json();
           if (res.ok) {

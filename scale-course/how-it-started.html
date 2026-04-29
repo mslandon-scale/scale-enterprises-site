@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wc7ebmnu6p");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <title>How It Started — Scale Enterprises</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/shared.css">
+  <link rel="stylesheet" href="/css/chapter.css">
+</head>
+<body>
+
+  <nav class="topnav" id="topnav"></nav>
+
+  <main class="main" id="mainContent">
+    <div class="loading" id="loader"><div class="spinner"><img src="/logo.png" alt="Loading"></div></div>
+  </main>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/topnav.js"></script>
+  <script>
+    var SLUG = 'how-it-started';
+
+    document.addEventListener('auth:ready', async function(e) {
+      var modules = await initTopnav('library', SLUG);
+      var mod = modules.find(function(m) { return m.slug === SLUG; }) || {};
+
+      var main = document.getElementById('mainContent');
+      main.innerHTML = '<div class="chapter-layout">' +
+
+        '<div class="chapter-hero">' +
+          '<a href="/dashboard" class="back-link">&larr; Back to Dashboard</a>' +
+          '<span class="chapter-number">Module 01</span>' +
+          '<h1 class="chapter-title">How It Started</h1>' +
+          '<p class="chapter-subtitle">Scraped Knees, Scar Tissue, and the Notes I Wish I\'d Had</p>' +
+          '<div class="reading-meta">' +
+            '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' +
+            '<span>5 min read</span>' +
+          '</div>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:1.5rem;">' +
+            '<img src="/matthew-landon.jpeg" alt="Matthew Landon" style="width:160px;height:160px;border-radius:50%;object-fit:cover;border:4px solid var(--gold);flex-shrink:0;box-shadow:0 8px 32px rgba(240,192,48,0.2);">' +
+            '<div>' +
+              '<div style="font-family:Sora,sans-serif;font-weight:700;font-size:1.4rem;color:var(--white);margin-bottom:0.35rem;">Matthew Landon</div>' +
+              '<div style="font-size:0.95rem;color:var(--muted);">Founder, Scale Enterprises</div>' +
+            '</div>' +
+          '</div>' +
+          '<p class="lead">My name is Matthew Landon, and I\'ve been building businesses for a long time. Ever since I was a kid. One of my first was as a 3rd grader, buying toolbox kits and selling the finished product. Ever since I\'ve done landscaping, agencies, real estate, e-commerce, health and wellness, and consulting.</p>' +
+          '<p>Every time I would step out onto the field of entrepreneurship the goal is to not create a job for myself with extra steps. Not a lifestyle business. A real enterprise, the kind that changes something in the world and gives me the <span class="highlight">wealth, freedom, and control.</span> A bigger game.</p>' +
+          '<p>It has cost me. A lot.</p>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<h2>The Swings That Missed</h2>' +
+          '<p>I\'ve taken swings in real estate and blown it. I\'ve built agencies and blown it. I\'ve launched coaching and watched it fizzle out. I\'ve had ventures crash and burn in ways that still sting.</p>' +
+          '<p>I\'ve scraped both knees raw and then gotten up and scraped them again &mdash; because every time something collapsed, I was certain the next one would be different.</p>' +
+          '<p>Most of the time it wasn\'t. And the worst part wasn\'t the money or the time. It was the quiet realization afterward, every single time, that <strong>I hadn\'t actually known what I was missing, why it didn\'t work, or even why some did work.</strong></p>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<div class="stat-row">' +
+            '<div class="stat-block"><div class="stat-value">40</div><div class="stat-label">Leads / Week (Before)</div></div>' +
+            '<div class="stat-block"><div class="stat-value">120</div><div class="stat-label">Leads / Week (After)</div></div>' +
+            '<div class="stat-block"><div class="stat-value">7</div><div class="stat-label">Days to 3x</div></div>' +
+          '</div>' +
+          '<p>At one point I tripled an organization\'s lead flow in seven days from 40 to 120 qualified leads a week. It worked beautifully. But even as I was doing it, I only grasped <em>some</em> of why the pieces connected. I couldn\'t repeat it on demand, and I couldn\'t explain it cleanly to anyone else. A win I couldn\'t replicate was still, in the long run, a loss waiting to happen.</p>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<div class="pull-quote">' +
+            '<div class="pull-quote-text">So I stopped guessing. I studied, obsessively. I knew that if I was going to succeed I couldn\'t continue throwing spaghetti at a wall and hoping it stuck. I read hundreds of books. I spent real money to get in the right rooms. I learned from the people who had actually done it, not the people who talked about it.</div>' +
+          '</div>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<h2>A Pattern That Refused to Break</h2>' +
+          '<p>I reverse-engineered every company I admired down to the core. A pattern emerged that I could not un-see.</p>' +
+          '<div class="insight-card blue">' +
+            '<div class="insight-label blue">' +
+              '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>' +
+              ' The Pattern' +
+            '</div>' +
+            '<p>The ventures that won had <strong>these exact elements locked in.</strong> The ones that failed had almost none. Not some. <strong>Almost none.</strong> Once I saw the pattern I couldn\'t sleep for days because I knew that I had discovered something that would change me and my family\'s life.</p>' +
+          '</div>' +
+          '<p>This playbook you\'re reading is not a prescription. It\'s not me telling you what you should do. It\'s simply my notes. It\'s the tool I built for myself, out of every win and every loss, and it\'s how I\'m building companies now. If I looked at a business and saw these elements installed, I\'d put serious time and money into it, because I know firsthand the odds of that business succeeding go up dramatically.</p>' +
+          '<p>I have compiled <strong>56 things</strong> that I believe are paramount that any business (especially service businesses) I own must have for its success.</p>' +
+          '<p>Before I hand you the tactics and the checklist, you must see the bigger picture first. The real value of these 56 elements only becomes clear when you understand the map they live inside &mdash; the pattern I kept seeing in every company that made it.</p>' +
+          '<p>This playbook has given me the power to take control of my businesses so that I can reach my full potential. <strong>I am confident that it will do the same for you.</strong></p>' +
+        '</div>' +
+
+        '<div class="chapter-actions">' +
+          '<button class="btn-gold chapter-complete-btn" id="completeBtn">' + (mod.completed ? '&#10003; Completed' : 'Mark as Complete') + '</button>' +
+        '</div>' +
+
+        '<a href="/enterprise-framework" class="next-chapter">' +
+          '<div class="next-chapter-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>' +
+          '<div><div class="next-chapter-label">Next Module</div><div class="next-chapter-title">The Enterprise Framework</div></div>' +
+        '</a>' +
+
+      '</div>';
+
+      // Scroll reveal
+      var sections = document.querySelectorAll('.section');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+      }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+      sections.forEach(function(s) { observer.observe(s); });
+
+      // Mark complete
+      var btn = document.getElementById('completeBtn');
+      if (mod.completed) {
+        btn.style.background = 'var(--success)';
+        btn.style.cursor = 'default';
+      } else {
+        btn.addEventListener('click', async function() {
+          btn.disabled = true;
+          btn.textContent = 'Saving...';
+          try {
+            var res = await fetch('/api/modules/' + SLUG + '/complete', { method: 'POST', credentials: 'same-origin' });
+            if (res.ok) {
+              btn.innerHTML = '&#10003; Completed';
+              btn.style.background = 'var(--success)';
+              btn.style.cursor = 'default';
+              var mcLink = document.querySelector('.mc-link.active');
+              if (mcLink) mcLink.classList.add('completed');
+            }
+          } catch(e) {
+            btn.textContent = 'Mark as Complete';
+            btn.disabled = false;
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

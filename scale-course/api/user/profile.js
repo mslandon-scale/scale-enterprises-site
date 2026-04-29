@@ -14,7 +14,7 @@ module.exports = async function handler(req, res) {
   try {
     if (req.method === 'GET') {
       const result = await query(
-        'SELECT id, email, first_name, last_name, annual_revenue, industry, created_at FROM course_users WHERE id = $1',
+        'SELECT id, email, first_name, last_name, phone, company_name, employee_count, annual_revenue, industry, created_at FROM course_users WHERE id = $1',
         [decoded.userId]
       );
       if (result.rows.length === 0) {
@@ -24,6 +24,9 @@ module.exports = async function handler(req, res) {
       return res.status(200).json({
         id: u.id, email: u.email,
         firstName: u.first_name, lastName: u.last_name,
+        phone: u.phone || '',
+        companyName: u.company_name || '',
+        employeeCount: u.employee_count || '',
         annualRevenue: u.annual_revenue || '',
         industry: u.industry || '',
         createdAt: u.created_at
@@ -31,13 +34,12 @@ module.exports = async function handler(req, res) {
     }
 
     if (req.method === 'PUT') {
-      const { firstName, lastName, email, annualRevenue, industry } = req.body || {};
+      const { firstName, lastName, email, phone, companyName, employeeCount, annualRevenue, industry } = req.body || {};
       if (!firstName || !lastName || !email) {
-        return res.status(400).json({ error: 'All fields are required' });
+        return res.status(400).json({ error: 'First name, last name, and email are required' });
       }
       const emailClean = email.trim().toLowerCase();
 
-      // Check if email is taken by another user
       const existing = await query(
         'SELECT id FROM course_users WHERE email = $1 AND id != $2',
         [emailClean, decoded.userId]
@@ -48,10 +50,15 @@ module.exports = async function handler(req, res) {
 
       await query(
         `UPDATE course_users SET first_name = $1, last_name = $2, email = $3,
-         annual_revenue = $4, industry = $5, updated_at = NOW()
-         WHERE id = $6`,
+         phone = $4, company_name = $5, employee_count = $6,
+         annual_revenue = $7, industry = $8, updated_at = NOW()
+         WHERE id = $9`,
         [firstName.trim(), lastName.trim(), emailClean,
-         (annualRevenue || '').trim() || null, (industry || '').trim() || null,
+         (phone || '').trim() || null,
+         (companyName || '').trim() || null,
+         (employeeCount || '').trim() || null,
+         (annualRevenue || '').trim() || null,
+         (industry || '').trim() || null,
          decoded.userId]
       );
       return res.status(200).json({ ok: true });

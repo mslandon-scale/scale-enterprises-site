@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const { query } = require('../../lib/db');
 const { createToken, setAuthCookie } = require('../../lib/auth');
 const { setCors, handlePreflight } = require('../../lib/cors');
+const { rateLimit } = require('../../lib/rate-limit');
 
 module.exports = async function handler(req, res) {
   if (handlePreflight(req, res)) return;
@@ -9,6 +10,11 @@ module.exports = async function handler(req, res) {
 
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  var rl = await rateLimit(req, 'login', 10, 15);
+  if (rl.limited) {
+    return res.status(429).json({ error: 'Too many login attempts. Please try again in 15 minutes.' });
   }
 
   const { email, password } = req.body || {};

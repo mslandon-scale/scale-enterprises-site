@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const { query } = require('../../lib/db');
 const { createToken, setAuthCookie } = require('../../lib/auth');
 const { setCors, handlePreflight } = require('../../lib/cors');
+const { rateLimit } = require('../../lib/rate-limit');
 
 module.exports = async function handler(req, res) {
   if (handlePreflight(req, res)) return;
@@ -11,7 +12,12 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { email, password, firstName, lastName } = req.body || {};
+  var rl = await rateLimit(req, 'register', 5, 60);
+  if (rl.limited) {
+    return res.status(429).json({ error: 'Too many registration attempts. Please try again later.' });
+  }
+
+  const { email, password, firstName, lastName, emailConsent, referralCode } = req.body || {};
 
   if (!email || !password || !firstName || !lastName) {
     return res.status(400).json({ error: 'All fields are required' });
@@ -32,13 +38,29 @@ module.exports = async function handler(req, res) {
     const passwordHash = await bcrypt.hash(password, 10);
 
     const result = await query(
-      `INSERT INTO course_users (email, password_hash, first_name, last_name)
-       VALUES ($1, $2, $3, $4)
-       RETURNING id, email, first_name, last_name`,
-      [emailClean, passwordHash, firstName.trim(), lastName.trim()]
+      `INSERT INTO course_users (email, password_hash, first_name, last_name, email_consent, email_consent_at)
+       VALUES ($1, $2, $3, $4, $5, $6)
+       RETURNING id, email, first_name, last_name, referral_code`,
+      [emailClean, passwordHash, firstName.trim(), lastName.trim(), !!emailConsent, emailConsent ? new Date() : null]
     );
 
     const user = result.rows[0];
+
+    // Process referral if a valid code was provided
+    if (referralCode) {
+      try {
+        const referrer = await query('SELECT id FROM course_users WHERE referral_code = $1', [referralCode]);
+        if (referrer.rows.length > 0 && referrer.rows[0].id !== user.id) {
+          await query(
+            'INSERT INTO referrals (referrer_id, referred_id) VALUES ($1, $2) ON CONFLICT (referred_id) DO NOTHING',
+            [referrer.rows[0].id, user.id]
+          );
+        }
+      } catch (refErr) {
+        console.error('Referral tracking error:', refErr.message);
+      }
+    }
+
     const token = createToken(user);
     setAuthCookie(res, token);
 

@@ -157,13 +157,13 @@ export default function Hero() {
             {/* Buttons */}
             <motion.div variants={fadeUp(0.2)} className="flex flex-col sm:flex-row gap-4 mt-10">
               <a
-                href="#apply"
+                href="#footer"
                 className="bg-accent-gold text-black font-bold text-[15px] uppercase tracking-widest px-10 py-5 text-center rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200"
               >
                 Transform Your Business
               </a>
               <a
-                href="https://course.scaleenterprises.com/register"
+                href="#footer"
                 className="border-2 border-navy/20 text-navy font-bold text-[15px] uppercase tracking-widest px-10 py-5 text-center rounded-full hover:border-accent-gold hover:text-accent-gold transition-all duration-200"
               >
                 Free Masterclass →

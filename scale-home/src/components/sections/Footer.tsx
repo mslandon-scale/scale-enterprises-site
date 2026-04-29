@@ -7,15 +7,15 @@ const platformLinks = [
 
 const companyLinks = [
   { label: "About", href: "#about" },
-  { label: "Free Masterclass", href: "https://course.scaleenterprises.com/register" },
+  { label: "Free Masterclass", href: "#footer" },
   { label: "Contact", href: "/contact" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-bg-navy pt-16 pb-8">
+    <footer id="footer" className="bg-bg-navy pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 lg:px-6">
-        <div className="grid md:grid-cols-3 gap-12 mb-12">
+        <div className="grid md:grid-cols-4 gap-12">
           <div>
             <span className="font-display text-[14px] tracking-[0.1em] text-white font-bold uppercase">
               SCALE ENTERPRISES
@@ -70,27 +70,50 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-        </div>
 
-        <div className="h-px bg-white/[0.08]" />
+          <div>
+            <h4 className="font-body text-[11px] uppercase tracking-widest text-white/40 mb-4">
+              Contact
+            </h4>
+            <a
+              href="tel:+13854028330"
+              className="font-body text-[14px] text-white/60 hover:text-white transition-colors duration-200"
+            >
+              +1 385-402-8330
+            </a>
+            <a
+              href="mailto:support@scaleenterprises.com"
+              className="font-body text-[14px] text-white/60 hover:text-white transition-colors duration-200 block mt-2"
+            >
+              support@scaleenterprises.com
+            </a>
 
-        <div className="flex flex-col md:flex-row items-center justify-between pt-6 gap-4">
-          <p className="font-body text-[12px] text-white/30">
-            © 2026 Scale Enterprises. All rights reserved.
-          </p>
-          <div className="flex items-center gap-6">
-            <a href="/privacy-policy" className="font-body text-[12px] text-white/30 hover:text-white transition-colors">
-              Privacy Policy
-            </a>
-            <a href="/terms-of-service" className="font-body text-[12px] text-white/30 hover:text-white transition-colors">
-              Terms
-            </a>
-            <a href="/disclaimer" className="font-body text-[12px] text-white/30 hover:text-white transition-colors">
-              Disclaimer
-            </a>
+            <h4 className="font-body text-[11px] uppercase tracking-widest text-white/40 mt-8 mb-4">
+              Legal
+            </h4>
+            <ul className="space-y-2">
+              <li>
+                <a href="/privacy-policy" className="font-body text-[14px] text-white/60 hover:text-white transition-colors duration-200">
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="/terms-of-service" className="font-body text-[14px] text-white/60 hover:text-white transition-colors duration-200">
+                  Terms of Service
+                </a>
+              </li>
+              <li>
+                <a href="/disclaimer" className="font-body text-[14px] text-white/60 hover:text-white transition-colors duration-200">
+                  Disclaimer
+                </a>
+              </li>
+            </ul>
+
+            <p className="font-body text-[12px] text-white/30 mt-8">
+              © 2026 Scale Enterprises. All rights reserved.
+            </p>
           </div>
         </div>
-
       </div>
     </footer>
   );
