@@ -139,11 +139,11 @@
       'enterprise-checklist': '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="24" height="24" rx="3"/><polyline points="10 16 14 20 22 12"/></svg>',
       'scaling-sequence': '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="12"/><polyline points="16 8 16 16 22 19"/></svg>',
       'real-results': '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4h12v10c0 3.3-2.7 6-6 6s-6-2.7-6-6V4z"/><path d="M10 8H6c0 4 2 6 4 7"/><path d="M22 8h4c0 4-2 6-4 7"/><line x1="16" y1="20" x2="16" y2="25"/><path d="M11 25h10v2H11z"/></svg>',
-      'stage-one-value-creation': '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 28V12"/><path d="M12 18c2-3 4-6 4-6s2 3 4 6"/><path d="M14 14c1-2 2-4 2-4s1 2 2 4"/><path d="M14 28h4"/></svg>',
+      'stage-one-value-creation': '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 28V15"/><path d="M16 15c-4 0-7-4-7-8" /><path d="M16 19c4 0 7-4 7-8"/><path d="M13 28h6"/></svg>',
       'stage-two-systems': '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="6"/><path d="M16 7v3m0 12v3M7 16h3m12 0h3M9.34 9.34l2.12 2.12m9.08 9.08l2.12 2.12M22.66 9.34l-2.12 2.12M11.46 20.54l-2.12 2.12"/></svg>',
       'stage-three-enterprise-leadership': '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="16,3 19.5,11 28,12 22,18.5 23.5,27 16,23 8.5,27 10,18.5 4,12 12.5,11"/></svg>',
       'stage-four-platform': '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="3"/><circle cx="6" cy="8" r="2"/><circle cx="26" cy="8" r="2"/><circle cx="6" cy="24" r="2"/><circle cx="26" cy="24" r="2"/><circle cx="16" cy="4" r="2"/><circle cx="16" cy="28" r="2"/><line x1="16" y1="13" x2="16" y2="6"/><line x1="16" y1="26" x2="16" y2="19"/><line x1="13.5" y1="14.5" x2="7.5" y2="9.5"/><line x1="18.5" y1="14.5" x2="24.5" y2="9.5"/><line x1="13.5" y1="17.5" x2="7.5" y2="22.5"/><line x1="18.5" y1="17.5" x2="24.5" y2="22.5"/></svg>',
-      'stage-five-private-equity': '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20h22"/><path d="M5 20l2-8h18l2 8"/><path d="M9 12l3-5h8l3 5"/><circle cx="11" cy="9" r="1.5" fill="currentColor" stroke="none"/><circle cx="16" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="21" cy="9" r="1.5" fill="currentColor" stroke="none"/></svg>'
+      'stage-five-private-equity': '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h24"/><path d="M4 22V12l6 5 6-9 6 9 6-5v10"/></svg>'
     };
 
     var MODULE_COLORS = {
@@ -249,22 +249,25 @@
               ${status}
             </a>
           `;}).join('')}
-          <a href="#" class="module-card card card-hover" id="e360Card" style="animation-delay:0.45s;">
-            <div class="module-icon" style="background:rgba(240,192,48,0.15);padding:0;overflow:hidden;">
-              <img src="/logo.png" alt="Scale Enterprises" style="width:44px;height:44px;object-fit:contain;filter:brightness(0) saturate(100%) invert(79%) sepia(55%) saturate(500%) hue-rotate(5deg) brightness(105%) contrast(95%);">
-            </div>
-            <div class="module-number" style="color:var(--gold);">The Program</div>
-            <div class="module-title">Enterprise 360</div>
-            <div class="module-desc">The full 30-day business transformation. Every system installed. $100,000 of value.</div>
-            <span class="module-status start" style="background:rgba(240,192,48,0.12);color:var(--gold);">Learn More &rarr;</span>
-          </a>
         </div>
+        <a href="#" id="e360Card" style="display:flex;align-items:center;justify-content:center;gap:1.5rem;width:100%;margin-top:1.5rem;padding:2rem 2.5rem;background:linear-gradient(135deg,rgba(240,192,48,0.08) 0%,rgba(240,192,48,0.03) 100%);border:1px solid rgba(240,192,48,0.25);border-radius:16px;text-decoration:none;color:inherit;transition:all 0.25s;cursor:pointer;text-align:center;flex-wrap:wrap;">
+          <img src="/logo.png" alt="Scale Enterprises" style="width:52px;height:52px;object-fit:contain;filter:brightness(0) saturate(100%) invert(79%) sepia(55%) saturate(500%) hue-rotate(5deg) brightness(105%) contrast(95%);flex-shrink:0;">
+          <div style="flex:1;min-width:200px;text-align:left;">
+            <div style="font-family:Sora,sans-serif;font-weight:700;font-size:0.65rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.35rem;">The Program</div>
+            <div style="font-family:Sora,sans-serif;font-weight:700;font-size:1.2rem;color:var(--white);margin-bottom:0.3rem;">Enterprise 360</div>
+            <div style="color:var(--muted);font-size:0.85rem;line-height:1.5;">The full 30-day business transformation. Every system installed. Two guarantees &mdash; or you don&rsquo;t pay. $100,000 of value.</div>
+          </div>
+          <span style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.85rem;font-weight:600;padding:0.6rem 1.5rem;border-radius:9999px;background:rgba(240,192,48,0.15);color:var(--gold);flex-shrink:0;white-space:nowrap;">Learn More &rarr;</span>
+        </a>
       `;
 
-      document.getElementById('e360Card').addEventListener('click', function(e) {
+      var e360 = document.getElementById('e360Card');
+      e360.addEventListener('click', function(e) {
         e.preventDefault();
         openComingSoonModal();
       });
+      e360.addEventListener('mouseenter', function() { e360.style.borderColor = 'rgba(240,192,48,0.5)'; e360.style.background = 'linear-gradient(135deg,rgba(240,192,48,0.12) 0%,rgba(240,192,48,0.05) 100%)'; });
+      e360.addEventListener('mouseleave', function() { e360.style.borderColor = 'rgba(240,192,48,0.25)'; e360.style.background = 'linear-gradient(135deg,rgba(240,192,48,0.08) 0%,rgba(240,192,48,0.03) 100%)'; });
     });
   </script>
 </body>
