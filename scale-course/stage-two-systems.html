@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wc7ebmnu6p");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <title>Stage Two — Systems — Scale Enterprises</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/shared.css">
+  <link rel="stylesheet" href="/css/chapter.css">
+</head>
+<body>
+
+  <nav class="topnav" id="topnav"></nav>
+
+  <main class="main" id="mainContent">
+    <div class="loading" id="loader"><div class="spinner"><img src="/logo.png" alt="Loading"></div></div>
+  </main>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/topnav.js"></script>
+  <script>
+    var SLUG = 'stage-two-systems';
+
+    document.addEventListener('auth:ready', async function(e) {
+      var modules = await initTopnav('library', SLUG);
+      if (isModuleLocked(modules, SLUG)) { window.location.href = '/dashboard'; return; }
+      var mod = modules.find(function(m) { return m.slug === SLUG; }) || {};
+
+      var main = document.getElementById('mainContent');
+      main.innerHTML = '<div class="chapter-layout">' +
+
+        '<div class="chapter-hero">' +
+          '<a href="/dashboard" class="back-link">&larr; Back to Dashboard</a>' +
+          '<span class="chapter-number">Module 06</span>' +
+          '<h1 class="chapter-title">Stage Two &mdash;<br>Systems</h1>' +
+          '<p class="chapter-subtitle">6 &rarr; 7 Figures &middot; Turn the thing that works into a machine that runs</p>' +
+          '<div class="reading-meta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>6 min read</span></div>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<p class="lead">You\'ve proven value. Now the business has to stop living inside your head.</p>' +
+          '<p>This is where system creation and orchestration begins. Documented processes. CRM flows. Fulfillment SOPs. Financial rigor. This is where you set the stage for the founder to stop being the bottleneck &mdash; because if the founder is still the bottleneck at Stage 3, the business cannot grow into Stage 3 at all.</p>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<h2>What Gets Installed in Stage 2</h2>' +
+          '<div class="sequence-category"><div class="sequence-category-label">Vision &amp; Foundation (Refined)</div><div class="sequence-item">Vision + 3-Year Target</div><div class="sequence-item">Values + Purpose / Mission</div><div class="sequence-item">Proof &amp; Testimonials (continue to collect and systematize)</div><div class="sequence-item">Category of One / Convergent Positioning</div></div>' +
+          '<div class="sequence-category"><div class="sequence-category-label">People &amp; Team</div><div class="sequence-item">First Hires &mdash; no more than three. The earliest critical seats based on your skill gaps.</div></div>' +
+          '<div class="sequence-category"><div class="sequence-category-label">Customer Acquisition (Refined &amp; Expanded)</div><div class="sequence-item">Continue refining and systematizing the channel chosen in Stage 1</div><div class="sequence-item">Lead Magnets</div><div class="sequence-item">Branding + Story + Archetype</div><div class="sequence-item">A solid and simple website</div></div>' +
+          '<div class="sequence-category"><div class="sequence-category-label">Sales &amp; Delivery (Documented)</div><div class="sequence-item">Speed to Lead</div><div class="sequence-item">Retention / Ascension Workflow &mdash; Email, SMS, phone calls</div><div class="sequence-item">Customer Onboarding Plan</div><div class="sequence-item">Documented Sales Script</div><div class="sequence-item">Workflow Maps &mdash; customer acquisition and fulfillment</div><div class="sequence-item">Playbooks tied to each workflow</div></div>' +
+          '<div class="sequence-category"><div class="sequence-category-label">Financials (Dialed In)</div><div class="sequence-item">P&amp;L (Net Profit 20&ndash;25%)</div><div class="sequence-item">Balance Sheet</div><div class="sequence-item">Cash Flow</div><div class="sequence-item">Unit Economics Dialed In &mdash; optimize for profitability</div></div>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<div class="insight-card orange">' +
+            '<div class="insight-label orange"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg> The Bottleneck Principle</div>' +
+            '<p>If the business cannot operate for 30 days without you, it is not a business yet. It is a job with branding. Stage 2 ends when the systems are stable enough that the founder becomes optional, not central.</p>' +
+          '</div>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<p>Stage 2 is where most operators get stuck. The jump to Stage 3 is what separates the businesses that stall at seven figures from the ones that actually reach Enterprise Leadership.</p>' +
+          '<p>Hold that thought. Because what I\'m about to walk you through in the next chapter &mdash; and the install I built specifically to compress this jump &mdash; is what makes Stage 3 reachable in months instead of years.</p>' +
+        '</div>' +
+
+        '<div class="chapter-actions">' +
+          '<button class="btn-gold chapter-complete-btn" id="completeBtn">' + (mod.completed ? '&#10003; Completed' : 'Mark as Complete') + '</button>' +
+        '</div>' +
+
+        '<a href="/stage-three-enterprise-leadership" class="next-chapter">' +
+          '<div class="next-chapter-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>' +
+          '<div><div class="next-chapter-label">Next Module</div><div class="next-chapter-title">Stage Three &mdash; Enterprise Leadership</div></div>' +
+        '</a>' +
+
+      '</div>';
+
+      // Scroll reveal
+      var sections = document.querySelectorAll('.section');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      sections.forEach(function(s) { observer.observe(s); });
+
+      // Mark complete
+      var btn = document.getElementById('completeBtn');
+      if (mod.completed) { btn.style.background = 'var(--success)'; btn.style.cursor = 'default'; }
+      else {
+        btn.addEventListener('click', async function() {
+          btn.disabled = true; btn.textContent = 'Saving...';
+          try {
+            var res = await fetch('/api/modules/' + SLUG + '/complete', { method: 'POST', credentials: 'same-origin' });
+            if (res.ok) { btn.innerHTML = '&#10003; Completed'; btn.style.background = 'var(--success)'; btn.style.cursor = 'default'; var mcLink = document.querySelector('.mc-link.active'); if (mcLink) mcLink.classList.add('completed'); }
+          } catch(e) { btn.textContent = 'Mark as Complete'; btn.disabled = false; }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

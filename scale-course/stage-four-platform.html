@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wc7ebmnu6p");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <title>Stage Four — Platform — Scale Enterprises</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/shared.css">
+  <link rel="stylesheet" href="/css/chapter.css">
+</head>
+<body>
+
+  <nav class="topnav" id="topnav"></nav>
+
+  <main class="main" id="mainContent">
+    <div class="loading" id="loader"><div class="spinner"><img src="/logo.png" alt="Loading"></div></div>
+  </main>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/topnav.js"></script>
+  <script>
+    var SLUG = 'stage-four-platform';
+
+    document.addEventListener('auth:ready', async function(e) {
+      var modules = await initTopnav('library', SLUG);
+      if (isModuleLocked(modules, SLUG)) { window.location.href = '/dashboard'; return; }
+      var mod = modules.find(function(m) { return m.slug === SLUG; }) || {};
+
+      var main = document.getElementById('mainContent');
+      main.innerHTML = '<div class="chapter-layout">' +
+
+        '<div class="chapter-hero">' +
+          '<a href="/dashboard" class="back-link">&larr; Back to Dashboard</a>' +
+          '<span class="chapter-number">Module 08</span>' +
+          '<h1 class="chapter-title">Stage Four &mdash;<br>Platform</h1>' +
+          '<p class="chapter-subtitle">8 &rarr; 9 Figures &middot; Every major function, in-house</p>' +
+          '<div class="reading-meta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>6 min read</span></div>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<p class="lead">You keep everything from the checklist. You add middle management beneath the leadership team. And you dominate every customer acquisition channel in parallel.</p>' +
+          '<p>Every major business function &mdash; marketing, leadership, finance, tech, operations, people, sales strategy, legal &mdash; gets brought in-house. The business becomes fully vertically integrated, genuinely self-contained, and completely under your control.</p>' +
+          '<p>Platform is where the business stops being something you run and becomes something that runs itself, with you and most of your leadership team overseeing strategy. Everything on the checklist stays in place, gets optimized, and compounds.</p>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<h2>Bringing It All In-House</h2>' +
+          '<p>Up until this point, most operators have been holding on to marketing, or at the very least delivery &mdash; making sure there\'s actually something of value to offer the market. Everything else &mdash; finance, legal, HR, tech, even parts of operations &mdash; often gets outsourced to agencies, CPA firms, outside counsel, third-party providers. That was the right move early. It\'s the wrong move at this stage.</p>' +
+          '<p>You stop hiring the marketing agency and build a marketing team. You stop renting the CPA firm and hire a real CFO with a finance department behind them. You stop calling outside legal counsel for every contract and build an in-house legal function. You stop outsourcing HR and build a real people operation.</p>' +
+          '<div class="sequence-category"><div class="sequence-category-label">The 8 Functions Brought In-House</div><div class="sequence-item">Marketing</div><div class="sequence-item">Leadership</div><div class="sequence-item">Finance</div><div class="sequence-item">Tech</div><div class="sequence-item">Operations</div><div class="sequence-item">People</div><div class="sequence-item">Sales Strategy</div><div class="sequence-item">Legal</div></div>' +
+          '<p>Alongside all of this, middle management gets installed beneath the executive leadership team. That layer is what frees the leadership team to focus on strategy rather than execution. Without it, the leadership team ends up doing management work and the business stalls right at the edge of Platform.</p>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<h2>Dominating Every Channel</h2>' +
+          '<div class="sequence-category"><div class="sequence-category-label">Channel Progression Across the Stages</div><div class="sequence-item">Stage 1 was about picking one channel.</div><div class="sequence-item">Stage 2 was about refining it.</div><div class="sequence-item">Stage 3 was about expanding channels.</div><div class="sequence-item">Stage 4 is about dominating all of them.</div></div>' +
+          '<p>Digital marketing and funnels. Prospecting. Referrals. Partners and affiliates. Traditional and guerrilla. All running in parallel, each with its own dedicated team and budget.</p>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<div class="insight-card cyan">' +
+            '<div class="insight-label cyan"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> The Platform Principle</div>' +
+            '<p>At Platform, you stop renting capabilities and start owning them. Every function you outsource at this stage is leverage you\'ve handed to someone else. Bring it home.</p>' +
+          '</div>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<p>Reaching Platform status is the linchpin to billionaire-style success and being an owner of real capital. It\'s also the stage where the moves I\'m about to describe in Stage 5 become available. Which brings us to the endgame.</p>' +
+        '</div>' +
+
+        '<div class="chapter-actions">' +
+          '<button class="btn-gold chapter-complete-btn" id="completeBtn">' + (mod.completed ? '&#10003; Completed' : 'Mark as Complete') + '</button>' +
+        '</div>' +
+
+        '<a href="/stage-five-private-equity" class="next-chapter">' +
+          '<div class="next-chapter-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>' +
+          '<div><div class="next-chapter-label">Next Module</div><div class="next-chapter-title">Stage Five &mdash; Private Equity</div></div>' +
+        '</a>' +
+
+      '</div>';
+
+      // Scroll reveal
+      var sections = document.querySelectorAll('.section');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      sections.forEach(function(s) { observer.observe(s); });
+
+      // Mark complete
+      var btn = document.getElementById('completeBtn');
+      if (mod.completed) { btn.style.background = 'var(--success)'; btn.style.cursor = 'default'; }
+      else {
+        btn.addEventListener('click', async function() {
+          btn.disabled = true; btn.textContent = 'Saving...';
+          try {
+            var res = await fetch('/api/modules/' + SLUG + '/complete', { method: 'POST', credentials: 'same-origin' });
+            if (res.ok) { btn.innerHTML = '&#10003; Completed'; btn.style.background = 'var(--success)'; btn.style.cursor = 'default'; var mcLink = document.querySelector('.mc-link.active'); if (mcLink) mcLink.classList.add('completed'); }
+          } catch(e) { btn.textContent = 'Mark as Complete'; btn.disabled = false; }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

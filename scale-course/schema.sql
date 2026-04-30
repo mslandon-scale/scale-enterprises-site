@@ -61,13 +61,16 @@ CREATE TABLE IF NOT EXISTS referrals (
 
 CREATE INDEX IF NOT EXISTS idx_referrals_referrer ON referrals(referrer_id);
 
--- Seed the 7 modules
+-- Seed the 10 modules (matches PDF chapter structure)
 INSERT INTO course_modules (slug, title, description, sort_order, is_published) VALUES
-('vision', 'Vision', 'Nail down your vision — the North Star that drives every decision, hire, and dollar in your company.', 1, true),
-('enterprise-code', 'The Enterprise Code', 'The proprietary framework behind every 7- and 8-figure service business we build — and exactly how to install it in yours.', 2, true),
-('marketing', 'Marketing & Sales', 'How to build marketing and sales systems that drive predictable revenue growth — from lead generation to closing deals at scale.', 3, true),
-('team-people', 'Team & People', 'How to recruit, train, and retain A-players who build the business alongside you — not drain it.', 4, true),
-('leadership-system', 'Leadership System', 'How to lead your team, set the standard, and build a culture that scales — even when you step away.', 5, true),
-('finance', 'Finance', 'How to read your numbers, protect your margins, and make financial decisions like a true enterprise operator.', 6, true),
-('ai-enterprises', 'AI for Enterprises', 'How to deploy AI across your business to automate, accelerate, and gain an unfair advantage over your competition.', 7, true)
+('how-it-started', 'How It Started', 'Scraped knees, scar tissue, and the notes I wish I''d had.', 1, true),
+('enterprise-framework', 'The Enterprise Framework', 'The five stages every nine-figure business moves through.', 2, true),
+('enterprise-checklist', 'The Enterprise Checklist', 'The 56 elements I install into every business I own or operate.', 3, true),
+('scaling-sequence', 'The Scaling Sequence', 'Why doing the right things in the wrong order kills businesses.', 4, true),
+('stage-one-value-creation', 'Stage One — Value Creation', 'Revenue, offer, and customer acquisition — the foundation.', 5, true),
+('stage-two-systems', 'Stage Two — Systems', 'Operations, team, and repeatable processes that scale.', 6, true),
+('stage-three-enterprise-leadership', 'Stage Three — Enterprise Leadership', 'Leadership infrastructure, culture, and strategic planning.', 7, true),
+('stage-four-platform', 'Stage Four — Platform', 'Brand authority, market position, and platform leverage.', 8, true),
+('stage-five-private-equity', 'Stage Five — Private Equity', 'Valuation, exit strategy, and the endgame.', 9, true),
+('real-results', 'Real Results', 'What happens when you actually install the elements.', 10, true)
 ON CONFLICT (slug) DO NOTHING;

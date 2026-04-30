@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wc7ebmnu6p");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <title>Stage Three — Enterprise Leadership — Scale Enterprises</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/shared.css">
+  <link rel="stylesheet" href="/css/chapter.css">
+</head>
+<body>
+
+  <nav class="topnav" id="topnav"></nav>
+
+  <main class="main" id="mainContent">
+    <div class="loading" id="loader"><div class="spinner"><img src="/logo.png" alt="Loading"></div></div>
+  </main>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/topnav.js"></script>
+  <script>
+    var SLUG = 'stage-three-enterprise-leadership';
+
+    document.addEventListener('auth:ready', async function(e) {
+      var modules = await initTopnav('library', SLUG);
+      if (isModuleLocked(modules, SLUG)) { window.location.href = '/dashboard'; return; }
+      var mod = modules.find(function(m) { return m.slug === SLUG; }) || {};
+
+      var main = document.getElementById('mainContent');
+      main.innerHTML = '<div class="chapter-layout">' +
+
+        '<div class="chapter-hero">' +
+          '<a href="/dashboard" class="back-link">&larr; Back to Dashboard</a>' +
+          '<span class="chapter-number">Module 07</span>' +
+          '<h1 class="chapter-title">Stage Three &mdash;<br>Enterprise Leadership</h1>' +
+          '<p class="chapter-subtitle">7 &rarr; 8 Figures &middot; The stage this whole playbook was built for</p>' +
+          '<div class="reading-meta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>7 min read</span></div>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<p class="lead">Every one of the 56 checklist elements is installed and running. The Rule of Three is in seat. The Leadership System is operating. The cash is flowing enough to fund the next move. This is where a business becomes an enterprise &mdash; and where a founder becomes an owner. A true Enterprise Entrepreneur.</p>' +
+          '<p>There are no new elements to add at this stage. The checklist was built for this stage. The work here is the discipline of making sure the full checklist is actually in place &mdash; not just listed.</p>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<h2>Litmus Test #1 &mdash; Revenue Per Employee of $250K+</h2>' +
+          '<div class="stat-row"><div class="stat-block"><div class="stat-value">$250K+</div><div class="stat-label">Revenue Per Employee</div></div></div>' +
+          '<p>$250K per employee is the baseline marker of a healthy scaling business. A note: with AI now embedded across every function, this number will keep climbing. $300K, $400K, and beyond is quickly becoming the benchmark for a genuinely competitive business. Track where yours sits, and refuse to let it slide.</p>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<h2>Litmus Test #2 &mdash; Net Margins of 20&ndash;25%</h2>' +
+          '<div class="stat-row"><div class="stat-block"><div class="stat-value">20&ndash;25%</div><div class="stat-label">Net Margins</div></div></div>' +
+          '<p>If net margins aren\'t hitting 20&ndash;25%, I treat that as a signal to go back to the drawing board. Not to hustle harder. I look at the offer. I look at the value we\'re creating in the marketplace. I look at whether we\'re targeting the right customers, or whether we\'ve drifted into serving lower-value ones. I look at team efficiency and labor cost per unit. I keep refining until the margins land where they need to for long-term scalability. Margins are a diagnosis, not a destination. If they\'re off, something upstream is off.</p>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<h2>Litmus Test #3 &mdash; Founder\'s Time</h2>' +
+          '<div class="stat-row"><div class="stat-block"><div class="stat-value">Optional</div><div class="stat-label">Founder\'s Presence</div></div></div>' +
+          '<p>At this stage, my number one goal is to have the ability to not be in the business anymore. Not necessarily to leave. To have the choice. I need to be able to step away for 30 days, six months, a full year &mdash; and watch the business keep running. Keep growing. Without me. I need to be able to sit on the board as Chairman instead of CEO or COO if I want to. I can still choose to be those things. The point is that I have the option. If I don\'t have the option, the business still owns me. And I haven\'t actually reached Enterprise Leadership.</p>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<div class="insight-card green">' +
+            '<div class="insight-label green"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> The Ownership Test</div>' +
+            '<p>Founder becomes owner the day the business can run, grow, and survive a year without him. Not a day before. Until then, you don\'t own the business &mdash; the business owns you.</p>' +
+          '</div>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<h2>A Fun Possibility</h2>' +
+          '<p>When the checklist is fully installed and the three litmus tests are green, the business becomes truly sellable. A stand-alone sale at 5&ndash;8&times; EBITDA becomes realistic. A few million in EBITDA at a 5&ndash;8&times; multiple is a real eight-figure exit &mdash; and this whole playbook makes it possible.</p>' +
+          '<p>That\'s exactly why I built something specifically to compress this into 30 days. I\'ll walk you through it at the end of the playbook.</p>' +
+          '<div class="cta-card">' +
+            '<h3>Want All 56 Installed in 30 Days?</h3>' +
+            '<p>Enterprise 360 compresses the entire checklist installation into 30 days &mdash; and makes Stage 3 reachable in months instead of years.</p>' +
+            '<a href="#" class="btn-gold" id="ctaBtn">Book Your Enterprise Call &rarr;</a>' +
+          '</div>' +
+        '</div>' +
+
+        '<div class="chapter-actions">' +
+          '<button class="btn-gold chapter-complete-btn" id="completeBtn">' + (mod.completed ? '&#10003; Completed' : 'Mark as Complete') + '</button>' +
+        '</div>' +
+
+        '<a href="/stage-four-platform" class="next-chapter">' +
+          '<div class="next-chapter-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>' +
+          '<div><div class="next-chapter-label">Next Module</div><div class="next-chapter-title">Stage Four &mdash; Platform</div></div>' +
+        '</a>' +
+
+      '</div>';
+
+      // CTA -> Coming Soon
+      document.getElementById('ctaBtn').addEventListener('click', function(e) { e.preventDefault(); openComingSoonModal(); });
+
+      // Scroll reveal
+      var sections = document.querySelectorAll('.section');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      sections.forEach(function(s) { observer.observe(s); });
+
+      // Mark complete
+      var btn = document.getElementById('completeBtn');
+      if (mod.completed) { btn.style.background = 'var(--success)'; btn.style.cursor = 'default'; }
+      else {
+        btn.addEventListener('click', async function() {
+          btn.disabled = true; btn.textContent = 'Saving...';
+          try {
+            var res = await fetch('/api/modules/' + SLUG + '/complete', { method: 'POST', credentials: 'same-origin' });
+            if (res.ok) { btn.innerHTML = '&#10003; Completed'; btn.style.background = 'var(--success)'; btn.style.cursor = 'default'; var mcLink = document.querySelector('.mc-link.active'); if (mcLink) mcLink.classList.add('completed'); }
+          } catch(e) { btn.textContent = 'Mark as Complete'; btn.disabled = false; }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

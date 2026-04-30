@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wc7ebmnu6p");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <title>Stage One — Value Creation — Scale Enterprises</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/shared.css">
+  <link rel="stylesheet" href="/css/chapter.css">
+</head>
+<body>
+
+  <nav class="topnav" id="topnav"></nav>
+
+  <main class="main" id="mainContent">
+    <div class="loading" id="loader"><div class="spinner"><img src="/logo.png" alt="Loading"></div></div>
+  </main>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/topnav.js"></script>
+  <script>
+    var SLUG = 'stage-one-value-creation';
+
+    document.addEventListener('auth:ready', async function(e) {
+      var modules = await initTopnav('library', SLUG);
+      if (isModuleLocked(modules, SLUG)) { window.location.href = '/dashboard'; return; }
+      var mod = modules.find(function(m) { return m.slug === SLUG; }) || {};
+
+      var main = document.getElementById('mainContent');
+      main.innerHTML = '<div class="chapter-layout">' +
+
+        '<div class="chapter-hero">' +
+          '<a href="/dashboard" class="back-link">&larr; Back to Dashboard</a>' +
+          '<span class="chapter-number">Module 05</span>' +
+          '<h1 class="chapter-title">Stage One &mdash;<br>Value Creation</h1>' +
+          '<p class="chapter-subtitle">$0 &rarr; 6 Figures &middot; Prove the market wants what you\'re selling</p>' +
+          '<div class="reading-meta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>5 min read</span></div>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<p class="lead">The only job in Stage 1 is proving value in the marketplace. Not systems. Not team. Not brand. Can you make something people will actually pay for, repeatedly? Everything else is a distraction until that\'s locked.</p>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<h2>The Distraction Trap</h2>' +
+          '<p>This is the stage where most entrepreneurs get seduced by everything they shouldn\'t be doing yet. They build the perfect logo before they\'ve sold anything. They register an LLC before they\'ve validated an offer. They hire a fractional CMO when they don\'t have a customer to market to. I\'ve done all of it. None of it works.</p>' +
+          '<p>The real Stage 1 work is unglamorous. You sell. You deliver. You learn. You repeat. And every dollar you spend that doesn\'t help you sell, deliver, or learn is a dollar you don\'t have for the things that do.</p>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<h2>What Gets Installed in Stage 1</h2>' +
+          '<div class="sequence-category"><div class="sequence-category-label">Vision &amp; Foundation</div><div class="sequence-item">Scaling Strategy &amp; Psychology</div><div class="sequence-item">Ideal Customer Profile (ICP)</div><div class="sequence-item">Category of One</div><div class="sequence-item">Proof &amp; Testimonials</div></div>' +
+          '<div class="sequence-category"><div class="sequence-category-label">Offer &amp; Delivery</div><div class="sequence-item">Irresistible Offer</div><div class="sequence-item">Value Ladder / Business Model &mdash; a simple core offer with one upsell or downsell</div><div class="sequence-item">Means to Deliver &mdash; equipment, skills, people, or AI needed to fulfill the offer</div><div class="sequence-item">Payment Processor</div></div>' +
+          '<div class="sequence-category"><div class="sequence-category-label">Customer Acquisition &mdash; Pick One Channel</div><div class="sequence-item">You only get to pick one. Choose between digital funnels, prospecting, referrals, or partners and affiliates.</div><div class="sequence-item">Then go deep on that one channel until it consistently produces customers.</div><div class="sequence-item">Find the channel where your customers are already hanging out &mdash; don\'t fight the river.</div></div>' +
+          '<div class="sequence-category"><div class="sequence-category-label">Tech Stack (Bare Minimum)</div><div class="sequence-item">Phone Set-Up</div><div class="sequence-item">Speed to Lead &mdash; handled personally by the founder</div><div class="sequence-item">CRM or Database (Excel works &mdash; don\'t spend money here)</div></div>' +
+          '<div class="sequence-category"><div class="sequence-category-label">Financials (Bare Minimum)</div><div class="sequence-item">Clean Books &amp; Record Keeping</div></div>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<div class="insight-card gold">' +
+            '<div class="insight-label gold"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5L12 2z"/></svg> The Stage 1 Rule</div>' +
+            '<p>Anything that does not directly help you sell, deliver, or learn is a distraction. Every dollar, every hour, every hire that fails this test is debt your future self has to pay back.</p>' +
+          '</div>' +
+        '</div>' +
+
+        '<div class="section">' +
+          '<p>If you can\'t get the thing to sell repeatedly, no amount of system-building will save you. Lock value first.</p>' +
+          '<p>The transition out of Stage 1 happens when the offer is selling consistently, repeat customers exist, and the only thing keeping the business from growing further is you. That\'s a good problem. It\'s also exactly the problem Stage 2 is built to solve.</p>' +
+        '</div>' +
+
+        '<div class="chapter-actions">' +
+          '<button class="btn-gold chapter-complete-btn" id="completeBtn">' + (mod.completed ? '&#10003; Completed' : 'Mark as Complete') + '</button>' +
+        '</div>' +
+
+        '<a href="/stage-two-systems" class="next-chapter">' +
+          '<div class="next-chapter-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>' +
+          '<div><div class="next-chapter-label">Next Module</div><div class="next-chapter-title">Stage Two &mdash; Systems</div></div>' +
+        '</a>' +
+
+      '</div>';
+
+      // Scroll reveal
+      var sections = document.querySelectorAll('.section');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      sections.forEach(function(s) { observer.observe(s); });
+
+      // Mark complete
+      var btn = document.getElementById('completeBtn');
+      if (mod.completed) { btn.style.background = 'var(--success)'; btn.style.cursor = 'default'; }
+      else {
+        btn.addEventListener('click', async function() {
+          btn.disabled = true; btn.textContent = 'Saving...';
+          try {
+            var res = await fetch('/api/modules/' + SLUG + '/complete', { method: 'POST', credentials: 'same-origin' });
+            if (res.ok) { btn.innerHTML = '&#10003; Completed'; btn.style.background = 'var(--success)'; btn.style.cursor = 'default'; var mcLink = document.querySelector('.mc-link.active'); if (mcLink) mcLink.classList.add('completed'); }
+          } catch(e) { btn.textContent = 'Mark as Complete'; btn.disabled = false; }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

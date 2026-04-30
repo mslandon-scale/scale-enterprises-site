@@ -243,6 +243,8 @@
 .insight-card.green::after { background: linear-gradient(90deg, #22c55e, transparent); }
 .insight-card.pink::after { background: linear-gradient(90deg, #ec4899, transparent); }
 .insight-card.orange::after { background: linear-gradient(90deg, #f59e0b, transparent); }
+.insight-card.purple::after { background: linear-gradient(90deg, #a78bfa, transparent); }
+.insight-card.cyan::after { background: linear-gradient(90deg, #22d3ee, transparent); }
 
 .insight-label {
   font-size: 0.65rem;
@@ -259,6 +261,8 @@
 .insight-label.green { color: #22c55e; }
 .insight-label.pink { color: #ec4899; }
 .insight-label.orange { color: #f59e0b; }
+.insight-label.purple { color: #a78bfa; }
+.insight-label.cyan { color: #22d3ee; }
 
 .insight-card p {
   font-size: 0.95rem;
