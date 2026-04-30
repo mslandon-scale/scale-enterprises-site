@@ -84,7 +84,14 @@ async function initTopnav(activePage, activeSlug) {
     bar.addEventListener('click', function(e) {
       var link = e.target.closest('[data-locked]');
       if (link) { e.preventDefault(); }
+      var mcLink = e.target.closest('.mc-link');
+      if (mcLink) centerMcLink(bar, mcLink);
     });
+
+    var activeLink = bar.querySelector('.mc-link.active');
+    if (activeLink) {
+      requestAnimationFrame(function() { centerMcLink(bar, activeLink); });
+    }
 
     document.getElementById('mcE360Link').addEventListener('click', function(e) {
       e.preventDefault();
@@ -294,4 +301,13 @@ function openComingSoonModal() {
   overlay.addEventListener('click', function(e) {
     if (e.target === overlay) overlay.classList.remove('open');
   });
+}
+
+function centerMcLink(bar, link) {
+  var barRect = bar.getBoundingClientRect();
+  var linkRect = link.getBoundingClientRect();
+  var linkCenter = linkRect.left + linkRect.width / 2;
+  var barCenter = barRect.left + barRect.width / 2;
+  var offset = linkCenter - barCenter;
+  bar.scrollBy({ left: offset, behavior: 'smooth' });
 }

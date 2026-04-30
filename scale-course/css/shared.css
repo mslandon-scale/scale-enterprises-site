@@ -260,10 +260,10 @@ body {
 
 .mc-link {
   display: inline-flex; align-items: center;
-  padding: clamp(0.55rem, 0.9vh, 0.75rem) clamp(1.25rem, 1.8vw, 1.75rem);
+  padding: clamp(0.35rem, 0.6vh, 0.5rem) clamp(0.7rem, 1.1vw, 1rem);
   color: var(--muted);
   text-decoration: none;
-  font-size: clamp(0.85rem, 1vw, 1rem); font-weight: 600;
+  font-size: clamp(0.7rem, 0.85vw, 0.82rem); font-weight: 600;
   border-radius: 9999px;
   border: 1px solid rgba(255,255,255,0.7);
   transition: all 0.2s;
