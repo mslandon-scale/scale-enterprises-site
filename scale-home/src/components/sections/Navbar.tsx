@@ -123,13 +123,13 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
 
-            {/* Free Enterprise Playbook dropdown */}
+            {/* Enterprise Playbook dropdown */}
             <div ref={courseRef} className="relative">
               <button
                 onClick={() => setCourseOpen(!courseOpen)}
                 className="font-body text-[14px] font-bold uppercase tracking-widest text-text-secondary hover:text-navy transition-colors duration-200 flex items-center gap-1"
               >
-                Free Enterprise Playbook
+                Enterprise Playbook
                 <svg
                   className={`w-3.5 h-3.5 transition-transform duration-200 ${courseOpen ? "rotate-180" : ""}`}
                   fill="none"
@@ -256,13 +256,13 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
 
-            {/* Free Enterprise Playbook accordion */}
+            {/* Enterprise Playbook accordion */}
             <div className="flex flex-col items-center">
               <button
                 onClick={() => setMobileCourseOpen(!mobileCourseOpen)}
                 className="font-body text-xl font-bold uppercase tracking-widest text-text-secondary hover:text-navy transition-colors flex items-center gap-2"
               >
-                Free Enterprise Playbook
+                Enterprise Playbook
                 <svg
                   className={`w-4 h-4 transition-transform duration-200 ${mobileCourseOpen ? "rotate-180" : ""}`}
                   fill="none"
