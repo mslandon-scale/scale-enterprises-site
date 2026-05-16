@@ -89,7 +89,7 @@ const included = [
 
 export default function GoldSyndicate() {
   return (
-    <section className="relative bg-bg-navy py-16 lg:py-24 overflow-hidden">
+    <section className="relative bg-bg-navy py-24 lg:py-32 overflow-hidden">
       {/* ═══ PRESTIGE BACKGROUND ELEMENTS ═══ */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
