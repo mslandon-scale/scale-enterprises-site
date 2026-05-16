@@ -9,11 +9,11 @@ const pillars = [
     title: "The Enterprise Entrepreneur",
     subtitle: "Absolute Clarity",
     description:
-      "Stop operating blind. Walk away with a locked 3-year strategy, deep pattern recognition for your market, and the identity shift that separates enterprise builders from busy operators.",
+      "Transform who you are as a business owner so your business works for you — not the other way around. This is the identity shift that unlocks everything else.",
     benefits: [
-      "Know exactly where you're going — and why everyone else will follow",
-      "See the moves your competitors can't see yet",
-      "Operate from vision, not reaction — every decision gets faster",
+      "Absolute clarity on where you're going — your targets, your timeline, your finish line",
+      "Know exactly who you serve and the story that makes them choose you",
+      "A business built around your life — not a life built around your business",
     ],
     icon: (
       <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
@@ -29,11 +29,11 @@ const pillars = [
     title: "The Engine",
     subtitle: "The Business Model",
     description:
-      "Build a business that prints revenue without you in every seat. One model that manufactures demand, captures it, and delivers value — profitable, scalable, and duplicatable.",
+      "Get absolute clarity on how to reach your enterprise goals. No more guessing. You'll know exactly how to get customers, fulfill them, and do it profitably — with numbers that work at scale.",
     benefits: [
-      "A marketing engine that generates leads while you sleep",
-      "A sales process that closes without you on every call",
-      "Unit economics you can scale with confidence, not guesswork",
+      "A clear, proven path to your revenue targets — no more guessing what works",
+      "Customers coming in, getting results, and the math working every single time",
+      "Implement this one pillar and your business can grow exponentially",
     ],
     icon: (
       <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
@@ -53,11 +53,11 @@ const pillars = [
     title: "The Leadership Flow",
     subtitle: "90 Minutes a Week",
     description:
-      "Run your entire enterprise in 90 minutes a week. Install the culture, accountability, and decision rhythm that lets you lead from above — not from inside every fire.",
+      "Lead your business — don't manage it, don't operate it — in less than 90 minutes a week. And watch it still grow, still scale, and still maintain quality without you in the weeds.",
     benefits: [
-      "Your team executes without you micromanaging every move",
-      "Full visibility across the business in one weekly rhythm",
-      "Finally step into the CEO seat — not the firefighter seat",
+      "Lead less than 90 minutes a week and your business still grows",
+      "Scale without sacrificing quality — even when you step back",
+      "Freedom to live your life while your enterprise runs itself",
     ],
     icon: (
       <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
@@ -164,9 +164,8 @@ export default function GoldSyndicate() {
             <div className="h-px w-16 bg-gradient-to-l from-transparent to-accent-gold/40" />
           </div>
           <p className="font-body text-[18px] text-white/60 leading-[1.7] max-w-2xl mx-auto">
-            Become an enterprise entrepreneur in 90 days. Get absolute clarity on where you&apos;re going,
-            a business model that scales without you in every seat, and a leadership flow that runs
-            the enterprise in 90 minutes a week.
+            In 90 days, get absolute clarity on where you&apos;re going, a business model that reaches
+            your goals without guesswork, and the ability to lead it all in under 90 minutes a week.
           </p>
         </motion.div>
 
