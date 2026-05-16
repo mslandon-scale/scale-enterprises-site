@@ -2,7 +2,7 @@ const platformLinks = [
   { label: "How It Works", href: "#how-it-works" },
   { label: "Enterprise Coaching", href: "#platform" },
   { label: "Managed Services", href: "#platform" },
-  { label: "Enterprise HQ", href: "#how-it-works" },
+  { label: "Enterprise HQ", href: "https://app.scaleenterprises.com" },
 ];
 
 const companyLinks = [

@@ -7,7 +7,7 @@ const productItems = [
   { label: "Enterprise 360", desc: "Full enterprise implementation", href: "#", badge: null },
   { label: "Enterprise Challenge", desc: "A deep dive to transform your business", href: "#", badge: "Coming Soon" },
   { label: "Enterprise Platform", desc: "Platform services for your business", href: "#", badge: "Coming Soon" },
-  { label: "Enterprise HQ", desc: "Your eagle view snapshot of your business", href: "#", badge: "Coming Soon" },
+  { label: "Enterprise HQ", desc: "Your eagle view snapshot of your business", href: "https://app.scaleenterprises.com", badge: null },
 ];
 
 export default function Navbar() {
