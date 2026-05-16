@@ -53,15 +53,15 @@ export default function EnterpriseChallenge() {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7, ease: "easeOut" as const }}
         >
-          <div className="inline-block bg-accent-gold/10 text-accent-gold font-bold text-[11px] uppercase tracking-widest px-5 py-2 rounded-full mb-6">
+          <p className="font-display text-[20px] sm:text-[26px] lg:text-[32px] leading-[1.1] text-accent-gold font-extrabold uppercase tracking-widest mb-4">
             Coming Soon
-          </div>
+          </p>
 
           <h2 className="font-display text-[32px] sm:text-[40px] lg:text-[52px] leading-[1.0] text-navy font-extrabold uppercase mb-4">
             The Enterprise Challenge
           </h2>
 
-          <p className="font-body text-[18px] lg:text-[20px] text-text-secondary leading-[1.7] max-w-xl mx-auto">
+          <p className="font-body text-[20px] lg:text-[24px] text-text-secondary leading-[1.6] max-w-xl mx-auto">
             A business transformation event unlike anything you&apos;ve seen before.
           </p>
 
