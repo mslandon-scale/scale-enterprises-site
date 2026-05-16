@@ -2,14 +2,29 @@
 
 import { motion } from "framer-motion";
 
-/* ═══ Exact module data from the real Scale Course dashboard ═══ */
 const modules = [
   {
     num: "01",
-    slug: "vision",
-    title: "Foundation & Vision",
-    desc: "Define your enterprise identity, vision, and the operating model that makes it real.",
+    slug: "my-story",
+    title: "My Story",
+    desc: "Scraped knees, scar tissue, and the notes Matthew wishes he'd had — the real story behind the framework.",
     color: "#818cf8",
+    icon: (
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+        <path d="M6 4h14l6 6v18H6z" />
+        <path d="M20 4v6h6" />
+        <line x1="10" y1="16" x2="22" y2="16" />
+        <line x1="10" y1="20" x2="18" y2="20" />
+      </svg>
+    ),
+    status: "start",
+  },
+  {
+    num: "02",
+    slug: "enterprise-framework",
+    title: "The Enterprise Framework",
+    desc: "The 5 stages every enterprise moves through — from Value Creation to Private Equity.",
+    color: "#f59e0b",
     icon: (
       <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
         <path d="M3 16s5-9 13-9 13 9 13 9-5 9-13 9S3 16 3 16z" />
@@ -20,11 +35,25 @@ const modules = [
     status: "start",
   },
   {
-    num: "02",
-    slug: "enterprise-code",
-    title: "The Enterprise Code",
-    desc: "Build the operating system, SOPs, and frameworks that let your business run without you.",
-    color: "#f59e0b",
+    num: "03",
+    slug: "enterprise-checklist",
+    title: "The Enterprise Checklist",
+    desc: "56 elements across 7 categories that get installed into every enterprise — the full toolkit.",
+    color: "#ec4899",
+    icon: (
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+        <rect x="3" y="3" width="26" height="26" rx="3" />
+        <polyline points="9 16 13 20 23 10" />
+      </svg>
+    ),
+    status: "start",
+  },
+  {
+    num: "04",
+    slug: "implementation",
+    title: "When to Implement Each Element",
+    desc: "The 56 checklist elements mapped across the 5 stages — what to install, when, and why.",
+    color: "#22d3ee",
     icon: (
       <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
         <rect x="3" y="3" width="11" height="11" rx="2.5" />
@@ -36,83 +65,33 @@ const modules = [
     status: "start",
   },
   {
-    num: "03",
-    slug: "marketing",
-    title: "Marketing & Acquisition",
-    desc: "Build your client acquisition engine with inbound and outbound systems that scale.",
-    color: "#ec4899",
-    icon: (
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
-        <path d="M26 5v22L14 20H8a3 3 0 0 1-3-3v-2a3 3 0 0 1 3-3h6L26 5z" />
-        <path d="M8 20v5a2 2 0 0 0 2 2h2" />
-      </svg>
-    ),
-    status: "start",
-  },
-  {
-    num: "04",
-    slug: "team-people",
-    title: "Team & People",
-    desc: "Recruit, hire, and develop the team that runs your enterprise day to day.",
-    color: "#22d3ee",
-    icon: (
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
-        <circle cx="11" cy="8" r="4" />
-        <path d="M3 27v-3a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v3" />
-        <circle cx="22" cy="10" r="3.5" />
-        <path d="M24 18a5 5 0 0 1 5 5v4" />
-      </svg>
-    ),
-    status: "start",
-  },
-  {
     num: "05",
-    slug: "leadership-system",
-    title: "Leadership System",
-    desc: "Install the leadership cadence, meeting rhythm, and KPI system that drives accountability.",
+    slug: "proof",
+    title: "Proof It Works",
+    desc: "Real results from real businesses — 3x lead flow in 7 days, zero to seven figures in 6 months, and more.",
     color: "#22c55e",
     icon: (
       <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
-        <circle cx="16" cy="16" r="12" />
-        <polygon points="22 10 14 14 10 22 18 18" fill="currentColor" stroke="none" />
+        <polyline points="4 24 12 14 18 20 28 8" />
+        <polyline points="22 8 28 8 28 14" />
       </svg>
     ),
     status: "start",
   },
   {
     num: "06",
-    slug: "finance",
-    title: "Financial Architecture",
-    desc: "Build the financial models, forecasting tools, and P&L frameworks for enterprise scale.",
-    color: "#a78bfa",
-    icon: (
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
-        <line x1="16" y1="4" x2="16" y2="28" />
-        <path d="M22 10H13a4 4 0 0 0 0 8h6a4 4 0 0 1 0 8H10" />
-      </svg>
-    ),
-    status: "start",
-  },
-  {
-    num: "07",
-    slug: "ai-enterprises",
-    title: "AI for Enterprises",
-    desc: "Leverage AI to automate operations, improve decision-making, and accelerate growth.",
+    slug: "enterprise-360",
+    title: "Enterprise 360",
+    desc: "The 90-day program that compresses the entire framework install into your business.",
     color: "#F0C030",
     icon: (
       <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
-        <rect x="5" y="6" width="22" height="16" rx="3" />
-        <line x1="16" y1="2" x2="16" y2="6" />
-        <circle cx="16" cy="1.5" r="1.5" fill="currentColor" stroke="none" />
-        <circle cx="12" cy="14" r="2.5" />
-        <circle cx="20" cy="14" r="2.5" />
-        <rect x="2" y="10" width="3" height="6" rx="1.5" />
-        <rect x="27" y="10" width="3" height="6" rx="1.5" />
-        <line x1="11" y1="22" x2="11" y2="27" />
-        <line x1="21" y1="22" x2="21" y2="27" />
+        <circle cx="16" cy="16" r="12" />
+        <circle cx="16" cy="16" r="6" />
+        <circle cx="16" cy="16" r="2" fill="currentColor" stroke="none" />
       </svg>
     ),
-    status: "coming-soon",
+    status: "start",
   },
 ];
 
@@ -267,7 +246,7 @@ export default function MasterclassPreview() {
                 <div className="flex justify-between mb-2">
                   <span className="text-[13px] text-white/40">Course Progress</span>
                   <span className="text-[13px] font-bold text-[#F0C030]" style={{ fontFamily: "'Sora', sans-serif" }}>
-                    0 of 7 complete
+                    0 of 6 complete
                   </span>
                 </div>
                 <div className="h-1.5 bg-white/[0.08] rounded-full overflow-hidden">
@@ -321,7 +300,7 @@ export default function MasterclassPreview() {
                       className="text-[11px] font-bold uppercase tracking-[0.1em] mb-1.5"
                       style={{ color: "#F0C030", fontFamily: "'Sora', sans-serif" }}
                     >
-                      Module {mod.num}
+                      Chapter {mod.num}
                     </p>
 
                     {/* Title */}
@@ -340,7 +319,7 @@ export default function MasterclassPreview() {
                     {/* Status badge */}
                     {mod.status === "start" ? (
                       <span className="inline-flex items-center gap-1.5 text-[12px] font-semibold px-3 py-1.5 rounded-full bg-[#F0C030]/15 text-[#F0C030]">
-                        Start Module →
+                        Start Chapter →
                       </span>
                     ) : (
                       <span className="inline-flex items-center gap-1.5 text-[12px] font-semibold px-3 py-1.5 rounded-full bg-white/[0.05] text-white/40">
