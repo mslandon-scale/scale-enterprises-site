@@ -9,11 +9,11 @@ const pillars = [
     title: "The Enterprise Entrepreneur",
     subtitle: "Absolute Clarity",
     description:
-      "Establish your baseline against the 56-element Enterprise Framework, lock your 3-year strategy, and develop deep pattern recognition for your market, customer, and category. This is the identity shift from operator to enterprise entrepreneur.",
-    sessions: [
-      "Enterprise Diagnostic & The Identity Shift",
-      "The 3-Year Strategy & Time Horizon",
-      "Market, Customer & Category Mastery",
+      "Stop operating blind. Walk away with a locked 3-year strategy, deep pattern recognition for your market, and the identity shift that separates enterprise builders from busy operators.",
+    benefits: [
+      "Know exactly where you're going — and why everyone else will follow",
+      "See the moves your competitors can't see yet",
+      "Operate from vision, not reaction — every decision gets faster",
     ],
     icon: (
       <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
@@ -29,12 +29,11 @@ const pillars = [
     title: "The Engine",
     subtitle: "The Business Model",
     description:
-      "Map the economic machine — unit economics, marketing, sales, and fulfillment — built into one profitable, scalable, duplicatable model. You'll architect the systems that manufacture demand, capture it, and deliver value without you in every seat.",
-    sessions: [
-      "The Business Model & Unit Economics",
-      "Building Demand — The Marketing Engine",
-      "Capturing Demand — The Sales Engine",
-      "Delivering Value — Fulfillment & Ops",
+      "Build a business that prints revenue without you in every seat. One model that manufactures demand, captures it, and delivers value — profitable, scalable, and duplicatable.",
+    benefits: [
+      "A marketing engine that generates leads while you sleep",
+      "A sales process that closes without you on every call",
+      "Unit economics you can scale with confidence, not guesswork",
     ],
     icon: (
       <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
@@ -54,13 +53,11 @@ const pillars = [
     title: "The Leadership Flow",
     subtitle: "90 Minutes a Week",
     description:
-      "Install the culture, org design, and role clarity that makes accountability possible. Then build the visibility layer and decision rhythm that lets you run the entire enterprise in 90 minutes of real work each week.",
-    sessions: [
-      "Culture, Org Design & Role Clarity",
-      "Recruiting, Hiring & Onboarding",
-      "The 90-Min Leadership System: The Visibility Layer",
-      "The 90-Min Leadership System: The Decision Rhythm",
-      "Integration — The Enterprise Running as One System",
+      "Run your entire enterprise in 90 minutes a week. Install the culture, accountability, and decision rhythm that lets you lead from above — not from inside every fire.",
+    benefits: [
+      "Your team executes without you micromanaging every move",
+      "Full visibility across the business in one weekly rhythm",
+      "Finally step into the CEO seat — not the firefighter seat",
     ],
     icon: (
       <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
@@ -255,15 +252,15 @@ export default function GoldSyndicate() {
 
                 <div className="mt-6 space-y-3">
                   <p className="font-body text-[12px] uppercase tracking-widest text-white/30 font-bold">
-                    Sessions
+                    What You Walk Away With
                   </p>
-                  {pillar.sessions.map((session, si) => (
-                    <div key={session} className="flex items-start gap-3">
-                      <span className="font-display text-[13px] text-accent-gold font-bold w-6 flex-shrink-0 mt-0.5">
-                        {String(si + 1 + (i === 0 ? 0 : i === 1 ? 3 : 7)).padStart(2, "0")}
-                      </span>
-                      <span className="font-body text-[15px] text-white/50 leading-[1.6]">
-                        {session}
+                  {pillar.benefits.map((benefit) => (
+                    <div key={benefit} className="flex items-start gap-3">
+                      <svg className="w-4 h-4 text-accent-gold flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className="font-body text-[15px] text-white/60 leading-[1.6]">
+                        {benefit}
                       </span>
                     </div>
                   ))}
