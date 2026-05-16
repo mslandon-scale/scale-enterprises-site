@@ -172,6 +172,13 @@ export default function Navbar() {
             </div>
 
             <a
+              href="https://app.scaleenterprises.com/login"
+              className="font-body text-[14px] font-bold uppercase tracking-widest text-text-secondary hover:text-navy transition-colors duration-200"
+            >
+              Log In
+            </a>
+
+            <a
               href="#footer"
               className="bg-accent-gold text-black font-bold text-[15px] uppercase tracking-widest px-8 py-3 rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200"
             >
@@ -289,6 +296,14 @@ export default function Navbar() {
                 )}
               </AnimatePresence>
             </div>
+
+            <a
+              href="https://app.scaleenterprises.com/login"
+              onClick={() => setMobileOpen(false)}
+              className="font-body text-xl font-bold uppercase tracking-widest text-text-secondary hover:text-navy transition-colors"
+            >
+              Log In
+            </a>
 
             <a
               href="#footer"
