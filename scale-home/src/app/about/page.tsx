@@ -81,16 +81,16 @@ export default function About() {
           <div className="space-y-4">
             {[
               {
-                title: "Enterprise Buildout",
-                desc: "A full-scale, done-for-you implementation of every system your business needs — operating systems, management structure, KPI dashboards, SOPs, hiring frameworks, and client acquisition engines. Installed in 30 days.",
+                title: "The Enterprise Entrepreneur",
+                desc: "Absolute clarity — your identity shift, 3-year strategy, and deep market and category mastery. The foundation everything else is built on.",
               },
               {
-                title: "Leadership System",
-                desc: "A management cadence that lets you run your business in 90 minutes a week — accountability frameworks, talent recruitment, skill transfer, and daily-to-annual team alignment.",
+                title: "The Engine",
+                desc: "Your full business model with unit economics, marketing engine, sales engine, and fulfillment ops — built into one profitable, scalable, duplicatable system.",
               },
               {
-                title: "Enterprise HQ & The Vault",
-                desc: "Enterprise HQ is the implementation platform for your team. The Enterprise Vault gives you lifetime access to every framework, principle, and system — long after the 90 days.",
+                title: "The Leadership Flow",
+                desc: "Culture, org design, role clarity, recruiting, and the 90-minute leadership system — the visibility layer and decision rhythm that lets you run the enterprise from above.",
               },
             ].map((item) => (
               <div

@@ -2,19 +2,40 @@
 
 import { motion } from "framer-motion";
 
-const sections = [
+const pillars = [
   {
     number: "01",
-    label: "",
-    title: "Your Engine",
+    pillar: "Pillar 1",
+    title: "The Enterprise Entrepreneur",
+    subtitle: "Absolute Clarity",
     description:
-      "Get a clear and actionable picture of how you market, sell, and fulfill customers — and do it in a profitable way where the numbers work and are scalable, repeatable, and duplicatable. We look at your psychology, strategy, story, foundation, and customer journey to build an engine that actually drives growth.",
-    bullets: [
-      "Marketing systems that generate demand predictably",
-      "Sales operations that convert and scale",
-      "Fulfillment processes that deliver and retain",
-      "Financial architecture where the numbers work",
-      "A scalable, repeatable, and duplicatable model",
+      "Establish your baseline against the 56-element Enterprise Framework, lock your 3-year strategy, and develop deep pattern recognition for your market, customer, and category. This is the identity shift from operator to enterprise entrepreneur.",
+    sessions: [
+      "Enterprise Diagnostic & The Identity Shift",
+      "The 3-Year Strategy & Time Horizon",
+      "Market, Customer & Category Mastery",
+    ],
+    icon: (
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+        <path d="M6 32s8-14 26-14 26 14 26 14-8 14-26 14S6 32 6 32z" />
+        <circle cx="32" cy="32" r="9" />
+        <circle cx="32" cy="32" r="4" fill="currentColor" stroke="none" />
+      </svg>
+    ),
+    bgGradient: "from-accent-gold/30 via-accent-gold/10 to-bg-navy",
+  },
+  {
+    number: "02",
+    pillar: "Pillar 2",
+    title: "The Engine",
+    subtitle: "The Business Model",
+    description:
+      "Map the economic machine — unit economics, marketing, sales, and fulfillment — built into one profitable, scalable, duplicatable model. You'll architect the systems that manufacture demand, capture it, and deliver value without you in every seat.",
+    sessions: [
+      "The Business Model & Unit Economics",
+      "Building Demand — The Marketing Engine",
+      "Capturing Demand — The Sales Engine",
+      "Delivering Value — Fulfillment & Ops",
     ],
     icon: (
       <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
@@ -27,21 +48,21 @@ const sections = [
         <line x1="60" y1="32" x2="52" y2="32" />
       </svg>
     ),
-    color: "accent-gold",
-    bgGradient: "from-accent-gold/30 via-accent-gold/10 to-bg-navy",
+    bgGradient: "from-accent-gold/25 via-accent-gold/[0.08] to-bg-navy",
   },
   {
-    number: "02",
-    label: "",
-    title: "Your Leadership System",
+    number: "03",
+    pillar: "Pillar 3",
+    title: "The Leadership Flow",
+    subtitle: "90 Minutes a Week",
     description:
-      "Create a system that allows you to manage your business in 90 minutes a week or less. Learn how to create accountability, pass on skills, recruit top talent that aligns with your vision, and keep your team aligned daily, weekly, monthly, quarterly, and annually.",
-    bullets: [
-      "Daily, weekly, monthly, quarterly, and annual team alignment",
-      "Accountability systems that drive performance",
-      "Skill transfer and training frameworks",
-      "Recruiting and retaining top talent aligned with your vision",
-      "A management cadence that runs in 90 minutes a week",
+      "Install the culture, org design, and role clarity that makes accountability possible. Then build the visibility layer and decision rhythm that lets you run the entire enterprise in 90 minutes of real work each week.",
+    sessions: [
+      "Culture, Org Design & Role Clarity",
+      "Recruiting, Hiring & Onboarding",
+      "The 90-Min Leadership System: The Visibility Layer",
+      "The 90-Min Leadership System: The Decision Rhythm",
+      "Integration — The Enterprise Running as One System",
     ],
     icon: (
       <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
@@ -53,48 +74,17 @@ const sections = [
         <path d="M56 50v-2a6 6 0 0 0-6-6h-2" opacity="0.5" />
       </svg>
     ),
-    color: "accent-gold",
-    bgGradient: "from-accent-gold/25 via-accent-gold/[0.08] to-bg-navy",
-  },
-  {
-    number: "03",
-    label: "",
-    title: "Enterprise HQ & The Vault",
-    description:
-      "Get free access to Enterprise HQ — the software platform where you and your team implement everything in a streamlined process. Plus lifetime access to the Enterprise Vault, so long after the 90 days you can always reference the core principles, frameworks, and systems.",
-    bullets: [
-      "Enterprise HQ — the all-in-one implementation platform for your team",
-      "Start a free trial and experience the system firsthand",
-      "Enterprise Vault — lifetime access to every framework and principle",
-      "Free Enterprise Playbook to start applying the methodology immediately",
-      "Streamlined workflows your entire team can operate on",
-    ],
-    icon: (
-      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-        <path d="M20 8h-6a4 4 0 0 0-4 4v40a4 4 0 0 0 4 4h36a4 4 0 0 0 4-4V12a4 4 0 0 0-4-4h-6" />
-        <rect x="20" y="4" width="24" height="8" rx="2" />
-        <line x1="20" y1="24" x2="44" y2="24" />
-        <line x1="20" y1="32" x2="38" y2="32" />
-        <line x1="20" y1="40" x2="42" y2="40" />
-        <line x1="20" y1="48" x2="34" y2="48" opacity="0.5" />
-      </svg>
-    ),
-    color: "accent-gold",
     bgGradient: "from-accent-gold/[0.28] via-accent-gold/[0.09] to-bg-navy",
   },
 ];
 
-const testimonials = [
-  {
-    quote: "Enterprise 360 completely transformed how we operate. We went from chaos to a system that runs itself.",
-    name: "Business Owner",
-    role: "Service Company",
-  },
-  {
-    quote: "I went from working 60+ hours a week to managing my entire business in under 90 minutes. It changed everything.",
-    name: "Agency Founder",
-    role: "Digital Agency",
-  },
+const included = [
+  { label: "12 Weekly 1:1 Coaching Sessions", desc: "Direct coaching across all three pillars with a framework owner" },
+  { label: "Your Custom 3-Year Strategy", desc: "Identity, story, market, and the time horizon that defines absolute clarity" },
+  { label: "Your Full Business Engine Plan", desc: "Marketing, sales, and fulfillment built into one profitable, scalable, duplicatable model" },
+  { label: "The 90-Min Leadership System", desc: "The visibility layer and decision rhythm that lets you run the enterprise from above" },
+  { label: "The Playbook Vault", desc: "12 function playbooks across marketing, sales, recruiting, training, ops, finance, leadership and more" },
+  { label: "HQ Platform — 12 Months Access", desc: "Deliverables, scorecards, dashboards, and the 56-element Enterprise Checklist" },
 ];
 
 export default function GoldSyndicate() {
@@ -170,41 +160,54 @@ export default function GoldSyndicate() {
           <h2 className="font-display text-[32px] lg:text-[48px] leading-[1.05] text-white font-extrabold uppercase">
             Enterprise <span className="bg-accent-gold text-navy px-3 py-1 rounded-md inline-block">360</span>
           </h2>
+          <p className="font-display text-[18px] lg:text-[24px] text-white/50 font-bold mt-4 italic">
+            The 90-Day Enterprise Transformation
+          </p>
           <div className="flex items-center justify-center gap-4 mt-6 mb-6">
             <div className="h-px w-16 bg-gradient-to-r from-transparent to-accent-gold/40" />
             <div className="w-2 h-2 rotate-45 border border-accent-gold/50" />
             <div className="h-px w-16 bg-gradient-to-l from-transparent to-accent-gold/40" />
           </div>
           <p className="font-body text-[18px] text-white/60 leading-[1.7] max-w-2xl mx-auto">
-            A 90-day program to completely transform your business. We look at your marketing,
-            sales, operations, finance, team, technology, and data — everything — so you become
-            an enterprise-level entrepreneur. Your business will never be the same again.
+            Become an enterprise entrepreneur in 90 days. Get absolute clarity on where you&apos;re going,
+            a business model that scales without you in every seat, and a leadership flow that runs
+            the enterprise in 90 minutes a week.
           </p>
         </motion.div>
 
-        {/* What we cover — overview badges */}
+        {/* ═══ THE ENTERPRISE FRAMEWORK — 3 pillars bar ═══ */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, ease: "easeOut" as const }}
-          className="flex flex-wrap justify-center gap-3 mb-16"
+          className="mb-16"
         >
-          {["Marketing", "Sales", "Operations", "Finance", "Team", "Technology", "Data"].map((area) => (
-            <span
-              key={area}
-              className="font-body text-[12px] font-bold uppercase tracking-widest text-accent-gold border border-accent-gold/30 px-4 py-2 rounded-full"
-            >
-              {area}
-            </span>
-          ))}
+          <p className="font-body text-[11px] uppercase tracking-[0.2em] text-accent-gold font-bold text-center mb-6">
+            The Enterprise Framework
+          </p>
+          <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+            {pillars.map((p) => (
+              <div key={p.pillar} className="bg-white/[0.04] border border-accent-gold/15 rounded-xl p-6 text-center">
+                <p className="font-body text-[10px] uppercase tracking-[0.2em] text-accent-gold font-bold mb-2">
+                  {p.pillar}
+                </p>
+                <p className="font-display text-[18px] text-white font-extrabold uppercase leading-tight">
+                  {p.title}
+                </p>
+                <p className="font-body text-[14px] text-white/40 italic mt-1">
+                  {p.subtitle}
+                </p>
+              </div>
+            ))}
+          </div>
         </motion.div>
 
-        {/* Three sections */}
+        {/* ═══ THREE PILLAR SECTIONS ═══ */}
         <div className="space-y-20 lg:space-y-28">
-          {sections.map((section, i) => (
+          {pillars.map((pillar, i) => (
             <motion.div
-              key={section.title}
+              key={pillar.title}
               initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
@@ -213,13 +216,13 @@ export default function GoldSyndicate() {
             >
               {/* Graphic / visual side */}
               <div className={`${i % 2 === 1 ? "lg:order-2" : ""}`}>
-                <div className={`relative aspect-[4/3] rounded-2xl bg-gradient-to-br ${section.bgGradient} border border-accent-gold/15 overflow-hidden flex items-center justify-center`}>
+                <div className={`relative aspect-[4/3] rounded-2xl bg-gradient-to-br ${pillar.bgGradient} border border-accent-gold/15 overflow-hidden flex items-center justify-center`}>
                   <span className="absolute top-6 left-8 font-display text-[120px] lg:text-[160px] font-extrabold text-white/[0.06] leading-none select-none">
-                    {section.number}
+                    {pillar.number}
                   </span>
                   <div className="absolute inset-4 rounded-xl border border-accent-gold/10" />
-                  <div className={`relative z-10 w-28 h-28 lg:w-36 lg:h-36 text-${section.color}`}>
-                    {section.icon}
+                  <div className="relative z-10 w-28 h-28 lg:w-36 lg:h-36 text-accent-gold">
+                    {pillar.icon}
                   </div>
                   <motion.div
                     animate={{ y: [0, -12, 0] }}
@@ -236,31 +239,37 @@ export default function GoldSyndicate() {
 
               {/* Content side */}
               <div className={`${i % 2 === 1 ? "lg:order-1" : ""}`}>
+                <p className="font-body text-[11px] uppercase tracking-[0.2em] text-accent-gold font-bold mb-2">
+                  {pillar.pillar} &middot; {pillar.subtitle}
+                </p>
                 <h3 className="font-display text-[24px] lg:text-[32px] leading-[1.1] text-white font-extrabold uppercase">
-                  {section.title}
+                  {pillar.title}
                 </h3>
                 <p className="font-body text-[16px] text-white/60 leading-[1.7] mt-4">
-                  {section.description}
+                  {pillar.description}
                 </p>
 
-                <ul className="mt-6 space-y-3">
-                  {section.bullets.map((bullet) => (
-                    <li key={bullet} className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="font-body text-[15px] text-white/50 leading-[1.6]">
-                        {bullet}
+                <div className="mt-6 space-y-3">
+                  <p className="font-body text-[12px] uppercase tracking-widest text-white/30 font-bold">
+                    Sessions
+                  </p>
+                  {pillar.sessions.map((session, si) => (
+                    <div key={session} className="flex items-start gap-3">
+                      <span className="font-display text-[13px] text-accent-gold font-bold w-6 flex-shrink-0 mt-0.5">
+                        {String(si + 1 + (i === 0 ? 0 : i === 1 ? 3 : 7)).padStart(2, "0")}
                       </span>
-                    </li>
+                      <span className="font-body text-[15px] text-white/50 leading-[1.6]">
+                        {session}
+                      </span>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Social proof */}
+        {/* ═══ WHAT'S INCLUDED ═══ */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -268,29 +277,52 @@ export default function GoldSyndicate() {
           transition={{ duration: 0.6, ease: "easeOut" as const }}
           className="mt-20 lg:mt-28"
         >
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {testimonials.map((t) => (
-              <div key={t.name} className="bg-white/[0.04] border border-accent-gold/15 rounded-2xl p-8">
-                <svg className="w-8 h-8 text-accent-gold/40 mb-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609L9.978 5.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H0z" />
-                </svg>
-                <p className="font-body text-[16px] text-white/60 leading-[1.7] italic">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-                <div className="mt-4 flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-accent-gold/20 flex items-center justify-center">
-                    <span className="font-display text-[14px] text-accent-gold font-bold">
-                      {t.name[0]}
-                    </span>
-                  </div>
+          <p className="font-body text-[11px] uppercase tracking-[0.2em] text-accent-gold font-bold text-center mb-8">
+            What&apos;s Included
+          </p>
+          <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+            {included.map((item) => (
+              <div key={item.label} className="bg-white/[0.04] border border-accent-gold/10 rounded-xl p-6">
+                <div className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
                   <div>
-                    <p className="font-body text-[14px] text-white/80 font-bold">{t.name}</p>
-                    <p className="font-body text-[12px] text-white/40">{t.role}</p>
+                    <p className="font-body text-[15px] text-white font-bold leading-tight">
+                      {item.label}
+                    </p>
+                    <p className="font-body text-[13px] text-white/40 leading-[1.5] mt-1">
+                      {item.desc}
+                    </p>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+
+          {/* Work Guarantee */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: "easeOut" as const }}
+            className="max-w-4xl mx-auto mt-6"
+          >
+            <div className="bg-accent-gold/[0.08] border border-accent-gold/25 rounded-xl p-6 flex items-start gap-4">
+              <svg className="w-8 h-8 text-accent-gold flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <polyline points="9 12 11 14 15 10" strokeWidth="2" />
+              </svg>
+              <div>
+                <p className="font-body text-[15px] text-accent-gold font-bold">
+                  The Work Guarantee
+                </p>
+                <p className="font-body text-[14px] text-white/50 leading-[1.6] mt-1">
+                  Show up, do the work, and if you don&apos;t see real results — you don&apos;t pay.
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* Bottom CTA */}

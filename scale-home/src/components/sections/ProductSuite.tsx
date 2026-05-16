@@ -22,7 +22,7 @@ const products = [
   {
     label: "Flagship",
     title: "Enterprise 360",
-    description: "A 90-day full business overhaul — Enterprise HQ access, the Enterprise Vault, and hands-on guidance to transform everything.",
+    description: "12 weeks of 1:1 coaching across three pillars — your strategy, your engine, and your leadership flow. Plus the Playbook Vault and 12 months of HQ access.",
     cta: "Apply Now",
     href: "#footer",
     primary: true,
