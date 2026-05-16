@@ -80,9 +80,6 @@ export default function FlagshipCTA() {
               Transform Your Business
             </a>
           </div>
-          <p className="font-body text-[13px] text-white/40 font-semibold mt-4">
-            Applications reviewed within 24 hours. No commitment required.
-          </p>
         </motion.div>
       </div>
     </section>
