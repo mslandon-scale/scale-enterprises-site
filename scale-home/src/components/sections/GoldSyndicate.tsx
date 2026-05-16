@@ -188,7 +188,11 @@ export default function GoldSyndicate() {
           </p>
           <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
             {pillars.map((p) => (
-              <div key={p.pillar} className="bg-white/[0.04] border border-accent-gold/15 rounded-xl p-6 text-center">
+              <a
+                key={p.pillar}
+                href={`#pillar-${p.number}`}
+                className="bg-white/[0.04] border border-accent-gold/15 rounded-xl p-6 text-center cursor-pointer hover:border-accent-gold/40 hover:bg-white/[0.06] transition-all duration-200"
+              >
                 <p className="font-body text-[10px] uppercase tracking-[0.2em] text-accent-gold font-bold mb-2">
                   {p.pillar}
                 </p>
@@ -198,7 +202,7 @@ export default function GoldSyndicate() {
                 <p className="font-body text-[14px] text-white/40 italic mt-1">
                   {p.subtitle}
                 </p>
-              </div>
+              </a>
             ))}
           </div>
         </motion.div>
@@ -208,9 +212,11 @@ export default function GoldSyndicate() {
           {pillars.map((pillar, i) => (
             <motion.div
               key={pillar.title}
+              id={`pillar-${pillar.number}`}
               initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
+              style={{ scrollMarginTop: "100px" }}
               transition={{ duration: 0.7, ease: "easeOut" as const }}
               className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center"
             >
