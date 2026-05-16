@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 const products = [
   {
     label: "Free",
-    title: "Enterprise Playbook",
-    description: "A free training that teaches you how to build enterprise systems — start applying the principles immediately.",
-    cta: "Start Free Playbook",
+    title: "Enterprise Playbook + HQ Trial",
+    description: "Get the Playbook free and start a trial of Enterprise HQ — no credit card required.",
+    cta: "Start Free",
     href: "#footer",
     primary: false,
   },

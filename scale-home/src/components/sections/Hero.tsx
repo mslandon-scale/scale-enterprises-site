@@ -165,7 +165,7 @@ export default function Hero() {
                 href="#footer"
                 className="border-2 border-navy/20 text-navy font-bold text-[15px] uppercase tracking-widest px-10 py-5 text-center rounded-full hover:border-accent-gold hover:text-accent-gold transition-all duration-200"
               >
-                Free Enterprise Playbook →
+                Free Playbook + HQ Trial →
               </a>
             </motion.div>
 

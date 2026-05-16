@@ -149,11 +149,11 @@ export default function MasterclassPreview() {
             Free Enterprise Playbook
           </h2>
           <p className="font-display text-[24px] lg:text-[36px] leading-[1.1] text-white/60 font-bold uppercase mt-3">
-            7 Topics. Zero Cost.<br className="hidden lg:block" /> Complete Enterprise Education.
+            Enterprise HQ Trial Included
           </p>
           <p className="font-body text-[17px] text-white/50 leading-[1.7] mt-6 max-w-2xl mx-auto">
-            The Enterprise Playbook is a free, self-paced training library that teaches you
-            how service businesses scale to 8 figures with systems that run in 90 minutes a day.
+            Get the Enterprise Playbook free and start a trial of Enterprise HQ — the platform
+            where you and your team put the principles into action. No credit card required.
           </p>
         </motion.div>
 
@@ -365,12 +365,12 @@ export default function MasterclassPreview() {
         >
           <a
             href="#footer"
-            className="inline-block bg-accent-gold text-white font-bold text-[14px] uppercase tracking-widest px-12 py-5 rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200 shadow-[0_8px_32px_rgba(240,192,48,0.25)]"
+            className="inline-block bg-accent-gold text-black font-bold text-[14px] uppercase tracking-widest px-12 py-5 rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200 shadow-[0_8px_32px_rgba(240,192,48,0.25)]"
           >
-            Start the Free Playbook
+            Start Free — Get the Playbook + HQ Trial
           </a>
           <p className="font-body text-[14px] text-white/30 mt-4">
-            No credit card required. Instant access.
+            No credit card required.
           </p>
         </motion.div>
       </div>

@@ -157,14 +157,14 @@ export default function Navbar() {
                       The Enterprise Playbook
                     </h3>
                     <p className="font-body text-[14px] text-text-secondary leading-[1.6] mt-3">
-                      Learn how service businesses scale to 8 figures with systems that run in 90 minutes a day. Free access — no credit card required.
+                      Get the Playbook free plus a trial of Enterprise HQ — the platform where you put the principles into action. No credit card required.
                     </p>
                     <a
-                      href="#footer"
+                      href="https://app.scaleenterprises.com"
                       onClick={() => setCourseOpen(false)}
-                      className="block w-full mt-5 bg-accent-gold text-white font-bold text-[13px] uppercase tracking-widest px-6 py-3.5 text-center rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200"
+                      className="block w-full mt-5 bg-accent-gold text-black font-bold text-[13px] uppercase tracking-widest px-6 py-3.5 text-center rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200"
                     >
-                      Start the Free Enterprise Playbook →
+                      Start Free — Playbook + HQ Trial →
                     </a>
                   </motion.div>
                 )}
@@ -283,12 +283,12 @@ export default function Navbar() {
                     className="overflow-hidden flex flex-col items-center text-center max-w-[300px] mt-3"
                   >
                     <p className="font-body text-[13px] text-text-muted leading-[1.5]">
-                      Learn how service businesses scale to 8 figures — free, no credit card required.
+                      Free Playbook + Enterprise HQ trial. No credit card required.
                     </p>
                     <a
-                      href="#footer"
+                      href="https://app.scaleenterprises.com"
                       onClick={() => { setMobileOpen(false); setMobileCourseOpen(false); }}
-                      className="mt-3 bg-accent-gold text-white font-bold text-[12px] uppercase tracking-widest px-6 py-2.5 rounded-full hover:brightness-110 transition-all duration-200"
+                      className="mt-3 bg-accent-gold text-black font-bold text-[12px] uppercase tracking-widest px-6 py-2.5 rounded-full hover:brightness-110 transition-all duration-200"
                     >
                       Start Free Enterprise Playbook →
                     </a>

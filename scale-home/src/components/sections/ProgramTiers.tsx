@@ -106,7 +106,7 @@ export default function ProgramTiers() {
             whileHover={{ scale: 1.02 }}
             className="relative bg-white border-2 border-accent-gold/50 p-10 card-shadow-gold rounded-2xl"
           >
-            <span className="absolute top-4 right-4 bg-accent-gold text-white font-body text-[11px] uppercase tracking-eyebrow font-bold px-4 py-1.5 rounded-full">
+            <span className="absolute top-4 right-4 bg-accent-gold text-black font-body text-[11px] uppercase tracking-eyebrow font-bold px-4 py-1.5 rounded-full">
               Most Popular
             </span>
             <p className="font-body text-[11px] uppercase tracking-eyebrow text-text-muted font-bold">
