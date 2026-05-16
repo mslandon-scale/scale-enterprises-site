@@ -17,9 +17,8 @@ const pillars = [
     ],
     icon: (
       <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-        <path d="M6 32s8-14 26-14 26 14 26 14-8 14-26 14S6 32 6 32z" />
-        <circle cx="32" cy="32" r="9" />
-        <circle cx="32" cy="32" r="4" fill="currentColor" stroke="none" />
+        <circle cx="32" cy="20" r="10" />
+        <path d="M16 54v-4a16 16 0 0 1 32 0v4" />
       </svg>
     ),
     bgGradient: "from-accent-gold/30 via-accent-gold/10 to-bg-navy",
@@ -39,13 +38,12 @@ const pillars = [
     ],
     icon: (
       <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-        <circle cx="32" cy="32" r="20" />
-        <circle cx="32" cy="32" r="10" />
-        <circle cx="32" cy="32" r="3" fill="currentColor" stroke="none" />
-        <line x1="32" y1="12" x2="32" y2="4" />
-        <line x1="32" y1="60" x2="32" y2="52" />
-        <line x1="12" y1="32" x2="4" y2="32" />
-        <line x1="60" y1="32" x2="52" y2="32" />
+        <rect x="8" y="26" width="16" height="12" rx="3" />
+        <rect x="40" y="26" width="16" height="12" rx="3" />
+        <rect x="24" y="8" width="16" height="12" rx="3" />
+        <rect x="24" y="44" width="16" height="12" rx="3" />
+        <path d="M32 20v6M32 38v6M24 32h-8M48 32h-8" />
+        <circle cx="32" cy="32" r="2" fill="currentColor" stroke="none" />
       </svg>
     ),
     bgGradient: "from-accent-gold/25 via-accent-gold/[0.08] to-bg-navy",
