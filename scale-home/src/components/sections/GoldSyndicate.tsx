@@ -315,10 +315,10 @@ export default function GoldSyndicate() {
               </svg>
               <div>
                 <p className="font-body text-[15px] text-accent-gold font-bold">
-                  The Work Guarantee
+                  The Results Guarantee
                 </p>
                 <p className="font-body text-[14px] text-white/50 leading-[1.6] mt-1">
-                  Show up, do the work, and if you don&apos;t see real results — you don&apos;t pay.
+                  Show up, play full out, and if you don&apos;t see results — you don&apos;t pay.
                 </p>
               </div>
             </div>
