@@ -26,7 +26,7 @@ export default function InnerCircle() {
             <div className="w-32 h-32 rounded-full bg-gradient-to-br from-accent-gold/10 to-transparent" />
           </div>
           <span className="absolute inset-0 flex items-center justify-center font-body text-[12px] text-text-muted font-medium">
-            [Mastermind Event / Room Photo]
+            [Event / Room Photo]
           </span>
           <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-white to-transparent" />
         </motion.div>

@@ -7,7 +7,7 @@ const productItems = [
   { label: "Enterprise 360", desc: "Full enterprise implementation", href: "#", badge: null },
   { label: "Enterprise Challenge", desc: "A deep dive to transform your business", href: "#", badge: "Coming Soon" },
   { label: "Enterprise Platform", desc: "Platform services for your business", href: "#", badge: "Coming Soon" },
-  { label: "Enterprise Command Center", desc: "Your eagle view snapshot of your business", href: "#", badge: "Coming Soon" },
+  { label: "Enterprise HQ", desc: "Your eagle view snapshot of your business", href: "#", badge: "Coming Soon" },
 ];
 
 export default function Navbar() {
@@ -123,13 +123,13 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
 
-            {/* Free Masterclass dropdown */}
+            {/* Free Enterprise Playbook dropdown */}
             <div ref={courseRef} className="relative">
               <button
                 onClick={() => setCourseOpen(!courseOpen)}
                 className="font-body text-[14px] font-bold uppercase tracking-widest text-text-secondary hover:text-navy transition-colors duration-200 flex items-center gap-1"
               >
-                Free Masterclass
+                Free Enterprise Playbook
                 <svg
                   className={`w-3.5 h-3.5 transition-transform duration-200 ${courseOpen ? "rotate-180" : ""}`}
                   fill="none"
@@ -151,10 +151,10 @@ export default function Navbar() {
                     className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[360px] bg-white border border-black/10 rounded-2xl shadow-lg overflow-hidden p-6"
                   >
                     <p className="font-body text-[10px] font-bold uppercase tracking-widest text-accent-gold">
-                      Free Masterclass
+                      Free Enterprise Playbook
                     </p>
                     <h3 className="font-display text-[20px] text-navy leading-[1.1] mt-2 font-bold">
-                      The Enterprise Masterclass
+                      The Enterprise Playbook
                     </h3>
                     <p className="font-body text-[14px] text-text-secondary leading-[1.6] mt-3">
                       Learn how service businesses scale to 8 figures with systems that run in 90 minutes a day. Free access — no credit card required.
@@ -164,7 +164,7 @@ export default function Navbar() {
                       onClick={() => setCourseOpen(false)}
                       className="block w-full mt-5 bg-accent-gold text-white font-bold text-[13px] uppercase tracking-widest px-6 py-3.5 text-center rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200"
                     >
-                      Start the Free Masterclass →
+                      Start the Free Enterprise Playbook →
                     </a>
                   </motion.div>
                 )}
@@ -249,13 +249,13 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
 
-            {/* Free Masterclass accordion */}
+            {/* Free Enterprise Playbook accordion */}
             <div className="flex flex-col items-center">
               <button
                 onClick={() => setMobileCourseOpen(!mobileCourseOpen)}
                 className="font-body text-xl font-bold uppercase tracking-widest text-text-secondary hover:text-navy transition-colors flex items-center gap-2"
               >
-                Free Masterclass
+                Free Enterprise Playbook
                 <svg
                   className={`w-4 h-4 transition-transform duration-200 ${mobileCourseOpen ? "rotate-180" : ""}`}
                   fill="none"
@@ -283,7 +283,7 @@ export default function Navbar() {
                       onClick={() => { setMobileOpen(false); setMobileCourseOpen(false); }}
                       className="mt-3 bg-accent-gold text-white font-bold text-[12px] uppercase tracking-widest px-6 py-2.5 rounded-full hover:brightness-110 transition-all duration-200"
                     >
-                      Start Free Masterclass →
+                      Start Free Enterprise Playbook →
                     </a>
                   </motion.div>
                 )}

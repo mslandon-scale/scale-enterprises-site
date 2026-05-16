@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const tools = [
   {
-    title: "Enterprise Command Center",
+    title: "Enterprise HQ",
     description: "Your 90-minute weekly operating system.",
   },
   {

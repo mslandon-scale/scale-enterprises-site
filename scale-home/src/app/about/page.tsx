@@ -59,7 +59,7 @@ export default function About() {
               operations.
             </p>
             <p>
-              Through the Enterprise 360 and the Enterprise Masterclass, Matthew and his team
+              Through Enterprise 360 and the Enterprise Playbook, Matthew and his team
               have helped hundreds of service business owners install enterprise-grade systems
               in 30 days — transforming how they operate, hire, deliver, and grow.
             </p>
@@ -85,12 +85,12 @@ export default function About() {
                 desc: "A full-scale, done-for-you implementation of every system your business needs — operating systems, management structure, KPI dashboards, SOPs, hiring frameworks, and client acquisition engines. Installed in 30 days.",
               },
               {
-                title: "Mastermind",
-                desc: "Direct access to Matthew Landon and a vetted network of 7- and 8-figure service business owners. Weekly strategy calls, hot-seat coaching, and a private community of operators helping operators.",
+                title: "Leadership System",
+                desc: "A management cadence that lets you run your business in 90 minutes a week — accountability frameworks, talent recruitment, skill transfer, and daily-to-annual team alignment.",
               },
               {
-                title: "Tools & Resources",
-                desc: "Every template, framework, script, and system we use — from the Enterprise Masterclass video library to hiring scorecards, financial models, and sales scripts. Yours to keep forever.",
+                title: "Enterprise HQ & The Vault",
+                desc: "Enterprise HQ is the implementation platform for your team. The Enterprise Vault gives you lifetime access to every framework, principle, and system — long after the 90 days.",
               },
             ].map((item) => (
               <div

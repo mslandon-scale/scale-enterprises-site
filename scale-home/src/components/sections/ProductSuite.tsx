@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 const products = [
   {
     label: "Free",
-    title: "Enterprise Masterclass",
-    description: "A free, 7 Masterclass video training that teaches you how to build enterprise systems. Audio version included.",
-    cta: "Start Free Masterclass",
+    title: "Enterprise Playbook",
+    description: "A free training that teaches you how to build enterprise systems — start applying the principles immediately.",
+    cta: "Start Free Playbook",
     href: "#footer",
     primary: false,
   },
@@ -22,7 +22,7 @@ const products = [
   {
     label: "Flagship",
     title: "Enterprise 360",
-    description: "Full enterprise buildout, mastermind access, and every tool and resource — done for you.",
+    description: "A 90-day full business overhaul — Enterprise HQ access, the Enterprise Vault, and hands-on guidance to transform everything.",
     cta: "Apply Now",
     href: "#footer",
     primary: true,

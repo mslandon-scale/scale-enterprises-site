@@ -129,13 +129,12 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto w-full px-6 lg:px-6 py-20 lg:py-0">
-        <div className="grid lg:grid-cols-[55%_45%] gap-12 lg:gap-8 items-center">
-          {/* Left column */}
+        <div className="flex items-center justify-center">
           <motion.div
             variants={stagger}
             initial="hidden"
             animate="show"
-            className="flex flex-col"
+            className="flex flex-col items-center text-center max-w-3xl"
           >
             {/* Headline */}
             <motion.h1
@@ -149,7 +148,7 @@ export default function Hero() {
             {/* Subheadline */}
             <motion.p
               variants={fadeUp(0.1)}
-              className="font-body text-[19px] text-text-secondary leading-[1.7] max-w-[480px] mt-6"
+              className="font-body text-[19px] text-text-secondary leading-[1.7] max-w-[560px] mt-6"
             >
               Take control of your business and reach your full potential.
             </motion.p>
@@ -166,38 +165,10 @@ export default function Hero() {
                 href="#footer"
                 className="border-2 border-navy/20 text-navy font-bold text-[15px] uppercase tracking-widest px-10 py-5 text-center rounded-full hover:border-accent-gold hover:text-accent-gold transition-all duration-200"
               >
-                Free Masterclass →
+                Free Enterprise Playbook →
               </a>
             </motion.div>
 
-          </motion.div>
-
-          {/* Right column — Video placeholder */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" as const, delay: 0.3 }}
-            className="relative bg-navy rounded-2xl h-[420px] lg:h-[520px] overflow-hidden flex items-center justify-center"
-          >
-            {/* Play button */}
-            <div className="relative z-10 flex flex-col items-center gap-4">
-              <div className="w-20 h-20 rounded-full bg-accent-gold/90 flex items-center justify-center cursor-pointer hover:bg-accent-gold hover:scale-110 transition-all duration-300">
-                <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
-              <span className="font-body text-[13px] text-white/50 font-semibold uppercase tracking-widest">
-                Watch the Overview
-              </span>
-            </div>
-
-            {/* Subtle background pattern */}
-            <div className="absolute inset-0 opacity-[0.03]">
-              <div className="absolute inset-0" style={{
-                backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)",
-                backgroundSize: "24px 24px"
-              }} />
-            </div>
           </motion.div>
         </div>
 

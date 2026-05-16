@@ -58,14 +58,14 @@ export default function EnterpriseChallenge() {
               The Enterprise Challenge Is On Its Way
             </h3>
             <p className="font-body text-text-secondary text-[15px] leading-[1.7] mb-8">
-              We&apos;re putting the finishing touches on something powerful. In the meantime, get a head start with our free Enterprise Masterclass.
+              We&apos;re putting the finishing touches on something powerful. In the meantime, get a head start with our free Enterprise Playbook.
             </p>
 
             <a
               href="#footer"
               className="inline-block bg-accent-gold text-black font-bold text-[14px] uppercase tracking-widest px-10 py-4 rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200 shadow-[0_8px_32px_rgba(240,192,48,0.25)]"
             >
-              Start the Free Masterclass →
+              Start the Free Playbook →
             </a>
           </motion.div>
         </motion.div>

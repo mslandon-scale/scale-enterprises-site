@@ -146,13 +146,13 @@ export default function MasterclassPreview() {
           className="text-center mb-16"
         >
           <h2 className="font-display text-[36px] lg:text-[56px] leading-[1.05] text-white font-extrabold uppercase">
-            Free Masterclass
+            Free Enterprise Playbook
           </h2>
           <p className="font-display text-[24px] lg:text-[36px] leading-[1.1] text-white/60 font-bold uppercase mt-3">
             7 Topics. Zero Cost.<br className="hidden lg:block" /> Complete Enterprise Education.
           </p>
           <p className="font-body text-[17px] text-white/50 leading-[1.7] mt-6 max-w-2xl mx-auto">
-            The Enterprise Masterclass is a free, self-paced video training library that teaches you
+            The Enterprise Playbook is a free, self-paced training library that teaches you
             how service businesses scale to 8 figures with systems that run in 90 minutes a day.
           </p>
         </motion.div>
@@ -259,7 +259,7 @@ export default function MasterclassPreview() {
                 Welcome back
               </h3>
               <p className="text-[13px] text-white/40 mt-1 mb-5">
-                Continue your Enterprise Masterclass
+                Continue your Enterprise Playbook
               </p>
 
               {/* Progress bar — replica of .progress-wrap */}
@@ -287,7 +287,7 @@ export default function MasterclassPreview() {
                   <p className="text-[14px] font-bold text-white" style={{ fontFamily: "'Sora', sans-serif" }}>
                     Audio Version Available
                   </p>
-                  <p className="text-[12px] text-white/40">Listen to the Enterprise Masterclass on the go</p>
+                  <p className="text-[12px] text-white/40">Listen to the Enterprise Playbook on the go</p>
                 </div>
                 <span className="ml-auto hidden sm:block bg-[#F0C030] text-black text-[12px] font-bold px-4 py-2 rounded whitespace-nowrap">
                   Listen Now
@@ -321,7 +321,7 @@ export default function MasterclassPreview() {
                       className="text-[11px] font-bold uppercase tracking-[0.1em] mb-1.5"
                       style={{ color: "#F0C030", fontFamily: "'Sora', sans-serif" }}
                     >
-                      Masterclass {mod.num}
+                      Module {mod.num}
                     </p>
 
                     {/* Title */}
@@ -340,7 +340,7 @@ export default function MasterclassPreview() {
                     {/* Status badge */}
                     {mod.status === "start" ? (
                       <span className="inline-flex items-center gap-1.5 text-[12px] font-semibold px-3 py-1.5 rounded-full bg-[#F0C030]/15 text-[#F0C030]">
-                        Start Masterclass →
+                        Start Module →
                       </span>
                     ) : (
                       <span className="inline-flex items-center gap-1.5 text-[12px] font-semibold px-3 py-1.5 rounded-full bg-white/[0.05] text-white/40">
@@ -367,7 +367,7 @@ export default function MasterclassPreview() {
             href="#footer"
             className="inline-block bg-accent-gold text-white font-bold text-[14px] uppercase tracking-widest px-12 py-5 rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200 shadow-[0_8px_32px_rgba(240,192,48,0.25)]"
           >
-            Start the Free Masterclass
+            Start the Free Playbook
           </a>
           <p className="font-body text-[14px] text-white/30 mt-4">
             No credit card required. Instant access.

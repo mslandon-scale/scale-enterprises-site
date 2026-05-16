@@ -2,12 +2,12 @@ const platformLinks = [
   { label: "How It Works", href: "#how-it-works" },
   { label: "Enterprise Coaching", href: "#platform" },
   { label: "Managed Services", href: "#platform" },
-  { label: "Command Center", href: "#how-it-works" },
+  { label: "Enterprise HQ", href: "#how-it-works" },
 ];
 
 const companyLinks = [
   { label: "About", href: "#about" },
-  { label: "Free Masterclass", href: "#footer" },
+  { label: "Free Enterprise Playbook", href: "#footer" },
   { label: "Contact", href: "/contact" },
 ];
 
