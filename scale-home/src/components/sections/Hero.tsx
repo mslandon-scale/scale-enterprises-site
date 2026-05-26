@@ -156,13 +156,13 @@ export default function Hero() {
             {/* Buttons */}
             <motion.div variants={fadeUp(0.2)} className="flex flex-col sm:flex-row gap-4 mt-10">
               <a
-                href="#footer"
+                href="https://go.scaleenterprises.com/ent360"
                 className="bg-accent-gold text-black font-bold text-[15px] uppercase tracking-widest px-10 py-5 text-center rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200"
               >
                 Transform Your Business
               </a>
               <a
-                href="#footer"
+                href="https://app.scaleenterprises.com"
                 className="border-2 border-navy/20 text-navy font-bold text-[15px] uppercase tracking-widest px-10 py-5 text-center rounded-full hover:border-accent-gold hover:text-accent-gold transition-all duration-200"
               >
                 Free Playbook + HQ Trial →

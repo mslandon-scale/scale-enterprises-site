@@ -179,7 +179,7 @@ export default function Navbar() {
             </a>
 
             <a
-              href="#footer"
+              href="https://go.scaleenterprises.com/ent360"
               className="bg-accent-gold text-black font-bold text-[15px] uppercase tracking-widest px-8 py-3 rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200"
             >
               Transform Your Business
@@ -306,7 +306,7 @@ export default function Navbar() {
             </a>
 
             <a
-              href="#footer"
+              href="https://go.scaleenterprises.com/ent360"
               onClick={() => setMobileOpen(false)}
               className="bg-accent-gold text-black font-bold text-[15px] uppercase tracking-widest px-10 py-4 mt-4 rounded-full"
             >

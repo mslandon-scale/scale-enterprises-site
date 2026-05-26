@@ -8,7 +8,7 @@ const products = [
     title: "Enterprise Playbook + HQ Trial",
     description: "Get the Playbook free and start a trial of Enterprise HQ — no credit card required.",
     cta: "Start Free",
-    href: "#footer",
+    href: "https://app.scaleenterprises.com",
     primary: false,
   },
   {
@@ -24,7 +24,7 @@ const products = [
     title: "Enterprise 360",
     description: "12 weeks of 1:1 coaching across three pillars — your strategy, your engine, and your leadership flow. Plus the Playbook Vault and 12 months of HQ access.",
     cta: "Apply Now",
-    href: "#footer",
+    href: "https://go.scaleenterprises.com/ent360",
     primary: true,
   },
 ];

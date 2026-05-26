@@ -60,7 +60,7 @@ export default function InnerCircle() {
 
           <div className="mt-10">
             <a
-              href="#apply"
+              href="https://go.scaleenterprises.com/ent360"
               className="inline-block bg-accent-gold text-black font-bold text-sm uppercase tracking-widest px-8 py-4 hover:brightness-110 hover:-translate-y-px transition-all duration-200"
             >
               See If You Qualify

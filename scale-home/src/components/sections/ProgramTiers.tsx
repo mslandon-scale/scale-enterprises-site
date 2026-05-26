@@ -130,7 +130,7 @@ export default function ProgramTiers() {
               ))}
             </ul>
             <a
-              href="#apply"
+              href="https://go.scaleenterprises.com/ent360"
               className="block w-full mt-8 bg-navy text-white font-bold text-[15px] uppercase tracking-widest px-8 py-4 text-center rounded-full hover:bg-navy-light hover:-translate-y-px transition-all duration-200"
             >
               Apply Now

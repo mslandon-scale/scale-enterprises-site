@@ -107,7 +107,7 @@ export default function About() {
         {/* CTA */}
         <div className="text-center pt-4 pb-8">
           <a
-            href="/#footer"
+            href="https://go.scaleenterprises.com/ent360"
             className="inline-block bg-accent-gold text-black font-bold text-[14px] uppercase tracking-widest px-10 py-4 rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200 shadow-[0_8px_32px_rgba(240,192,48,0.25)]"
           >
             Apply For Enterprise 360

@@ -32,10 +32,9 @@ export default function Contact() {
               <h3 className="font-display text-navy font-bold text-base mb-2">Apply for the Program</h3>
               <p className="font-body text-[15px] text-text-secondary">
                 Ready to transform your business?{" "}
-                <a href="/#footer" className="text-accent-gold font-semibold underline underline-offset-[3px] hover:text-navy transition-colors duration-200">
+                <a href="https://go.scaleenterprises.com/ent360" className="text-accent-gold font-semibold underline underline-offset-[3px] hover:text-navy transition-colors duration-200">
                   Submit an application
-                </a>{" "}
-                on our main page.
+                </a>.
               </p>
             </div>
 

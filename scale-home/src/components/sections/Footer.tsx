@@ -7,7 +7,7 @@ const platformLinks = [
 
 const companyLinks = [
   { label: "About", href: "#about" },
-  { label: "Free Enterprise Playbook", href: "#footer" },
+  { label: "Enterprise Playbook", href: "https://app.scaleenterprises.com" },
   { label: "Contact", href: "/contact" },
 ];
 
