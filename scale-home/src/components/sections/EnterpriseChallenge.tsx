@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function EnterpriseChallenge() {
   return (
-    <section className="relative bg-white py-24 lg:py-36 overflow-hidden">
+    <section id="enterprise-challenge" className="relative bg-white py-24 lg:py-36 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div

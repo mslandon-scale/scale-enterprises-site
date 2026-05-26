@@ -16,7 +16,7 @@ const products = [
     title: "Enterprise Challenge",
     description: "An intensive deep dive to diagnose, architect, and blueprint your enterprise transformation.",
     cta: "Join the Challenge",
-    href: "#footer",
+    href: "#enterprise-challenge",
     primary: false,
   },
   {
