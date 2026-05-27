@@ -19,7 +19,7 @@ export default function Hero() {
       {/* Background photo */}
       <div
         className="absolute inset-0 bg-cover bg-center opacity-[0.08]"
-        style={{ backgroundImage: "url('/images/mastermind-hero.jpg')" }}
+        style={{ backgroundImage: "url('/images/conference-audience.jpg')" }}
       />
       {/* Background shapes — larger, more prevalent, navy + gold */}
       <div className="absolute inset-0 pointer-events-none">
