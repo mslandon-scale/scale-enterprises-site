@@ -167,7 +167,7 @@ export default function Hero() {
                 Transform Your Business
               </a>
               <a
-                href="https://app.scaleenterprises.com"
+                href="https://go.scaleenterprises.com/ent-playbook-lp"
                 className="border-2 border-navy/20 text-navy font-bold text-[15px] uppercase tracking-widest px-10 py-5 text-center rounded-full hover:border-accent-gold hover:text-accent-gold transition-all duration-200"
               >
                 Free Playbook + HQ Trial →

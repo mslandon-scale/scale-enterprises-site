@@ -160,7 +160,7 @@ export default function Navbar() {
                       Get the Playbook free plus a trial of Enterprise HQ — the platform where you put the principles into action. No credit card required.
                     </p>
                     <a
-                      href="https://app.scaleenterprises.com"
+                      href="https://go.scaleenterprises.com/ent-playbook-lp"
                       onClick={() => setCourseOpen(false)}
                       className="block w-full mt-5 bg-accent-gold text-black font-bold text-[13px] uppercase tracking-widest px-6 py-3.5 text-center rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200"
                     >
@@ -286,7 +286,7 @@ export default function Navbar() {
                       Free Playbook + Enterprise HQ trial. No credit card required.
                     </p>
                     <a
-                      href="https://app.scaleenterprises.com"
+                      href="https://go.scaleenterprises.com/ent-playbook-lp"
                       onClick={() => { setMobileOpen(false); setMobileCourseOpen(false); }}
                       className="mt-3 bg-accent-gold text-black font-bold text-[12px] uppercase tracking-widest px-6 py-2.5 rounded-full hover:brightness-110 transition-all duration-200"
                     >
