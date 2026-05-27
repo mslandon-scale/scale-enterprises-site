@@ -21,6 +21,11 @@ const tier2Bullets = [
 export default function ProgramTiers() {
   return (
     <section className="relative bg-bg-alt py-20 lg:py-32 overflow-hidden" id="platform">
+      {/* Background photo */}
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-[0.04]"
+        style={{ backgroundImage: "url('/images/business-meeting.jpg')" }}
+      />
       {/* Background shapes */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div

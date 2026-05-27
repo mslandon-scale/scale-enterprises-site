@@ -5,6 +5,11 @@ import { motion } from "framer-motion";
 export default function FlagshipCTA() {
   return (
     <section className="relative bg-navy py-20 lg:py-32 overflow-hidden" id="apply">
+      {/* Background photo */}
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-[0.07]"
+        style={{ backgroundImage: "url('/images/celebration.jpg')" }}
+      />
       {/* Background shapes */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div

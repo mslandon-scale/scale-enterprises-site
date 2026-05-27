@@ -85,6 +85,11 @@ const included = [
 export default function GoldSyndicate() {
   return (
     <section className="relative bg-bg-navy py-24 lg:py-32 overflow-hidden">
+      {/* Background photo */}
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-[0.05]"
+        style={{ backgroundImage: "url('/images/team-success.jpg')" }}
+      />
       {/* ═══ PRESTIGE BACKGROUND ELEMENTS ═══ */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
