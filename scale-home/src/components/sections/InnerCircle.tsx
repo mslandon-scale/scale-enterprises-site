@@ -22,11 +22,12 @@ export default function InnerCircle() {
           transition={{ duration: 0.6, ease: "easeOut" as const }}
           className="relative w-full h-[320px] lg:h-[480px] bg-bg-alt border border-black/10 mb-0 overflow-hidden rounded-lg"
         >
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('/images/conference-speaking.jpg')" }}
-          />
-          <div className="absolute inset-0 bg-navy/40" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-32 h-32 rounded-full bg-gradient-to-br from-accent-gold/10 to-transparent" />
+          </div>
+          <span className="absolute inset-0 flex items-center justify-center font-body text-[12px] text-text-muted font-medium">
+            [Event / Room Photo]
+          </span>
           <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-white to-transparent" />
         </motion.div>
 

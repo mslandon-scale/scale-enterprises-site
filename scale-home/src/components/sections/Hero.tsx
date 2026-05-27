@@ -18,8 +18,8 @@ export default function Hero() {
     <section className="relative min-h-screen bg-white flex items-center pt-[80px] overflow-hidden">
       {/* Background photo */}
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-[0.03]"
-        style={{ backgroundImage: "url('/images/event-collaboration.jpg')" }}
+        className="absolute inset-0 bg-cover bg-center opacity-[0.08]"
+        style={{ backgroundImage: "url('/images/mastermind-hero.jpg')" }}
       />
       {/* Background shapes — larger, more prevalent, navy + gold */}
       <div className="absolute inset-0 pointer-events-none">
