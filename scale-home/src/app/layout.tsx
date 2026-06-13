@@ -23,6 +23,9 @@ export const metadata: Metadata = {
     icon: "/favicon.png",
     apple: "/favicon.png",
   },
+  other: {
+    "application-name": "Scale Enterprises",
+  },
 };
 
 export default function RootLayout({
@@ -32,6 +35,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${sora.variable} ${dmSans.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Scale Enterprises",
+              alternateName: "Scale Enterprises LLC",
+              url: "https://scaleenterprises.com",
+            }),
+          }}
+        />
+      </head>
       <body className="font-body antialiased bg-white text-text-primary overflow-x-hidden">
         {children}
         <Script
