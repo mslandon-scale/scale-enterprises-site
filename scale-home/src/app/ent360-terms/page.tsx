@@ -16,7 +16,7 @@ export default function Ent360Terms() {
           <h1 className="font-display text-navy font-extrabold text-[clamp(1.8rem,4vw,2.6rem)] leading-[1.1] tracking-[-0.02em] mb-2">
             Enterprise 360 &mdash; Terms of Service
           </h1>
-          <p className="text-text-muted text-[13px] font-medium mb-12">Effective Date: May 20, 2026</p>
+          <p className="text-text-muted text-[13px] font-medium mb-12">Effective Date: July 28, 2026</p>
           <div className="w-12 h-[3px] bg-accent-gold rounded-sm mb-12" />
 
           <div className="space-y-6 font-body text-[15px] leading-[1.8] text-text-secondary">
@@ -24,7 +24,7 @@ export default function Ent360Terms() {
               These Terms of Service (&ldquo;Agreement&rdquo;) constitute a legally binding contract between you
               (&ldquo;Client,&rdquo; &ldquo;you,&rdquo; or &ldquo;your&rdquo;) and Scale Enterprises, LLC
               (&ldquo;Company,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) governing your
-              participation in the Enterprise 360 program (&ldquo;Program&rdquo;). By clicking &ldquo;I Accept the
+              participation in the Enterprise 360 twelve-month partnership program (&ldquo;Program&rdquo;). By clicking &ldquo;I Accept the
               Terms of Service&rdquo; on your order form, you acknowledge that you have read, understood, and agree
               to be bound by this Agreement in its entirety.
             </p>
@@ -32,98 +32,132 @@ export default function Ent360Terms() {
             {/* ── 1. PROGRAM DESCRIPTION ── */}
             <h2 className="font-display text-navy font-bold text-[1.15rem] pt-4">1. Program Description</h2>
             <p>
-              Enterprise 360 is a 90-day (12-week) enterprise transformation program delivered through three pillars:
+              Enterprise 360 is a 12-month done-for-you enterprise transformation partnership for service-based
+              business owners building scalable enterprises. Scale Enterprises embeds with your team to build,
+              install, and manage the core systems required to scale your business. The partnership includes
+              weekly leadership meetings, monthly reviews, and quarterly strategic planning sessions throughout
+              the full 12-month engagement.
             </p>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>
-                <strong className="text-navy font-bold">Pillar 1 &mdash; The Enterprise Entrepreneur:</strong>{" "}
-                Identity transformation, 3-year strategy development, market and customer clarity.
-              </li>
-              <li>
-                <strong className="text-navy font-bold">Pillar 2 &mdash; The Engine:</strong>{" "}
-                Business model architecture including customer acquisition, fulfillment systems, and unit economics
-                built for scale.
-              </li>
-              <li>
-                <strong className="text-navy font-bold">Pillar 3 &mdash; The Leadership Flow:</strong>{" "}
-                Leadership systems, organizational design, and the 90-minute weekly decision rhythm.
-              </li>
-            </ul>
 
             <h3 className="font-display text-navy font-bold text-[1rem] pt-2">What Is Included</h3>
+            <p>The Program includes the following eight (8) core deliverables:</p>
             <ul className="list-disc pl-5 space-y-2">
-              <li>12 weekly one-on-one coaching sessions (approximately 60 minutes each)</li>
-              <li>A custom 3-year enterprise strategy document</li>
-              <li>A complete business engine plan (marketing, sales, and fulfillment)</li>
-              <li>The 90-minute leadership system framework</li>
-              <li>Access to The Playbook Vault (12 function playbooks)</li>
-              <li>12 months of Enterprise HQ platform access (dashboards, scorecards, and the 56-element Enterprise Checklist)</li>
+              <li>
+                <strong className="text-navy font-bold">Full Strategy Build-Out:</strong>{" "}
+                Market positioning, growth roadmap, competitive analysis, and execution plan (done for you).
+              </li>
+              <li>
+                <strong className="text-navy font-bold">Business Model Development:</strong>{" "}
+                Scalable business model designed to reach $10M ARR, built with your approval (done for you).
+              </li>
+              <li>
+                <strong className="text-navy font-bold">Leadership System &amp; Leader Development:</strong>{" "}
+                Leadership operating system installation plus ongoing coaching to develop you as an enterprise leader (built and coached).
+              </li>
+              <li>
+                <strong className="text-navy font-bold">Customer Acquisition Funnel &amp; Revenue Management:</strong>{" "}
+                Landing pages, email sequences, and ad campaigns built for you; sales process coaching provided (funnel built, sales coached).
+              </li>
+              <li>
+                <strong className="text-navy font-bold">Financial Roadmap &amp; Cash Flow System:</strong>{" "}
+                Unit economics, scaling plan, and cash flow visibility integration (done for you).
+              </li>
+              <li>
+                <strong className="text-navy font-bold">Recruiting, Team Building &amp; Team Management:</strong>{" "}
+                Job advertisements, job descriptions, and candidate vetting support; your team handles onboarding and training (recruiting support provided).
+              </li>
+              <li>
+                <strong className="text-navy font-bold">Ongoing Management:</strong>{" "}
+                Weekly leadership meetings, monthly performance reviews, and quarterly strategic planning sessions (embedded with your team).
+              </li>
+              <li>
+                <strong className="text-navy font-bold">Tech &amp; AI Implementation:</strong>{" "}
+                CRM setup, AI tools, websites, and custom systems built and integrated into your operations (built and integrated).
+              </li>
             </ul>
 
             <h3 className="font-display text-navy font-bold text-[1rem] pt-2">What Is Not Included</h3>
             <ul className="list-disc pl-5 space-y-2">
-              <li>Done-for-you implementation of systems, funnels, websites, or marketing campaigns</li>
-              <li>Direct management or operation of your business</li>
-              <li>Legal, tax, financial, or accounting advice</li>
-              <li>Guaranteed revenue, profit, or specific business outcomes (see Section 8)</li>
+              <li>Inventory, product sourcing, or service fulfillment</li>
+              <li>Hands-on employee skills training</li>
+              <li>Direct management of your employees</li>
+              <li>Execution of traditional or guerilla marketing campaigns</li>
+              <li>HR compliance services</li>
+              <li>Licensed legal, tax, or accounting services</li>
+              <li>Equity or revenue share arrangements</li>
               <li>Services or deliverables beyond those explicitly listed above</li>
             </ul>
 
-            {/* ── 2. ELIGIBILITY & ACCEPTANCE ── */}
-            <h2 className="font-display text-navy font-bold text-[1.15rem] pt-4">2. Eligibility &amp; Acceptance</h2>
+            {/* ── 2. ENROLLMENT & AVAILABILITY ── */}
+            <h2 className="font-display text-navy font-bold text-[1.15rem] pt-4">2. Enrollment, Eligibility &amp; Availability</h2>
             <p>
               The Program is designed for service-based business owners. By enrolling, you represent that you are at
               least 18 years of age, have the legal authority to enter into this Agreement on behalf of yourself
               and/or your business, and have been approved through our application process. Acceptance into the
               Program is at the sole discretion of Scale Enterprises, LLC.
             </p>
+            <p>
+              Enrollment is limited. Scale Enterprises accepts a limited number of clients at any given time to
+              ensure the quality and depth of the done-for-you partnership. Enrollment closes when capacity is filled
+              and reopens at the Company&apos;s discretion.
+            </p>
 
             {/* ── 3. FEES & PAYMENT ── */}
             <h2 className="font-display text-navy font-bold text-[1.15rem] pt-4">3. Fees &amp; Payment Terms</h2>
             <p>
-              The total Program fee, payment schedule, and any applicable payment plan terms are set forth on your
-              individual order form. By accepting these Terms, you agree to pay all fees as outlined on your order
-              form. All fees are quoted in U.S. Dollars (USD).
+              Enterprise 360 is a 12-month partnership billed on a monthly recurring basis. By accepting these
+              Terms, you agree to pay all fees as outlined on your order form. All fees are quoted in U.S. Dollars (USD).
             </p>
             <ul className="list-disc pl-5 space-y-2">
               <li>
-                <strong className="text-navy font-bold">Payment Plans:</strong> If you have elected a payment plan,
-                all installments are due on the dates specified regardless of your participation or completion of
-                the Program.
+                <strong className="text-navy font-bold">Monthly Fee:</strong> $3,000 per month, billed monthly for
+                12 consecutive months, for a total partnership investment of $36,000. The fee, payment schedule,
+                and any applicable terms are set forth on your individual order form.
+              </li>
+              <li>
+                <strong className="text-navy font-bold">Billing Cycle:</strong> Your first payment is due upon
+                acceptance of these Terms. Subsequent payments are billed on the same date each month for the
+                remaining 11 months.
               </li>
               <li>
                 <strong className="text-navy font-bold">Late Payments:</strong> Payments more than 7 days past due
-                may result in suspension of coaching sessions, platform access, and/or referral to collections.
+                may result in suspension of deliverables, meetings, platform access, and/or referral to collections.
                 A late fee of $50 or 5% of the overdue amount (whichever is greater) may be applied to each late
-                installment.
+                payment.
               </li>
               <li>
                 <strong className="text-navy font-bold">Declined Payments:</strong> You are responsible for
                 ensuring your payment method on file is current and valid.
+              </li>
+              <li>
+                <strong className="text-navy font-bold">No Equity or Revenue Share:</strong> Scale Enterprises does
+                not take equity in, or a revenue share from, your business. The monthly fee is the sole compensation
+                for services rendered under this Agreement.
               </li>
             </ul>
 
             {/* ── 4. THE RESULTS GUARANTEE ── */}
             <h2 className="font-display text-navy font-bold text-[1.15rem] pt-4">4. The Results Guarantee</h2>
             <p>
-              We stand behind our work. If you show up and play full out for the entire 90-day Program &mdash;
-              attend every scheduled session, complete all assigned action items, and implement the strategies as
-              directed &mdash; and you do not see measurable results in your business, you will not be charged the
-              remaining balance (if on a payment plan) or will receive a full refund of the Program fee.
+              We stand behind our work. If your business does not reach $10M in annualized recurring revenue (ARR)
+              by the end of the 12-month partnership, Scale Enterprises will continue working with you at no
+              additional cost until you do.
             </p>
             <p>
               <strong className="text-navy font-bold">To qualify for the Results Guarantee, all of the following must be met:</strong>
             </p>
             <ul className="list-disc pl-5 space-y-2">
-              <li>Attendance at all 12 scheduled coaching sessions (reschedules permitted with 24-hour notice, up to 2 total)</li>
-              <li>Completion of 100% of assigned action items within the deadlines provided</li>
-              <li>Full implementation of the strategies and systems outlined during the Program</li>
-              <li>Written request for a guarantee claim submitted within 14 days of the final coaching session</li>
+              <li>Full and timely payment of all 12 monthly installments</li>
+              <li>Attendance at all scheduled weekly leadership meetings (reschedules permitted with 24-hour notice)</li>
+              <li>Full participation in monthly reviews and quarterly planning sessions</li>
+              <li>Implementation of the strategies, systems, and deliverables developed during the Program</li>
+              <li>Honest and transparent communication about business performance, challenges, and operations</li>
             </ul>
             <p>
               Scale Enterprises reserves the right to verify compliance with the above conditions. The Results
               Guarantee does not apply if the Client fails to meet any of the conditions listed above, voluntarily
-              withdraws from the Program, or is removed for breach of these Terms.
+              withdraws from the Program, or is removed for breach of these Terms. The Guarantee does not entitle
+              the Client to a refund of fees already paid; it extends the engagement at no additional cost.
             </p>
 
             {/* ── 5. CANCELLATION & REFUND POLICY ── */}
@@ -131,38 +165,49 @@ export default function Ent360Terms() {
             <ul className="list-disc pl-5 space-y-2">
               <li>
                 <strong className="text-navy font-bold">Cooling-Off Period:</strong> You may cancel this Agreement
-                within 72 hours of acceptance for a full refund, provided no coaching sessions have been delivered.
+                within 72 hours of acceptance for a full refund, provided no deliverables have been initiated or
+                meetings have been held.
               </li>
               <li>
                 <strong className="text-navy font-bold">After 72 Hours:</strong> All fees are non-refundable except
-                as provided under the Results Guarantee (Section 4). If you choose to discontinue participation,
-                remaining scheduled payments (if on a payment plan) remain due in full.
+                as provided under the Results Guarantee (Section 4). The 12-month partnership is a committed
+                engagement. If you choose to discontinue participation, all remaining monthly payments remain due
+                in full.
+              </li>
+              <li>
+                <strong className="text-navy font-bold">Renewal:</strong> At the conclusion of the 12-month
+                partnership, the engagement does not automatically renew. Any continuation of services beyond
+                the initial term will be agreed upon in writing by both parties at the then-current rate.
               </li>
               <li>
                 <strong className="text-navy font-bold">Company-Initiated Cancellation:</strong> If Scale
                 Enterprises determines, at its sole discretion, that a Client is not a good fit for the Program,
-                we may terminate the engagement and issue a pro-rata refund for undelivered sessions.
+                we may terminate the engagement and issue a pro-rata refund for the unused portion of the current
+                billing period.
               </li>
             </ul>
 
-            {/* ── 6. SCHEDULING & ATTENDANCE ── */}
-            <h2 className="font-display text-navy font-bold text-[1.15rem] pt-4">6. Scheduling &amp; Attendance</h2>
+            {/* ── 6. MEETINGS & PARTICIPATION ── */}
+            <h2 className="font-display text-navy font-bold text-[1.15rem] pt-4">6. Meetings &amp; Participation</h2>
             <p>
-              Coaching sessions are scheduled weekly at mutually agreed-upon times. You are responsible for attending
-              all scheduled sessions.
+              Full participation is mandatory. The Program includes weekly leadership meetings, monthly performance
+              reviews, and quarterly strategic planning sessions scheduled at mutually agreed-upon times throughout
+              the 12-month engagement.
             </p>
             <ul className="list-disc pl-5 space-y-2">
               <li>
-                <strong className="text-navy font-bold">Rescheduling:</strong> Sessions may be rescheduled with at
-                least 24 hours&apos; notice. A maximum of 2 reschedules is permitted during the 12-week Program.
+                <strong className="text-navy font-bold">Rescheduling:</strong> Meetings may be rescheduled with at
+                least 24 hours&apos; notice by either party.
               </li>
               <li>
-                <strong className="text-navy font-bold">No-Shows:</strong> A missed session without 24 hours&apos;
-                notice is considered a no-show. No-show sessions are forfeited and will not be rescheduled or refunded.
+                <strong className="text-navy font-bold">No-Shows:</strong> A missed meeting without 24 hours&apos;
+                notice is considered a no-show. Repeated no-shows (3 or more in any quarter) may be considered
+                a failure to participate and may disqualify you from the Results Guarantee.
               </li>
               <li>
-                <strong className="text-navy font-bold">Program Extension:</strong> The 12-week timeline will not
-                be extended due to missed or rescheduled sessions unless approved in writing by Scale Enterprises.
+                <strong className="text-navy font-bold">Implementation:</strong> You are expected to implement the
+                strategies and systems developed during the partnership. Scale Enterprises builds and installs the
+                systems; you are responsible for adopting and operating them within your business.
               </li>
             </ul>
 
@@ -171,18 +216,20 @@ export default function Ent360Terms() {
             <p>You acknowledge and agree that:</p>
             <ul className="list-disc pl-5 space-y-2">
               <li>You are solely responsible for the decisions you make in your business</li>
-              <li>You will actively participate in all sessions and complete assigned work</li>
-              <li>You will communicate honestly about your business, goals, and challenges</li>
-              <li>You will implement the strategies and frameworks provided during the Program</li>
+              <li>You will attend all scheduled meetings and actively participate in the partnership</li>
+              <li>You will communicate honestly about your business, goals, financials, and challenges</li>
+              <li>You will implement the strategies, systems, and frameworks developed during the Program</li>
+              <li>You will provide timely access to systems, accounts, and information necessary for Scale Enterprises to deliver the agreed-upon services</li>
               <li>You understand that results depend on your effort, execution, market conditions, and other factors beyond our control</li>
             </ul>
 
             {/* ── 8. EARNINGS DISCLAIMER ── */}
             <h2 className="font-display text-navy font-bold text-[1.15rem] pt-4">8. Earnings Disclaimer &amp; No Guarantee of Results</h2>
             <p>
-              Scale Enterprises makes no guarantees regarding specific income, revenue, or business results. Any
-              examples, case studies, or testimonials referenced in our marketing materials or during the Program
-              represent individual results and are not to be interpreted as typical, expected, or guaranteed outcomes.
+              Except as expressly stated in the Results Guarantee (Section 4), Scale Enterprises makes no guarantees
+              regarding specific income, revenue, or business results. Any examples, case studies, or testimonials
+              referenced in our marketing materials or during the Program represent individual results and are not
+              to be interpreted as typical, expected, or guaranteed outcomes.
             </p>
             <p>
               Your results will depend on many factors including but not limited to: your industry, business model,
@@ -201,15 +248,21 @@ export default function Ent360Terms() {
               <li>
                 <strong className="text-navy font-bold">Client Obligations:</strong> You agree not to share,
                 reproduce, distribute, or disclose any Scale Enterprises proprietary frameworks, playbooks,
-                templates, strategies, methodologies, or Program materials (&ldquo;Company IP&rdquo;) with any
-                third party without prior written consent. This includes but is not limited to: The Enterprise
-                Playbook, The Playbook Vault, the 56-element Enterprise Checklist, and all coaching session content.
+                templates, strategies, methodologies, systems, or Program materials (&ldquo;Company IP&rdquo;) with any
+                third party without prior written consent. This includes but is not limited to: all deliverables,
+                custom-built systems, strategies, funnels, and operational frameworks developed during the engagement.
               </li>
               <li>
                 <strong className="text-navy font-bold">Company Obligations:</strong> Scale Enterprises agrees to
                 treat all Client business data, financials, strategies, and proprietary information shared during
                 the Program as confidential and will not disclose such information to third parties without your
                 written consent, except as required by law.
+              </li>
+              <li>
+                <strong className="text-navy font-bold">Access to Systems:</strong> During the engagement, Scale
+                Enterprises may require access to your business systems, accounts, and tools to deliver the
+                agreed-upon services. All access will be used solely for the purpose of performing work under
+                this Agreement.
               </li>
               <li>
                 <strong className="text-navy font-bold">Survival:</strong> Confidentiality obligations survive the
@@ -220,15 +273,16 @@ export default function Ent360Terms() {
             {/* ── 10. INTELLECTUAL PROPERTY ── */}
             <h2 className="font-display text-navy font-bold text-[1.15rem] pt-4">10. Intellectual Property</h2>
             <p>
-              All materials, frameworks, playbooks, templates, tools, and content provided during the Program are
-              and remain the exclusive intellectual property of Scale Enterprises, LLC. You are granted a limited,
-              non-exclusive, non-transferable license to use these materials solely for your own internal business
-              purposes for the duration of your platform access.
+              All frameworks, methodologies, playbooks, templates, and proprietary tools provided or developed
+              during the Program are and remain the exclusive intellectual property of Scale Enterprises, LLC.
+              Custom deliverables built specifically for your business (such as funnels, landing pages, and
+              business-specific systems) are licensed to you for use in your business for as long as your
+              account remains in good standing.
             </p>
             <p>
               You may not resell, sublicense, teach, publish, or create derivative works from any Company IP.
-              Violation of this section may result in immediate termination of your Program access and platform
-              privileges, and may subject you to legal action.
+              Violation of this section may result in immediate termination of your Program access and may
+              subject you to legal action.
             </p>
 
             {/* ── 11. NON-DISPARAGEMENT ── */}
@@ -271,9 +325,9 @@ export default function Ent360Terms() {
               You agree to indemnify, defend, and hold harmless Scale Enterprises, LLC, its owners, officers,
               directors, employees, agents, and affiliates from and against any and all claims, damages, losses,
               liabilities, costs, and expenses (including reasonable attorney&apos;s fees) arising out of or
-              related to: (a) your breach of this Agreement; (b) your use or misuse of Program materials;
-              (c) any actions taken in your business based on strategies discussed during the Program; or
-              (d) any third-party claims related to your business operations.
+              related to: (a) your breach of this Agreement; (b) your use or misuse of Program materials or
+              deliverables; (c) any actions taken in your business based on strategies developed during the
+              Program; or (d) any third-party claims related to your business operations.
             </p>
 
             {/* ── 15. INDEPENDENT CONTRACTOR ── */}
@@ -281,8 +335,9 @@ export default function Ent360Terms() {
             <p>
               The relationship between you and Scale Enterprises is that of independent contractor and client.
               Nothing in this Agreement creates a partnership, joint venture, employment, franchise, or agency
-              relationship. Scale Enterprises is not responsible for your business decisions, tax obligations,
-              or compliance with applicable laws and regulations.
+              relationship. Scale Enterprises personnel embedded with your team remain employees or contractors
+              of Scale Enterprises, not of your company. Scale Enterprises is not responsible for your business
+              decisions, tax obligations, or compliance with applicable laws and regulations.
             </p>
 
             {/* ── 16. DISPUTE RESOLUTION ── */}
