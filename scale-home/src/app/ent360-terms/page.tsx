@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/sections/Navbar";
-import Footer from "@/components/sections/Footer";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Enterprise 360 Terms of Service | Scale Enterprises",
@@ -10,8 +9,12 @@ export const metadata: Metadata = {
 export default function Ent360Terms() {
   return (
     <>
-      <Navbar />
-      <main className="min-h-screen bg-white pt-[128px] pb-24">
+      <header className="w-full py-8 flex justify-center">
+        <a href="https://scaleenterprises.com">
+          <Image src="/logo.png" alt="Scale Enterprises" width={48} height={48} className="object-contain" />
+        </a>
+      </header>
+      <main className="min-h-screen bg-white pb-24">
         <div className="max-w-[780px] mx-auto px-6">
           <h1 className="font-display text-navy font-extrabold text-[clamp(1.8rem,4vw,2.6rem)] leading-[1.1] tracking-[-0.02em] mb-2">
             Enterprise 360 &mdash; Terms of Service
@@ -423,7 +426,12 @@ export default function Ent360Terms() {
           </div>
         </div>
       </main>
-      <Footer />
+      <footer className="py-8 text-center text-[12px] text-text-muted">
+        &copy; 2026 Scale Enterprises, LLC &middot;{" "}
+        <a href="https://scaleenterprises.com" className="text-text-muted hover:text-navy transition-colors duration-200">
+          scaleenterprises.com
+        </a>
+      </footer>
     </>
   );
 }
