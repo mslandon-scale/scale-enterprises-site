@@ -178,9 +178,12 @@ export default function Ent360Terms() {
                 in full.
               </li>
               <li>
-                <strong className="text-navy font-bold">Renewal:</strong> At the conclusion of the 12-month
-                partnership, the engagement does not automatically renew. Any continuation of services beyond
-                the initial term will be agreed upon in writing by both parties at the then-current rate.
+                <strong className="text-navy font-bold">Auto-Renewal:</strong> At the conclusion of the initial
+                12-month term, the partnership will automatically renew on a month-to-month basis at the
+                then-current monthly rate unless you cancel by providing written notice at least 30 days
+                before the end of the current term or any renewal period. Cancellation notices should be
+                sent to support@scaleenterprises.com. Upon cancellation, your access to all deliverables,
+                meetings, and services will end at the conclusion of the current billing period.
               </li>
               <li>
                 <strong className="text-navy font-bold">Company-Initiated Cancellation:</strong> If Scale
