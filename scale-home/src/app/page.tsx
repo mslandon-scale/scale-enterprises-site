@@ -4,8 +4,8 @@ import { useEffect } from "react";
 import Script from "next/script";
 
 const pageCSS = `
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    .enterprise-page *, .enterprise-page *::before, .enterprise-page *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    .enterprise-page { scroll-behavior: smooth; }
 
     .enterprise-page {
       --black: #000000;
@@ -722,18 +722,64 @@ const pageCSS = `
 
     @media(max-width:1024px){
       .enterprise-page .faq-header { grid-template-columns:1fr; }
+      .enterprise-page .exact-system .es-grid { grid-template-columns:1fr !important; gap:48px !important; }
     }
     @media(max-width:768px){
-      .enterprise-page .es-grid { grid-template-columns:1fr; gap:48px; }
+      .enterprise-page .container { padding:0 16px; }
+      .enterprise-page .hero { padding:60px 0 60px; min-height:auto; }
+      .enterprise-page .hero h1 { font-size:clamp(28px,7vw,36px); }
+      .enterprise-page .hero h1 .gold-line { font-size:clamp(32px,8vw,42px); }
+      .enterprise-page .hero .subtitle { font-size:15px; margin-bottom:32px; }
+      .enterprise-page .hero .btn { margin-bottom:32px; }
+      .enterprise-page .site-logo-wrap { margin-bottom:20px !important; }
+      .enterprise-page .site-logo-wrap .logo-icon { height:32px !important; max-width:32px !important; }
+      .enterprise-page .site-logo-wrap .logo-text { font-size:16px; }
+      .enterprise-page .hero-proof-stats { gap:24px; }
+      .enterprise-page .hero-proof-stats .hps-num { font-size:22px; }
+      .enterprise-page .hero-video { max-width:100%; }
+      .enterprise-page .hero-video-frame { border-radius:12px; }
+      .enterprise-page .exact-system .es-grid { grid-template-columns:1fr !important; gap:32px !important; }
+      .enterprise-page .exact-system { padding:60px 0 80px; }
+      .enterprise-page .exact-system .body { font-size:16px; }
+      .enterprise-page .exact-system .arrow-list li { font-size:15px; }
       .enterprise-page .vcr-grid { grid-template-columns:1fr; }
       .enterprise-page .result-cards { grid-template-columns:1fr; }
       .enterprise-page .stats-row { grid-template-columns:repeat(2,1fr); }
       .enterprise-page .strip-row { gap:10px; }
       .enterprise-page .strip-tile { width:150px; height:200px; }
-      .enterprise-page .offer-item { flex-direction:column; gap:12px; }
-      .enterprise-page .btn { padding:18px 36px; font-size:14px; }
-      .enterprise-page .proof-stat { border-right:none; border-bottom:1px solid rgba(255,255,255,0.06); padding:32px 24px; }
+      .enterprise-page .proof-bar { padding:60px 0; }
+      .enterprise-page .proof-stat { border-right:none; border-bottom:1px solid rgba(255,255,255,0.06); padding:24px 16px; }
       .enterprise-page .proof-stat:last-child { border-bottom:none; }
+      .enterprise-page .proof-stat .number { font-size:clamp(40px,12vw,60px); }
+      .enterprise-page .proof-stat .stat-label { font-size:13px; }
+      .enterprise-page .proof-bar-head h3 { font-size:clamp(22px,5vw,32px); }
+      .enterprise-page .offer { padding:60px 0 80px; }
+      .enterprise-page .offer .offer-head { font-size:clamp(24px,5.5vw,36px); }
+      .enterprise-page .offer .offer-intro { font-size:15px; }
+      .enterprise-page .offer-item { flex-direction:column; gap:12px; padding:20px; }
+      .enterprise-page .offer-item h4 { font-size:17px; }
+      .enterprise-page .offer-item p { font-size:14px; }
+      .enterprise-page .offer-summary { font-size:15px; }
+      .enterprise-page .btn { padding:18px 32px; font-size:14px; min-width:auto !important; width:100%; }
+      .enterprise-page .faq { padding:60px 0 80px; }
+      .enterprise-page .faq h2 { font-size:clamp(24px,5vw,36px); text-align:center; }
+      .enterprise-page .faq-question { font-size:14px; padding:18px 0; }
+      .enterprise-page .faq-answer p { font-size:14px; }
+      .enterprise-page .vcr { padding:48px 0; }
+      .enterprise-page .vcr-card { padding:24px; }
+      .enterprise-page .vcr-dark .vcr-body,
+      .enterprise-page .vcr-light .vcr-body { font-size:14px; }
+      .enterprise-page .framework { padding:60px 0 80px; }
+      .enterprise-page .playbook { padding:60px 0 80px; }
+      .enterprise-page .final-cta { padding:80px 0; }
+      .enterprise-page .final-cta h2 { font-size:clamp(24px,5.5vw,36px); }
+      .enterprise-page .final-cta .fc-sub { font-size:clamp(20px,4vw,30px); margin-bottom:32px; }
+      .enterprise-page .quiz-modal { max-width:95vw; border-radius:12px; }
+      .enterprise-page .quiz-modal-header { padding:20px 16px 4px; }
+      .enterprise-page .quiz-modal-header .qm-title { font-size:22px; }
+      .enterprise-page .quiz-modal-body iframe { height:420px; }
+      .enterprise-page .quiz-modal-footer { padding:8px 16px 12px; }
+      .enterprise-page .footer { padding:24px 16px; font-size:12px; }
     }
 `;
 
