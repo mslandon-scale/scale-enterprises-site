@@ -4,8 +4,8 @@ import { useEffect } from "react";
 import Script from "next/script";
 
 const pageCSS = `
-    .enterprise-page *, .enterprise-page *::before, .enterprise-page *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    .enterprise-page { scroll-behavior: smooth; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     .enterprise-page {
       --black: #000000;
