@@ -13,24 +13,24 @@ import QualifyingModal from "@/components/QualifyingModal";
 const results = [
   { stat: "500%", label: "Growth in 6 months", context: "Professional services firm" },
   { stat: "2x", label: "Profit in 3 months", context: "Trades business" },
-  { stat: "3x", label: "Lead gen in 7 days", context: "50-person sales team" },
+  { stat: "3X", label: "Leads in 7 days", context: "50-person sales team" },
 ];
 
 const steps = [
   {
     num: "01",
-    title: "Audit",
-    desc: "Find where the business depends on you and map the gaps holding you back from scale.",
+    title: "Design",
+    desc: "So you have absolute clarity.",
   },
   {
     num: "02",
-    title: "Build",
-    desc: "Install the systems, marketing engine, and team structure of a true enterprise.",
+    title: "Engineer",
+    desc: "So you actually have control and the numbers work.",
   },
   {
     num: "03",
-    title: "Scale",
-    desc: "Grow revenue while the business runs without you in under 90 minutes a week.",
+    title: "Lead",
+    desc: "So you can run the business in 90 days or less.",
   },
 ];
 
