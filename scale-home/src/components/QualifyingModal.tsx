@@ -37,7 +37,8 @@ interface FormData {
 
 const REVENUE_OPTIONS = [
   { value: "", label: "Select your annual revenue" },
-  { value: "Less than $1M", label: "Less than $1M" },
+  { value: "Less than $500K", label: "Less than $500K" },
+  { value: "$500K-$1M", label: "$500K-$1M" },
   { value: "$1M-$5M", label: "$1M-$5M" },
   { value: "$5M-$10M", label: "$5M-$10M" },
   { value: "$10M+", label: "$10M+" },
@@ -165,7 +166,7 @@ export default function QualifyingModal({ isOpen, onClose }: QualifyingModalProp
 
   /* ---- Qualification check ---- */
   const checkQualification = (): boolean => {
-    const revenueOk = form.annualRevenue !== "" && form.annualRevenue !== "Less than $1M";
+    const revenueOk = form.annualRevenue !== "" && form.annualRevenue !== "Less than $500K";
     const commitmentOk = form.commitment === "Yes";
     return revenueOk && commitmentOk;
   };
@@ -583,7 +584,7 @@ export default function QualifyingModal({ isOpen, onClose }: QualifyingModalProp
                   <p className="mx-auto max-w-md text-sm leading-relaxed" style={{ color: C.textSecondary }}>
                     Thank you for your interest. Based on your responses, our Enterprise Scaling
                     Strategy program may not be the right fit at this time. We work best with
-                    businesses that have crossed the $1M revenue mark and are fully committed to the
+                    businesses that have crossed the $500K revenue mark and are fully committed to the
                     transformation process. When you&apos;re ready, we&apos;d love to hear from you again.
                   </p>
                   <button
