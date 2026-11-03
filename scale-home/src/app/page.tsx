@@ -30,7 +30,7 @@ const steps = [
   {
     num: "03",
     title: "Lead",
-    desc: "So you can run the business in 90 days or less.",
+    desc: "So you can run the business in 90 minutes or less.",
   },
 ];
 
