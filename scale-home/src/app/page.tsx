@@ -305,25 +305,25 @@ export default function HomePage() {
       {/* ================================================================ */}
       {/*  FOOTER                                                          */}
       {/* ================================================================ */}
-      <footer className="bg-[#0B1F4B] border-t border-[#C9A24B]/10 text-[#B8C4D8] text-center py-10 px-5 text-sm font-body">
-        <p className="text-white/30">
+      <footer className="bg-white border-t border-gray-200 text-center py-10 px-5 text-sm font-body">
+        <p className="text-gray-400">
           &copy; {new Date().getFullYear()} Scale Enterprises LLC. All rights
           reserved.
         </p>
         <p className="mt-3 space-x-3">
-          <Link href="/privacy-policy" className="hover:text-[#C9A24B] transition-colors underline underline-offset-2">
+          <Link href="/privacy-policy" className="text-gray-600 hover:text-navy transition-colors underline underline-offset-2">
             Privacy
           </Link>
-          <span className="text-[#C9A24B]/30">&middot;</span>
-          <Link href="/terms-of-service" className="hover:text-[#C9A24B] transition-colors underline underline-offset-2">
+          <span className="text-gray-300">&middot;</span>
+          <Link href="/terms-of-service" className="text-gray-600 hover:text-navy transition-colors underline underline-offset-2">
             Terms
           </Link>
-          <span className="text-[#C9A24B]/30">&middot;</span>
-          <Link href="/california-privacy" className="hover:text-[#C9A24B] transition-colors underline underline-offset-2">
+          <span className="text-gray-300">&middot;</span>
+          <Link href="/california-privacy" className="text-gray-600 hover:text-navy transition-colors underline underline-offset-2">
             California Notice
           </Link>
         </p>
-        <p className="mt-6 text-xs text-white/40 max-w-lg mx-auto leading-relaxed">
+        <p className="mt-6 text-xs text-gray-500 max-w-lg mx-auto leading-relaxed">
           Income and results disclaimer: Results mentioned on this page are not typical.
           Individual results will vary based on effort, experience, business model, and
           market conditions. Scale Enterprises makes no guarantees of specific outcomes.
