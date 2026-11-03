@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import Script from "next/script";
 import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
 
-const GHL_WAITLIST_FORM_ID = "";
+// GHL "Free Course Waitlist" form (name, email, annual revenue; no phone).
+const GHL_WAITLIST_FORM_ID = "JGHguJrA4RHgACyhoR56";
 
 export default function WaitlistPage() {
   return (
@@ -93,7 +95,10 @@ export default function WaitlistPage() {
 
                 {/* GHL Form placeholder */}
                 {GHL_WAITLIST_FORM_ID ? (
+                  <>
                   <iframe
+                    id={`inline-${GHL_WAITLIST_FORM_ID}`}
+                    data-form-id={GHL_WAITLIST_FORM_ID}
                     src={`https://api.leadconnectorhq.com/widget/form/${GHL_WAITLIST_FORM_ID}`}
                     style={{
                       width: "100%",
@@ -102,6 +107,8 @@ export default function WaitlistPage() {
                     }}
                     title="Free Course Waitlist Form"
                   />
+                  <Script src="https://link.msgsndr.com/js/form_embed.js" strategy="afterInteractive" />
+                  </>
                 ) : (
                   <div className="border-2 border-dashed border-[#0B1F4B]/15 rounded-xl p-8 flex flex-col items-center justify-center min-h-[320px] bg-[#F8F8F8]/50">
                     <div className="w-12 h-12 rounded-full bg-[#0B1F4B]/5 flex items-center justify-center mb-4">
@@ -128,6 +135,7 @@ export default function WaitlistPage() {
                 )}
 
                 {/* Button (styled, non-functional until form is live) */}
+                {!GHL_WAITLIST_FORM_ID && (
                 <button
                   type="button"
                   disabled
@@ -135,6 +143,7 @@ export default function WaitlistPage() {
                 >
                   Join the Waitlist &rarr;
                 </button>
+                )}
 
                 {/* Fine print */}
                 <p className="font-body text-[11px] text-[#888] mt-5 leading-relaxed text-center">
