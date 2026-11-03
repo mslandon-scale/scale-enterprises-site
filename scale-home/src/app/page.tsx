@@ -36,7 +36,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Image
-              src="/logo-crown.png"
+              src="/logo.png"
               alt="Scale Enterprises"
               width={36}
               height={36}
