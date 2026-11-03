@@ -306,7 +306,7 @@ export default function HomePage() {
       {/*  FOOTER                                                          */}
       {/* ================================================================ */}
       <footer className="bg-white border-t border-gray-200 text-center py-10 px-5 text-sm font-body">
-        <p className="text-gray-400">
+        <p className="text-gray-500">
           &copy; {new Date().getFullYear()} Scale Enterprises LLC. All rights
           reserved.
         </p>

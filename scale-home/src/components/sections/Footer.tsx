@@ -109,7 +109,7 @@ export default function Footer() {
               </li>
             </ul>
 
-            <p className="font-body text-[12px] text-gray-400 mt-8">
+            <p className="font-body text-[12px] text-gray-500 mt-8">
               © 2026 Scale Enterprises. All rights reserved.
             </p>
           </div>
