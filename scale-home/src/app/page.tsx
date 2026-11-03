@@ -75,7 +75,7 @@ export default function HomePage() {
               height={36}
               className="w-9 h-9"
             />
-            <span className="font-serif-display font-bold text-[#F0F0F0] text-lg tracking-[0.12em] uppercase hidden sm:inline">
+            <span className="font-display font-bold text-[#F0F0F0] text-lg tracking-[0.12em] uppercase hidden sm:inline">
               Scale Enterprises
             </span>
           </a>
@@ -114,7 +114,7 @@ export default function HomePage() {
             {/* Headline */}
             <motion.h1
               variants={fadeUp}
-              className="font-serif-display font-bold text-[clamp(36px,7vw,64px)] leading-[1.05] tracking-tight mb-6"
+              className="font-display font-bold text-[clamp(36px,7vw,64px)] leading-[1.05] tracking-tight mb-6"
             >
               We Build Enterprise-Level Businesses{" "}
               <span className="block mt-1">
@@ -169,7 +169,7 @@ export default function HomePage() {
                 variants={fadeUp}
                 className="text-center p-8 rounded-2xl bg-[#0F2449] border border-[#C9A24B]/12 hover:border-[#C9A24B]/25 transition-colors duration-300"
               >
-                <p className="font-serif-display font-bold text-4xl md:text-5xl text-[#C9A24B] tracking-tight mb-3">
+                <p className="font-display font-bold text-4xl md:text-5xl text-[#C9A24B] tracking-tight mb-3">
                   {r.stat}
                 </p>
                 <p className="font-body text-[#F0F0F0] font-semibold text-base mb-1">
@@ -197,7 +197,7 @@ export default function HomePage() {
             <p className="font-body text-xs font-bold uppercase tracking-[0.25em] text-[#C9A24B] text-center mb-4">
               How It Works
             </p>
-            <h2 className="font-serif-display font-bold text-[clamp(28px,5vw,48px)] text-center text-[#F0F0F0] leading-tight mb-20">
+            <h2 className="font-display font-bold text-[clamp(28px,5vw,48px)] text-center text-[#F0F0F0] leading-tight mb-20">
               Three Steps to{" "}
               <span className="bg-gradient-to-r from-[#C9A24B] to-[#D4AF37] bg-clip-text text-transparent">
                 Scale
@@ -214,10 +214,10 @@ export default function HomePage() {
           >
             {steps.map((s) => (
               <motion.div key={s.num} variants={fadeUp} className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full border-2 border-[#C9A24B]/40 text-[#C9A24B] font-serif-display font-bold text-lg mb-6 bg-[#C9A24B]/5">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full border-2 border-[#C9A24B]/40 text-[#C9A24B] font-display font-bold text-lg mb-6 bg-[#C9A24B]/5">
                   {s.num}
                 </div>
-                <h3 className="font-serif-display font-bold text-2xl text-[#F0F0F0] mb-3">
+                <h3 className="font-display font-bold text-2xl text-[#F0F0F0] mb-3">
                   {s.title}
                 </h3>
                 <p className="font-body text-[#B8C4D8] text-base leading-relaxed">
@@ -258,7 +258,7 @@ export default function HomePage() {
               <p className="font-body text-xs font-bold uppercase tracking-[0.25em] text-[#C9A24B] mb-4">
                 About
               </p>
-              <h2 className="font-serif-display font-bold text-[clamp(26px,4vw,44px)] text-[#F0F0F0] leading-tight mb-4">
+              <h2 className="font-display font-bold text-[clamp(26px,4vw,44px)] text-[#F0F0F0] leading-tight mb-4">
                 Matthew Landon
               </h2>
               <p className="font-body text-[#C9A24B] text-lg leading-relaxed mb-2 font-semibold">
@@ -294,7 +294,7 @@ export default function HomePage() {
               <div className="h-px w-16 bg-gradient-to-l from-transparent to-[#C9A24B]/40" />
             </div>
 
-            <h2 className="font-serif-display font-bold text-[clamp(28px,5vw,52px)] leading-tight mb-6">
+            <h2 className="font-display font-bold text-[clamp(28px,5vw,52px)] leading-tight mb-6">
               Ready to Build a Business{" "}
               <span className="bg-gradient-to-r from-[#C9A24B] via-[#D4AF37] to-[#C9A24B] bg-clip-text text-transparent">
                 That Runs Without You?

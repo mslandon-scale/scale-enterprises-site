@@ -28,7 +28,6 @@ const config: Config = {
       fontFamily: {
         display: ['var(--font-display)', 'system-ui', 'sans-serif'],
         body: ['var(--font-body)', 'sans-serif'],
-        'serif-display': ['var(--font-serif)', 'Georgia', 'serif'],
       },
       letterSpacing: {
         'eyebrow': '0.2em',

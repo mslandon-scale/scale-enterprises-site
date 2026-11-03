@@ -1,14 +1,7 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Sora, DM_Sans } from "next/font/google";
+import { Sora, DM_Sans } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-serif",
-  display: "swap",
-});
 
 const sora = Sora({
   subsets: ["latin"],
@@ -41,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${sora.variable} ${dmSans.variable}`}>
+    <html lang="en" className={`${sora.variable} ${dmSans.variable}`}>
       <head>
         <script
           type="application/ld+json"
