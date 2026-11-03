@@ -61,7 +61,7 @@ export default function About() {
             <p>
               Through Enterprise 360 and the Enterprise Playbook, Matthew and his team
               have helped hundreds of service business owners install enterprise-grade systems
-              in 30 days — transforming how they operate, hire, deliver, and grow.
+              — transforming how they operate, hire, deliver, and grow.
             </p>
           </div>
         </div>

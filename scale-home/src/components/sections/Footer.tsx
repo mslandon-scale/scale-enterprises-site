@@ -21,8 +21,8 @@ export default function Footer() {
               SCALE ENTERPRISES
             </span>
             <p className="font-body text-[13px] text-white/40 max-w-xs mt-3 leading-[1.7]">
-              We help service businesses become enterprises. 30 days to transformation,
-              90 minutes a week to operate.
+              We help service businesses become enterprises — with the systems, team,
+              and growth engine to run without you.
             </p>
 
             <h4 className="font-body text-[11px] uppercase tracking-widest text-white/40 mt-6 mb-2">

@@ -18,7 +18,7 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: "Scale Enterprises — We Help Service Businesses Become Enterprises",
-  description: "The 30-Day Enterprise Transformation. Go from $500K/yr and overwhelmed to 8-figure systems running in 90 minutes a day.",
+  description: "Scale Enterprises helps entrepreneurs install enterprise-level systems, team structure, and growth engines so the business runs without you.",
   icons: {
     icon: "/favicon.png",
     apple: "/favicon.png",
@@ -49,7 +49,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-body antialiased bg-[#05070D] text-[#F0F0F0] overflow-x-hidden">
+      <body className="font-body antialiased bg-white text-[#1A1A2E] overflow-x-hidden">
         {children}
         <Script
           src="https://widgets.leadconnectorhq.com/loader.js"

@@ -73,19 +73,20 @@ const BOOKING_IFRAME_URL =
   "https://api.leadconnectorhq.com/widget/booking/K2w9Ze70TSE53DiOEa0V";
 
 /* ------------------------------------------------------------------ */
-/*  Palette (inline hex for the luxury navy/gold look)                 */
+/*  Palette (white/clean with navy + gold accents)                     */
 /* ------------------------------------------------------------------ */
 
 const C = {
-  deepNavy: "#0A1A3A",
-  navyLight: "#0B1F4B",
+  white: "#FFFFFF",
+  bg: "#F9FAFB",
+  navy: "#0B1F4B",
   gold: "#C9A24B",
   goldHover: "#D4AF37",
-  textPrimary: "#F5F5F5",
-  textSecondary: "#C0C8D8",
-  textMuted: "#8892A6",
-  inputBg: "rgba(255,255,255,0.06)",
-  inputBorder: "rgba(255,255,255,0.12)",
+  textPrimary: "#1A1A2E",
+  textSecondary: "#555555",
+  textMuted: "#888888",
+  inputBg: "#F5F5F5",
+  inputBorder: "#E0E0E0",
 } as const;
 
 /* ------------------------------------------------------------------ */
@@ -176,20 +177,11 @@ export default function QualifyingModal({ isOpen, onClose }: QualifyingModalProp
     e.preventDefault();
     setSubmitting(true);
 
-    /* DEV-ONLY: This fetch is mocked and does NOT send data to any live
-       endpoint. Replace with a real integration when ready for production. */
     try {
       console.log("[DEV] Questionnaire submission (not sent to server):", {
         contact_email: form.email,
         answers: { ...form },
       });
-
-      // Uncomment when endpoint is live:
-      // await fetch("/api/questionnaire", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({ contact_email: form.email, answers: { ...form } }),
-      // });
     } catch (err) {
       console.error("[DEV] Questionnaire mock error:", err);
     }
@@ -224,7 +216,7 @@ export default function QualifyingModal({ isOpen, onClose }: QualifyingModalProp
 
   const inputClass = [
     "w-full rounded-lg px-4 py-3 text-sm outline-none transition-all",
-    "placeholder:text-[#8892A6]",
+    "placeholder:text-[#999]",
   ].join(" ");
 
   const inputStyle: React.CSSProperties = {
@@ -232,8 +224,6 @@ export default function QualifyingModal({ isOpen, onClose }: QualifyingModalProp
     border: `1px solid ${C.inputBorder}`,
     color: C.textPrimary,
   };
-
-  const focusRing = `focus:ring-2 focus:ring-[${C.gold}] focus:border-[${C.gold}]`;
 
   /* ---------------------------------------------------------------- */
   /*  Render                                                           */
@@ -250,7 +240,7 @@ export default function QualifyingModal({ isOpen, onClose }: QualifyingModalProp
           transition={{ duration: 0.25 }}
           onClick={handleBackdropClick}
           className="fixed inset-0 z-[9999] flex items-start justify-center overflow-y-auto py-8"
-          style={{ backgroundColor: "rgba(0,0,0,0.7)", backdropFilter: "blur(4px)" }}
+          style={{ backgroundColor: "rgba(0,0,0,0.5)", backdropFilter: "blur(4px)" }}
         >
           <motion.div
             ref={panelRef}
@@ -261,15 +251,15 @@ export default function QualifyingModal({ isOpen, onClose }: QualifyingModalProp
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="relative w-full max-w-2xl rounded-2xl shadow-2xl"
             style={{
-              background: `linear-gradient(170deg, ${C.deepNavy} 0%, ${C.navyLight} 100%)`,
-              border: `1px solid rgba(201,162,75,0.15)`,
+              background: C.white,
+              border: `1px solid #E5E5E5`,
             }}
           >
             {/* ---- Close button ---- */}
             <button
               onClick={onClose}
               aria-label="Close modal"
-              className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full transition-colors hover:bg-white/10"
+              className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full transition-colors hover:bg-black/5"
               style={{ color: C.textMuted }}
             >
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -283,7 +273,7 @@ export default function QualifyingModal({ isOpen, onClose }: QualifyingModalProp
               <p className="mb-2 text-xs font-medium tracking-widest uppercase" style={{ color: C.gold }}>
                 Step {step} of 2
               </p>
-              <div className="mb-5 h-1 w-full overflow-hidden rounded-full" style={{ backgroundColor: "rgba(255,255,255,0.08)" }}>
+              <div className="mb-5 h-1 w-full overflow-hidden rounded-full" style={{ backgroundColor: "#EEEEEE" }}>
                 <div
                   className="h-full rounded-full transition-all duration-500"
                   style={{
@@ -299,9 +289,9 @@ export default function QualifyingModal({ isOpen, onClose }: QualifyingModalProp
                 <>
                   <h2
                     className="font-display text-2xl font-bold leading-tight sm:text-3xl"
-                    style={{ color: C.textPrimary }}
+                    style={{ color: C.navy }}
                   >
-                    Transform Your Business Today
+                    Start Your Enterprise Journey
                   </h2>
                   <p className="mt-2 text-sm" style={{ color: C.textSecondary }}>
                     Fill out the form below and continue to Step 2
@@ -312,7 +302,7 @@ export default function QualifyingModal({ isOpen, onClose }: QualifyingModalProp
               {step === 2 && (
                 <h2
                   className="font-display text-2xl font-bold leading-tight sm:text-3xl"
-                  style={{ color: C.textPrimary }}
+                  style={{ color: C.navy }}
                 >
                   {isQualified ? "Book Your Strategy Call" : "Thank You for Your Interest"}
                 </h2>
@@ -336,7 +326,7 @@ export default function QualifyingModal({ isOpen, onClose }: QualifyingModalProp
                         value={form.firstName}
                         onChange={set("firstName")}
                         placeholder="First name"
-                        className={`${inputClass} ${focusRing}`}
+                        className={`${inputClass} focus:ring-2 focus:ring-[#C9A24B] focus:border-[#C9A24B]`}
                         style={inputStyle}
                       />
                     </div>
@@ -350,7 +340,7 @@ export default function QualifyingModal({ isOpen, onClose }: QualifyingModalProp
                         value={form.lastName}
                         onChange={set("lastName")}
                         placeholder="Last name"
-                        className={`${inputClass} ${focusRing}`}
+                        className={`${inputClass} focus:ring-2 focus:ring-[#C9A24B] focus:border-[#C9A24B]`}
                         style={inputStyle}
                       />
                     </div>
@@ -368,7 +358,7 @@ export default function QualifyingModal({ isOpen, onClose }: QualifyingModalProp
                         value={form.phone}
                         onChange={set("phone")}
                         placeholder="(555) 000-0000"
-                        className={`${inputClass} ${focusRing}`}
+                        className={`${inputClass} focus:ring-2 focus:ring-[#C9A24B] focus:border-[#C9A24B]`}
                         style={inputStyle}
                       />
                     </div>
@@ -382,7 +372,7 @@ export default function QualifyingModal({ isOpen, onClose }: QualifyingModalProp
                         value={form.email}
                         onChange={set("email")}
                         placeholder="you@company.com"
-                        className={`${inputClass} ${focusRing}`}
+                        className={`${inputClass} focus:ring-2 focus:ring-[#C9A24B] focus:border-[#C9A24B]`}
                         style={inputStyle}
                       />
                     </div>
@@ -397,16 +387,16 @@ export default function QualifyingModal({ isOpen, onClose }: QualifyingModalProp
                       required
                       value={form.annualRevenue}
                       onChange={set("annualRevenue")}
-                      className={`${inputClass} ${focusRing} cursor-pointer appearance-none`}
+                      className={`${inputClass} focus:ring-2 focus:ring-[#C9A24B] focus:border-[#C9A24B] cursor-pointer appearance-none`}
                       style={{
                         ...inputStyle,
-                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238892A6' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23999' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "right 14px center",
                       }}
                     >
                       {REVENUE_OPTIONS.map((o) => (
-                        <option key={o.value} value={o.value} style={{ backgroundColor: C.deepNavy }}>
+                        <option key={o.value} value={o.value}>
                           {o.label}
                         </option>
                       ))}
@@ -422,16 +412,16 @@ export default function QualifyingModal({ isOpen, onClose }: QualifyingModalProp
                       required
                       value={form.industry}
                       onChange={set("industry")}
-                      className={`${inputClass} ${focusRing} cursor-pointer appearance-none`}
+                      className={`${inputClass} focus:ring-2 focus:ring-[#C9A24B] focus:border-[#C9A24B] cursor-pointer appearance-none`}
                       style={{
                         ...inputStyle,
-                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238892A6' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23999' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "right 14px center",
                       }}
                     >
                       {INDUSTRY_OPTIONS.map((o) => (
-                        <option key={o.value} value={o.value} style={{ backgroundColor: C.deepNavy }}>
+                        <option key={o.value} value={o.value}>
                           {o.label}
                         </option>
                       ))}
@@ -449,7 +439,7 @@ export default function QualifyingModal({ isOpen, onClose }: QualifyingModalProp
                       value={form.hoursPerWeek}
                       onChange={set("hoursPerWeek")}
                       placeholder="e.g. 50"
-                      className={`${inputClass} ${focusRing}`}
+                      className={`${inputClass} focus:ring-2 focus:ring-[#C9A24B] focus:border-[#C9A24B]`}
                       style={inputStyle}
                     />
                   </div>
@@ -465,7 +455,7 @@ export default function QualifyingModal({ isOpen, onClose }: QualifyingModalProp
                       value={form.desiredOutcome}
                       onChange={set("desiredOutcome")}
                       placeholder="Describe your ideal outcome..."
-                      className={`${inputClass} ${focusRing} resize-none`}
+                      className={`${inputClass} focus:ring-2 focus:ring-[#C9A24B] focus:border-[#C9A24B] resize-none`}
                       style={inputStyle}
                     />
                   </div>
@@ -481,7 +471,7 @@ export default function QualifyingModal({ isOpen, onClose }: QualifyingModalProp
                       value={form.previousAttempts}
                       onChange={set("previousAttempts")}
                       placeholder="Share what you've tried so far..."
-                      className={`${inputClass} ${focusRing} resize-none`}
+                      className={`${inputClass} focus:ring-2 focus:ring-[#C9A24B] focus:border-[#C9A24B] resize-none`}
                       style={inputStyle}
                     />
                   </div>
@@ -489,7 +479,7 @@ export default function QualifyingModal({ isOpen, onClose }: QualifyingModalProp
                   {/* Commitment question */}
                   <div>
                     <label className="mb-3 block text-xs font-medium leading-relaxed" style={{ color: C.textSecondary }}>
-                      The guarantee is that you&apos;re out of the day to day in 30 days or don&apos;t pay. That only works if you do the work. Are you willing to commit to implementing the system we build, even when it means investing money, time, and even patience in your team? <span style={{ color: C.gold }}>*</span>
+                      Building an enterprise requires real commitment. Are you willing to invest the time, money, and effort to implement the systems we build together, even when it means making hard changes to how you operate? <span style={{ color: C.gold }}>*</span>
                     </label>
                     <div className="flex gap-3">
                       {(["Yes", "No"] as const).map((val) => (
@@ -503,11 +493,11 @@ export default function QualifyingModal({ isOpen, onClose }: QualifyingModalProp
                               form.commitment === val
                                 ? val === "Yes"
                                   ? C.gold
-                                  : "rgba(255,255,255,0.15)"
+                                  : "#E5E5E5"
                                 : C.inputBg,
                             color:
                               form.commitment === val && val === "Yes"
-                                ? C.deepNavy
+                                ? "#FFFFFF"
                                 : C.textPrimary,
                             border: `1px solid ${
                               form.commitment === val ? C.gold : C.inputBorder
@@ -542,7 +532,7 @@ export default function QualifyingModal({ isOpen, onClose }: QualifyingModalProp
                     className="mt-2 w-full rounded-lg py-3.5 text-sm font-bold uppercase tracking-wider transition-all disabled:cursor-not-allowed disabled:opacity-40"
                     style={{
                       backgroundColor: C.gold,
-                      color: C.deepNavy,
+                      color: "#FFFFFF",
                     }}
                     onMouseEnter={(e) => {
                       if (!submitting && formValid) (e.currentTarget.style.backgroundColor = C.goldHover);
@@ -584,15 +574,15 @@ export default function QualifyingModal({ isOpen, onClose }: QualifyingModalProp
                   <p className="mx-auto max-w-md text-sm leading-relaxed" style={{ color: C.textSecondary }}>
                     Thank you for your interest. Based on your responses, our Enterprise Scaling
                     Strategy program may not be the right fit at this time. We work best with
-                    businesses that have crossed the $500K revenue mark and are fully committed to the
-                    transformation process. When you&apos;re ready, we&apos;d love to hear from you again.
+                    businesses that have crossed the $500K revenue mark and are fully committed to
+                    building enterprise-level systems. When you&apos;re ready, we&apos;d love to hear from you again.
                   </p>
                   <button
                     onClick={onClose}
                     className="mt-4 rounded-lg px-8 py-3 text-sm font-semibold transition-all"
                     style={{
                       backgroundColor: C.gold,
-                      color: C.deepNavy,
+                      color: "#FFFFFF",
                     }}
                     onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = C.goldHover)}
                     onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = C.gold)}
