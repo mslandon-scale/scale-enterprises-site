@@ -94,7 +94,7 @@ export default function HomePage() {
       <section className="relative overflow-hidden bg-white text-[#0B1F4B]">
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A24B]/20 to-transparent" />
 
-        <div className="relative max-w-4xl mx-auto px-5 py-28 md:py-40 text-center">
+        <div className="relative max-w-4xl mx-auto px-5 py-16 md:py-24 text-center">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -116,7 +116,7 @@ export default function HomePage() {
             {/* Sub */}
             <motion.p
               variants={fadeUp}
-              className="font-body text-[#555] text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-12"
+              className="font-body text-[#555] text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-8"
             >
               Scale Enterprises helps entrepreneurs take control of their business
               and reach their full potential, with the systems, team, and growth
@@ -139,10 +139,10 @@ export default function HomePage() {
       {/* ================================================================ */}
       {/*  STATS / TRUST BAR                                               */}
       {/* ================================================================ */}
-      <section className="bg-[#F8F8F8] py-20 md:py-24 relative">
+      <section className="bg-[#F8F8F8] py-12 md:py-14 relative">
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A24B]/20 to-transparent" />
         <div className="max-w-5xl mx-auto px-5">
-          <p className="font-body text-xs font-bold uppercase tracking-[0.25em] text-[#C9A24B] text-center mb-14">
+          <p className="font-body text-xs font-bold uppercase tracking-[0.25em] text-[#C9A24B] text-center mb-8">
             Proven Results
           </p>
           <motion.div
@@ -150,7 +150,7 @@ export default function HomePage() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
           >
             {results.map((r) => (
               <motion.div
@@ -175,7 +175,7 @@ export default function HomePage() {
       {/* ================================================================ */}
       {/*  HOW IT WORKS                                                    */}
       {/* ================================================================ */}
-      <section className="bg-white py-24 md:py-32 relative">
+      <section className="bg-white py-14 md:py-20 relative">
         <div className="max-w-5xl mx-auto px-5">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -186,7 +186,7 @@ export default function HomePage() {
             <p className="font-body text-xs font-bold uppercase tracking-[0.25em] text-[#C9A24B] text-center mb-4">
               How It Works
             </p>
-            <h2 className="font-display font-bold text-[clamp(28px,5vw,48px)] text-center text-[#0B1F4B] leading-tight mb-20">
+            <h2 className="font-display font-bold text-[clamp(28px,5vw,48px)] text-center text-[#0B1F4B] leading-tight mb-12">
               Three Steps to{" "}
               <span className="text-[#C9A24B]">
                 Scale
@@ -199,11 +199,11 @@ export default function HomePage() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.2 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-10"
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
           >
             {steps.map((s) => (
               <motion.div key={s.num} variants={fadeUp} className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full border-2 border-[#C9A24B]/40 text-[#C9A24B] font-display font-bold text-lg mb-6 bg-[#C9A24B]/5">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full border-2 border-[#C9A24B]/40 text-[#C9A24B] font-display font-bold text-lg mb-4 bg-[#C9A24B]/5">
                   {s.num}
                 </div>
                 <h3 className="font-display font-bold text-2xl text-[#0B1F4B] mb-3">
@@ -222,7 +222,7 @@ export default function HomePage() {
       {/* ================================================================ */}
       {/*  ABOUT                                                           */}
       {/* ================================================================ */}
-      <section className="bg-[#F8F8F8] py-24 md:py-32 relative">
+      <section className="bg-[#F8F8F8] py-14 md:py-20 relative">
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A24B]/20 to-transparent" />
         <div className="max-w-5xl mx-auto px-5">
           <motion.div
@@ -230,7 +230,7 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7 }}
-            className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-12 items-center"
+            className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8 items-center"
           >
             <div className="flex justify-center">
               <div className="w-56 h-56 md:w-64 md:h-64 rounded-2xl overflow-hidden border border-[#C9A24B]/25 shadow-md">
@@ -267,7 +267,7 @@ export default function HomePage() {
       {/* ================================================================ */}
       {/*  FINAL CTA                                                       */}
       {/* ================================================================ */}
-      <section className="relative overflow-hidden bg-white text-[#0B1F4B] py-28 md:py-40">
+      <section className="relative overflow-hidden bg-white text-[#0B1F4B] py-16 md:py-24">
         <div className="relative max-w-3xl mx-auto px-5 text-center">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -288,7 +288,7 @@ export default function HomePage() {
                 That Runs Without You?
               </span>
             </h2>
-            <p className="font-body text-[#555] text-lg leading-relaxed max-w-xl mx-auto mb-10">
+            <p className="font-body text-[#555] text-lg leading-relaxed max-w-xl mx-auto mb-6">
               Apply for a free Enterprise Scaling Strategy Call and discover the
               exact system to scale your business into a self-running enterprise.
             </p>
@@ -305,7 +305,7 @@ export default function HomePage() {
       {/* ================================================================ */}
       {/*  FOOTER                                                          */}
       {/* ================================================================ */}
-      <footer className="bg-white border-t border-gray-200 text-center py-10 px-5 text-sm font-body">
+      <footer className="bg-white border-t border-gray-200 text-center py-6 px-5 text-sm font-body">
         <p className="text-gray-500">
           &copy; {new Date().getFullYear()} Scale Enterprises LLC. All rights
           reserved.

@@ -13,9 +13,9 @@ const companyLinks = [
 
 export default function Footer() {
   return (
-    <footer id="footer" className="bg-white border-t border-gray-200 pt-16 pb-8">
+    <footer id="footer" className="bg-white border-t border-gray-200 pt-10 pb-6">
       <div className="max-w-7xl mx-auto px-4 lg:px-6">
-        <div className="grid md:grid-cols-4 gap-12">
+        <div className="grid md:grid-cols-4 gap-8">
           <div>
             <span className="font-display text-[14px] tracking-[0.1em] text-navy font-bold uppercase">
               SCALE ENTERPRISES

@@ -17,7 +17,7 @@ export default function NotAFitPage() {
       {/* Spacer for fixed navbar */}
       <div className="h-[80px]" />
 
-      <section className="bg-white py-16 md:py-24 lg:py-32">
+      <section className="bg-white py-12 md:py-16 lg:py-20">
         <div className="max-w-xl mx-auto px-5 lg:px-8 text-center">
           {/* Gold circle icon with info svg */}
           <div
