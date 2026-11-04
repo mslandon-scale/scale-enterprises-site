@@ -4,7 +4,7 @@ import Footer from "@/components/sections/Footer";
 import QuestionnaireForm from "@/components/QuestionnaireForm";
 
 export const metadata: Metadata = {
-  title: "Pre-Call Questionnaire | Scale Enterprises",
+  title: "Pre-Call Questionnaire",
   description: "Complete your pre-call questionnaire before your Commitment Call with Scale Enterprises.",
   alternates: { canonical: "/questionnaire" },
 };

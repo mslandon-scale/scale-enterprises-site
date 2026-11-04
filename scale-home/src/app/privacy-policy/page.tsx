@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Scale Enterprises",
+  title: "Privacy Policy",
   alternates: { canonical: "/privacy-policy" },
 };
 

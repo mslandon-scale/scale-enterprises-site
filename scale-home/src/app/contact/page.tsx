@@ -3,7 +3,7 @@ import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
 
 export const metadata: Metadata = {
-  title: "Contact | Scale Enterprises",
+  title: "Contact",
   alternates: { canonical: "/contact" },
 };
 

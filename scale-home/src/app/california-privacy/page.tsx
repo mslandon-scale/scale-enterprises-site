@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "California Privacy Notice | Scale Enterprises",
+  title: "California Privacy Notice",
   alternates: { canonical: "/california-privacy" },
 };
 

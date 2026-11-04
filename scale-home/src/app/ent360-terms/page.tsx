@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Enterprise 360 Terms of Service | Scale Enterprises",
+  title: "Enterprise 360 Terms of Service",
   robots: { index: false, follow: false },
   alternates: { canonical: "/ent360-terms" },
 };

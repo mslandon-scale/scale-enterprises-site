@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Scale Enterprises",
+  title: "Terms of Service",
   alternates: { canonical: "/terms-of-service" },
 };
 

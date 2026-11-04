@@ -3,7 +3,7 @@ import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
 
 export const metadata: Metadata = {
-  title: "Disclaimer | Scale Enterprises",
+  title: "Disclaimer",
   alternates: { canonical: "/disclaimer" },
 };
 
