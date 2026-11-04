@@ -91,8 +91,7 @@ function CardStack() {
 export default function WaitlistPage() {
   return (
     <div className="relative flex min-h-[100dvh] flex-col bg-gradient-to-b from-[#070F24] to-[#0B1F4B]">
-      {/* Header: white logo only */}
-      <header className="relative z-10 flex h-14 shrink-0 items-center justify-center px-5 lg:px-8">
+      <header className="relative z-10 flex h-14 shrink-0 items-center justify-between px-5 lg:px-8">
         <a href="/" className="flex items-center gap-2.5">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -107,6 +106,11 @@ export default function WaitlistPage() {
             Scale Enterprises
           </span>
         </a>
+        <nav className="hidden sm:flex items-center gap-5">
+          <Link href="/about" className="font-body text-[12px] font-bold uppercase tracking-widest text-white/60 hover:text-white transition-colors">About</Link>
+          <Link href="/book" className="font-body text-[12px] font-bold uppercase tracking-widest text-white/60 hover:text-white transition-colors">Book</Link>
+          <Link href="/contact" className="font-body text-[12px] font-bold uppercase tracking-widest text-white/60 hover:text-white transition-colors">Contact</Link>
+        </nav>
       </header>
 
       <main className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col items-center justify-center gap-6 px-5 pb-4 lg:flex-row lg:gap-14 lg:px-8">
@@ -152,14 +156,19 @@ export default function WaitlistPage() {
         </div>
       </main>
 
-      <footer className="relative z-10 flex shrink-0 items-center justify-center gap-3 px-5 py-3">
-        <Link href="/privacy-policy" className="font-body text-[11px] text-white/45 transition-colors hover:text-white/80">
-          Privacy Policy
-        </Link>
-        <span className="text-[11px] text-white/25">&middot;</span>
-        <Link href="/terms-of-service" className="font-body text-[11px] text-white/45 transition-colors hover:text-white/80">
-          Terms of Service
-        </Link>
+      <footer className="relative z-10 flex shrink-0 flex-col items-center gap-2 px-5 py-3">
+        <div className="flex items-center gap-3">
+          <Link href="/about" className="font-body text-[11px] text-white/45 transition-colors hover:text-white/80">About</Link>
+          <span className="text-[11px] text-white/25">&middot;</span>
+          <Link href="/book" className="font-body text-[11px] text-white/45 transition-colors hover:text-white/80">Book a Call</Link>
+          <span className="text-[11px] text-white/25">&middot;</span>
+          <Link href="/contact" className="font-body text-[11px] text-white/45 transition-colors hover:text-white/80">Contact</Link>
+        </div>
+        <div className="flex items-center gap-3">
+          <Link href="/privacy-policy" className="font-body text-[11px] text-white/45 transition-colors hover:text-white/80">Privacy Policy</Link>
+          <span className="text-[11px] text-white/25">&middot;</span>
+          <Link href="/terms-of-service" className="font-body text-[11px] text-white/45 transition-colors hover:text-white/80">Terms of Service</Link>
+        </div>
       </footer>
     </div>
   );

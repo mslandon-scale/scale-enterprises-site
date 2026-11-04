@@ -11,7 +11,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Apply for Enterprise 360 | Scale Enterprises",
+  title: "Apply for Enterprise 360",
   description:
     "Apply for the Enterprise 360 program — Scale Enterprises' flagship enterprise transformation membership.",
   robots: { index: false, follow: true },

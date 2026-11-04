@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import QualifyingModal from "@/components/QualifyingModal";
+import JsonLd from "@/components/JsonLd";
 
 /* ------------------------------------------------------------------ */
 /*  Data                                                               */
@@ -34,6 +35,37 @@ const steps = [
   },
 ];
 
+const faqs = [
+  {
+    q: "What does Scale Enterprises do?",
+    a: "Scale Enterprises is an enterprise scaling and development firm. We help service-business owners build an enterprise-level business that scales and runs without them, by helping design, engineer and lead the business with enterprise-level strategy, private equity-caliber engineering, and strong leadership and accountability systems, all enabled with AI.",
+  },
+  {
+    q: "Who is the strategy call for?",
+    a: "The Enterprise Scaling Strategy Call is for owners of service businesses with $500K or more in annual revenue who are stuck as the operator and are committed to building enterprise-level systems.",
+  },
+  {
+    q: "What do Design, Engineer and Lead mean?",
+    a: "Design gives you absolute clarity on where the business is going. Engineer gives you control and makes the numbers work. Lead installs leadership and accountability systems so you can run your business in less than 90 minutes a week.",
+  },
+  {
+    q: "What results have clients seen?",
+    a: "Examples include 3X leads in 7 days for a 50-person sales team, 2x profit in 3 months for a trades business, and 500% growth in 6 months for a professional services firm. Results are not typical and vary by business.",
+  },
+  {
+    q: "Do you take equity in my business?",
+    a: "No. You keep 100% ownership of your company.",
+  },
+  {
+    q: "I’m too busy right now. Is this a good time?",
+    a: "Being too busy to step back is the problem we solve. The goal is a business that runs without you, so you get your time back.",
+  },
+  {
+    q: "What happens on the strategy call?",
+    a: "We review where you are, where the business depends on you, and the exact system to scale it into a self-running enterprise, then decide together whether working with us is a fit.",
+  },
+];
+
 /* ------------------------------------------------------------------ */
 /*  Animation helpers                                                  */
 /* ------------------------------------------------------------------ */
@@ -54,13 +86,23 @@ const staggerContainer = {
 
 export default function HomePage() {
   const [modalOpen, setModalOpen] = useState(false);
-
-  const openModal = () => setModalOpen(true);
-  const closeModal = () => setModalOpen(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
     <div className="min-h-screen bg-white">
-      <QualifyingModal isOpen={modalOpen} onClose={closeModal} />
+      <QualifyingModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }}
+      />
 
       {/* ================================================================ */}
       {/*  NAV                                                             */}
@@ -79,12 +121,17 @@ export default function HomePage() {
               Scale Enterprises
             </span>
           </a>
-          <button
-            onClick={openModal}
-            className="bg-[#C9A24B] text-white font-body font-bold text-sm uppercase tracking-widest px-6 py-3 rounded-full hover:bg-[#D4AF37] hover:-translate-y-0.5 transition-all duration-300"
-          >
-            Book a Call
-          </button>
+          <div className="flex items-center gap-5">
+            <Link href="/about" className="hidden sm:inline font-body text-[13px] font-bold uppercase tracking-widest text-[#555] hover:text-[#0B1F4B] transition-colors">About</Link>
+            <Link href="/waitlist" className="hidden sm:inline font-body text-[13px] font-bold uppercase tracking-widest text-[#555] hover:text-[#0B1F4B] transition-colors">Waitlist</Link>
+            <Link href="/contact" className="hidden sm:inline font-body text-[13px] font-bold uppercase tracking-widest text-[#555] hover:text-[#0B1F4B] transition-colors">Contact</Link>
+            <Link
+              href="/book"
+              className="bg-[#C9A24B] text-white font-body font-bold text-sm uppercase tracking-widest px-6 py-3 rounded-full hover:bg-[#D4AF37] hover:-translate-y-0.5 transition-all duration-300"
+            >
+              Book a Call
+            </Link>
+          </div>
         </div>
       </nav>
 
@@ -125,12 +172,12 @@ export default function HomePage() {
 
             {/* CTA */}
             <motion.div variants={fadeUp}>
-              <button
-                onClick={openModal}
+              <Link
+                href="/book"
                 className="inline-block bg-[#C9A24B] text-white font-body font-bold text-sm uppercase tracking-widest px-12 py-5 rounded-full shadow-[0_4px_24px_rgba(201,162,75,0.25)] hover:bg-[#D4AF37] hover:shadow-[0_6px_32px_rgba(201,162,75,0.35)] hover:-translate-y-0.5 transition-all duration-300"
               >
                 Book a Strategy Call &rarr;
-              </button>
+              </Link>
             </motion.div>
           </motion.div>
         </div>
@@ -265,6 +312,62 @@ export default function HomePage() {
       </section>
 
       {/* ================================================================ */}
+      {/*  FAQ                                                             */}
+      {/* ================================================================ */}
+      <section className="bg-white py-14 md:py-20 relative">
+        <div className="max-w-3xl mx-auto px-5">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="font-body text-xs font-bold uppercase tracking-[0.25em] text-[#C9A24B] text-center mb-4">
+              FAQ
+            </p>
+            <h2 className="font-display font-bold text-[clamp(28px,5vw,48px)] text-center text-[#0B1F4B] leading-tight mb-10">
+              Frequently Asked Questions
+            </h2>
+          </motion.div>
+
+          <div className="space-y-3">
+            {faqs.map((faq, i) => (
+              <div
+                key={i}
+                className="border border-[#0B1F4B]/10 rounded-xl overflow-hidden"
+              >
+                <button
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  className="w-full flex items-center justify-between px-6 py-5 text-left"
+                >
+                  <span className="font-display font-bold text-[#0B1F4B] text-base pr-4">
+                    {faq.q}
+                  </span>
+                  <svg
+                    className={`w-5 h-5 text-[#C9A24B] shrink-0 transition-transform duration-200 ${openFaq === i ? "rotate-180" : ""}`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2.5}
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                {openFaq === i && (
+                  <div className="px-6 pb-5">
+                    <p className="font-body text-[#555] text-base leading-relaxed">
+                      {faq.a}
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A24B]/15 to-transparent" />
+      </section>
+
+      {/* ================================================================ */}
       {/*  FINAL CTA                                                       */}
       {/* ================================================================ */}
       <section className="relative overflow-hidden bg-white text-[#0B1F4B] py-16 md:py-24">
@@ -292,12 +395,12 @@ export default function HomePage() {
               Apply for a free Enterprise Scaling Strategy Call and discover the
               exact system to scale your business into a self-running enterprise.
             </p>
-            <button
-              onClick={openModal}
+            <Link
+              href="/book"
               className="inline-block bg-[#C9A24B] text-white font-body font-bold text-sm uppercase tracking-widest px-12 py-5 rounded-full shadow-[0_4px_24px_rgba(201,162,75,0.25)] hover:bg-[#D4AF37] hover:shadow-[0_6px_32px_rgba(201,162,75,0.35)] hover:-translate-y-0.5 transition-all duration-300"
             >
               Book a Strategy Call &rarr;
-            </button>
+            </Link>
           </motion.div>
         </div>
       </section>
@@ -309,6 +412,15 @@ export default function HomePage() {
         <p className="text-gray-500">
           &copy; {new Date().getFullYear()} Scale Enterprises LLC. All rights
           reserved.
+        </p>
+        <p className="mt-3 space-x-3">
+          <Link href="/about" className="text-gray-600 hover:text-navy transition-colors underline underline-offset-2">About</Link>
+          <span className="text-gray-300">&middot;</span>
+          <Link href="/book" className="text-gray-600 hover:text-navy transition-colors underline underline-offset-2">Book a Call</Link>
+          <span className="text-gray-300">&middot;</span>
+          <Link href="/waitlist" className="text-gray-600 hover:text-navy transition-colors underline underline-offset-2">Waitlist</Link>
+          <span className="text-gray-300">&middot;</span>
+          <Link href="/contact" className="text-gray-600 hover:text-navy transition-colors underline underline-offset-2">Contact</Link>
         </p>
         <p className="mt-3 space-x-3">
           <Link href="/privacy-policy" className="text-gray-600 hover:text-navy transition-colors underline underline-offset-2">
