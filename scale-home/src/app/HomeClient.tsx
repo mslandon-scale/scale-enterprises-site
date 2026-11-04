@@ -141,7 +141,7 @@ export default function HomeClient() {
       <section className="relative overflow-hidden bg-white text-[#0B1F4B]">
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227]/20 to-transparent" />
 
-        <div className="relative max-w-4xl mx-auto px-5 py-16 md:py-24 text-center">
+        <div className="relative max-w-4xl mx-auto px-5 py-8 md:py-12 text-center">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
