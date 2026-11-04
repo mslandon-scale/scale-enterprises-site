@@ -4,11 +4,27 @@ import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
 
 export const metadata: Metadata = {
-  title: "Not Yet | Scale Enterprises",
+  title: "Not Yet",
   description:
     "You're not quite there yet, but we want to help you get started. A resource is on its way.",
   robots: { index: false, follow: true },
   alternates: { canonical: "/not-a-fit" },
+  openGraph: {
+    title: "Not Yet | Scale Enterprises",
+    description:
+      "You're not quite there yet, but we want to help you get started. A resource is on its way.",
+    url: "https://www.scaleenterprises.com/not-a-fit",
+    siteName: "Scale Enterprises",
+    type: "website",
+    images: [{ url: "/og.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Not Yet | Scale Enterprises",
+    description:
+      "You're not quite there yet, but we want to help you get started. A resource is on its way.",
+    images: ["/og.png"],
+  },
 };
 
 export default function NotAFitPage() {
@@ -62,7 +78,7 @@ export default function NotAFitPage() {
             style={{ color: "#555555" }}
           >
             We&rsquo;re going to send you a link to a resource so you can
-            start implementing on your own. Keep building &mdash; when
+            start on your own. Keep building &mdash; when
             you&rsquo;re ready for enterprise-level systems, we&rsquo;ll
             be here.
           </p>

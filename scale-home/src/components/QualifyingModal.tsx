@@ -51,7 +51,7 @@ export function revenueQualifies(raw: string | undefined | null): boolean | null
   const v = raw.trim().toLowerCase();
   if (!v) return null;
 
-  if (/under\s/i.test(v)) return false;
+  if (/(?:under|less\s*than|below)\s/i.test(v) || /^</.test(v)) return false;
 
   const numMatch = v.replace(/[$,\s]/g, "").match(/^(\d+(?:\.\d+)?)(k|m)?/i);
   if (numMatch) {
@@ -77,7 +77,7 @@ export function revenueQualifies(raw: string | undefined | null): boolean | null
 const C = {
   white: "#FFFFFF",
   navy: "#0B1F4B",
-  gold: "#C9A24B",
+  gold: "#C9A227",
   textSecondary: "#555555",
   textMuted: "#888888",
 } as const;
@@ -122,6 +122,10 @@ export default function QualifyingModal({ isOpen, onClose }: QualifyingModalProp
 
       const msg = e.data;
       if (!msg || typeof msg !== "object") return;
+
+      // Log every GHL postMessage for debugging payload shape
+      console.log("[GHL postMessage]", JSON.stringify(msg, null, 2));
+
       if (msg.type !== "form:submit") return;
 
       const formData = msg.data || {};

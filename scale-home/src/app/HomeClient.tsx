@@ -127,7 +127,7 @@ export default function HomeClient() {
             <Link href="/contact" className="hidden sm:inline font-body text-[13px] font-bold uppercase tracking-widest text-[#555] hover:text-[#0B1F4B] transition-colors">Contact</Link>
             <Link
               href="/book"
-              className="bg-[#C9A24B] text-white font-body font-bold text-sm uppercase tracking-widest px-6 py-3 rounded-full hover:bg-[#D4AF37] hover:-translate-y-0.5 transition-all duration-300"
+              className="bg-[#C9A227] text-white font-body font-bold text-sm uppercase tracking-widest px-6 py-3 rounded-full hover:bg-[#D4AF37] hover:-translate-y-0.5 transition-all duration-300"
             >
               Book a Call
             </Link>
@@ -139,7 +139,7 @@ export default function HomeClient() {
       {/*  HERO                                                            */}
       {/* ================================================================ */}
       <section className="relative overflow-hidden bg-white text-[#0B1F4B]">
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A24B]/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227]/20 to-transparent" />
 
         <div className="relative max-w-4xl mx-auto px-5 py-16 md:py-24 text-center">
           <motion.div
@@ -154,7 +154,7 @@ export default function HomeClient() {
             >
               We Build Enterprise-Level Businesses{" "}
               <span className="block mt-1">
-                <span className="text-[#C9A24B]">
+                <span className="text-[#C9A227]">
                   That Run Without You.
                 </span>
               </span>
@@ -172,12 +172,12 @@ export default function HomeClient() {
 
             {/* CTA */}
             <motion.div variants={fadeUp}>
-              <Link
-                href="/book"
-                className="inline-block bg-[#C9A24B] text-white font-body font-bold text-sm uppercase tracking-widest px-12 py-5 rounded-full shadow-[0_4px_24px_rgba(201,162,75,0.25)] hover:bg-[#D4AF37] hover:shadow-[0_6px_32px_rgba(201,162,75,0.35)] hover:-translate-y-0.5 transition-all duration-300"
+              <button
+                onClick={() => setModalOpen(true)}
+                className="inline-block bg-[#C9A227] text-white font-body font-bold text-sm uppercase tracking-widest px-12 py-5 rounded-full shadow-[0_4px_24px_rgba(201,162,39,0.25)] hover:bg-[#D4AF37] hover:shadow-[0_6px_32px_rgba(201,162,39,0.35)] hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
               >
                 Book a Strategy Call &rarr;
-              </Link>
+              </button>
             </motion.div>
           </motion.div>
         </div>
@@ -187,9 +187,9 @@ export default function HomeClient() {
       {/*  STATS / TRUST BAR                                               */}
       {/* ================================================================ */}
       <section className="bg-[#F8F8F8] py-12 md:py-14 relative">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A24B]/20 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227]/20 to-transparent" />
         <div className="max-w-5xl mx-auto px-5">
-          <p className="font-body text-xs font-bold uppercase tracking-[0.25em] text-[#C9A24B] text-center mb-8">
+          <p className="font-body text-xs font-bold uppercase tracking-[0.25em] text-[#C9A227] text-center mb-8">
             Proven Results
           </p>
           <motion.div
@@ -203,9 +203,9 @@ export default function HomeClient() {
               <motion.div
                 key={r.stat}
                 variants={fadeUp}
-                className="text-center p-8 rounded-2xl bg-white border border-[#0B1F4B]/8 hover:border-[#C9A24B]/30 transition-colors duration-300 shadow-sm"
+                className="text-center p-8 rounded-2xl bg-white border border-[#0B1F4B]/8 hover:border-[#C9A227]/30 transition-colors duration-300 shadow-sm"
               >
-                <p className="font-display font-bold text-4xl md:text-5xl text-[#C9A24B] tracking-tight mb-3">
+                <p className="font-display font-bold text-4xl md:text-5xl text-[#C9A227] tracking-tight mb-3">
                   {r.stat}
                 </p>
                 <p className="font-body text-[#0B1F4B] font-semibold text-base mb-1">
@@ -216,7 +216,7 @@ export default function HomeClient() {
             ))}
           </motion.div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A24B]/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227]/20 to-transparent" />
       </section>
 
       {/* ================================================================ */}
@@ -230,12 +230,12 @@ export default function HomeClient() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
           >
-            <p className="font-body text-xs font-bold uppercase tracking-[0.25em] text-[#C9A24B] text-center mb-4">
+            <p className="font-body text-xs font-bold uppercase tracking-[0.25em] text-[#C9A227] text-center mb-4">
               How It Works
             </p>
             <h2 className="font-display font-bold text-[clamp(28px,5vw,48px)] text-center text-[#0B1F4B] leading-tight mb-12">
               Three Steps to{" "}
-              <span className="text-[#C9A24B]">
+              <span className="text-[#C9A227]">
                 Scale
               </span>
             </h2>
@@ -250,7 +250,7 @@ export default function HomeClient() {
           >
             {steps.map((s) => (
               <motion.div key={s.num} variants={fadeUp} className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full border-2 border-[#C9A24B]/40 text-[#C9A24B] font-display font-bold text-lg mb-4 bg-[#C9A24B]/5">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full border-2 border-[#C9A227]/40 text-[#C9A227] font-display font-bold text-lg mb-4 bg-[#C9A227]/5">
                   {s.num}
                 </div>
                 <h3 className="font-display font-bold text-2xl text-[#0B1F4B] mb-3">
@@ -263,14 +263,14 @@ export default function HomeClient() {
             ))}
           </motion.div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A24B]/15 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227]/15 to-transparent" />
       </section>
 
       {/* ================================================================ */}
       {/*  ABOUT                                                           */}
       {/* ================================================================ */}
       <section className="bg-[#F8F8F8] py-14 md:py-20 relative">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A24B]/20 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227]/20 to-transparent" />
         <div className="max-w-5xl mx-auto px-5">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -280,7 +280,7 @@ export default function HomeClient() {
             className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8 items-center"
           >
             <div className="flex justify-center">
-              <div className="w-56 h-56 md:w-64 md:h-64 rounded-2xl overflow-hidden border border-[#C9A24B]/25 shadow-md">
+              <div className="w-56 h-56 md:w-64 md:h-64 rounded-2xl overflow-hidden border border-[#C9A227]/25 shadow-md">
                 <Image
                   src="/matthew-landon.jpeg"
                   alt="Matthew Landon"
@@ -291,13 +291,13 @@ export default function HomeClient() {
               </div>
             </div>
             <div>
-              <p className="font-body text-xs font-bold uppercase tracking-[0.25em] text-[#C9A24B] mb-4">
+              <p className="font-body text-xs font-bold uppercase tracking-[0.25em] text-[#C9A227] mb-4">
                 About
               </p>
               <h2 className="font-display font-bold text-[clamp(26px,4vw,44px)] text-[#0B1F4B] leading-tight mb-4">
                 Matthew Landon
               </h2>
-              <p className="font-body text-[#C9A24B] text-lg leading-relaxed mb-2 font-semibold">
+              <p className="font-body text-[#C9A227] text-lg leading-relaxed mb-2 font-semibold">
                 Founder, Scale Enterprises
               </p>
               <p className="font-body text-[#555] text-base leading-relaxed">
@@ -308,7 +308,7 @@ export default function HomeClient() {
             </div>
           </motion.div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A24B]/15 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227]/15 to-transparent" />
       </section>
 
       {/* ================================================================ */}
@@ -322,7 +322,7 @@ export default function HomeClient() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
           >
-            <p className="font-body text-xs font-bold uppercase tracking-[0.25em] text-[#C9A24B] text-center mb-4">
+            <p className="font-body text-xs font-bold uppercase tracking-[0.25em] text-[#C9A227] text-center mb-4">
               FAQ
             </p>
             <h2 className="font-display font-bold text-[clamp(28px,5vw,48px)] text-center text-[#0B1F4B] leading-tight mb-10">
@@ -344,7 +344,7 @@ export default function HomeClient() {
                     {faq.q}
                   </span>
                   <svg
-                    className={`w-5 h-5 text-[#C9A24B] shrink-0 transition-transform duration-200 ${openFaq === i ? "rotate-180" : ""}`}
+                    className={`w-5 h-5 text-[#C9A227] shrink-0 transition-transform duration-200 ${openFaq === i ? "rotate-180" : ""}`}
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -366,7 +366,7 @@ export default function HomeClient() {
             ))}
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A24B]/15 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227]/15 to-transparent" />
       </section>
 
       {/* ================================================================ */}
@@ -382,14 +382,14 @@ export default function HomeClient() {
           >
             {/* Decorative rule */}
             <div className="flex items-center justify-center gap-4 mb-8">
-              <div className="h-px w-16 bg-gradient-to-r from-transparent to-[#C9A24B]/40" />
-              <div className="w-2 h-2 rotate-45 border border-[#C9A24B]/50" />
-              <div className="h-px w-16 bg-gradient-to-l from-transparent to-[#C9A24B]/40" />
+              <div className="h-px w-16 bg-gradient-to-r from-transparent to-[#C9A227]/40" />
+              <div className="w-2 h-2 rotate-45 border border-[#C9A227]/50" />
+              <div className="h-px w-16 bg-gradient-to-l from-transparent to-[#C9A227]/40" />
             </div>
 
             <h2 className="font-display font-bold text-[clamp(28px,5vw,52px)] leading-tight mb-6 text-[#0B1F4B]">
               Ready to Build a Business{" "}
-              <span className="text-[#C9A24B]">
+              <span className="text-[#C9A227]">
                 That Runs Without You?
               </span>
             </h2>
@@ -397,12 +397,12 @@ export default function HomeClient() {
               Apply for a free Enterprise Scaling Strategy Call and discover the
               exact system to scale your business into a self-running enterprise.
             </p>
-            <Link
-              href="/book"
-              className="inline-block bg-[#C9A24B] text-white font-body font-bold text-sm uppercase tracking-widest px-12 py-5 rounded-full shadow-[0_4px_24px_rgba(201,162,75,0.25)] hover:bg-[#D4AF37] hover:shadow-[0_6px_32px_rgba(201,162,75,0.35)] hover:-translate-y-0.5 transition-all duration-300"
+            <button
+              onClick={() => setModalOpen(true)}
+              className="inline-block bg-[#C9A227] text-white font-body font-bold text-sm uppercase tracking-widest px-12 py-5 rounded-full shadow-[0_4px_24px_rgba(201,162,39,0.25)] hover:bg-[#D4AF37] hover:shadow-[0_6px_32px_rgba(201,162,39,0.35)] hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
             >
               Book a Strategy Call &rarr;
-            </Link>
+            </button>
           </motion.div>
         </div>
       </section>
