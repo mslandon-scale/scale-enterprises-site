@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Free Course Waitlist: Design, Engineer, Lead",
+  title: "Get Your Scaling System Built in 30 Days, Free",
   description:
-    "Join the waitlist for the free Scale Enterprises course on how to design, engineer and lead a service business that runs without you.",
+    "Join the waitlist and get the Enterprise Scaling Course, a one-on-one session, the AI Playbook, community access, and a free trial of the Enterprise 360 App.",
   alternates: { canonical: "/waitlist" },
 };
 
