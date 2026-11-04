@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 const tier1Bullets = [
-  "30-Day Transformation Sprint",
+  "Enterprise Systems Sprint",
   "Weekly Group Coaching Calls",
   "Enterprise Playbook Access",
   "GoHighLevel Funnel Build",
@@ -78,7 +78,7 @@ export default function ProgramTiers() {
               Enterprise Coaching
             </h3>
             <p className="font-body text-[15px] text-text-muted font-semibold mt-1">
-              30 Days + 12 Months
+              Coaching + 12 Months
             </p>
             <div className="w-full h-px bg-black/[0.08] my-6" />
             <ul className="space-y-3">

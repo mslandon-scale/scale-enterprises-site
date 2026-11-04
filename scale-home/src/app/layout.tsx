@@ -99,7 +99,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-body antialiased bg-white text-text-primary overflow-x-hidden">
+      <body className="font-body antialiased bg-white text-[#1A1A2E] overflow-x-hidden">
         {children}
         <Script
           src="https://widgets.leadconnectorhq.com/loader.js"

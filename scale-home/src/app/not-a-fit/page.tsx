@@ -1,33 +1,78 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import type { Metadata } from "next";
+import Navbar from "@/components/sections/Navbar";
+import Footer from "@/components/sections/Footer";
 
 export const metadata: Metadata = {
   title: "Thank You",
+  description:
+    "Thank you for your interest in Scale Enterprises. Our Enterprise Scaling Strategy program may not be the right fit at this time.",
   robots: { index: false, follow: true },
   alternates: { canonical: "/not-a-fit" },
 };
 
-export default function NotAFit() {
+export default function NotAFitPage() {
   return (
-    <main className="min-h-screen bg-white flex items-center justify-center px-6">
-      <div className="max-w-[520px] text-center">
-        <p className="font-body text-[11px] uppercase tracking-[0.2em] text-accent-gold font-bold mb-4">
-          Thank You
-        </p>
-        <h1 className="font-display text-navy font-extrabold text-3xl lg:text-4xl tracking-tight mb-4">
-          We Appreciate Your Time
-        </h1>
-        <p className="font-body text-text-secondary text-[16px] leading-[1.7] mb-8">
-          It looks like Scale Enterprises may not be the right fit right now, and
-          that is completely okay. We wish you the best on your journey.
-        </p>
-        <Link
-          href="/"
-          className="inline-block bg-accent-gold text-black font-bold text-[14px] uppercase tracking-widest px-10 py-4 rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200"
-        >
-          Back to Home
-        </Link>
-      </div>
-    </main>
+    <div className="min-h-screen bg-white">
+      <Navbar />
+
+      {/* Spacer for fixed navbar */}
+      <div className="h-[80px]" />
+
+      <section className="bg-white py-12 md:py-16 lg:py-20">
+        <div className="max-w-xl mx-auto px-5 lg:px-8 text-center">
+          {/* Gold circle icon with info svg */}
+          <div
+            className="mx-auto flex h-14 w-14 items-center justify-center rounded-full mb-6"
+            style={{ backgroundColor: "rgba(201,162,75,0.12)" }}
+          >
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#C9A24B"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 8v4M12 16h.01" />
+            </svg>
+          </div>
+
+          <h1
+            className="font-display font-bold text-2xl sm:text-3xl leading-tight tracking-tight mb-6"
+            style={{ color: "#0B1F4B" }}
+          >
+            Thank You for Your Interest
+          </h1>
+
+          <p
+            className="text-sm sm:text-base leading-relaxed max-w-md mx-auto"
+            style={{ color: "#555555" }}
+          >
+            Thank you for your interest. Based on your responses, our Enterprise
+            Scaling Strategy program may not be the right fit at this time. We
+            work best with businesses that have crossed the $500K revenue mark
+            and are fully committed to building enterprise-level systems. When
+            you&apos;re ready, we&apos;d love to hear from you again.
+          </p>
+
+          <Link
+            href="/"
+            className="mt-8 inline-block rounded-lg px-8 py-3 text-sm font-semibold transition-all hover:opacity-90"
+            style={{
+              backgroundColor: "#C9A24B",
+              color: "#FFFFFF",
+            }}
+          >
+            Return to Homepage
+          </Link>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
   );
 }

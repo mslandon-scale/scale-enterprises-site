@@ -75,7 +75,7 @@ export default function ToolsGrid() {
             Everything You Need. Nothing You Don&apos;t.
           </h2>
           <p className="font-body text-[18px] text-text-secondary leading-[1.7] max-w-xl mx-auto mt-6">
-            Every resource, template, and system included inside the transformation.
+            Every resource, template, and system included inside the program.
           </p>
         </motion.div>
 
