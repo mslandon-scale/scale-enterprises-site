@@ -144,13 +144,15 @@ export default function BookPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                {openFaq === i && (
+                <div
+                  className={`overflow-hidden transition-[max-height] duration-300 ease-in-out ${openFaq === i ? "max-h-96" : "max-h-0"}`}
+                >
                   <div className="px-6 pb-5">
                     <p className="font-body text-[#555] text-base leading-relaxed">
                       {faq.a}
                     </p>
                   </div>
-                )}
+                </div>
               </div>
             ))}
           </div>
