@@ -1,10 +1,18 @@
 # Scale Enterprises
 
-Scale Enterprises is an enterprise scaling and development firm that helps service-business owners build an enterprise-level business that scales and runs without them. Through the Design, Engineer, Lead framework, owners install enterprise-level strategy, private equity-caliber engineering, and leadership and accountability systems so they can run their business in less than 90 minutes a week. The Enterprise Scaling Strategy Call is for owners of service businesses with $500K or more in annual revenue who are ready to stop being the bottleneck.
+> Scale Enterprises is an enterprise scaling and development firm that helps US service-business owners take control of their businesses. We Design, Engineer, and Lead an enterprise-level business that scales and runs without the owner, using enterprise strategy, strong leadership and accountability systems, all enabled with AI. Founder: Matthew Landon. Not affiliated with Scale AI.
 
-## Links
+## Who it's for
+- Owners of service businesses doing $500K+ in annual revenue who want the business to run without them.
 
-- https://www.scaleenterprises.com/ — Homepage for Scale Enterprises, an enterprise scaling and development firm.
-- https://www.scaleenterprises.com/about — About Scale Enterprises and founder Matthew Landon.
-- https://www.scaleenterprises.com/book — Book a free Enterprise Scaling Strategy Call for service-business owners.
-- https://www.scaleenterprises.com/waitlist — Join the waitlist for the free Scale Enterprises course on Design, Engineer, Lead.
+## How it works
+- Design: enterprise-level strategy and org design.
+- Engineer: systems, operations and AI-enabled workflows.
+- Lead: leadership and accountability systems.
+
+## Key pages
+- [Home](https://www.scaleenterprises.com/): overview and FAQ
+- [Book a strategy call](https://www.scaleenterprises.com/book): for businesses with $500K+ in revenue
+
+## Contact
+- Website: https://www.scaleenterprises.com
