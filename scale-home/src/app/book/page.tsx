@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Book Your Enterprise Scaling Strategy Call",
@@ -12,6 +13,41 @@ export const metadata: Metadata = {
 export default function Book() {
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Service",
+              name: "Enterprise Scaling Strategy Call",
+              serviceType: "Business scaling and development",
+              provider: { "@id": "https://www.scaleenterprises.com/#org" },
+              audience: {
+                "@type": "BusinessAudience",
+                name: "Service businesses with $500K+ in annual revenue",
+              },
+              url: "https://www.scaleenterprises.com/book",
+            },
+            {
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Home",
+                  item: "https://www.scaleenterprises.com/",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "Book a Strategy Call",
+                  item: "https://www.scaleenterprises.com/book",
+                },
+              ],
+            },
+          ],
+        }}
+      />
       <Navbar />
       <main className="min-h-screen bg-white pt-[128px] pb-24">
         <div className="max-w-[720px] mx-auto px-6">

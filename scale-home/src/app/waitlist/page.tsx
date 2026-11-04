@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Free Course Waitlist: Design, Engineer, Lead",
@@ -12,6 +13,16 @@ export const metadata: Metadata = {
 export default function Waitlist() {
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.scaleenterprises.com/" },
+            { "@type": "ListItem", position: 2, name: "Free Course Waitlist", item: "https://www.scaleenterprises.com/waitlist" },
+          ],
+        }}
+      />
       <Navbar />
       <main className="min-h-screen bg-white pt-[128px] pb-24">
         <div className="max-w-[600px] mx-auto px-6 text-center">

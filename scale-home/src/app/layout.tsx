@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Sora, DM_Sans } from "next/font/google";
 import Script from "next/script";
+import JsonLd from "@/components/JsonLd";
 import "./globals.css";
 
 const sora = Sora({
@@ -60,16 +61,41 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sora.variable} ${dmSans.variable}`}>
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: "Scale Enterprises",
-              alternateName: "Scale Enterprises LLC",
-              url: "https://www.scaleenterprises.com",
-            }),
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "https://www.scaleenterprises.com/#org",
+                name: "Scale Enterprises",
+                legalName: "Scale Enterprises LLC",
+                url: "https://www.scaleenterprises.com",
+                logo: "https://www.scaleenterprises.com/logo.png",
+                email: "support@scaleenterprises.com",
+                telephone: "+1-385-402-8330",
+                areaServed: "US",
+                founder: { "@id": "https://www.scaleenterprises.com/#matthew-landon" },
+                description:
+                  "An enterprise scaling and development firm on a mission to help entrepreneurs take control of their businesses so they can reach their full potential. We deliver an enterprise-level business that scales and runs without the owner, by helping design, engineer, and lead the business through enterprise-level strategy, private equity-caliber engineering, strong leadership and accountability systems, all enabled with AI.",
+              },
+              {
+                "@type": "WebSite",
+                "@id": "https://www.scaleenterprises.com/#website",
+                name: "Scale Enterprises",
+                alternateName: "Scale Enterprises LLC",
+                url: "https://www.scaleenterprises.com",
+                publisher: { "@id": "https://www.scaleenterprises.com/#org" },
+              },
+              {
+                "@type": "Person",
+                "@id": "https://www.scaleenterprises.com/#matthew-landon",
+                name: "Matthew Landon",
+                jobTitle: "Founder",
+                worksFor: { "@id": "https://www.scaleenterprises.com/#org" },
+                url: "https://www.scaleenterprises.com/about",
+              },
+            ],
           }}
         />
       </head>

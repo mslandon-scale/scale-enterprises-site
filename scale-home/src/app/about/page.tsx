@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "About Scale Enterprises & Founder Matthew Landon",
@@ -10,6 +11,17 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
+    <>
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.scaleenterprises.com/" },
+          { "@type": "ListItem", position: 2, name: "About", item: "https://www.scaleenterprises.com/about" },
+        ],
+      }}
+    />
     <main className="min-h-screen bg-bg-navy text-white/70">
       <div className="max-w-[720px] mx-auto px-6 py-16">
         <Link
@@ -120,5 +132,6 @@ export default function About() {
         </div>
       </div>
     </main>
+    </>
   );
 }
