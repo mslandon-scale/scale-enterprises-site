@@ -172,6 +172,20 @@ export default function Navbar() {
             </div>
 
             <a
+              href="/about"
+              className="font-body text-[14px] font-bold uppercase tracking-widest text-text-secondary hover:text-navy transition-colors duration-200"
+            >
+              About
+            </a>
+
+            <a
+              href="/contact"
+              className="font-body text-[14px] font-bold uppercase tracking-widest text-text-secondary hover:text-navy transition-colors duration-200"
+            >
+              Contact
+            </a>
+
+            <a
               href="https://app.scaleenterprises.com/login"
               className="font-body text-[14px] font-bold uppercase tracking-widest text-text-secondary hover:text-navy transition-colors duration-200"
             >
@@ -179,10 +193,10 @@ export default function Navbar() {
             </a>
 
             <a
-              href="https://go.scaleenterprises.com/ent360"
+              href="/book"
               className="bg-accent-gold text-black font-bold text-[15px] uppercase tracking-widest px-8 py-3 rounded-full hover:brightness-110 hover:-translate-y-px transition-all duration-200"
             >
-              Transform Your Business
+              Book a Strategy Call
             </a>
           </div>
 
@@ -298,6 +312,22 @@ export default function Navbar() {
             </div>
 
             <a
+              href="/about"
+              onClick={() => setMobileOpen(false)}
+              className="font-body text-xl font-bold uppercase tracking-widest text-text-secondary hover:text-navy transition-colors"
+            >
+              About
+            </a>
+
+            <a
+              href="/contact"
+              onClick={() => setMobileOpen(false)}
+              className="font-body text-xl font-bold uppercase tracking-widest text-text-secondary hover:text-navy transition-colors"
+            >
+              Contact
+            </a>
+
+            <a
               href="https://app.scaleenterprises.com/login"
               onClick={() => setMobileOpen(false)}
               className="font-body text-xl font-bold uppercase tracking-widest text-text-secondary hover:text-navy transition-colors"
@@ -306,11 +336,11 @@ export default function Navbar() {
             </a>
 
             <a
-              href="https://go.scaleenterprises.com/ent360"
+              href="/book"
               onClick={() => setMobileOpen(false)}
               className="bg-accent-gold text-black font-bold text-[15px] uppercase tracking-widest px-10 py-4 mt-4 rounded-full"
             >
-              Transform Your Business
+              Book a Strategy Call
             </a>
           </motion.div>
         )}

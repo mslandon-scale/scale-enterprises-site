@@ -7,6 +7,8 @@ const platformLinks = [
 
 const companyLinks = [
   { label: "About", href: "/about" },
+  { label: "Book a Strategy Call", href: "/book" },
+  { label: "Free Course Waitlist", href: "/waitlist" },
   { label: "Enterprise Playbook", href: "https://go.scaleenterprises.com/ent-playbook-lp" },
   { label: "Contact", href: "/contact" },
 ];
@@ -21,8 +23,8 @@ export default function Footer() {
               SCALE ENTERPRISES
             </span>
             <p className="font-body text-[13px] text-white/40 max-w-xs mt-3 leading-[1.7]">
-              We help service businesses become enterprises. 30 days to transformation,
-              90 minutes a week to operate.
+              We help service-business owners design, engineer and lead an
+              enterprise-level business that scales and runs without them.
             </p>
 
             <h4 className="font-body text-[11px] uppercase tracking-widest text-white/40 mt-6 mb-2">

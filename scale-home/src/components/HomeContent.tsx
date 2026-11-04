@@ -834,7 +834,7 @@ const pageHTML = `
     <p class="eyebrow reveal">For Owners Of $1M+ Service Businesses</p>
     <h1 class="reveal">Get To <span class="gold-line">$10M ARR</span><br>In 12 Months Or Less<br>Or We Work For Free<br>Until You Do.</h1>
     <p class="subtitle reveal">A 12-month done-for-you partnership. No equity. No revenue share. Just results.</p>
-    <a href="#" onclick="return openQuizModal()" class="btn btn-gold reveal">Apply For Enterprise 360 &#8594;</a>
+    <a href="/book" class="btn btn-gold reveal">Book a Strategy Call &#8594;</a>
 
     <div class="hero-proof reveal">
       <p class="hp-headline" style="font-size:clamp(18px,2.2vw,24px);font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.5);">Only <span style="color:var(--gold);">10</span> Spots Available</p>
@@ -1042,7 +1042,7 @@ const pageHTML = `
     </div>
 
     <div style="text-align:center;margin-top:48px;">
-      <a href="#" onclick="return openQuizModal()" class="btn btn-gold reveal">Apply For Enterprise 360 &#8594;</a>
+      <a href="/book" class="btn btn-gold reveal">Book a Strategy Call &#8594;</a>
     </div>
   </div>
 </section>
@@ -1123,7 +1123,7 @@ const pageHTML = `
     <h2 class="reveal"><span class="text-gradient">Join The Enterprise Movement</span></h2>
     <p class="fc-sub reveal"><span class="text-gradient-white">Stop Running A Business</span></p>
     <h3 class="reveal" style="font-size:clamp(22px,3vw,36px);font-weight:800;text-transform:uppercase;margin-bottom:48px;"><span class="text-gradient-white">And Start Leading An Enterprise</span></h3>
-    <a href="#" onclick="return openQuizModal()" class="btn btn-gold reveal">Apply For Enterprise 360 &#8594;</a>
+    <a href="/book" class="btn btn-gold reveal">Book a Strategy Call &#8594;</a>
     <p class="reveal" style="font-size:15px;color:rgba(255,255,255,0.45);max-width:600px;margin:32px auto 0;line-height:1.6;">Scale Enterprises. A proprietary framework, expert coaching, and a proven path from business owner to enterprise entrepreneur.</p>
   </div>
 </section>
