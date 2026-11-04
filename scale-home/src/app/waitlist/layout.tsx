@@ -6,6 +6,20 @@ export const metadata: Metadata = {
   description:
     "Join the waitlist for the free Scale Enterprises course on how to design, engineer and lead a service business that runs without you.",
   alternates: { canonical: "/waitlist" },
+  openGraph: {
+    title: "Free Course Waitlist: Design, Engineer, Lead",
+    description:
+      "Join the waitlist for the free Scale Enterprises course on how to design, engineer and lead a service business that runs without you.",
+    url: "/waitlist",
+    images: ["/og.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Free Course Waitlist: Design, Engineer, Lead",
+    description:
+      "Join the waitlist for the free Scale Enterprises course on how to design, engineer and lead a service business that runs without you.",
+    images: ["/og.png"],
+  },
 };
 
 export default function WaitlistLayout({

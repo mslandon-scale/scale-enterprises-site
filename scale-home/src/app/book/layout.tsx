@@ -6,6 +6,20 @@ export const metadata: Metadata = {
   description:
     "For service businesses with $500K+ in revenue. Book a free Enterprise Scaling Strategy Call and map how to design, engineer and lead a business that runs without you.",
   alternates: { canonical: "/book" },
+  openGraph: {
+    title: "Book Your Enterprise Scaling Strategy Call",
+    description:
+      "For service businesses with $500K+ in revenue. Book a free Enterprise Scaling Strategy Call and map how to design, engineer and lead a business that runs without you.",
+    url: "/book",
+    images: ["/og.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Book Your Enterprise Scaling Strategy Call",
+    description:
+      "For service businesses with $500K+ in revenue. Book a free Enterprise Scaling Strategy Call and map how to design, engineer and lead a business that runs without you.",
+    images: ["/og.png"],
+  },
 };
 
 export default function BookLayout({

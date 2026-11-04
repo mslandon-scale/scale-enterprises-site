@@ -120,7 +120,7 @@ export default function WaitlistPage() {
             Free Course
           </span>
           <h1 className="mb-3 font-display text-[34px] font-bold leading-[1.08] tracking-tight text-white lg:text-[48px]">
-            Join the Free
+            Join the Free{" "}
             <br />
             Course <span className="text-[#C9A24B]">Waitlist</span>
           </h1>

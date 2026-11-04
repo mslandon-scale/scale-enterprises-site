@@ -4,7 +4,23 @@ import Footer from "@/components/sections/Footer";
 
 export const metadata: Metadata = {
   title: "Disclaimer",
+  description:
+    "Legal disclaimer for Scale Enterprises. Results mentioned are not typical and individual results will vary.",
   alternates: { canonical: "/disclaimer" },
+  openGraph: {
+    title: "Disclaimer | Scale Enterprises",
+    description:
+      "Legal disclaimer for Scale Enterprises. Results mentioned are not typical and individual results will vary.",
+    url: "/disclaimer",
+    images: ["/og.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Disclaimer | Scale Enterprises",
+    description:
+      "Legal disclaimer for Scale Enterprises. Results mentioned are not typical and individual results will vary.",
+    images: ["/og.png"],
+  },
 };
 
 export default function Disclaimer() {
