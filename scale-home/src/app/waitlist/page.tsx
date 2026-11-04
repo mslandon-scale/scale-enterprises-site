@@ -92,7 +92,7 @@ export default function WaitlistPage() {
   return (
     <div className="relative flex min-h-[100dvh] flex-col bg-gradient-to-b from-[#070F24] to-[#0B1F4B]">
       {/* Header: white logo only */}
-      <header className="relative z-10 flex h-14 shrink-0 items-center px-5 lg:px-8">
+      <header className="relative z-10 flex h-14 shrink-0 items-center justify-center px-5 lg:px-8">
         <a href="/" className="flex items-center gap-2.5">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
