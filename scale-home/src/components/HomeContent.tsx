@@ -1076,36 +1076,32 @@ const pageHTML = `
       </div>
       <div class="faq-list">
         <div class="faq-item reveal">
-          <button class="faq-question">Who is Enterprise 360 for?</button>
-          <div class="faq-answer"><p>Business owners already doing $1M+ in revenue who want to scale to $10M ARR. You have a proven business, a team, and revenue — you just need the systems, strategy, and execution partner to get to the next level.</p></div>
+          <button class="faq-question">What does Scale Enterprises do?</button>
+          <div class="faq-answer"><p>Scale Enterprises is an enterprise scaling and development firm. We help service-business owners build an enterprise-level business that scales and runs without them, by helping design, engineer and lead the business with enterprise-level strategy, private equity-caliber engineering, and strong leadership and accountability systems, all enabled with AI.</p></div>
         </div>
         <div class="faq-item reveal">
-          <button class="faq-question">How is this different from coaching or consulting?</button>
-          <div class="faq-answer"><p>Coaches give you conversations. Consultants give you documents. We build the actual systems — strategy, funnels, financial models, recruiting pipelines, tech stacks — and stay in the business with you for 12 months to make sure they work. This is a done-with-you partnership, not advice from the sidelines.</p></div>
+          <button class="faq-question">Who is the strategy call for?</button>
+          <div class="faq-answer"><p>The Enterprise Scaling Strategy Call is for owners of service businesses with $500K or more in annual revenue who are stuck as the operator and are committed to building enterprise-level systems.</p></div>
         </div>
         <div class="faq-item reveal">
-          <button class="faq-question">What does "we work for free until you do" actually mean?</button>
-          <div class="faq-answer"><p>If you have not reached $10M ARR by the end of your 12-month partnership, we continue working with you at no additional cost until you do. No asterisks, no fine print. We are that confident in the system.</p></div>
+          <button class="faq-question">What do Design, Engineer and Lead mean?</button>
+          <div class="faq-answer"><p>Design gives you absolute clarity on where the business is going. Engineer gives you control and makes the numbers work. Lead installs leadership and accountability systems so you can run your business in less than 90 minutes a week.</p></div>
         </div>
         <div class="faq-item reveal">
-          <button class="faq-question">Do you take equity or revenue share?</button>
-          <div class="faq-answer"><p>No. Never. You pay $3,000 per month for 12 months. That is it. We do not take equity, revenue share, or any ownership stake in your business. Everything we build is yours.</p></div>
+          <button class="faq-question">What results have clients seen?</button>
+          <div class="faq-answer"><p>Examples include 3X leads in 7 days for a 50-person sales team, 2x profit in 3 months for a trades business, and 500% growth in 6 months for a professional services firm. Results are not typical and vary by business.</p></div>
         </div>
         <div class="faq-item reveal">
-          <button class="faq-question">What do you actually build for me?</button>
-          <div class="faq-answer"><p>Your full growth strategy, business model, leadership system, digital funnels, ad campaigns, financial roadmap, recruiting pipeline, tech and CRM integrations — and we manage the ongoing cadence of weekly, monthly, and quarterly reviews for the full 12 months.</p></div>
+          <button class="faq-question">Do you take equity in my business?</button>
+          <div class="faq-answer"><p>No. You keep 100% ownership of your company.</p></div>
         </div>
         <div class="faq-item reveal">
-          <button class="faq-question">Why only 10 spots?</button>
-          <div class="faq-answer"><p>Because we work inside your business, not from a distance. Each partnership requires dedicated time, attention, and resources from our team. We cap enrollment to protect the quality of work we deliver. When the 10 spots are filled, enrollment closes.</p></div>
+          <button class="faq-question">I'm too busy right now. Is this a good time?</button>
+          <div class="faq-answer"><p>Being too busy to step back is the problem we solve. The goal is a business that runs without you, so you get your time back.</p></div>
         </div>
         <div class="faq-item reveal">
-          <button class="faq-question">What is the time commitment on my end?</button>
-          <div class="faq-answer"><p>We do the heavy building. You show up for weekly leadership meetings, give final approvals on strategy and model decisions, and lead your team through the changes. Expect a few hours per week — not a second full-time job.</p></div>
-        </div>
-        <div class="faq-item reveal">
-          <button class="faq-question">How do I apply?</button>
-          <div class="faq-answer"><p>Click the button, fill out the short application, and we will book a call to see if Enterprise 360 is the right fit for your business.</p></div>
+          <button class="faq-question">What happens on the strategy call?</button>
+          <div class="faq-answer"><p>We review where you are, where the business depends on you, and the exact system to scale it into a self-running enterprise, then decide together whether working with us is a fit.</p></div>
         </div>
       </div>
     </div>
