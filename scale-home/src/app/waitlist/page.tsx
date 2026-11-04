@@ -32,7 +32,7 @@ function BackCard({
 
 function CardStack() {
   return (
-    <div className="relative mx-auto h-[304px] w-[480px] shrink-0">
+    <div className="relative mx-auto h-[316px] w-[480px] shrink-0">
       {/* Gold glow */}
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[220px] w-[360px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#C9A24B]/[0.10] blur-[80px]" />
 
@@ -58,7 +58,7 @@ function CardStack() {
       {/* Enterprise Roadmap: front */}
       <div
         className="absolute z-10 rounded-2xl border border-[#C9A24B]/50 bg-gradient-to-br from-[#1B3A82] to-[#0B1F4B] text-white shadow-[0_18px_50px_rgba(0,0,0,0.6)]"
-        style={{ width: 200, height: 220, left: "50%", top: 84, transform: "translateX(-50%)" }}
+        style={{ width: 200, height: 220, left: "50%", top: 96, transform: "translateX(-50%)" }}
       >
         <div className="px-5 pt-5">
           <div className="mb-3 flex items-center gap-1.5">
@@ -120,7 +120,7 @@ export default function WaitlistPage() {
             <br />
             Course <span className="text-[#C9A24B]">Waitlist</span>
           </h1>
-          <p className="mb-8 max-w-sm font-body text-[15px] leading-relaxed text-white/70 lg:text-[17px]">
+          <p className="mb-0 max-w-sm lg:mb-8 font-body text-[15px] leading-relaxed text-white/70 lg:text-[17px]">
             Be first to know when the free course opens. Add your details and we will email you.
           </p>
 
