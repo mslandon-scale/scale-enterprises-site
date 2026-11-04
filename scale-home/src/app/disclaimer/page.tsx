@@ -4,6 +4,7 @@ import Footer from "@/components/sections/Footer";
 
 export const metadata: Metadata = {
   title: "Disclaimer | Scale Enterprises",
+  alternates: { canonical: "/disclaimer" },
 };
 
 export default function Disclaimer() {

@@ -17,8 +17,9 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.scaleenterprises.com"),
   title: "Scale Enterprises — We Help Service Businesses Become Enterprises",
-  description: "The 30-Day Enterprise Transformation. Go from $500K/yr and overwhelmed to 8-figure systems running in 90 minutes a day.",
+  description: "Scale Enterprises helps service-business owners design, engineer and lead an enterprise-level business that scales and runs without them, enabled with AI.",
   icons: {
     icon: "/favicon.png",
     apple: "/favicon.png",
@@ -44,7 +45,7 @@ export default function RootLayout({
               "@type": "WebSite",
               name: "Scale Enterprises",
               alternateName: "Scale Enterprises LLC",
-              url: "https://scaleenterprises.com",
+              url: "https://www.scaleenterprises.com",
             }),
           }}
         />

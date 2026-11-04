@@ -3,6 +3,7 @@ import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Scale Enterprises",
+  alternates: { canonical: "/privacy-policy" },
 };
 
 export default function PrivacyPolicy() {

@@ -3,6 +3,7 @@ import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Terms of Service | Scale Enterprises",
+  alternates: { canonical: "/terms-of-service" },
 };
 
 export default function TermsOfService() {

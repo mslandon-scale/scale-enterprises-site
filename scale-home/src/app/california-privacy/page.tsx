@@ -3,6 +3,7 @@ import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "California Privacy Notice | Scale Enterprises",
+  alternates: { canonical: "/california-privacy" },
 };
 
 export default function CaliforniaPrivacy() {

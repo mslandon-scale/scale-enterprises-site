@@ -4,6 +4,7 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Enterprise 360 Terms of Service | Scale Enterprises",
   robots: { index: false, follow: false },
+  alternates: { canonical: "/ent360-terms" },
 };
 
 export default function Ent360Terms() {

@@ -4,6 +4,7 @@ import Footer from "@/components/sections/Footer";
 
 export const metadata: Metadata = {
   title: "Contact | Scale Enterprises",
+  alternates: { canonical: "/contact" },
 };
 
 export default function Contact() {

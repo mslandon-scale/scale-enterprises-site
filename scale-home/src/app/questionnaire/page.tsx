@@ -6,6 +6,7 @@ import QuestionnaireForm from "@/components/QuestionnaireForm";
 export const metadata: Metadata = {
   title: "Pre-Call Questionnaire | Scale Enterprises",
   description: "Complete your pre-call questionnaire before your Commitment Call with Scale Enterprises.",
+  alternates: { canonical: "/questionnaire" },
 };
 
 export default function Questionnaire() {
