@@ -3,7 +3,23 @@ import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
+  description:
+    "Scale Enterprises privacy policy. Learn how we collect, use and protect your personal information.",
   alternates: { canonical: "/privacy-policy" },
+  openGraph: {
+    title: "Privacy Policy | Scale Enterprises",
+    description:
+      "Scale Enterprises privacy policy. Learn how we collect, use and protect your personal information.",
+    url: "/privacy-policy",
+    images: ["/og.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy | Scale Enterprises",
+    description:
+      "Scale Enterprises privacy policy. Learn how we collect, use and protect your personal information.",
+    images: ["/og.png"],
+  },
 };
 
 export default function PrivacyPolicy() {

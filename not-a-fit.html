@@ -11,7 +11,8 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Not Qualified | Scale Enterprises</title>
+  <meta name="robots" content="noindex, follow">
+  <title>Not Yet | Scale Enterprises</title>
   <link rel="icon" type="image/png" href="SE ICON DESIGN WHITE.png">
   <script>window.__AB_TESTS = [];</script>
   <script src="js/attribution.js"></script>
@@ -24,23 +25,20 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --azure: #060CB6;
-      --azure-bright: #1A22E6;
-      --prussian: #02032E;
-      --black: #000000;
+      --navy: #0B1F4B;
+      --gold: #C9A227;
       --white: #FFFFFF;
-      --gray-300: #CCCCDD;
-      --gray-400: #9999AA;
-      --gray-500: #888899;
-      --gray-600: #666677;
+      --text: #555555;
+      --text-muted: #888888;
+      --bg: #FFFFFF;
     }
 
     html { font-size: 16px; }
 
     body {
       font-family: 'Montserrat', sans-serif;
-      color: var(--white);
-      background: var(--black);
+      color: var(--text);
+      background: var(--bg);
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
     }
@@ -62,98 +60,74 @@
     h1 {
       font-size: clamp(1.6rem, 3.5vw, 2.4rem);
       font-weight: 800;
-      line-height: 1.2;
+      line-height: 1.15;
       margin-bottom: 24px;
+      color: var(--navy);
     }
 
     p {
-      color: var(--gray-300);
+      color: var(--text);
       font-size: 1rem;
       line-height: 1.7;
       margin-bottom: 20px;
     }
 
-    .reason-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
-      padding: 32px;
-      margin: 40px 0;
-      text-align: left;
-    }
-
-    .reason-card h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 16px;
-    }
-
-    .reason-item {
+    .divider {
       display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 16px;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin: 32px 0;
+    }
+    .divider-line {
+      height: 1px;
+      width: 48px;
+    }
+    .divider-diamond {
+      width: 8px;
+      height: 8px;
+      transform: rotate(45deg);
+      border: 1px solid var(--gold);
     }
 
-    .reason-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .reason-item svg {
-      flex-shrink: 0;
-      margin-top: 4px;
-    }
-
-    .reason-item p {
-      margin-bottom: 0;
-      font-size: 0.95rem;
-    }
-
-    .closing {
-      margin-top: 40px;
-    }
-
-    .closing p {
-      color: var(--gray-400);
+    .muted {
+      color: var(--text-muted);
       font-size: 0.92rem;
-    }
-
-    .closing strong {
-      color: var(--white);
     }
 
     .btn {
       display: inline-block;
       padding: 16px 40px;
       font-family: inherit;
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       font-weight: 700;
-      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      border-radius: 100px;
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s;
       margin-top: 32px;
+      border: none;
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 20px rgba(6, 12, 182, 0.3);
+      box-shadow: 0 6px 32px rgba(201, 162, 39, 0.35);
     }
 
-    .btn--primary {
-      background: var(--azure);
+    .btn--gold {
+      background: var(--gold);
       color: var(--white);
-      border: none;
     }
 
     .footer {
       text-align: center;
       padding: 32px 24px;
-      border-top: 1px solid rgba(255,255,255,0.06);
+      border-top: 1px solid rgba(11, 31, 75, 0.08);
     }
 
     .footer p {
-      color: var(--gray-600);
+      color: var(--text-muted);
       font-size: 0.8rem;
     }
 
@@ -166,18 +140,17 @@
     }
 
     .footer-links a {
-      color: var(--gray-600);
+      color: var(--text-muted);
       font-size: 0.75rem;
       transition: color 0.2s;
     }
 
     .footer-links a:hover {
-      color: var(--gray-400);
+      color: var(--navy);
     }
 
     @media (max-width: 640px) {
       .container { padding: 60px 20px; }
-      .reason-card { padding: 24px; }
     }
   </style>
 </head>
@@ -189,33 +162,25 @@
   </div>
 
   <div class="container">
-    <h1>Thanks for Applying.<br>You Don't Qualify Right Now.</h1>
-
-    <p>We appreciate you taking the time to submit an application. That alone puts you ahead of most business owners who only think about making a change.</p>
-
-    <p>But based on what you shared, <strong style="color: #fff;">this program isn't the right fit for where you are today.</strong></p>
-
-    <div class="reason-card">
-      <h3>Here's why you may not have qualified:</h3>
-
-      <div class="reason-item">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#CC3333" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
-        <p><strong style="color: #fff;">You're not running a service business.</strong> Scale Enterprises is built specifically for service-based businesses. If you're in e-commerce, SaaS, or another model, our system won't apply the way it needs to.</p>
-      </div>
-
-      <div class="reason-item">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#CC3333" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
-        <p><strong style="color: #fff;">You're under $500K in annual revenue.</strong> The enterprise infrastructure we install is designed for businesses that have already proven product-market fit and have real revenue. If you're not there yet, this program would be premature. You need to focus on getting to $500K first.</p>
-      </div>
+    <div style="display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;background:rgba(201,162,39,0.10);margin-bottom:32px;">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A227" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
     </div>
 
-    <div class="closing">
-      <p>This isn't a rejection. It's a redirect. <strong>The worst thing we could do is take your money when the timing isn't right.</strong></p>
+    <h1>Not Yet &mdash; But You're on the Right Track</h1>
 
-      <p>If your business grows into a service model doing above $500K, we'd love to hear from you again. The door is always open.</p>
+    <p>Based on what you shared, our Enterprise Scaling program isn't the right fit <em>right now</em>. That doesn't mean it won't be.</p>
 
-      <a href="index.html" class="btn btn--primary">&larr; Back to Home</a>
+    <p>We're going to send you a link to a resource so you can start on your own. Keep building &mdash; when you're ready for enterprise-level systems, we'll be here.</p>
+
+    <div class="divider">
+      <div class="divider-line" style="background:linear-gradient(to right,transparent,#C9A227)"></div>
+      <div class="divider-diamond"></div>
+      <div class="divider-line" style="background:linear-gradient(to left,transparent,#C9A227)"></div>
     </div>
+
+    <p class="muted">Check your inbox soon. In the meantime, keep moving forward &mdash; the fact that you applied already puts you ahead of most business owners.</p>
+
+    <a href="index.html" class="btn btn--gold">&larr; Return to Homepage</a>
   </div>
 
   <footer class="footer">

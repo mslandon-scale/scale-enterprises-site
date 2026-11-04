@@ -3,7 +3,23 @@ import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "California Privacy Notice",
+  description:
+    "California privacy notice for Scale Enterprises, supplementing our Privacy Policy under the CCPA.",
   alternates: { canonical: "/california-privacy" },
+  openGraph: {
+    title: "California Privacy Notice | Scale Enterprises",
+    description:
+      "California privacy notice for Scale Enterprises, supplementing our Privacy Policy under the CCPA.",
+    url: "/california-privacy",
+    images: ["/og.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "California Privacy Notice | Scale Enterprises",
+    description:
+      "California privacy notice for Scale Enterprises, supplementing our Privacy Policy under the CCPA.",
+    images: ["/og.png"],
+  },
 };
 
 export default function CaliforniaPrivacy() {

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import Script from "next/script";
 
@@ -18,6 +19,56 @@ interface QualifyingModalProps {
 /* ------------------------------------------------------------------ */
 
 const GHL_STRATEGY_FORM_ID = "9Ui664NtFjDWHaMejSG0";
+const GHL_REVENUE_FIELD_ID = "GWR40KA9Eh6A0LnJN2g9";
+const GHL_ALLOWED_ORIGINS = [
+  "leadconnectorhq.com",
+  "msgsndr.com",
+  "leadconnector.co",
+];
+
+/* ------------------------------------------------------------------ */
+/*  Revenue parsing                                                    */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Returns true if the revenue string indicates $500K+, false if under,
+ * or null if the value can't be determined.
+ *
+ * Handles GHL dropdown values like:
+ *   "$500K - $1M" → true
+ *   "$1M+" → true
+ *   "$1M - $5M" → true
+ *   "$5M+" → true
+ *   "Under $250K" → false
+ *   "Under $500K" → false
+ *   "$250K - $500K" → false
+ *   "500k-1m" → true
+ *   "$2,000,000" → true
+ *   "" → null
+ */
+export function revenueQualifies(raw: string | undefined | null): boolean | null {
+  if (!raw || typeof raw !== "string") return null;
+  const v = raw.trim().toLowerCase();
+  if (!v) return null;
+
+  if (/(?:under|less\s*than|below)\s/i.test(v) || /^</.test(v)) return false;
+
+  const numMatch = v.replace(/[$,\s]/g, "").match(/^(\d+(?:\.\d+)?)(k|m)?/i);
+  if (numMatch) {
+    let amount = parseFloat(numMatch[1]);
+    const suffix = (numMatch[2] || "").toLowerCase();
+    if (suffix === "m") amount *= 1_000_000;
+    else if (suffix === "k") amount *= 1_000;
+    if (amount >= 500_000) return true;
+    if (amount > 0) return false;
+  }
+
+  if (/(?:500k|1m|5m|10m|\$[5-9]\d{2}|\$\d{1,},?\d{3})/i.test(v.replace(/\s/g, ""))) {
+    if (!/under/i.test(v)) return true;
+  }
+
+  return null;
+}
 
 /* ------------------------------------------------------------------ */
 /*  Palette (white/clean with navy + gold accents)                     */
@@ -26,7 +77,7 @@ const GHL_STRATEGY_FORM_ID = "9Ui664NtFjDWHaMejSG0";
 const C = {
   white: "#FFFFFF",
   navy: "#0B1F4B",
-  gold: "#C9A24B",
+  gold: "#C9A227",
   textSecondary: "#555555",
   textMuted: "#888888",
 } as const;
@@ -37,6 +88,7 @@ const C = {
 
 export default function QualifyingModal({ isOpen, onClose }: QualifyingModalProps) {
   const panelRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   /* ---- Lock body scroll ---- */
   useEffect(() => {
@@ -49,6 +101,53 @@ export default function QualifyingModal({ isOpen, onClose }: QualifyingModalProp
       document.body.style.overflow = "";
     };
   }, [isOpen]);
+
+  /* ---- GHL form submit → revenue-based redirect ---- */
+  useEffect(() => {
+    if (!isOpen) return;
+
+    function isAllowedOrigin(origin: string): boolean {
+      try {
+        const hostname = new URL(origin).hostname;
+        return GHL_ALLOWED_ORIGINS.some(
+          (d) => hostname === d || hostname.endsWith("." + d),
+        );
+      } catch {
+        return false;
+      }
+    }
+
+    function handler(e: MessageEvent) {
+      if (!isAllowedOrigin(e.origin)) return;
+
+      const msg = e.data;
+      if (!msg || typeof msg !== "object") return;
+
+      // Log every GHL postMessage for debugging payload shape
+      console.log("[GHL postMessage]", JSON.stringify(msg, null, 2));
+
+      if (msg.type !== "form:submit") return;
+
+      const formData = msg.data || {};
+      const revenue =
+        formData[GHL_REVENUE_FIELD_ID] ||
+        formData.revenue ||
+        formData.annual_revenue ||
+        formData.Revenue ||
+        formData["Annual Revenue"];
+
+      const qualified = revenueQualifies(revenue);
+      const dest = qualified === false ? "/not-a-fit" : "/book";
+
+      setTimeout(() => {
+        onClose();
+        router.push(dest);
+      }, 800);
+    }
+
+    window.addEventListener("message", handler);
+    return () => window.removeEventListener("message", handler);
+  }, [isOpen, onClose, router]);
 
   /* ---- Escape key ---- */
   useEffect(() => {

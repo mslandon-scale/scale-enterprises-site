@@ -4,7 +4,23 @@ import Footer from "@/components/sections/Footer";
 
 export const metadata: Metadata = {
   title: "Contact",
+  description:
+    "Get in touch with Scale Enterprises. Email support@scaleenterprises.com or apply for the Enterprise 360 program.",
   alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact Scale Enterprises",
+    description:
+      "Get in touch with Scale Enterprises. Email support@scaleenterprises.com or apply for the Enterprise 360 program.",
+    url: "/contact",
+    images: ["/og.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Scale Enterprises",
+    description:
+      "Get in touch with Scale Enterprises. Email support@scaleenterprises.com or apply for the Enterprise 360 program.",
+    images: ["/og.png"],
+  },
 };
 
 export default function Contact() {

@@ -7,6 +7,20 @@ export const metadata: Metadata = {
   description:
     "Scale Enterprises is an enterprise scaling and development firm founded by Matthew Landon. We help service-business owners design, engineer and lead a business that runs without them.",
   alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About Scale Enterprises & Founder Matthew Landon",
+    description:
+      "Scale Enterprises is an enterprise scaling and development firm founded by Matthew Landon. We help service-business owners design, engineer and lead a business that runs without them.",
+    url: "/about",
+    images: ["/og.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Scale Enterprises & Founder Matthew Landon",
+    description:
+      "Scale Enterprises is an enterprise scaling and development firm founded by Matthew Landon. We help service-business owners design, engineer and lead a business that runs without them.",
+    images: ["/og.png"],
+  },
 };
 
 export default function About() {

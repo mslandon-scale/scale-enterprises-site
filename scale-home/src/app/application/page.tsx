@@ -11,11 +11,25 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Apply for Enterprise 360 | Scale Enterprises",
+  title: "Apply for Enterprise 360",
   description:
-    "Apply for the Enterprise 360 program — Scale Enterprises' flagship enterprise transformation membership.",
+    "Apply for Enterprise 360, the Scale Enterprises program to design, engineer and lead an enterprise-level business that runs without you.",
   robots: { index: false, follow: true },
   alternates: { canonical: "/application" },
+  openGraph: {
+    title: "Apply for Enterprise 360",
+    description:
+      "Apply for Enterprise 360, the Scale Enterprises program to design, engineer and lead an enterprise-level business that runs without you.",
+    url: "/application",
+    images: ["/og.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Apply for Enterprise 360",
+    description:
+      "Apply for Enterprise 360, the Scale Enterprises program to design, engineer and lead an enterprise-level business that runs without you.",
+    images: ["/og.png"],
+  },
 };
 
 const includedItems = [

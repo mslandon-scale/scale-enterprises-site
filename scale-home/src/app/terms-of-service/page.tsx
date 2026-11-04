@@ -3,7 +3,23 @@ import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
+  description:
+    "Terms of Service for Scale Enterprises. Please read these terms carefully before using our services.",
   alternates: { canonical: "/terms-of-service" },
+  openGraph: {
+    title: "Terms of Service | Scale Enterprises",
+    description:
+      "Terms of Service for Scale Enterprises. Please read these terms carefully before using our services.",
+    url: "/terms-of-service",
+    images: ["/og.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms of Service | Scale Enterprises",
+    description:
+      "Terms of Service for Scale Enterprises. Please read these terms carefully before using our services.",
+    images: ["/og.png"],
+  },
 };
 
 export default function TermsOfService() {
