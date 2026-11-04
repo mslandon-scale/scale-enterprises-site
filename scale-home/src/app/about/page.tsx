@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About | Scale Enterprises",
-  description: "Learn about Scale Enterprises and founder Matthew Landon — helping service businesses become enterprises.",
+  title: "About Scale Enterprises & Founder Matthew Landon",
+  description:
+    "Scale Enterprises is an enterprise scaling and development firm founded by Matthew Landon. We help service-business owners design, engineer and lead a business that runs without them.",
   alternates: { canonical: "/about" },
 };
 
