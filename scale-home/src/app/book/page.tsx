@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Script from "next/script";
-import Navbar from "@/components/sections/Navbar";
+import SiteHeader from "@/components/SiteHeader";
 import Footer from "@/components/sections/Footer";
 
 declare global {
@@ -46,10 +46,7 @@ export default function BookPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar />
-
-      {/* Spacer for fixed navbar */}
-      <div className="h-[80px]" />
+      <SiteHeader />
 
       <section className="bg-white py-16 md:py-24">
         <div className="max-w-3xl mx-auto px-5 lg:px-8 text-center">

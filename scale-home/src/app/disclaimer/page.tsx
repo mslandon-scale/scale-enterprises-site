@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/sections/Navbar";
+import SiteHeader from "@/components/SiteHeader";
 import Footer from "@/components/sections/Footer";
 
 export const metadata: Metadata = {
@@ -26,8 +26,8 @@ export const metadata: Metadata = {
 export default function Disclaimer() {
   return (
     <>
-      <Navbar />
-      <main className="min-h-screen bg-white pt-[128px] pb-24">
+      <SiteHeader />
+      <main className="min-h-screen bg-white pt-12 pb-24">
         <div className="max-w-[780px] mx-auto px-6">
           <h1 className="font-display text-navy font-extrabold text-[clamp(1.8rem,4vw,2.6rem)] leading-[1.1] tracking-[-0.02em] mb-2">
             Disclaimer

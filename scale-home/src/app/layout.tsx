@@ -94,7 +94,7 @@ export default function RootLayout({
                 name: "Matthew Landon",
                 jobTitle: "Founder",
                 worksFor: { "@id": "https://www.scaleenterprises.com/#org" },
-                url: "https://www.scaleenterprises.com/about",
+                url: "https://www.scaleenterprises.com/#about",
               },
             ],
           }}

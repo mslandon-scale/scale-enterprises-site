@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import QualifyingModal from "@/components/QualifyingModal";
 import JsonLd from "@/components/JsonLd";
+import SiteHeader from "@/components/SiteHeader";
 
 /* ------------------------------------------------------------------ */
 /*  Data                                                               */
@@ -107,33 +108,7 @@ export default function HomeClient() {
       {/* ================================================================ */}
       {/*  NAV                                                             */}
       {/* ================================================================ */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-[#0B1F4B]/10">
-        <div className="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
-          <a href="/" className="flex items-center gap-3">
-            <Image
-              src="/logo.png"
-              alt="Scale Enterprises"
-              width={36}
-              height={36}
-              className="w-9 h-9"
-            />
-            <span className="font-display font-bold text-[#0B1F4B] text-lg tracking-[0.12em] uppercase hidden sm:inline">
-              Scale Enterprises
-            </span>
-          </a>
-          <div className="flex items-center gap-5">
-            <Link href="/about" className="hidden sm:inline font-body text-[13px] font-bold uppercase tracking-widest text-[#555] hover:text-[#0B1F4B] transition-colors">About</Link>
-            <Link href="/waitlist" className="hidden sm:inline font-body text-[13px] font-bold uppercase tracking-widest text-[#555] hover:text-[#0B1F4B] transition-colors">Waitlist</Link>
-            <Link href="/contact" className="hidden sm:inline font-body text-[13px] font-bold uppercase tracking-widest text-[#555] hover:text-[#0B1F4B] transition-colors">Contact</Link>
-            <Link
-              href="/book"
-              className="bg-[#C9A227] text-white font-body font-bold text-sm uppercase tracking-widest px-6 py-3 rounded-full hover:bg-[#D4AF37] hover:-translate-y-0.5 transition-all duration-300"
-            >
-              Book a Call
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <SiteHeader />
 
       {/* ================================================================ */}
       {/*  HERO                                                            */}
@@ -269,7 +244,7 @@ export default function HomeClient() {
       {/* ================================================================ */}
       {/*  ABOUT                                                           */}
       {/* ================================================================ */}
-      <section className="bg-[#F8F8F8] py-14 md:py-20 relative">
+      <section id="about" className="bg-[#F8F8F8] py-14 md:py-20 relative scroll-mt-16">
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227]/20 to-transparent" />
         <div className="max-w-5xl mx-auto px-5">
           <motion.div
@@ -304,6 +279,10 @@ export default function HomeClient() {
                 Direct response marketer and operator who builds growth systems
                 for owner-led businesses. Helping service businesses cross the
                 bridge from overwhelmed operator to enterprise leader.
+              </p>
+              <p className="font-body text-[#555] text-base leading-relaxed mt-3">
+                Our mission is simple: build the systems, structure, and team so
+                your business runs without you.
               </p>
             </div>
           </motion.div>
@@ -416,7 +395,7 @@ export default function HomeClient() {
           reserved.
         </p>
         <p className="mt-3 space-x-3">
-          <Link href="/about" className="text-gray-600 hover:text-navy transition-colors underline underline-offset-2">About</Link>
+          <Link href="/#about" className="text-gray-600 hover:text-navy transition-colors underline underline-offset-2">About</Link>
           <span className="text-gray-300">&middot;</span>
           <Link href="/book" className="text-gray-600 hover:text-navy transition-colors underline underline-offset-2">Book a Call</Link>
           <span className="text-gray-300">&middot;</span>
