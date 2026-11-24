@@ -1,6 +1,6 @@
 const { query, logConversion } = require('../lib/db');
 const { setCors } = require('../lib/cors');
-const { findOrCreateCustomer, createInvoice } = require('../lib/qbo');
+const crypto = require('crypto');
 const { findOrCreateContact: cfFindOrCreateContact, createExternalOrder, createOrderInvoice } = require('../lib/clickfunnels');
 const { lookupContactByEmail, findOpportunityByContact, updateOpportunityStage, createOpportunity } = require('../lib/ghl');
 const { fireMetaEvent } = require('../lib/meta-capi');
@@ -40,34 +40,7 @@ module.exports = async function handler(req, res) {
       dbContact = result.rows[0] || null;
     } catch (e) { /* no existing contact */ }
 
-    // --- QuickBooks: Create customer + invoice ---
-    let qboCustomerId = null;
-    let qboInvoiceId = null;
-    let qboInvoiceNumber = null;
-
-    try {
-      const qboCustomer = await findOrCreateCustomer({
-        name: client.name,
-        email: client.email,
-        phone: client.phone
-      });
-      qboCustomerId = qboCustomer.Id;
-
-      const invoiceResult = await createInvoice({
-        customerId: qboCustomerId,
-        customerEmail: client.email,
-        serviceName: deal.service_name,
-        amount: amount,
-        dueDate: deal.due_date || null
-      });
-
-      const invoice = invoiceResult.Invoice;
-      qboInvoiceId = invoice.Id;
-      qboInvoiceNumber = invoice.DocNumber;
-    } catch (qboError) {
-      console.error('QBO invoice creation failed:', qboError.message);
-      return res.status(500).json({ error: 'Failed to create QuickBooks invoice', detail: qboError.message });
-    }
+    const orderRef = `procurement-${crypto.randomUUID()}`;
 
     // --- ClickFunnels: External order for 2CC ---
     let cfOrderId = null;
@@ -85,7 +58,7 @@ module.exports = async function handler(req, res) {
           contactId: cfContact.id,
           serviceName: deal.service_name,
           amount: amount,
-          originId: `qbo-${qboInvoiceId}`
+          originId: orderRef
         });
 
         if (order) {
@@ -141,14 +114,13 @@ module.exports = async function handler(req, res) {
     let invoiceId = null;
     try {
       const result = await query(
-        `INSERT INTO invoices (contact_id, ghl_contact_id, ghl_opportunity_id, client_name, client_email, client_phone, service_name, amount, notes, qbo_customer_id, qbo_invoice_id, qbo_invoice_number, cf_order_id, cf_invoice_id, status, fbclid, gclid, ip_address, user_agent, submitted_by)
-         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20)
+        `INSERT INTO invoices (contact_id, ghl_contact_id, ghl_opportunity_id, client_name, client_email, client_phone, service_name, amount, notes, cf_order_id, cf_invoice_id, status, fbclid, gclid, ip_address, user_agent, submitted_by)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)
          RETURNING id`,
         [
           dbContact?.id || null, ghlContactId, ghlOpportunityId,
           client.name, client.email, client.phone || null,
           deal.service_name, amount, deal.notes || null,
-          qboCustomerId, qboInvoiceId, qboInvoiceNumber,
           cfOrderId, cfInvoiceId,
           'sent',
           dbContact?.fbclid || null, dbContact?.gclid || null,
@@ -197,10 +169,8 @@ module.exports = async function handler(req, res) {
     return res.status(200).json({
       success: true,
       invoice_id: invoiceId,
-      qbo_invoice_id: qboInvoiceId,
-      qbo_invoice_number: qboInvoiceNumber,
       cf_order_id: cfOrderId,
-      message: `Invoice created and sent to ${client.email}`
+      message: `Deal recorded for ${client.email}`
     });
 
   } catch (error) {
