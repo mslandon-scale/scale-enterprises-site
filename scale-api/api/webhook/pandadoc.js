@@ -1,6 +1,5 @@
 const { query, logConversion } = require('../../lib/db');
 const { verifyWebhook } = require('../../lib/pandadoc');
-const { findOrCreateCustomer, createInvoice } = require('../../lib/qbo');
 const { findOpportunityByContact, updateOpportunityStage } = require('../../lib/ghl');
 const { createExternalOrder, createOrderInvoice, findOrCreateContact: cfFindOrCreateContact } = require('../../lib/clickfunnels');
 const { fireMetaEvent } = require('../../lib/meta-capi');
@@ -62,34 +61,9 @@ async function processSignedAgreement(pandadocId) {
 
     const amount = parseFloat(agreement.amount);
 
-    // --- Create QuickBooks Invoice ---
-    let qboInvoiceId = null;
-    let qboInvoiceNumber = null;
-
-    try {
-      const qboCustomer = await findOrCreateCustomer({
-        name: agreement.client_name,
-        email: agreement.client_email,
-        phone: agreement.client_phone
-      });
-
-      const invoiceResult = await createInvoice({
-        customerId: qboCustomer.Id,
-        customerEmail: agreement.client_email,
-        serviceName: agreement.service_name,
-        amount: amount
-      });
-
-      const invoice = invoiceResult.Invoice;
-      qboInvoiceId = invoice.Id;
-      qboInvoiceNumber = invoice.DocNumber;
-    } catch (qboError) {
-      console.error('QBO invoice creation after signing failed:', qboError.message);
-    }
-
     // --- Store invoice record ---
     let invoiceId = null;
-    if (qboInvoiceId) {
+    {
       // Look up contact for attribution data
       let dbContact = null;
       if (agreement.contact_id) {
@@ -99,14 +73,13 @@ async function processSignedAgreement(pandadocId) {
 
       try {
         const invoiceResult = await query(
-          `INSERT INTO invoices (contact_id, ghl_contact_id, ghl_opportunity_id, client_name, client_email, client_phone, service_name, amount, qbo_invoice_id, qbo_invoice_number, status, fbclid, gclid, ip_address, user_agent, submitted_by)
-           VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)
+          `INSERT INTO invoices (contact_id, ghl_contact_id, ghl_opportunity_id, client_name, client_email, client_phone, service_name, amount, status, fbclid, gclid, ip_address, user_agent, submitted_by)
+           VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
            RETURNING id`,
           [
             agreement.contact_id, agreement.ghl_contact_id, agreement.ghl_opportunity_id,
             agreement.client_name, agreement.client_email, agreement.client_phone,
             agreement.service_name, amount,
-            qboInvoiceId, qboInvoiceNumber,
             'sent',
             dbContact?.fbclid || null, dbContact?.gclid || null,
             dbContact?.ip_address || null, dbContact?.user_agent || null,
@@ -191,7 +164,7 @@ async function processSignedAgreement(pandadocId) {
       }
     }
 
-    console.log(`Agreement ${agreement.id} signed. QBO invoice ${qboInvoiceNumber || 'N/A'} created and sent to ${agreement.client_email}.`);
+    console.log(`Agreement ${agreement.id} signed for ${agreement.client_email}.`);
 
   } catch (error) {
     console.error(`Failed to process signed agreement ${pandadocId}:`, error);

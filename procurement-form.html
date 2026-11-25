@@ -216,8 +216,8 @@
   <div class="pf-container">
     <div class="pf-header">
       <div class="pf-badge">Internal - Procurement</div>
-      <h1>Create Client Invoice</h1>
-      <p>Fill in the client and deal details below. A QuickBooks invoice will be created and emailed to the client automatically.</p>
+      <h1>Record Client Deal</h1>
+      <p>Fill in the client and deal details below. The deal will be recorded and the client's pipeline stage updated.</p>
     </div>
 
     <div class="pf-divider"></div>
@@ -288,9 +288,9 @@
           <polyline points="20 6 9 17 4 12"/>
         </svg>
       </div>
-      <h2>Invoice Sent</h2>
-      <p>QuickBooks invoice <span class="pf-invoice-num" id="pf-invoice-num"></span> has been created and emailed to the client.</p>
-      <p style="margin-top: 16px;"><a href="#" onclick="location.reload();return false;" style="color: var(--azure-bright); text-decoration: underline;">Create another invoice</a></p>
+      <h2>Deal Recorded</h2>
+      <p>Deal <span class="pf-invoice-num" id="pf-invoice-num"></span> has been recorded.</p>
+      <p style="margin-top: 16px;"><a href="#" onclick="location.reload();return false;" style="color: var(--azure-bright); text-decoration: underline;">Record another deal</a></p>
     </div>
   </div>
 
@@ -342,7 +342,7 @@
           throw new Error(data.error || data.detail || 'Failed to create invoice');
         }
 
-        document.getElementById('pf-invoice-num').textContent = data.qbo_invoice_number || data.qbo_invoice_id || 'N/A';
+        document.getElementById('pf-invoice-num').textContent = data.invoice_id || 'N/A';
         document.getElementById('pf-form-container').style.display = 'none';
         document.getElementById('pf-success').style.display = 'block';
 
